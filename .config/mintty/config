@@ -1,0 +1,14 @@
+BoldAsFont=no
+ScrollbackLines=200000
+ThemeFile=base16-default-mod-lighten-black.minttyrc
+Font=Lucida Console
+FontHeight=9
+ZoomShortcuts=no
+ClicksPlaceCursor=yes
+RightClickAction=menu
+BellType=0
+FontSmoothing=default
+BoldAsColour=yes
+Term=xterm
+Columns=132
+Rows=47
