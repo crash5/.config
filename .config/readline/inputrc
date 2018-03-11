@@ -3,3 +3,12 @@ set colored-stats on
 set completion-prefix-display-length 2
 set show-all-if-ambiguous on
 set completion-ignore-case on
+
+set completion-map-case on
+set bell-style none
+set enable-keypad on
+set mark-directories on
+set mark-symlinked-directories on
+set show-all-if-unmodified on
+set show-mode-in-prompt on
+set visible-stats on
