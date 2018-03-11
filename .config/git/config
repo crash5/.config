@@ -33,6 +33,7 @@
 	rh = reset --hard
 	rh1 = reset --hard HEAD^
 	rh2 = reset --hard HEAD^^
+    rebase-develop = !git rebase -i $(git merge-base develop HEAD)
 	pruneorigin = remote prune origin
 	gones = !git fetch -q -p && git branch -vv | awk '/: gone]/{print $1}'
 	deletegones = !git gones | xargs -n 1 -r -p git branch -d
