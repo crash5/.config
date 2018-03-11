@@ -9,6 +9,6 @@ RightClickAction=menu
 BellType=0
 FontSmoothing=default
 BoldAsColour=yes
-Term=xterm
+Term=xterm-256color
 Columns=132
 Rows=47
