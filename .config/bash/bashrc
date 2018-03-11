@@ -1,0 +1,36 @@
+#Source global bashrc if required
+    [ -f /etc/bashrc ] && . /etc/bashrc
+
+# enable programmable completion features
+    [ -f /etc/bash_completion ] && ! shopt -oq posix && . /etc/bash_completion
+
+# Set Shell options to increase functionality
+    shopt -s autocd               # Enable changing directory without cd
+    shopt -s cdspell              # Spelling correction for cd
+    shopt -s checkwinsize         # Adjust text to window size after commands
+    shopt -s dirspell             # Spelling correction for dirs
+    shopt -s dotglob              # Enable globbing for dotfiles
+    shopt -s extglob              # Extended globbing
+    shopt -s globstar             # ZSH-like ** globbing (recursive dir match)
+    shopt -s histappend           # Append to history, don't overwrite
+    shopt -s histreedit           # Re-edit failed history substitutions
+    shopt -s nocaseglob           # Ignore cases for globbing filenames
+
+# Source common shell config
+    XDG_CONFIG_HOME="$(dirname ${BASH_SOURCE[0]})/.."
+    source "$XDG_CONFIG_HOME/sh/xdg.sh"
+    source "$XDG_CONFIG_HOME/sh/rc.sh"
+
+# For Git
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWUPSTREAM="auto"
+
+# History
+    export HISTCONTROL=ignoreboth
+    #export HISTFILE=/dev/null
+    #export HISTSIZE=1000
+    #export HISTFILESIZE=1000
+
+# Other
+    bind Space:magic-space
+    export TERM=xterm-256color
