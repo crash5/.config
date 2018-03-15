@@ -6,6 +6,7 @@
     export XDG_CACHE_HOME=$HOME/.cache
 
 # Environment-variable respecting programs
+    export HISTFILE="$XDG_DATA_HOME/bash/history"
     export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker/"
     export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
     export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
@@ -13,6 +14,7 @@
     export PSQLRC="$XDG_CONFIG_HOME/psql/psqlrc"
     export PSQL_HISTORY="$XDG_DATA_HOME/psql/history"
     export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+    export MYSQL_HISTFILE="$XDG_DATA_HOME/mysql/history"
 
 # Alias respecting programs
     alias emacs="emacs -q --load $XDG_CONFIG_HOME/emacs/emacsrc"
