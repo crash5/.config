@@ -27,7 +27,6 @@
 
 # History
     export HISTCONTROL=ignoreboth
-    #export HISTFILE=/dev/null
     #export HISTSIZE=1000
     #export HISTFILESIZE=1000
 
