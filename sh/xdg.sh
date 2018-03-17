@@ -6,14 +6,15 @@
     export XDG_CACHE_HOME=$HOME/.cache
 
 # Environment-variable respecting programs
-    export HISTFILE="$XDG_DATA_HOME/bash/history"
+    export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
     export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker/"
     export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
-    export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
-    export LESSHISTFILE="$XDG_DATA_HOME/less/history"
     export PSQLRC="$XDG_CONFIG_HOME/psql/psqlrc"
-    export PSQL_HISTORY="$XDG_DATA_HOME/psql/history"
     export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+
+    export HISTFILE="$XDG_DATA_HOME/bash/history"
+    export LESSHISTFILE="$XDG_DATA_HOME/less/history"
+    export PSQL_HISTORY="$XDG_DATA_HOME/psql/history"
     export MYSQL_HISTFILE="$XDG_DATA_HOME/mysql/history"
 
 # Alias respecting programs
