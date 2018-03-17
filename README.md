@@ -6,6 +6,7 @@ Install:
 		Bash: sudo echo '[[ ! -z "$PS1" ]] && [[ ! -z "$BASH_VERSION" ]] && . ~/.config/bash/bashrc' >> /etc/profile
 	Remote host:
 		Bash: ln -s ~/.config/bash/bashrc ~/.bash_profile
+3. cd ~/.config && ./bootstrap.sh
 ```
 
 Sources:
