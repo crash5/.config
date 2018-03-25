@@ -24,8 +24,7 @@ isGitRepository()
 
 # param 1: output array
 # param 2: list of files and folders to process
-createFileList()
-{
+createFileList() {
     local FILES_AND_FOLDERS=("${@:2}") # everything after 1. parameter
 
     local WORKING_FOLDER="${GIT_PREFIX}" # directory from where git alias called, empty if run from repository root
@@ -44,6 +43,13 @@ createFileList()
     done
 }
 
+# param 1: source file
+# param 2: destination file
+copyFileModes() {
+    $(chmod --reference="$1" "$2")
+    $(chown --reference="$1" "$2")
+}
+
 processFile() {
     local FILE="$1"
     local FILE_NAME=$(basename $FILE)
@@ -53,6 +59,8 @@ processFile() {
 
     TEMP_FILE="$(git checkout-index --temp $FILE | cut -f1)"
     local INDEX_VERSION="$TEMP_FILE"
+
+    copyFileModes "${WORK_TREE_VERSION}" "${INDEX_VERSION}"
 
     "$DIFF_TOOL" "$WORK_TREE_VERSION" "$INDEX_VERSION"
 
