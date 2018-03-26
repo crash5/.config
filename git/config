@@ -57,7 +57,7 @@
 [rebase]
 	autoSquash = true
 [init]
-	templatedir = c:/Projects/git-template/
+	templatedir = ~/.config/git/template/
 [difftool "bc"]
 	cmd = 'c:/Program Files/Beyond Compare 4/BCompare.exe' $LOCAL $REMOTE
 [mergetool "bc"]
