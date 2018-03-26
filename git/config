@@ -10,13 +10,16 @@
 	br = branch -vv
 	ci = commit
 	cia = !git ci --amend
+	cif = !git ci --fixup
+	cis = !git ci --squash
 	cl = clone
 	st = status
 	dt = difftool
 	dty = difftool -y
 	dtc = !git dt --cached
 	dtd = !git dt --dir-diff
-	dtdc = !git dt --dir-diff --cached
+	dtdc = !git dtd --cached
+	dtds = !git dtd stash
 	diffc = diff --cached
 	diffcw = diff --cached --color-words
 	diffn = diff --name-only
@@ -51,6 +54,8 @@
 	ignorecase = false
 [commit]
 	verbose = true
+[rebase]
+	autoSquash = true
 [init]
 	templatedir = c:/Projects/git-template/
 [difftool "bc"]
