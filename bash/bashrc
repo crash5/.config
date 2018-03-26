@@ -33,3 +33,5 @@
 # Other
     bind Space:magic-space
     export TERM=xterm-256color
+    export PATH=$PATH:${XDG_CONFIG_HOME}/sh/utilities/
+
