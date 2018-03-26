@@ -1,0 +1,27 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "extensions.autoUpdate": false,
+    "editor.fontFamily": "Dejavu sans mono",
+    "editor.fontSize": 12,
+    "editor.renderWhitespace": "all",
+    "extensions.ignoreRecommendations": true,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "files.insertFinalNewline": true,
+    "editor.cursorWidth": 3,
+    "editor.minimap.enabled": false,
+    "editor.renderControlCharacters": true,
+    "editor.renderLineHighlight": "all",
+    "editor.renderIndentGuides": true,
+    "editor.rulers": [
+        75,
+        120
+    ],
+    "workbench.statusBar.feedback.visible": false,
+    "window.title": "${dirty}${activeEditorLong}${separator}${appName}",
+    "workbench.colorCustomizations": 
+    {
+        "editor.lineHighlightBackground": "#172d38",
+    },
+    "update.channel": "none"
+}
