@@ -1,0 +1,58 @@
+{
+	"Comparison operators": {
+		"prefix": "operator",
+		"body": [
+			"inline bool operator==(const ${1:typeName}& lhs, const ${1}& rhs) { return ${2:equalImp}; }",
+			"inline bool operator!=(const ${1:typeName}& lhs, const ${1}& rhs) { return !operator==(lhs,rhs); }",
+			"inline bool operator< (const ${1:typeName}& lhs, const ${1}& rhs) { return ${3:lessImpl}; }",
+			"inline bool operator> (const ${1:typeName}& lhs, const ${1}& rhs) { return  operator< (rhs,lhs); }",
+			"inline bool operator>=(const ${1:typeName}& lhs, const ${1}& rhs) { return !operator< (lhs,rhs); }",
+			"inline bool operator<=(const ${1:typeName}& lhs, const ${1}& rhs) { return !operator> (lhs,rhs); }"
+		]
+	},
+	"Comparison operators as member": {
+		"prefix": "operators_as_member",
+		"body": [
+			"inline bool operator==(const ${1:typeName}& rhs) const { return ${2:equalImp}; }",
+			"inline bool operator!=(const ${1:typeName}& rhs) const { return !operator==(rhs); }",
+			"inline bool operator< (const ${1:typeName}& rhs) const { return ${3:lessImpl}; }",
+			"inline bool operator> (const ${1:typeName}& rhs) const { return  rhs.operator< (*this); }",
+			"inline bool operator>=(const ${1:typeName}& rhs) const { return !operator< (rhs); }",
+			"inline bool operator<=(const ${1:typeName}& rhs) const { return !operator> (rhs); }"
+		]
+	},
+	"Copy ctor and assigment": {
+		"prefix": "copy_template",
+		"body": [
+			"${1:className}(const ${1}& other) = default;",
+			"${1}& operator=(const ${1}& other) = default;"
+		]
+	},
+	"Move ctor and assigment": {
+		"prefix": "move_template",
+		"body": [
+			"${1:className}(${1}&& other) = default;",
+			"${1}& operator=(${1}&& other) = default;",
+		]
+	},
+	"Class": {
+		"prefix": "class",
+		"body": [
+			"class ${1:className}",
+			"{",
+			"public:",
+			"\t${1}() = default;",
+			"\t~${1}() = default;",
+			"",
+			"\t// copy_template",
+			"",
+			"\t// move_template",
+			"",
+			"\t// operators_as_member",
+			"",
+			"private:",
+			"\t$0",
+			"};"
+		]
+	},
+}
