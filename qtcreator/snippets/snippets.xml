@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<snippets>
+    <snippet group="C++" trigger="catch" id="" complement="with parameter and block" removed="false" modified="false">catch (const $parameter$&amp; e) {
+	$$
+}</snippet>
+    <snippet group="C++" trigger="class" id="cpp_genericclass" complement="with copy and move" removed="false" modified="true">class $name$
+{
+public:
+	$name$() = default;
+	
+	// copy
+	$name$(const $name$&amp; other) = default;
+	$name$&amp; operator=(const $name$&amp; other) = default;
+
+	// move
+	$name$($name$&amp;&amp; other) = default;
+	$name$&amp; operator=($name$&amp;&amp; other) = default;
+private:
+	$$
+};</snippet>
+    <snippet group="C++" trigger="cmpoverload" id="" complement="" removed="false" modified="false">inline bool operator==(const $typeName$&amp; lhs, const $typeName$&amp; rhs) { return $equalImp$; }
+inline bool operator!=(const $typeName$&amp; lhs, const $typeName$&amp; rhs) { return !operator==(lhs,rhs); }
+inline bool operator&lt; (const $typeName$&amp; lhs, const $typeName$&amp; rhs) { return $lessImpl$; }
+inline bool operator&gt; (const $typeName$&amp; lhs, const $typeName$&amp; rhs) { return  operator&lt; (rhs,lhs); }
+inline bool operator&gt;=(const $typeName$&amp; lhs, const $typeName$&amp; rhs) { return !operator&lt; (lhs,rhs); }
+inline bool operator&lt;=(const $typeName$&amp; lhs, const $typeName$&amp; rhs) { return !operator&gt; (lhs,rhs); }</snippet>
+    <snippet group="C++" trigger="cmpoverload" id="" complement="as member" removed="false" modified="false">inline bool operator==(const $typeName$&amp; rhs) const { return $equalImp$; }
+inline bool operator!=(const $typeName$&amp; rhs) const { return !operator==(rhs); }
+inline bool operator&lt; (const $typeName$&amp; rhs) const { return $lessImpl$; }
+inline bool operator&gt; (const $typeName$&amp; rhs) const { return  rhs.operator&lt; (*this); }
+inline bool operator&gt;=(const $typeName$&amp; rhs) const { return !operator&lt; (rhs); }
+inline bool operator&lt;=(const $typeName$&amp; rhs) const { return !operator&gt; (rhs); }</snippet>
+    <snippet group="C++" trigger="copymove" id="" complement="" removed="false" modified="false">$className$() = default;
+
+// copy
+$className$(const $className$&amp; other) = default;
+$className$&amp; operator=(const $className$&amp; other) = default;
+
+// move
+$className$($className$&amp;&amp; other) = default;
+$className$&amp; operator=($className$&amp;&amp; other) = default;</snippet>
+    <snippet group="C++" trigger="for" id="cpp_for" complement="" removed="false" modified="true">for (int $var$ = 0; $var$ &lt; $total$; ++$var$) {
+    $$
+}</snippet>
+    <snippet group="C++" trigger="for" id="" complement="ranged" removed="false" modified="false">for (const auto&amp; item : $container$) {
+	$$
+}</snippet>
+    <snippet group="C++" trigger="ifndef" id="" complement="include guard" removed="false" modified="false">#ifndef $name:u$
+#define $name:u$
+
+$$
+
+#endif // $name:u$
+</snippet>
+    <snippet group="C++" trigger="logo" id="" complement="critical" removed="false" modified="false">ErrorLogging::logEvent(ErrorLogging::CRITICAL, $errorObject$, this, ENC(&quot;$context$&quot;));</snippet>
+    <snippet group="C++" trigger="logo" id="" complement="error" removed="false" modified="false">ErrorLogging::logEvent(ErrorLogging::ERR, $errorObject$, this, ENC(&quot;$context$&quot;));</snippet>
+    <snippet group="C++" trigger="logo" id="" complement="warning" removed="false" modified="false">ErrorLogging::logEvent(ErrorLogging::WARNING, $errorObject$, this, ENC(&quot;$context$&quot;));</snippet>
+    <snippet group="C++" trigger="namespace" id="cpp_namespace" complement="" removed="false" modified="true">namespace $name$
+{
+    $$
+} // namespace $name$</snippet>
+    <snippet group="C++" trigger="operatorQString" id="" complement="" removed="false" modified="false">operator QString() const
+{
+	return QString(ENC(&quot;%1&quot;))
+		.arg($$)
+	;
+}
+</snippet>
+    <snippet group="C++" trigger="foreach" id="cpp_foreach" complement="" removed="true" modified="false">foreach ($var$, $container$) {
+    $$
+}</snippet>
+</snippets>

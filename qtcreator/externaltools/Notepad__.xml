@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Written on K aug. 22 11:39:42 2017 by Qt Creator 4.3.1-->
+<externaltool id="Notepad__">
+    <description>This tool prints a line of useful text</description>
+    <displayname>Notepad++</displayname>
+    <category>Text</category>
+    <executable output="showinpane" error="showinpane" modifiesdocument="yes">
+        <path>C:/Program Files (x86)/Notepad++/notepad++.exe</path>
+        <arguments>%{CurrentDocument:FilePath} -n%{CurrentDocument:Row} -c%{CurrentDocument:Column}</arguments>
+        <workingdirectory>%{CurrentDocument:Path}</workingdirectory>
+    </executable>
+</externaltool>

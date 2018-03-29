@@ -24,6 +24,18 @@ mklink %APPDATA%\Code\User\keybindings.json %USERPROFILE%\.config\vscode\keybind
 mklink /D %APPDATA%\Code\User\snippets %USERPROFILE%\.config\vscode\snippets
 ```
 
+### Qt Creator
+
+#### Windows
+```
+mklink %APPDATA%\QtProject\qtcreator\styles\twilight.xml %USERPROFILE%\.config\qtcreator\styles\twilight.xml
+mklink %APPDATA%\QtProject\qtcreator\snippets\snippets.xml %USERPROFILE%\.config\qtcreator\snippets\snippets.xml
+
+mklink %APPDATA%\QtProject\qtcreator\externaltools\SublimeText.xml %USERPROFILE%\.config\qtcreator\externaltools\SublimeText.xml
+mklink %APPDATA%\QtProject\qtcreator\externaltools\Sort_selection_unique.xml %USERPROFILE%\.config\qtcreator\externaltools\Sort_selection_unique.xml
+mklink %APPDATA%\QtProject\qtcreator\externaltools\Notepad__.xml %USERPROFILE%\.config\qtcreator\externaltools\Notepad__.xml
+```
+
 ### Notepad++
 
 Set the cloud directory: Settings -> Preferences -> Cloud
