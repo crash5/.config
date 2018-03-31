@@ -2,7 +2,7 @@
 	name = Imre NAGY
 	email = crash5@users.noreply.github.com
 [color]
-	ui = true
+	ui = auto
 [alias]
 	branch-name = rev-parse --abbrev-ref HEAD
 	pushu = !git push -u origin $(git branch-name)
@@ -56,6 +56,8 @@
 	verbose = true
 [rebase]
 	autoSquash = true
+	stat = true
+	missingCommitsCheck = warn
 [init]
 	templatedir = ~/.config/git/template/
 [difftool "bc"]
@@ -70,3 +72,5 @@
 	tool = bc
 [mergetool]
 	keepBackup = false
+[rerere]
+	enabled = true
