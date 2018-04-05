@@ -45,13 +45,13 @@
 	pruneorigin = remote prune origin
 	gones = !git fetch -q -p && git branch -vv | awk '/: gone]/{print $1}'
 	deletegones = !git gones | xargs -n 1 -r -p git branch -d
-	cleanrepo="clean -dfx"
+	cleanrepo = clean -dfx
 	assume = update-index --assume-unchanged
 	unassume = update-index --no-assume-unchanged
-	assumedlist = "!git ls-files -v | grep ^h | cut -c 3-"
+	assumedlist = !git ls-files -v | grep ^h | cut -c 3-
 	skipworktree = update-index --skip-worktree
 	unskipworktree = update-index --no-skip-worktree
-	skipworktreelist = "!git ls-files -v | grep ^S | cut -c 3-"
+	skipworktreelist = !git ls-files -v | grep ^S | cut -c 3-
 [core]
 	editor = 'c:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -nosession -ldiff
 	autocrlf = true
