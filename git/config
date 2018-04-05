@@ -5,9 +5,12 @@
 	ui = auto
 [alias]
 	branch-name = rev-parse --abbrev-ref HEAD
-	pushu = !git push -u origin $(git branch-name)
+	p = push
+	pu = !git p -u origin $(git branch-name)
 	co = checkout
 	br = branch -vv
+	bra = !git br -a
+	brr = !git br -r
 	ci = commit
 	cia = !git ci --amend
 	cif = !git ci --fixup
@@ -32,6 +35,7 @@
 	h = !git hist -25
 	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=relative
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [a:%an,c:%cn]" --decorate --numstat
+	r = reset
 	r1 = reset HEAD^
 	r2 = reset HEAD^^
 	rh = reset --hard
