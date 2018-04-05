@@ -12,6 +12,7 @@
 	cia = !git ci --amend
 	cif = !git ci --fixup
 	cis = !git ci --squash
+	fixupfile = "!f() { git commit --fixup=$(git log --all --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
 	cl = clone
 	st = status
 	dt = difftool
@@ -70,6 +71,7 @@
 	tool = bc
 [merge]
 	tool = bc
+	summary = true
 [mergetool]
 	keepBackup = false
 [rerere]
