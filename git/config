@@ -33,7 +33,7 @@
 	unstage = "reset HEAD --"
 	hist = log --pretty=format:'%C(yellow)%h %C(reset)%ad | %C(cyan)%s%C(red)%d%C(reset) [%an]' --graph --date=short
 	h = !git hist -25
-	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=relative
+	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=short
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [a:%an,c:%cn]" --decorate --numstat
 	r = reset
 	r1 = reset HEAD^
