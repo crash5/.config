@@ -23,5 +23,6 @@
     {
         "editor.lineHighlightBackground": "#172d38",
     },
-    "update.channel": "none"
+    "update.channel": "none",
+    "files.trimFinalNewlines": true
 }
