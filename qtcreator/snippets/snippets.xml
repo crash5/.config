@@ -42,6 +42,10 @@ $className$&amp; operator=($className$&amp;&amp; other) = default;</snippet>
     <snippet group="C++" trigger="for" id="cpp_for" complement="" removed="false" modified="true">for (int $var$ = 0; $var$ &lt; $total$; ++$var$) {
     $$
 }</snippet>
+    <snippet group="C++" trigger="for" id="" complement="iterate container" removed="false" modified="false">for (auto it = $container$.constBegin(), lastIt = $container$.constEnd(); it != lastIt; ++it) {
+	$$
+}
+</snippet>
     <snippet group="C++" trigger="for" id="" complement="ranged" removed="false" modified="false">for (const auto&amp; item : $container$) {
 	$$
 }</snippet>
