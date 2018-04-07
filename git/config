@@ -5,8 +5,7 @@
 	ui = auto
 [alias]
 	branch-name = rev-parse --abbrev-ref HEAD
-	p = push
-	pu = !git p -u origin $(git branch-name)
+	pushu = !git push -u origin $(git branch-name)
 	co = checkout
 	br = branch -vv
 	bra = !git br -a
@@ -18,7 +17,7 @@
 	fixupfile = "!f() { git commit --fixup=$(git log --all --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
 	fixupfile-develop = "!f() { git commit --fixup=$(git log $(git merge-base develop HEAD)..HEAD --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
 	cl = clone
-	st = status
+	st = status -sb
 	dt = difftool
 	dty = difftool -y
 	dtc = !git dt --cached
