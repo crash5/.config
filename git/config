@@ -37,6 +37,7 @@
 	unstage = "reset HEAD --"
 	hist = log --pretty=format:'%C(yellow)%h %C(reset)%ad | %C(cyan)%s%C(red)%d%C(reset) [%an]' --graph --date=short
 	h = !git hist -25
+	hd = !git hist $(git merge-base develop HEAD)..HEAD
 	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=short
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [a:%an,c:%cn]" --decorate --numstat
 	r = reset
@@ -56,6 +57,7 @@
 	skipworktree = update-index --skip-worktree
 	unskipworktree = update-index --no-skip-worktree
 	skipworktreelist = !git ls-files -v | grep ^S | cut -c 3-
+	snap = !git stash save "snapshot: $(date +'%Y. %m. %d. %H:%M')" && git stash apply "stash@{0}"
 [core]
 	editor = 'c:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -nosession -noPlugin -ldiff
 	autocrlf = true
@@ -84,3 +86,5 @@
 	keepBackup = false
 [rerere]
 	enabled = true
+[include]
+	path = ~/.local/gitconfig
