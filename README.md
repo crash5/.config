@@ -14,6 +14,10 @@ echo ". ~/.config/bash/bashrc" > .bash_profile
 cd ~/.config && ./bootstrap.sh
 ```
 
+### Git
+
+Add computer specific modifications to `~/.local/gitconfig`
+
 ### VS Code
 
 #### Windows
