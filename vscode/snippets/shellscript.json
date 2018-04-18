@@ -1,0 +1,18 @@
+{
+	"For in": {
+		"prefix": "for in",
+		"body": [
+			"for ${1:item} in ${2:container}; do",
+			"\t$0",
+			"done"
+		]
+	},
+	"If": {
+		"prefix": "if",
+		"body": [
+			"if [[ ${1:condition} ]]; then",
+			"\t$0",
+			"fi"
+		]
+	}
+}

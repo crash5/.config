@@ -1,0 +1,14 @@
+{
+	"Keyboard tag": {
+		"prefix": "kbd",
+		"body": [
+			"kbd:[$TM_SELECTED_TEXT]"
+		],
+	},
+	"Include": {
+		"prefix": "include",
+		"body": [
+			"include::$TM_SELECTED_TEXT[]"
+		],
+	}
+}
