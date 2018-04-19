@@ -6,7 +6,6 @@
 [alias]
 	branch-name = rev-parse --abbrev-ref HEAD
 	branch-name-tracking = rev-parse --abbrev-ref --symbolic-full-name "@{u}"
-	mb = !git merge-base $(git branch-name)
 	p = push
 	pushu = !git p -u origin $(git branch-name)
 	co = checkout
