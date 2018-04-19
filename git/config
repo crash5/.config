@@ -24,8 +24,8 @@
 	st = status
 	dt = difftool
 	dty = difftool -y
-	dtc = !git dt --cached
-	dtd = !git dt --dir-diff
+	dtc = difftool --cached
+	dtd = difftool --dir-diff
 	dtdc = !git dtd --cached
 	dtds = !git dtd stash
 	diffc = diff --cached
