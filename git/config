@@ -6,12 +6,16 @@
 [alias]
 	branch-name = rev-parse --abbrev-ref HEAD
 	branch-name-tracking = rev-parse --abbrev-ref --symbolic-full-name "@{u}"
+
 	p = push
 	pushu = !git p -u origin $(git branch-name)
+
 	co = checkout
+
 	br = branch -vv
 	bra = !git br -a
 	brr = !git br -r
+
 	ci = commit
 	cia = !git ci --amend
 	ciane = !git ci --amend --no-edit
@@ -19,43 +23,55 @@
 	cis = !git ci --squash
 	ff = "!f() { git commit --fixup=$(git log --all --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
 	ff-develop = "!f() { git commit --fixup=$(git log $(git merge-base develop HEAD)..HEAD --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
+
+	addp = !git_add_gui.sh
+
 	cl = clone
 	st = status
+
 	dt = difftool
 	dty = difftool -y
 	dtc = difftool --cached
 	dtd = difftool --dir-diff
 	dtdc = !git dtd --cached
 	dtds = !git dtd stash
+
 	diffc = diff --cached
 	diffcw = diff --cached --color-words
 	diffn = diff --name-only
 	diffw = diff --color-words
-	addp = !git_add_gui.sh
+
 	mt = mergetool
-	unstage = "reset HEAD --"
+
 	hist = log --pretty=format:'%C(yellow)%h %C(reset)%ad | %C(cyan)%s%C(red)%d%C(reset) [%an]' --graph --date=short
 	h = !git hist -25
 	hd = !git hist $(git merge-base develop HEAD)..HEAD
 	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=short
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [a:%an,c:%cn]" --decorate --numstat
+
+	unstage = "reset HEAD --"
 	r = reset
 	r1 = reset HEAD^
 	r2 = reset HEAD^^
 	rh = reset --hard
 	rh1 = reset --hard HEAD^
 	rh2 = reset --hard HEAD^^
+
 	rebase-develop = !git rebase -i $(git merge-base develop HEAD)
+
+	cleanrepo = clean -dfx
 	pruneorigin = remote prune origin
 	gones = !git fetch -q -p && git branch -vv | awk '/: gone]/{print $1}'
 	deletegones = !git gones | xargs -n 1 -r -p git branch -d
-	cleanrepo = clean -dfx
+
 	assume = update-index --assume-unchanged
 	unassume = update-index --no-assume-unchanged
 	assumedlist = !git ls-files -v | grep ^h | cut -c 3-
+
 	skipworktree = update-index --skip-worktree
 	unskipworktree = update-index --no-skip-worktree
 	skipworktreelist = !git ls-files -v | grep ^S | cut -c 3-
+
 	snap = !git stash save "snapshot: $(date +'%Y. %m. %d. %H:%M')" && git stash apply "stash@{0}"
 [core]
 	editor = 'c:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -nosession -noPlugin -ldiff
