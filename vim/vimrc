@@ -1,0 +1,78 @@
+" xdg directory structure support {
+    set undodir=$XDG_CACHE_HOME/vim/undo
+    set directory=$XDG_CACHE_HOME/vim/swap
+    set backupdir=$XDG_CACHE_HOME/vim/backup
+    set viminfo+='1000,n$XDG_CACHE_HOME/vim/viminfo
+    set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
+"}
+
+
+" altalanos beallitasok {
+   set nocompatible
+   syntax on
+   set showmode
+   set number
+   set showmatch
+   set ruler
+   "set cursorline
+   set bs=2
+   set noai
+   set autochdir
+   set hlsearch
+   set incsearch
+   set ignorecase
+   set visualbell
+   set viminfo=""
+   set history=50
+   set expandtab
+   set shiftwidth=4
+   set tabstop=4
+   "set textwidth=0
+   "statusline
+
+   if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+       set fileencodings=utf-8,latin1
+   endif
+
+   if has('mouse')
+      set mouse=a
+   endif
+"}
+
+
+" allapotsor {
+   set laststatus=2
+   set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%04.8b]\ [HEX=\%04.4B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]\ [FENC=%{\(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")\}]
+"}
+
+
+" billentyuk {
+   :map <F2> <ESC>:w<CR>
+   :map <C-s> <ESC>:w<CR>
+   :map <F10> <ESC>:q!<CR>
+   :map t2t :w<CR>:!txt2tags %<CR>
+   ":vmap <C-c> y
+   ":imap <C-p> <esc>P
+"}
+
+
+" roviditesek {
+   "ab #d #define
+"}
+
+
+" autocmd-s cuccok {
+   if has("autocmd")
+      "au BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
+      "au BufNewFile *.html 0r $HOME/.vim/templates/html.tpl
+      au FileType html setlocal matchpairs+=<:>
+      au BufNewFile,BufRead *.t2t set ft=txt2tags
+
+      "au FileType text setlocal textwidth=78
+      "au Syntax python set textwidth=0
+      "au Syntax c set textwidth=0
+      "au Syntax muttrc set textwidth=0
+      au Syntax *sh set textwidth=0
+
+   endif
+"}

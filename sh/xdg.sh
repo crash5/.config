@@ -12,6 +12,7 @@
     export PSQLRC="$XDG_CONFIG_HOME/psql/psqlrc"
     export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
     export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
+    export VIMINIT=":source $XDG_CONFIG_HOME/vim/vimrc"
 
     export HISTFILE="$XDG_DATA_HOME/bash/history"
     export LESSHISTFILE="$XDG_DATA_HOME/less/history"

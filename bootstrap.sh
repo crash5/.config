@@ -11,6 +11,9 @@ dirs=(
 	"$XDG_DATA_HOME/less"
 	"$XDG_DATA_HOME/python"
 	"$XDG_DATA_HOME/sqlite3"
+	"$XDG_CACHE_HOME/vim/undo"
+	"$XDG_CACHE_HOME/vim/swap"
+	"$XDG_CACHE_HOME/vim/backup"
 )
 
 files=(
