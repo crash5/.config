@@ -30,8 +30,9 @@
 	st = status
 
 	dt = difftool
-	dty = difftool -y
+	dtt = difftool -y
 	dtc = difftool --cached
+	dtcc = difftool --cached -y
 	dtd = difftool --dir-diff
 	dtdc = !git dtd --cached
 	dtds = !git dtd stash
@@ -57,6 +58,7 @@
 	rh1 = reset --hard HEAD^
 	rh2 = reset --hard HEAD^^
 
+	ri = rebase -i
 	rebase-develop = !git rebase -i $(git merge-base develop HEAD)
 
 	cleanrepo = clean -dfx
