@@ -29,10 +29,10 @@
 	cl = clone
 	st = status
 
-	dt = difftool
-	dtt = difftool -y
-	dtc = difftool --cached
-	dtcc = difftool --cached -y
+	dt = difftool -y
+	dtt = difftool
+	dtc = difftool --cached -y
+	dtcc = difftool --cached
 	dtd = difftool --dir-diff
 	dtdc = !git dtd --cached
 	dtds = !git dtd stash
