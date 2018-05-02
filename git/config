@@ -34,6 +34,7 @@
 	dtc = difftool --cached -y
 	dtcc = difftool --cached
 	dtd = difftool --dir-diff
+	dtdoc = !git dtd $1^
 	dtdc = !git dtd --cached
 	dtds = !git dtd stash
 
@@ -47,7 +48,7 @@
 	hist = log --pretty=format:'%C(yellow)%h %C(reset)%ad | %C(cyan)%s%C(red)%d%C(reset) [%an]' --graph --date=short
 	h = !git hist -25
 	hd = !git hist $(git merge-base develop HEAD)..HEAD
-	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=short
+	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [a:%an,c:%cn]" --decorate --numstat
 
 	unstage = "reset HEAD --"
@@ -80,6 +81,8 @@
 	autocrlf = true
 	pager = less -x4 -+X
 	ignorecase = false
+[log]
+	date = format:%Y-%m-%d %H:%M:%S
 [commit]
 	verbose = true
 [rebase]
