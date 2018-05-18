@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Produced by Beyond Compare 4 from Scooter Software -->
+<BCPreferences Version="1" MinVersion="1">
+	<TBcPrefs>
+		<CheckForUpdatesDayAmt Value="0"/>
+		<ChildViewNewTab Value="False"/>
+		<MRUCapacity Value="1"/>
+		<NextDiffLoadFirst Value="True"/>
+		<OpenWiths>
+			<_0>
+				<CmdLine Value="&quot;C:\Program Files\Sublime Text 3\sublime_text.exe&quot; &quot;%f:%l&quot;"/>
+				<Description Value="SublimeText"/>
+				<HandleFolders Value="True"/>
+				<RefreshWhenDone Value="True"/>
+			</_0>
+		</OpenWiths>
+		<SessionAutoSavedCapacity Value="0"/>
+		<UseIPv6 Value="False"/>
+	</TBcPrefs>
+</BCPreferences>

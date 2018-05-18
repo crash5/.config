@@ -48,6 +48,14 @@ Menu ids:
 * Scintilal command ids: https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.h
 * NP++ menu ids: https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/menuCmdID.h
 
+### Beyond Compare
+
+#### Windows
+```
+mklink "%APPDATA%\Scooter Software\Beyond Compare 4\BCPreferences.xml" %USERPROFILE%\.config\bcompare\BCPreferences.xml
+mklink "%APPDATA%\Scooter Software\Beyond Compare 4\BCSessions.xml" %USERPROFILE%\.config\bcompare\BCSessions.xml
+```
+
 
 ---
 Sources:
