@@ -33,10 +33,12 @@
 	dtt = difftool
 	dtc = difftool --cached -y
 	dtcc = difftool --cached
+
 	dtd = difftool --dir-diff
 	dtdoc = !git dtd $1^
 	dtdc = !git dtd --cached
 	dtds = !git dtd stash
+	dtdorigin = !git dtd @{u}
 
 	diffc = diff --cached
 	diffcw = diff --cached --color-words
@@ -66,6 +68,7 @@
 	pruneorigin = remote prune origin
 	gones = !git fetch -q -p && git branch -vv | awk '/: gone]/{print $1}'
 	deletegones = !git gones | xargs -n 1 -r -p git branch -d
+	deletegonesnoask = !git gones | xargs -n 1 -r git branch -d
 
 	assume = update-index --assume-unchanged
 	unassume = update-index --no-assume-unchanged
