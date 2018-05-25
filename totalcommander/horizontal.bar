@@ -1,5 +1,5 @@
 [Buttonbar]
-Buttoncount=33
+Buttoncount=34
 button1=wcmicons.dll
 cmd1=cm_Rereadsource
 iconic1=0
@@ -95,3 +95,7 @@ iconic32=0
 button33=C:\Program Files\Git\git-bash.exe
 cmd33=""C:\Program Files\Git\git-bash.exe""
 iconic33=0
+button34=cmd.exe
+cmd34=%USERPROFILE%\.config\totalcommander\command-line_symlink.bar
+iconic34=1
+menu34=Cmd and Symlinks

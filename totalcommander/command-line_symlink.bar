@@ -1,0 +1,24 @@
+[Buttonbar]
+Buttoncount=5
+button1=wcmicons.dll,15
+cmd1=%USERPROFILE%\.config\totalcommander\horizontal.bar
+iconic1=0
+button2=cmd.exe
+cmd2=%comspec%
+iconic2=0
+menu2=Command-line
+button3=cmd.exe
+cmd3=*%comspec%
+param3=/K cd /D %P
+iconic3=0
+menu3=Command-line as Admin
+button4=cmd.exe
+cmd4=*C:\Windows\system32\cmd.exe
+param4=/C mklink %T%N %P%N
+iconic4=1
+menu4=Symlink file
+button5=cmd.exe
+cmd5=*C:\Windows\system32\cmd.exe
+param5=/C mklink /D %T%N %P%N
+iconic5=1
+menu5=Symlink directory
