@@ -11,3 +11,16 @@ set mark-directories on
 set mark-symlinked-directories on
 set show-all-if-unmodified on
 set visible-stats on
+
+### search in history
+# up/down
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# up/down with enable-keypad on
+"\C-[OA": history-search-backward
+"\C-[OB": history-search-forward
+
+# up/down with ANSI mode
+"\C-[[A": history-search-backward
+"\C-[[B": history-search-forward
