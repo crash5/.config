@@ -24,5 +24,6 @@
         "editor.lineHighlightBackground": "#172d38",
     },
     "update.channel": "none",
-    "files.trimFinalNewlines": true
+    "files.trimFinalNewlines": true,
+    "cmake.cmakePath": "C:/Program Files/CMake/bin/cmake.exe"
 }
