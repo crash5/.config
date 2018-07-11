@@ -79,5 +79,9 @@
         "key": "ctrl+delete",
         "command": "deleteWordPartRight",
         "when": "textInputFocus && !editorReadonly"
+    },
+        {
+        "key": "escape",
+        "command": "workbench.action.closePanel"
     }
 ]
