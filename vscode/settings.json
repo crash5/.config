@@ -25,5 +25,8 @@
     },
     "update.channel": "none",
     "files.trimFinalNewlines": true,
-    "cmake.cmakePath": "C:/Program Files/CMake/bin/cmake.exe"
+    "cmake.cmakePath": "C:/Program Files/CMake/bin/cmake.exe",
+    "editor.find.autoFindInSelection": true,
+    "editor.roundedSelection": false,
+    "workbench.editor.closeOnFileDelete": false
 }
