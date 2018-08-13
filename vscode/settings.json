@@ -4,7 +4,7 @@
     "editor.fontFamily": "Dejavu sans mono",
     "editor.fontSize": 12,
     "editor.renderWhitespace": "all",
-    "extensions.ignoreRecommendations": true,
+    // "extensions.ignoreRecommendations": true,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "files.insertFinalNewline": true,
@@ -28,5 +28,8 @@
     "cmake.cmakePath": "C:/Program Files/CMake/bin/cmake.exe",
     "editor.find.autoFindInSelection": true,
     "editor.roundedSelection": false,
-    "workbench.editor.closeOnFileDelete": false
+    "workbench.editor.closeOnFileDelete": false,
+    "workbench.editor.labelFormat": "medium",
+    "extensions.ignoreRecommendations": true,
+    "todohighlight.isEnable": false
 }
