@@ -31,5 +31,25 @@
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.labelFormat": "medium",
     "extensions.ignoreRecommendations": true,
-    "todohighlight.isEnable": false
+    "todo-tree.highlight": true,
+    "todo-tree.expanded": true,
+    "todo-tree.flat": true,
+    "todo-tree.tags": [
+        "TODO",
+        "FIXME",
+        "BUG",
+        "HACK",
+        "NOTE",
+        "WARNING"
+    ],
+    "[cmake]": {
+        "files.trimTrailingWhitespace": true
+    },
+    "breadcrumbs.enabled": true,
+    "update.showReleaseNotes": false,
+    "extensions.autoCheckUpdates": false,
+    "extensions.showRecommendationsOnlyOnDemand": true,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.enableExperiments": false,
+    "npm.fetchOnlinePackageInfo": false
 }
