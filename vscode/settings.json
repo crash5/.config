@@ -1,12 +1,9 @@
 {
     "workbench.startupEditor": "newUntitledFile",
-    "extensions.autoUpdate": false,
     "editor.fontFamily": "Dejavu sans mono",
     "editor.fontSize": 12,
     "editor.renderWhitespace": "all",
     // "extensions.ignoreRecommendations": true,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
     "files.insertFinalNewline": true,
     "editor.cursorWidth": 3,
     "editor.minimap.enabled": false,
@@ -19,18 +16,44 @@
     ],
     "workbench.statusBar.feedback.visible": false,
     "window.title": "${dirty}${activeEditorLong}${separator}${appName}",
-    "workbench.colorCustomizations": 
+    "workbench.colorCustomizations":
     {
         "editor.lineHighlightBackground": "#172d38",
     },
-    "update.channel": "none",
     "files.trimFinalNewlines": true,
-    "cmake.cmakePath": "C:/Program Files/CMake/bin/cmake.exe",
     "editor.find.autoFindInSelection": true,
     "editor.roundedSelection": false,
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.labelFormat": "medium",
     "extensions.ignoreRecommendations": true,
+    "breadcrumbs.enabled": true,
+
+// > Disable internet usage
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false,
+    "extensions.showRecommendationsOnlyOnDemand": true,
+
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.enableExperiments": false,
+
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+
+    "update.channel": "none",
+    "update.showReleaseNotes": false,
+
+    "npm.fetchOnlinePackageInfo": false,
+    "git.autofetch": false,
+// < Disable internet usage
+
+// > Settings/filetype
+    "[cmake]": {
+        "files.trimTrailingWhitespace": true
+    },
+// < Settings/filetype
+
+// > Additional plugins
+    "cmake.cmakePath": "C:/Program Files/CMake/bin/cmake.exe",
     "todo-tree.highlight": true,
     "todo-tree.expanded": true,
     "todo-tree.flat": true,
@@ -42,14 +65,5 @@
         "NOTE",
         "WARNING"
     ],
-    "[cmake]": {
-        "files.trimTrailingWhitespace": true
-    },
-    "breadcrumbs.enabled": true,
-    "update.showReleaseNotes": false,
-    "extensions.autoCheckUpdates": false,
-    "extensions.showRecommendationsOnlyOnDemand": true,
-    "workbench.settings.enableNaturalLanguageSearch": false,
-    "workbench.enableExperiments": false,
-    "npm.fetchOnlinePackageInfo": false
+// < Additional plugins
 }
