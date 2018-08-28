@@ -34,7 +34,7 @@
         <ScintKey ScintID="2308" menuCmdID="0" Ctrl="no" Alt="no" Shift="no" Key="0" />
         <ScintKey ScintID="2177" menuCmdID="42001" Ctrl="yes" Alt="no" Shift="no" Key="88" />
         <ScintKey ScintID="2338" menuCmdID="0" Ctrl="no" Alt="no" Shift="no" Key="0" />
-        <ScintKey ScintID="2373" menuCmdID="44033" Ctrl="no" Alt="no" Shift="no" Key="0" />
+        <ScintKey ScintID="2373" menuCmdID="44033" Ctrl="yes" Alt="no" Shift="no" Key="96" />
         <ScintKey ScintID="2426" menuCmdID="0" Ctrl="no" Alt="yes" Shift="yes" Key="40">
             <NextKey Ctrl="yes" Alt="yes" Shift="no" Key="40" />
         </ScintKey>
