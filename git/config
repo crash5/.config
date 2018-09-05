@@ -68,7 +68,9 @@
 	pruneorigin = remote prune origin
 	gones = !git fetch -q -p && git branch -vv | awk '/: gone]/{print $1}'
 	deletegones = !git gones | xargs -n 1 -r -p git branch -d
+	deletegones-force = !git gones | xargs -n 1 -r -p git branch -D
 	deletegonesnoask = !git gones | xargs -n 1 -r git branch -d
+	deletegonesnoask-force = !git gones | xargs -n 1 -r git branch -D
 
 	assume = update-index --assume-unchanged
 	unassume = update-index --no-assume-unchanged
@@ -88,6 +90,8 @@
 	date = format:%Y-%m-%d %H:%M:%S
 [commit]
 	verbose = true
+[pull]
+	rebase = true
 [rebase]
 	autoSquash = true
 	stat = true
