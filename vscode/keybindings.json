@@ -51,6 +51,21 @@
         "when": "editorTextFocus && !editorReadonly"
     },
     {
+        "key": "f4",
+        "command": "C_Cpp.SwitchHeaderSource",
+        "when": "editorTextFocus && editorLangId == 'c'"
+    },
+    {
+        "key": "f4",
+        "command": "C_Cpp.SwitchHeaderSource",
+        "when": "editorTextFocus && editorLangId == 'cpp'"
+    },
+    {
+        "key": "ctrl+shift+r",
+        "command": "-asciidoc.previewToSide",
+        "when": "editorTextFocus"
+    },
+    {
         "key": "ctrl+right",
         "command": "cursorWordPartRight",
         "when": "textInputFocus"
