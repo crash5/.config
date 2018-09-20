@@ -27,6 +27,8 @@
     "workbench.editor.labelFormat": "medium",
     "extensions.ignoreRecommendations": true,
     "breadcrumbs.enabled": true,
+    "window.zoomLevel": 0,
+    "editor.accessibilitySupport": "off",
 
 // > Disable internet usage
     "extensions.autoCheckUpdates": false,
@@ -44,6 +46,7 @@
 
     "npm.fetchOnlinePackageInfo": false,
     "git.autofetch": false,
+    "update.enableWindowsBackgroundUpdates": false,
 // < Disable internet usage
 
 // > Settings/filetype
