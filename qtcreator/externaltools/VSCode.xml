@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Written on Cs szept. 20 11:47:34 2018 by Qt Creator 4.7.1-->
+<externaltool id="VSCode">
+    <description>This tool prints a line of useful text</description>
+    <displayname>VSCode</displayname>
+    <category>Text</category>
+    <executable output="showinpane" error="showinpane" modifiesdocument="yes">
+        <path>code</path>
+        <arguments>-g %{CurrentDocument:FilePath}:%{CurrentDocument:Row}:%{CurrentDocument:Column}</arguments>
+        <workingdirectory>%{CurrentDocument:Path}</workingdirectory>
+    </executable>
+</externaltool>
