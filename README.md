@@ -2,9 +2,7 @@
 
 ## Install
 
-```
-git clone git@github.com:crash5/.config.git
-```
+Clone repository
 
 ### Bash
 
