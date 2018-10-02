@@ -1,19 +1,61 @@
 // Place your key bindings in this file to overwrite the defaults
 [
+    // > wordPart
     {
-        "key": "ctrl+numpad_divide",
-        "command": "editor.action.commentLine",
-        "when": "editorTextFocus && !editorReadonly"
+        "key": "ctrl+left",
+        "command": "cursorWordPartLeft",
+        "when": "textInputFocus"
     },
+    {
+        "key": "ctrl+shift+left",
+        "command": "cursorWordPartLeftSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+right",
+        "command": "cursorWordPartRight",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+right",
+        "command": "cursorWordPartRightSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+backspace",
+        "command": "deleteWordPartLeft",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+delete",
+        "command": "deleteWordPartRight",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    // < wordPart
+    // > C/C++
+    {
+        "key": "f4",
+        "command": "C_Cpp.SwitchHeaderSource",
+        "when": "editorTextFocus && editorLangId == 'c'"
+    },
+    {
+        "key": "f4",
+        "command": "C_Cpp.SwitchHeaderSource",
+        "when": "editorTextFocus && editorLangId == 'cpp'"
+    },
+    // < C/C++
+    // > multi clipboard
     {
         "key": "ctrl+shift+v",
         "command": "multiclip.list",
         "when": "editorTextFocus"
     },
+    // < multi clipboard
+    // > Other...
     {
-        "key": "ctrl+shift+v",
-        "command": "-multiclip.paste",
-        "when": "editorTextFocus && editorLangId != 'markdown'"
+        "key": "ctrl+numpad_divide",
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
     },
     {
         "key": "ctrl+shift+s",
@@ -22,10 +64,6 @@
     {
         "key": "ctrl+alt+s",
         "command": "workbench.action.files.saveAs"
-    },
-    {
-        "key": "ctrl+shift+s",
-        "command": "-workbench.action.files.saveAs"
     },
     {
         "key": "ctrl+shift+d",
@@ -51,52 +89,7 @@
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "f4",
-        "command": "C_Cpp.SwitchHeaderSource",
-        "when": "editorTextFocus && editorLangId == 'c'"
-    },
-    {
-        "key": "f4",
-        "command": "C_Cpp.SwitchHeaderSource",
-        "when": "editorTextFocus && editorLangId == 'cpp'"
-    },
-    {
-        "key": "ctrl+shift+r",
-        "command": "-asciidoc.previewToSide",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+right",
-        "command": "cursorWordPartRight",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+shift+right",
-        "command": "cursorWordPartRightSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+left",
-        "command": "cursorWordPartStartLeft",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+shift+left",
-        "command": "cursorWordPartStartLeftSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+backspace",
-        "command": "deleteWordPartLeft",
-        "when": "textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+delete",
-        "command": "deleteWordPartRight",
-        "when": "textInputFocus && !editorReadonly"
-    },
-        {
         "key": "escape",
         "command": "workbench.action.closePanel"
-    }
+    },
 ]
