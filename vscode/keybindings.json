@@ -89,7 +89,7 @@
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "escape",
-        "command": "workbench.action.closePanel"
+        "key": "ctrl+shift+alt+s",
+        "command": "workbench.action.files.saveWithoutFormatting"
     },
 ]
