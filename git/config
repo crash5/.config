@@ -80,6 +80,7 @@
 	skipworktree = update-index --skip-worktree
 	unskipworktree = update-index --no-skip-worktree
 	skipworktreelist = !git ls-files -v | grep ^S | cut -c 3-
+	worktreeaddupdir = "!git worktree add ../$1"
 
 	snap = "!git stash push -m \"snapshot: $(date +'%Y. %m. %d. %H:%M')\" && git stash apply -q stash@{0}"
 [core]
