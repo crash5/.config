@@ -29,7 +29,6 @@
     "breadcrumbs.enabled": true,
     "window.zoomLevel": 0,
     "editor.accessibilitySupport": "off",
-    "window.titleBarStyle": "native",
 
 // > Disable internet usage
     "extensions.autoCheckUpdates": false,
