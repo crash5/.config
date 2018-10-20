@@ -98,8 +98,6 @@
 	autoSquash = true
 	stat = true
 	missingCommitsCheck = warn
-[init]
-	templatedir = ~/.config/git/template/
 [difftool "bc"]
 	cmd = 'c:/Program Files/Beyond Compare 4/BCompare.exe' $LOCAL $REMOTE
 [mergetool "bc"]
