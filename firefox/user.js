@@ -1,16 +1,37 @@
-user_pref("extensions.pocket.enabled", false);
-user_pref("loop.enabled", false);
-user_pref("media.autoplay.enabled", false);
-user_pref("browser.tabs.closeWindowWithLastTab", false);
-
-// > Settings menu entries
 user_pref("accessibility.force_disabled", 1);
 user_pref("app.update.auto", false);
+user_pref("browser.ctrlTab.previews", true);
+user_pref("browser.download.animateNotifications", false);
+user_pref("browser.link.open_newwindow.restriction", 0);
+user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.telemetry", false);
+user_pref("browser.ping-centre.telemetry", false);
 user_pref("browser.search.suggest.enabled", false);
 user_pref("browser.search.update", false);
+user_pref("browser.tabs.closeWindowWithLastTab", false);
+user_pref("browser.urlbar.clickSelectsAll", false);
+user_pref("browser.urlbar.maxRichResults", 25);
+user_pref("browser.urlbar.trimURLs", false);
+user_pref("extensions.pocket.enabled", false);
 user_pref("javascript.use_us_english_locale", true);
-
+user_pref("layout.spellcheckDefault", 2);
+user_pref("loop.enabled", false);
+user_pref("media.autoplay.enabled", false);
+user_pref("reader.parse-on-load.enabled", false);
+user_pref("reader.parse-on-load.force-enabled", false);
+user_pref("security.dialog_enable_delay", 0);
 user_pref("services.sync.engine.passwords", false);
 user_pref("services.sync.engine.prefs.modified", false);
 user_pref("services.sync.engine.tabs", false);
-// < Settings menu entries
+user_pref("toolkit.cosmeticAnimations.enabled", false);
+user_pref("toolkit.telemetry.archive.enabled", false);
+user_pref("toolkit.telemetry.bhrPing.enabled", false);
+user_pref("toolkit.telemetry.enabled", false);
+user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
+user_pref("toolkit.telemetry.hybridContent.enabled", false);
+user_pref("toolkit.telemetry.newProfilePing.enabled", false);
+user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);
+user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
+user_pref("toolkit.telemetry.unified", false);
+user_pref("toolkit.telemetry.updatePing.enabled", false);
+user_pref("ui.SpellCheckerUnderlineStyle", 4);
