@@ -3,7 +3,6 @@
     "editor.fontFamily": "Dejavu sans mono",
     "editor.fontSize": 12,
     "editor.renderWhitespace": "all",
-    // "extensions.ignoreRecommendations": true,
     "files.insertFinalNewline": true,
     "editor.cursorWidth": 3,
     "editor.minimap.enabled": false,
@@ -57,7 +56,6 @@
 
 // > Additional plugins
     "cmake.cmakePath": "C:/Program Files/CMake/bin/cmake.exe",
-    "todo-tree.highlight": true,
     "todo-tree.expanded": true,
     "todo-tree.flat": true,
     "todo-tree.tags": [
@@ -68,5 +66,9 @@
         "NOTE",
         "WARNING"
     ],
+    "todo-tree.defaultHighlight": {
+        "foreground": "green",
+        "type": "tag"
+    },
 // < Additional plugins
 }
