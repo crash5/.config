@@ -35,3 +35,4 @@ user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
 user_pref("toolkit.telemetry.unified", false);
 user_pref("toolkit.telemetry.updatePing.enabled", false);
 user_pref("ui.SpellCheckerUnderlineStyle", 4);
+user_pref("browser.altClickSave", true);
