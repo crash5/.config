@@ -55,6 +55,12 @@ mklink "%APPDATA%\Scooter Software\Beyond Compare 4\BCPreferences.xml" %USERPROF
 mklink "%APPDATA%\Scooter Software\Beyond Compare 4\BCSessions.xml" %USERPROFILE%\.config\bcompare\BCSessions.xml
 ```
 
+### WinRAR
+
+#### Windows
+```
+mklink "%APPDATA%\WinRAR\WinRAR.ini" %USERPROFILE%\.config\winrar\WinRAR.ini
+```
 
 ---
 Sources:
