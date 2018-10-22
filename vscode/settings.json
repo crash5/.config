@@ -70,5 +70,13 @@
         "foreground": "green",
         "type": "tag"
     },
+    "todo-tree.customHighlight": {
+        "TODO": {},
+        "FIXME": {},
+        "BUG": {},
+        "HACK": {},
+        "NOTE": {},
+        "WARNING": {}
+    },
 // < Additional plugins
 }
