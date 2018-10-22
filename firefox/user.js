@@ -36,3 +36,5 @@ user_pref("toolkit.telemetry.unified", false);
 user_pref("toolkit.telemetry.updatePing.enabled", false);
 user_pref("ui.SpellCheckerUnderlineStyle", 4);
 user_pref("browser.altClickSave", true);
+user_pref("extensions.screenshots.upload-disabled", true);
+user_pref("devtools.webide.enabled", false);
