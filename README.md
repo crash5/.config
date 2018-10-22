@@ -50,6 +50,7 @@ Menu ids:
 ### Beyond Compare
 
 #### Windows
+It's look like BC can't write linked files...
 ```
 mklink "%APPDATA%\Scooter Software\Beyond Compare 4\BCPreferences.xml" %USERPROFILE%\.config\bcompare\BCPreferences.xml
 mklink "%APPDATA%\Scooter Software\Beyond Compare 4\BCSessions.xml" %USERPROFILE%\.config\bcompare\BCSessions.xml
