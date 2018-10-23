@@ -1,0 +1,421 @@
+;**************************************************************
+;* Bõvített menü a Total Commander v8.50 vagy újabb verzióhoz *
+;* WCMD_HUN_EXT.MNU 8.50         Utolsó módosítás: 2014.02.10 *
+;*      Ambrits Tamás - E-mail: info@totalcommander.hu        *
+;*      Peter H. S. Madsen kiterjesztett menüjének		      *
+;*      egyes elemeinek felhasználásával    				  *
+;**************************************************************
+
+POPUP "&Fájl"
+  MENUITEM "&Attribútumok módosítása...", cm_SetAttrib
+  MENUITEM "Tulajdonságok \tAlt+Enter", 510
+  MENUITEM SEPARATOR  
+    MENUITEM "&Becsomagolás...\tALT+F5", cm_PackFiles
+    MENUITEM "K&icsomagolás...\tALT+F9", cm_UnpackFiles
+    MENUITEM "Csomagolt fáj&l tesztelése...\tALT+SHIFT+F9", 518
+    MENUITEM "&Önkicsomagoló fájl megnyitása\tCtrl+PgDn", 2003
+  MENUITEM SEPARATOR  
+  MENUITEM "Öss&zehasonlítás tartalomra...", 2022
+  MENUITEM "&Hozzárendelés...", cm_associate
+  MENUITEM "Belsõ hozz&árendelés (csak a Total Commanderen belül)...", 519
+  MENUITEM "&Verzió-információ...\tALT+ENTER", cm_versioninfo
+  MENUITEM SEPARATOR
+  MENUITEM "Elfoglalt terület &számítása...", cm_GetFileSpace
+  MENUITEM "Elfoglalt terület számítása (összes könyvtár)...\tAlt+Shift+Enter", 2014
+  MENUITEM SEPARATOR
+  POPUP "Alap fájlmûveletek"
+    MENUITEM "&Fájl(ok) másolása\tF5", 905
+    MENUITEM "Másol&ás helyben\tShift+F5", 3100 
+    MENUITEM "Áthelyez&és\tF6", 906
+    MENUITEM "Törlés...\tF8 / Delete", 908
+    MENUITEM SEPARATOR
+    MENUITEM "Nézõke (csak a lister)...\tShift+Alt+F3", 1006
+    MENUITEM "Szerkesztés...\tF4", 904
+    MENUITEM "Új könyvtár...\tF7", 907     
+  END_POPUP
+  MENUITEM "Átnevezés a fájlablakban\tShift+F6", 1002
+  MENUITEM "Csopo&rtos átnevezés...\tCtrl+M", 2400
+  MENUITEM "Gy&orsfeljegyzés a fájlhoz...\tCtrl+Z", 2700
+  MENUITEM "Parancsikon k&észítése\tCtrl+Shift+F5", 1004
+  MENUITEM SEPARATOR
+  MENUITEM "&Fájldarabolás...", 560
+  MENUITEM "Fájleg&yesítés...", 561
+  MENUITEM "Fájlk&ódolás (MIME,UUE,XXE)...", 562
+  MENUITEM "Fájl&dekódolás (MIME,UUE,XXE,BinHex)...", 563
+  MENUITEM "CRC-&ellenõrzés (SFV formában)...", 564
+  MENUITEM "&CRC-ellenõrzés (SFV fájlból)", 565
+  MENUITEM SEPARATOR
+  POPUP "Nyom&tatás"
+    MENUITEM "Fájlnév&lista...", 2027
+    MENUITEM "Fájlnévli&sta alkönyvtárakkal...", 2028
+    MENUITEM "Fájl tartalma\tCtrl+F9", cm_PrintFile
+  END_POPUP
+  MENUITEM SEPARATOR
+  MENUITEM "&Kilépés\tALT+F4", 24340
+END_POPUP
+
+POPUP "&Kijelölés"
+  MENUITEM "&Csoportkijelölés...\tGray +", cm_spreadselection
+  MENUITEM "Csoportkijelölés meg&szüntetése...\tSzürke -", cm_shrinkselection
+  POPUP "Minden kijelölé&se"
+    MENUITEM "Minden kijelölé&se\tCtrl+Num + / Ctrl+A", 523
+    MENUITEM SEPARATOR
+    MENUITEM "Mappák és fájlok", 3301
+    MENUITEM "Csak fájlok", 3302
+    MENUITEM "Csak mappák", 3303
+    MENUITEM SEPARATOR
+    MENUITEM "Minden ilyen kiterjesztésû fájl\tAlt+Num +", 527
+    MENUITEM "Minden ilyen nevû fájl", 541
+    MENUITEM "Minden ilyen nevû és kiterjesztésû fájl", 543
+  END_POPUP
+  MENUITEM "M&inden kijelölés megszüntetése\tCTRL Szürke -", cm_Clearall
+  POPUP "K&ijelölés megfordítása"
+    MENUITEM "Ford&ított kijelölés\tNum  *", 525
+    MENUITEM SEPARATOR
+    MENUITEM "Fájlok és mappák együtt", 3321
+    MENUITEM "Csak a fájlok", 3322
+    MENUITEM "Csak a mappák", 3323
+  END_POPUP
+  MENUITEM "Kijelölés men&tése", 530
+  MENUITEM "Kijelölés &visszaállítása\tGray /", 529
+  MENUITEM "Kijelölés mentése fá&jlba", 2031
+  MENUITEM "Kije&lölés beolvasása fájlból", 2032
+  MENUITEM SEPARATOR
+  MENUITEM "Minden fájl kijelölése ugyanilyen névvel", 541
+  MENUITEM "Minden kijelölés megszüntetése ugyanilyen névvel", 542
+  MENUITEM "Minden fájl kijelölése ugyanilyen kiterjesztéssel\tAlt+Gray +", 527
+  MENUITEM "Minden kijelölés megszüntetése ugyanilyen kiterjesztéssel\tAlt+Gray  -", 528
+  MENUITEM "Minden fájl kijelölése ugyanilyen névvel + kiterjesztéssel", 543
+  MENUITEM "Minden fájl kijelölés megszüntetése ugyanilyen névvel + kiterjesztéssel", 544
+  MENUITEM "Minden kijelölése ugyanilyen elérési úttal (minden fájl egy ablakban és keresés nézet)", 537
+  MENUITEM "Minden kijelölése megszüntetése ugyanilyen elérési úttal (minden fájl egy ablakban és keresés nézet)", 538
+  MENUITEM SEPARATOR
+  MENUITEM "&Könyvtárak összehasonlítása\tShift+F2", cm_CompareDirs
+  MENUITEM "Külön&bözõek jelölése, azonosak rejtése", cm_DirMatch
+END_POPUP
+
+POPUP "Vá&gólap"
+  MENUITEM "Fájl(ok) másolása a vágólapra\tCtrl+C", 2008
+  MENUITEM "Fájl(ok) kivágása a vágólapra\tCtrl+X", 2007
+  MENUITEM "Fájl(ok) beillesztése a vágólapról\tCtrl+V", 2009
+  MENUITEM SEPARATOR 
+  MENUITEM "Fájlnév másolása a vágólapra", 2017
+  MENUITEM "Fájlnév másolása teljes elérési úttal", 2018
+  MENUITEM "Fájlnév másolása UNC elérési úttal", 2021
+  MENUITEM SEPARATOR
+  MENUITEM "Másolás az összes megjelenített oszloppal", 2036
+  MENUITEM "Másolás minden oszloppal és teljes útvonallal", 2037
+  MENUITEM "Másolás minden oszloppal és UNC útvonallal", 2038
+  MENUITEM "Másolás az összes megjelenített oszloppal fájlba...", 2039
+  MENUITEM SEPARATOR
+  MENUITEM "A forrás útvonal másolása a vágólapra", 2029
+  MENUITEM "A cél útvonal másolása a vágólapra", 2030
+END_POPUP
+
+POPUP "Navigáció"
+    MENUITEM "Ugrás az elsõ fájlhoz", 2050
+    MENUITEM "Ugrás az elõzõ kiválasztott fájlhoz", 2054
+    MENUITEM "Ugrás a következõ kiválasztott fájlhoz", 2053
+    MENUITEM SEPARATOR
+    MENUITEM "Gyorskeresés", 2915    
+    MENUITEM "Könyvtár-&gyorslista\tCTRL+D", cm_DirectoryHotlist
+    MENUITEM "Elõzmények ...\tAlt+Down", 572
+    MENUITEM SEPARATOR
+    MENUITEM "Elõzõ meghajtó", 2052
+    MENUITEM "Következõ meghajtó", 2051
+    MENUITEM SEPARATOR
+    MENUITEM "Ugrás a gyökérkönyvtárba\tCtrl+\", 2001
+    MENUITEM "Ugrás a szülõ könyvtárba\t(Ctrl+PgUp)/Backspace", 2002
+    MENUITEM "Visszalépés az elõzõ könyvtárba\tAlt+(<-)", 570
+    MENUITEM "Elõre lépés a következõ könyvtárba\tAlt+(->)", 571
+    MENUITEM SEPARATOR
+    MENUITEM "Ugrás a zárolt könyvtár alapkönyvtárába\tAlt+(Gray /)", 3011
+END_POPUP
+
+POPUP "&Parancsok"
+  MENUITEM "Kö&nyvtárfa...\tALT+F10", cm_CDtree
+  MENUITEM "&Keresés...\tALT+F7", cm_searchfor
+  MENUITEM "Keresés &- különálló ablakban...\tShift+Alt+F7", 545
+  MENUITEM "&Lemezcímke...", cm_VolumeId
+  MENUITEM "Rendszer&információ...", cm_sysinfo
+  MENUITEM "Könyvtár&szinkronizálás...", 2020
+  MENUITEM SEPARATOR
+  MENUITEM "Minden fájl egy ablakban (alkönyvtárakkal)\tCtrl+B", 2026
+  MENUITEM "&Asztal könyvtár megnyitása", 2121
+  MENUITEM "&Háttérletöltés-kezelõ...",559
+  MENUITEM SEPARATOR
+  MENUITEM "&Forrás <-> Cél\tCTRL+U", cm_exchange
+  MENUITEM "&Cél = Forrás", cm_matchsrc
+  POPUP "Parancssor"
+    MENUITEM "Ugrás a parancssorba", 4003 
+    MENUITEM SEPARATOR
+    MENUITEM "Parancssor törlése\tCtrl+Y", 2004
+    MENUITEM "Következõ parancs elõhívása\tAlt+E", 2005
+    MENUITEM "Elõzõ parancs elõhívása\tCtrl+E", 2006
+    MENUITEM "Aktuális könyvtár másolása a parancssorba\tCtrl+Shift+Enter/Ctrl+P (w/o quotes)", 2019
+    MENUITEM SEPARATOR
+    MENUITEM "&DOS parancssor", cm_ExecuteDOS
+  END_POPUP
+  MENUITEM "Új Total Commander elindítása", em_newcommander
+  MENUITEM "Belsõ parancs választása...", 2924
+END_POPUP
+
+POPUP "&Hálózat"
+  MENUITEM "&Hálózati kapcsolat...", cm_NetConnect
+  MENUITEM "Hálózati kapcsolat &megszüntetése...", cm_NetDisconnect
+  MENUITEM "&Aktuális könyvtár megosztása...", cm_NetShareDir
+  MENUITEM "Könyvtármegosztás meg&szüntetése...", cm_NetUnshareDir
+  MENUITEM "Adminisztrátori megosztások", 2204
+  MENUITEM SEPARATOR
+  POPUP "Közv&etlen kábelkapcsolat"
+    MENUITEM "Közvetlen kábelkapcsolat két PC között...", 2300
+    MENUITEM SEPARATOR
+    MENUITEM "LPT meghajtó telep&ítése (NT)", 2301
+    MENUITEM "LPT meghajtó &eltávolítása (NT)", 2302
+  END_POPUP
+  MENUITEM SEPARATOR
+  POPUP "NTFS mûve&letek"
+    MENUITEM "&Hozzáférési engedélyek", 2200
+    MENUITEM "&Fájl naplózás", 2201
+    MENUITEM "Tulajdonos &beállítás", 2202
+    MENUITEM "&Program megnyitása másik felhasználóval", 2800
+  END_POPUP
+END_POPUP
+
+POPUP "FTP"
+  MENUITEM "F&TP kapcsolódás...\tCTRL+F", 550
+  MENUITEM "Új FT&P kapcsolat...\tCTRL+N", 551
+  MENUITEM "FTP kapcsolat b&ontása\tCTRL+SHIFT+F", 552
+  MENUITEM "FTP &rejtett fájl látszik", 553
+  MENUITEM "FTP letöltés lista alapján...", 558
+  MENUITEM "Letöltés folytatása...", 555
+  MENUITEM "Hozzáadás a letöltés listához...", 557
+  MENUITEM SEPARATOR
+  MENUITEM "Letöltés vezérlõ megjelenítése...",559
+END_POPUP
+
+POPUP "&Nézet"
+  POPUP "Program elemek rejtése/megjelen&ítése"
+    MENUITEM "&Eszközsor", 2901
+    MENUITEM "&Meghajtó gombsor", 2902
+    MENUITEM "Meghajtó gombsor mindkét ablakhoz", 2903
+    MENUITEM "&Legördülõ meghajtólista", 2906
+    MENUITEM "&Aktuális könyvtár", 2907
+    MENUITEM "&Oszlop fejlécek", 2908
+    MENUITEM "&Státuszsor", 2909
+    MENUITEM "&Parancssor", 2910
+    MENUITEM "&Funkcióbillentyûk", 2911
+    MENUITEM "&Kedvenc könyvtárak/történet gombok", 2919
+    MENUITEM SEPARATOR
+    MENUITEM "L&apos/normál gombmegjelenítés", 2904
+    MENUITEM "Lapos/normál felületmegjelenítés", 2905
+    MENUITEM SEPARATOR
+    MENUITEM "Mappaf&ülek", 2916
+  END_POPUP
+  MENUITEM "Csak n&év\tCTRL+F1", cm_srcshort
+  MENUITEM "&Teljes\tCTRL+F2", cm_srclong
+  MENUITEM "Gy&orsfeljegyzés\tCtrl+Shift+F2", 300
+  MENUITEM "Egyedi os&zlopbeállítás\tShift+F1", 270
+  MENUITEM "Könyvtár&fa\tCTRL+F8", cm_srcTree
+  MENUITEM "Mini&atûrök\tCtrl+Shift+F1", 269
+  MENUITEM "&Gyors nézõke\tCTRL+Q", 304
+  MENUITEM "&Vízszintes elrendezés", 305
+  MENUITEM SEPARATOR
+  MENUITEM "Csak a kijelöltek\tCtrl+S", 2023
+  MENUITEM "Megjegyzés megjelenítése\tCtrl+Shift+F2", 300 
+  MENUITEM SEPARATOR
+  MENUITEM "&Minden fájl\tCTRL+F10", cm_srcallfiles
+  MENUITEM "&Programok\tCTRL+F11", cm_srcexecs
+  MENUITEM "*.*", cm_srcuserspec
+  MENUITEM "&Egyedi...\tCTRL+F12", cm_srcuserdef
+  MENUITEM "&Csak a kijelölt fájlok", 2023
+  MENUITEM SEPARATOR
+  MENUITEM "&Név szerint\tCTRL+F3", cm_srcbyname
+  MENUITEM "&Kiterjesztés szerint\tCTRL+F4", cm_srcbyext
+  MENUITEM "&Idõ szerint\tCTRL+F5", cm_srcbydatetime
+  MENUITEM "Mé&ret szerint\tCTRL+F6", cm_srcbysize
+  MENUITEM "Ren&dezetlen\tCTRL+F7", cm_srcunsorted
+  MENUITEM SEPARATOR
+  MENUITEM "Fordított &sorrendben", cm_srcnegorder
+  MENUITEM SEPARATOR
+  MENUITEM "Forrás ú&jraolvasása\tCTRL+R", cm_rereadsource
+  MENUITEM SEPARATOR
+  MENUITEM "Ablak elválasztó beállítása 50%-ra", 909
+  MENUITEM SEPARATOR
+  POPUP "Fájl megje&lenítés"
+    MENUITEM "Hosszú fájlnév megjelenítés ki/be", 2010
+    MENUITEM "Rejtett fájok megjelenítése ki/be\tCtrl+H", 2011
+    MENUITEM "8.3 nevek kisbetûs megjelenítése ki/be", 2013
+  END_POPUP
+  POPUP "Felhasználó&i felület elemeinek elrejtése / megjelenítése"
+    MENUITEM "Eszköztár", 2901
+    MENUITEM "Lemezegység gombsor", 2902
+    MENUITEM "Egy vagy két lemezegység-gombsor", 2903
+    MENUITEM "Legördülõ lemezegység lista", 2906
+    MENUITEM "Aktuális könyvtár (ablak fejléc)", 2907
+    MENUITEM "Oszlop fejlécek", 2908
+    MENUITEM "Státuszsor", 2909
+    MENUITEM "Parancssor", 2910
+    MENUITEM "Funkcióbillentyûk gombsor", 2911
+    MENUITEM "Könyvtár gyorslista/Elõzmények gomb", 2919
+    MENUITEM "Lapos vagy normál gombok", 2904
+    MENUITEM "Lapos vagy normál felület", 2905
+    MENUITEM "Fájlablak fülek", 2916
+  END_POPUP
+  MENUITEM SEPARATOR
+  MENUITEM "Total Commander kis méretre", 2000
+  MENUITEM "Total Commander teljes méretre", 2015
+  MENUITEM "Total Commander elõzõ méretre", 2016
+END_POPUP
+
+POPUP "Fájlablak fülek"
+  MENUITEM "&Új fül\tCtrl+T", 3001 
+  MENUITEM "Új fül a háttér&ben\tCtrl+Shift+T", 3002 
+  MENUITEM SEPARATOR
+  MENUITEM "Új fül nyitása a k&urzor alatti könyvtárral\tCtrl+(Up Arrow)", 3003 
+  MENUITEM "Új fül nyitása a kurzor alatti k&önyvtárral (másik ablakban)\tCtrl+Shift+(Up Arrow)", 3004 
+  MENUITEM SEPARATOR
+  MENUITEM "Át&váltás a következõ fülre\tCtrl+Tab", 3005 
+  MENUITEM "Átvá&ltás az elõzõ fülre\tCtrl+Shift+Tab", 3006 
+  MENUITEM SEPARATOR  
+  MENUITEM "&Fül bezárása\tCtrl+W", 3007 
+  MENUITEM "Minden fül be&zárása\tCtrl+Shift+W", 3008 
+  MENUITEM SEPARATOR
+  MENUITEM "Fülek bekapcsolása/kikapcsolása", 2916
+  MENUITEM "Fülzárolás be- kikapcsolása", 3010
+  MENUITEM "Aktuális fülzárolás  be- kikapcsolása (könyvtárváltás engedélyezése)", 3012
+  MENUITEM "Fül &menü", 3009
+  MENUITEM SEPARATOR
+  POPUP "Közvetlen fülválasztá&s"
+    MENUITEM "Forrás: Átváltás az 1. fülre\tCtrl+1", 5001
+    MENUITEM "Forrás: Átváltás a  2. fülre\tCtrl+2", 5002
+    MENUITEM "Forrás: Átváltás a  3. fülre\tCtrl+3", 5003
+    MENUITEM "Forrás: Átváltás a  4. fülre\tCtrl+4", 5004
+    MENUITEM "Forrás: Átváltás az 5. fülre\tCtrl+5", 5005
+    MENUITEM "Forrás: Átváltás a  6. fülre\tCtrl+6", 5006
+    MENUITEM "Forrás: Átváltás a  7. fülre\tCtrl+7", 5007
+    MENUITEM "Forrás: Átváltás a  8. fülre\tCtrl+8", 5008
+    MENUITEM "Forrás: Átváltás a  9. fülre\tCtrl+9", 5009
+    MENUITEM SEPARATOR
+    MENUITEM "Cél: Átváltás az 1. fülre\tAlt+1", 5101
+    MENUITEM "Cél: Átváltás a  2. fülre\tAlt+2", 5102
+    MENUITEM "Cél: Átváltás a  3. fülre\tAlt+3", 5103
+    MENUITEM "Cél: Átváltás a  4. fülre\tAlt+4", 5104
+    MENUITEM "Cél: Átváltás az 5. fülre\tAlt+5", 5105
+    MENUITEM "Cél: Átváltás a  6. fülre\tAlt+6", 5106
+    MENUITEM "Cél: Átváltás a  7. fülre\tAlt+7", 5107
+    MENUITEM "Cél: Átváltás a  8. fülre\tAlt+8", 5108
+    MENUITEM "Cél: Átváltás a  9. fülre\tAlt+9", 5109
+  END_POPUP
+END_POPUP
+
+POPUP "R&endszer"
+  MENUITEM "&Sajátgép", 2122
+  MENUITEM "&Asztal", 2121
+  MENUITEM "&Vezérlõpult", 2123  
+  MENUITEM SEPARATOR
+  MENUITEM "&Hálózati helyek", 2125
+  MENUITEM SEPARATOR
+  MENUITEM "&Betûk", 2124
+  MENUITEM "Nyo&mtatók", 2126
+  MENUITEM "&Lomtár", 2127
+END_POPUP
+
+POPUP "&Beállítások"
+  MENUITEM "&Általános beállítások...", cm_config
+  MENUITEM "&Eszköztár...", cm_ButtonConfig
+  MENUITEM SEPARATOR 
+  MENUITEM "&Megjelenítés", 490
+  MENUITEM "Képern&yõ", 486
+  MENUITEM "Bet&û", 492
+  MENUITEM "&Szín", 494
+  MENUITEM "Fájla&blak", 497
+  MENUITEM "Fáj&lablak fülek", 488
+  MENUITEM "E&gyedi oszlopok", 483
+  MENUITEM "&Nyelv", 499
+  MENUITEM SEPARATOR
+  MENUITEM "Mû&ködés", 516
+  MENUITEM "Szerkesztõ/N&ézõke", 496
+  MENUITEM "Másolás/&Törlés", 487 
+  MENUITEM "FTP", 489
+  MENUITEM "Beép&ülõk", 484
+  MENUITEM "Mini&atûrök", 482
+  MENUITEM SEPARATOR
+  MENUITEM "T&ömörítõ", 491
+  MENUITEM "&Zip tömörítõ", 485
+  MENUITEM SEPARATOR
+  MENUITEM "&Vegyes", 495
+  MENUITEM SEPARATOR
+  MENUITEM "Beállítás&ok szerkesztése az ini fájlban...", 581
+  MENUITEM "&Pozíció mentése", cm_configSavepos
+  MENUITEM "Beáll&ítások mentése", 580
+END_POPUP
+
+STARTMENU
+
+POPUP "Windows"
+  POPUP "&Adminisztrációs eszközök"
+    MENUITEM "Komponensszolgáltatások", em_ext_comexp
+    MENUITEM "Számítógép kezelés", em_ext_compmgmt
+    MENUITEM "Meghajtók optimalizálása", em_ext_dfrgui
+    MENUITEM "Lemezkarbantartó", em_ext_cleanmgr
+    MENUITEM "Eseménynapló", em_ext_eventvwrb
+    MENUITEM "iSCSI", em_ext_iscsiinitiator
+    MENUITEM "ODBC adatforrás (32-bit)", em_ext_odbcad32b
+    MENUITEM "ODBC adatforrás (64-bit)", em_ext_odbcad32b64
+    MENUITEM "Teljesítményfigyelõ", em_ext_perfmonb
+    MENUITEM "Erõforrás figyelõ", em_ext_perfmon
+    MENUITEM "Szolgáltatások", em_ext_services
+    MENUITEM "Rendszerkonfiguráció", em_ext_msconfig
+    MENUITEM "Rendszerinformáció", em_ext_msinfo32
+    MENUITEM "Feladatütemezõ", em_ext_schedtasks
+    MENUITEM "Fokozott biztonságú Windows tûzfal", em_ext_wf
+    MENUITEM "Windows memória diagnosztika", em_ext_mdsched
+    POPUP "Windows PowerShell"
+      MENUITEM "Windows PowerShell", em_ext_powershellx64
+      MENUITEM "Windows PowerShell (x86)", em_ext_powershellx86
+      MENUITEM "Windows PowerShell ISE", em_ext_powershellisex64
+      MENUITEM "Windows PowerShell ISE (x86)", em_ext_powershellisex86
+    END_POPUP
+    MENUITEM SEPARATOR
+    MENUITEM "Tanúsítványok", em_ext_certmgr
+    MENUITEM "Eszközkezelõ", em_ext_devmgmt
+    MENUITEM "Lemezkezelés", em_ext_diskmgmt
+    MENUITEM "Beállításszerkesztõ", em_ext_regedit
+    MENUITEM "Megosztott mappák", em_ext_fsmgmt
+    MENUITEM "SQL Server kliens eszköz", em_ext_cliconfg
+  END_POPUP
+  POPUP "Win&dows eszközök"
+    MENUITEM "Számológép", em_ext_calc
+    MENUITEM "Karakter tábla", em_ext_charmap
+    MENUITEM "Matematikai beviteli panel", em_ext_mip
+    MENUITEM "Jegyzettömb", em_ext_notepad
+    MENUITEM "Paint", em_ext_mspaint
+    MENUITEM "Távoli asztal kapcsolat", em_ext_mstsc
+    MENUITEM "Képmetszõ", em_ext_snippingtool
+    MENUITEM "Hangrögzítõ", em_ext_sndrec
+    MENUITEM "Problémarögzítõ", em_ext_stepsrecorder
+    MENUITEM "Jegyzetek", em_ext_stikynot
+    MENUITEM "Windows Faxoló és képolvasó", em_ext_wfs
+    MENUITEM "Windows Media Player", em_ext_wmplayer
+    MENUITEM "WordPad", em_ext_write
+    MENUITEM "XPS megjelenítõ", em_ext_xpsrchvw
+    MENUITEM SEPARATOR
+    MENUITEM "Projector kapcsolat", em_ext_displayswitch
+    MENUITEM "Hangerõkeverõ", em_ext_sndvol
+    MENUITEM "Sajátkarakter szerkesztõ", em_ext_eudcedit
+  END_POPUP
+END_POPUP
+
+HELP_BREAK
+
+POPUP "&Súgó"
+  MENUITEM "&Tartalom\tF1", cm_HelpIndex
+  MENUITEM "&Billentyûzet", cm_keyboard
+  MENUITEM SEPARATOR
+  MENUITEM "&Látogatás a Totalcmd magyar oldalán", em_web
+  MENUITEM "&Regisztrálási infó", em_reg
+  MENUITEM "Total Commander magyar vendégkönyv", em_gbook
+  MENUITEM SEPARATOR
+  MENUITEM "A T&otal Commander névjegye...", cm_About
+END_POPUP
