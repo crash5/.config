@@ -4,6 +4,9 @@
 	<TSessionFolder>
 		<Items>
 			<TDirCompareSession>
+				<Filters>
+					<NameFilter Value="-.git/\"/>
+				</Filters>
 				<Rules>
 					<ExpandAllOnLoad Value="True"/>
 					<ExpandDiffsOnLoad Value="True"/>
