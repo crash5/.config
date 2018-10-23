@@ -1,2 +1,7 @@
 # Total Commander generated bar files
 totalcommander/*.br2
+
+# BeyondCompare sensitive and backup files
+bcompare/BC4Key.txt
+bcompare/BCState.xml
+bcompare/*.bak
