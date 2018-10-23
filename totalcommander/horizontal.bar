@@ -1,5 +1,5 @@
 [Buttonbar]
-Buttoncount=34
+Buttoncount=35
 button1=wcmicons.dll
 cmd1=cm_Rereadsource
 iconic1=0
@@ -98,3 +98,6 @@ button34=cmd.exe
 cmd34=%USERPROFILE%\.config\totalcommander\command-line_symlink.bar
 iconic34=1
 menu34=Cmd and Symlinks
+button35=cmd.exe
+cmd35=bash.exe
+menu35=Ubuntu WSL
