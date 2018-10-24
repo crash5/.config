@@ -50,10 +50,11 @@ Menu ids:
 ### Beyond Compare
 
 #### Windows
-It's look like BC can't write linked files...
+It's look like BC can't write linked files so have to use the registry.
+
+In command line:
 ```
-mklink "%APPDATA%\Scooter Software\Beyond Compare 4\BCPreferences.xml" %USERPROFILE%\.config\bcompare\BCPreferences.xml
-mklink "%APPDATA%\Scooter Software\Beyond Compare 4\BCSessions.xml" %USERPROFILE%\.config\bcompare\BCSessions.xml
+reg add "HKCU\Software\Scooter Software" /f /v SettingsPath /d "c:\Users\<USER NAME>\.config\bcompare"
 ```
 
 ### WinRAR
@@ -62,6 +63,14 @@ mklink "%APPDATA%\Scooter Software\Beyond Compare 4\BCSessions.xml" %USERPROFILE
 ```
 mklink "%APPDATA%\WinRAR\WinRAR.ini" %USERPROFILE%\.config\winrar\WinRAR.ini
 ```
+
+### Total Commander
+
+#### Windows
+```
+mklink "%APPDATA%\GHISLER\wincmd.ini" %USERPROFILE%\.config\totalcommander\wincmd.ini
+```
+
 
 ---
 Sources:
