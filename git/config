@@ -29,7 +29,7 @@
 	cl = clone
 	st = status
 
-	dt = difftool -y
+	dt = "!f() { git difftool -y \"$@\" & }; f"
 	dtt = difftool
 	dtc = difftool --cached -y
 	dtcc = difftool --cached
