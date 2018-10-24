@@ -1,2 +1,3 @@
 * text
 *.sh eol=lf
+winrar/WinRAR.ini -text
