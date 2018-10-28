@@ -85,7 +85,7 @@
 	snap = "!git stash push -m \"snapshot: $(date +'%Y. %m. %d. %H:%M')\" && git stash apply -q stash@{0}"
 [core]
 	editor = notepad++.exe -multiInst -nosession -noPlugin -ldiff
-	autocrlf = true
+	autocrlf = input
 	pager = less -x4 -+X
 	ignorecase = false
 [log]
