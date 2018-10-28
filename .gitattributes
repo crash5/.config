@@ -1,3 +1,5 @@
-* text
+* text=auto
 *.sh eol=lf
 winrar/WinRAR.ini -text
+notepadpp/config.xml eol=crlf
+totalcommander/wincmd.ini eol=crlf
