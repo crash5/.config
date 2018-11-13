@@ -5,3 +5,6 @@ totalcommander/*.br2
 bcompare/BC4Key.txt
 bcompare/BCState.xml
 bcompare/*.bak
+
+# Notepad++
+notepadpp/backup/
