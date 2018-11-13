@@ -92,4 +92,9 @@
         "key": "ctrl+shift+alt+s",
         "command": "workbench.action.files.saveWithoutFormatting"
     },
+    {
+        "key": "ctrl+alt+v",
+        "command": "-multiclip.list",
+        "when": "editorTextFocus"
+    }
 ]

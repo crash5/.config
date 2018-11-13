@@ -14,7 +14,7 @@
         120
     ],
     "workbench.statusBar.feedback.visible": false,
-    "window.title": "${dirty}${activeEditorLong}${separator}${appName}",
+    "window.title": "${dirty}${activeEditorLong}${separator}${rootName}${separator}${appName}",
     "workbench.colorCustomizations":
     {
         "editor.lineHighlightBackground": "#172d38",
@@ -28,7 +28,10 @@
     "breadcrumbs.enabled": true,
     "window.zoomLevel": 0,
     "editor.accessibilitySupport": "off",
-
+    "search.showLineNumbers": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "breadcrumbs.symbolSortOrder": "name",
+    "terminal.integrated.scrollback": 20000,
 // > Disable internet usage
     "extensions.autoCheckUpdates": false,
     "extensions.autoUpdate": false,
