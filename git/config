@@ -42,6 +42,7 @@
 
 	diffc = diff --cached
 	diffcw = diff --cached --color-words
+	diffu = diff @{u}
 	diffn = diff --name-only
 	diffw = diff --color-words
 
