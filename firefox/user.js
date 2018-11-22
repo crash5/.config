@@ -44,6 +44,7 @@ user_pref("datareporting.healthreport.uploadEnabled", false);
 user_pref("datareporting.policy.dataSubmissionEnabled", false);
 user_pref("devtools.webide.enabled", false);
 user_pref("dom.ipc.plugins.reportCrashURL", false);
+user_pref("dom.serviceWorkers.enabled", false);
 user_pref("extensions.formautofill.creditCards.enabled", false); // (FF56+)
 user_pref("extensions.getAddons.cache.enabled", false);
 user_pref("extensions.getAddons.showPane", false); // hidden pref
@@ -53,11 +54,17 @@ user_pref("extensions.update.autoUpdateDefault", false);
 user_pref("extensions.webcompat-reporter.enabled", false);
 user_pref("extensions.webservice.discoverURL", "");
 user_pref("general.warnOnAboutConfig", false);
+user_pref("geo.enabled", false);
 user_pref("javascript.use_us_english_locale", true);
 user_pref("layout.spellcheckDefault", 2);
 user_pref("lightweightThemes.update.enabled", false);
 user_pref("loop.enabled", false);
-user_pref("media.autoplay.enabled", false);
+user_pref("media.autoplay.allow-muted", false);
+user_pref("media.autoplay.ask-permission", true);
+user_pref("media.autoplay.block-webaudio", true);
+user_pref("media.autoplay.default", 1);
+user_pref("media.navigator.enabled", false);
+user_pref("media.peerconnection.enabled", false);
 user_pref("network.allow-experiments", false);
 user_pref("permissions.default.geo", 2);
 user_pref("reader.parse-on-load.enabled", false);
