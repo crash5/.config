@@ -61,7 +61,10 @@ user_pref("devtools.webconsole.timestampMessages", true);
 user_pref("devtools.webide.autoinstallADBHelper", false);
 user_pref("devtools.webide.enabled", false);
 user_pref("dom.ipc.plugins.reportCrashURL", false);
-user_pref("dom.serviceWorkers.enabled", false); // web push notifications
+// user_pref("dom.serviceWorkers.enabled", false); // web push notifications
+// user_pref("dom.webnotifications.enabled", false); // web push notifications
+// user_pref("dom.webnotifications.serviceworker.enabled", false); // sites can still generate desktop notifications while you have a tab open to the site 
+// user_pref("dom.push.enabled", false); // web push
 user_pref("extensions.formautofill.creditCards.enabled", false); // (FF56+)
 user_pref("extensions.getAddons.cache.enabled", false);
 user_pref("extensions.getAddons.showPane", false); // hidden pref
