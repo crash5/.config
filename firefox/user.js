@@ -1,3 +1,7 @@
+// user_pref("dom.push.enabled", false); // web push
+// user_pref("dom.serviceWorkers.enabled", false); // web push notifications
+// user_pref("dom.webnotifications.enabled", false); // web push notifications
+// user_pref("dom.webnotifications.serviceworker.enabled", false); // sites can still generate desktop notifications while you have a tab open to the site 
 user_pref("accessibility.force_disabled", 1);
 user_pref("app.normandy.api_url", "");
 user_pref("app.normandy.enabled", false);
@@ -36,6 +40,7 @@ user_pref("browser.safebrowsing.provider.google4.reportMalwareMistakeURL", ""); 
 user_pref("browser.safebrowsing.provider.google4.reportPhishMistakeURL", ""); // (FF54+)
 user_pref("browser.safebrowsing.provider.google4.reportURL", ""); // (FF50+)
 user_pref("browser.safebrowsing.reportPhishURL", "");
+user_pref("browser.search.hiddenOneOffs", "Google,Bing,Amazon.com,DuckDuckGo,Twitter,Wikipedia (en)");
 user_pref("browser.search.suggest.enabled", false);
 user_pref("browser.search.update", false);
 user_pref("browser.startup.page", 0);
@@ -43,7 +48,7 @@ user_pref("browser.tabs.closeWindowWithLastTab", false);
 user_pref("browser.tabs.crashReporting.sendReport", false);
 user_pref("browser.tabs.drawInTitlebar", false);
 user_pref("browser.tabs.warnOnClose", false);
-user_pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\":[],\"PersonalToolbar\":[\"personal-bookmarks\"],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"urlbar-container\",\"downloads-button\",\"ublock0_raymondhill_net-browser-action\",\"_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action\"],\"toolbar-menubar\":[\"menubar-items\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"history-panelmenu\",\"new-tab-button\",\"privatebrowsing-button\",\"alltabs-button\"]},\"seen\":[\"developer-button\",\"ublock0_raymondhill_net-browser-action\",\"_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action\",\"webide-button\"],\"dirtyAreaCache\":[\"PersonalToolbar\",\"nav-bar\",\"toolbar-menubar\",\"TabsToolbar\"],\"currentVersion\":14,\"newElementCount\":15}");
+user_pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\":[],\"PersonalToolbar\":[\"personal-bookmarks\"],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"urlbar-container\",\"downloads-button\",\"ublock0_raymondhill_net-browser-action\",\"_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action\",\"umatrix_raymondhill_net-browser-action\"],\"toolbar-menubar\":[\"menubar-items\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"history-panelmenu\",\"new-tab-button\",\"privatebrowsing-button\",\"alltabs-button\"]},\"seen\":[\"developer-button\",\"ublock0_raymondhill_net-browser-action\",\"_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action\",\"webide-button\",\"umatrix_raymondhill_net-browser-action\"],\"dirtyAreaCache\":[\"PersonalToolbar\",\"nav-bar\",\"toolbar-menubar\",\"TabsToolbar\"],\"currentVersion\":14,\"newElementCount\":15}");
 user_pref("browser.uidensity", 1);
 user_pref("browser.urlbar.clickSelectsAll", false);
 user_pref("browser.urlbar.maxRichResults", 25);
@@ -61,10 +66,6 @@ user_pref("devtools.webconsole.timestampMessages", true);
 user_pref("devtools.webide.autoinstallADBHelper", false);
 user_pref("devtools.webide.enabled", false);
 user_pref("dom.ipc.plugins.reportCrashURL", false);
-// user_pref("dom.serviceWorkers.enabled", false); // web push notifications
-// user_pref("dom.webnotifications.enabled", false); // web push notifications
-// user_pref("dom.webnotifications.serviceworker.enabled", false); // sites can still generate desktop notifications while you have a tab open to the site 
-// user_pref("dom.push.enabled", false); // web push
 user_pref("extensions.formautofill.creditCards.enabled", false); // (FF56+)
 user_pref("extensions.getAddons.cache.enabled", false);
 user_pref("extensions.getAddons.showPane", false); // hidden pref
