@@ -63,8 +63,11 @@
 	rh1 = reset --hard HEAD^
 	rh2 = reset --hard HEAD^^
 
-	ri = rebase -i
-	rebase-develop = !git rebase -i $(git merge-base develop HEAD)
+	rei = rebase -i
+	reiu = rebase -i @{u}
+	rec = rebase --continue
+	rea = rebase --abort
+	rei-develop = !git rebase -i $(git merge-base develop HEAD)
 
 	cleanrepo = clean -dfx
 	pruneorigin = remote prune origin
