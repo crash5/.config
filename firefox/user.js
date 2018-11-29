@@ -40,7 +40,6 @@ user_pref("browser.safebrowsing.provider.google4.reportMalwareMistakeURL", ""); 
 user_pref("browser.safebrowsing.provider.google4.reportPhishMistakeURL", ""); // (FF54+)
 user_pref("browser.safebrowsing.provider.google4.reportURL", ""); // (FF50+)
 user_pref("browser.safebrowsing.reportPhishURL", "");
-user_pref("browser.search.hiddenOneOffs", "Google,Bing,Amazon.com,DuckDuckGo,Twitter,Wikipedia (en)");
 user_pref("browser.search.suggest.enabled", false);
 user_pref("browser.search.update", false);
 user_pref("browser.startup.page", 0);
