@@ -32,6 +32,8 @@
     "workbench.editor.highlightModifiedTabs": true,
     "breadcrumbs.symbolSortOrder": "name",
     "terminal.integrated.scrollback": 20000,
+    "javascript.referencesCodeLens.enabled": true,
+    "typescript.referencesCodeLens.enabled": true,
 // > Disable internet usage
     "extensions.autoCheckUpdates": false,
     "extensions.autoUpdate": false,
