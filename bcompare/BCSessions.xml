@@ -12,12 +12,12 @@
 					<ExpandDiffsOnLoad Value="True"/>
 					<FollowSymLinks Value="True"/>
 					<UseCaseSensitiveComparison Value="True"/>
+					<UseContentComparison Value="True"/>
 					<UseTimestampComparison Value="False"/>
 				</Rules>
 				<State>
 					<ColPathWidth Value="350"/>
 					<DirHandling Value="dirShowAll"/>
-					<DisplayFilter Value="[showLeftAdded, showRightAdded, showLeftChanged, showRightChanged, showConflict]"/>
 					<SortCol Value="colPath"/>
 				</State>
 			</TDirCompareSession>
