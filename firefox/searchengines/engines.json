@@ -1,0 +1,36 @@
+{
+    "engines": [
+        {
+            "name": "nCore Torrent",
+            "file": "ncore.xml"
+        },
+        {
+            "name": "Feliratok.info",
+            "file": "feliratok_info.xml"
+        },
+        {
+            "name": "Subirat.net",
+            "file": "subirat.xml"
+        },
+        {
+            "name": "Sztaki ENG to HUN",
+            "file": "sztaki-eng-to-hun.xml"
+        },
+        {
+            "name": "XE.com USD to HUF",
+            "file": "xe-usd-to-huf.xml"
+        },
+        {
+            "name": "XE.com EUR to HUF",
+            "file": "xe-eur-to-huf.xml"
+        },
+        {
+            "name": "XE.com GBP to HUF",
+            "file": "xe-gbp-to-huf.xml"
+        },
+        {
+            "name": "XE.com PLN to HUF",
+            "file": "xe-pln-to-huf.xml"
+        }
+    ]
+}

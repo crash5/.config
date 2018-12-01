@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+    <ShortName>nCore Torrent</ShortName>
+    <Description>nCore Torrent Search</Description>
+    <Image width="16" height="16" type="image/x-icon">https://static.ncore.cc/styles/ncore.ico</Image>
+    <Url type="text/html" method="POST" template="https://ncore.cc/torrents.php">
+        <Param name="mire" value="{searchTerms}"/>
+    </Url>
+    <moz:SearchForm>https://ncore.cc/torrents.php</moz:SearchForm>
+</OpenSearchDescription>

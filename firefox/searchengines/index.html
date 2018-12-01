@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Search Engines</title>
+</head>
+
+<body>
+    Engine locations: <input type="text" id="baseUrl" placeholder="http://" style="width: 30%;" value="https://raw.githubusercontent.com/crash5/.config/master/firefox/searchengines/">
+    <button type="button" id="get">Get</button> <br />
+    Engines:<br />
+    <ul id="engines"></ul>
+</body>
+
+<script>
+    function baseUrlAddress() {
+        return document.getElementById("baseUrl").value;
+    }
+
+    function installEngine(fileName) {
+        var baseUrl = baseUrlAddress();
+        window.external.AddSearchProvider(`${baseUrl}/${fileName}`);
+    }
+
+    function populateList(engines) {
+        var list = document.getElementById("engines");
+        list.innerHTML = "";
+
+        engines.forEach(function (item) {
+            list.innerHTML += `<li><a href="javascript:installEngine('${item.file}');">${item.name}</a> (${item.file})</li>`;
+        });
+    }
+
+    function loadFromUrl(url) {
+        var requestURL = baseUrlAddress() + "/engines.json";
+        var request = new XMLHttpRequest();
+        request.open('GET', requestURL);
+        request.responseType = 'json';
+        request.send();
+        request.onload = function () {
+            var engines = request.response.engines;
+            populateList(engines);
+        }
+    }
+
+    function loadEngines() {
+        loadFromUrl();
+    }
+
+    window.onload = function () {
+        var baseUrlField = document.getElementById("baseUrl");
+        baseUrlField.addEventListener("keyup", function (event) {
+            if (event.key === "Enter") {
+                loadEngines();
+            }
+        });
+
+        var getButton = document.getElementById("get");
+        getButton.addEventListener("click", function () {
+            loadEngines();
+        });
+
+        loadEngines();
+    }
+</script>
+
+</html>

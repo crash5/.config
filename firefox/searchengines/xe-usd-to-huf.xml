@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+    <ShortName>XE.com USD to HUF</ShortName>
+    <Description>XE Currency Converter</Description>
+    <Image width="16" height="16">https://www.xe.com/favicon.ico</Image>
+    <Url type="text/html" method="GET" template="https://www.xe.com/currencyconverter/convert/">
+        <Param name="Amount" value="{searchTerms}"/>
+        <Param name="From" value="USD"/>
+        <Param name="To" value="HUF"/>
+    </Url>
+    <moz:SearchForm>https://www.xe.com/currencyconverter/convert/</moz:SearchForm>
+</OpenSearchDescription>

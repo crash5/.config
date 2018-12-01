@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+    <ShortName>Sztaki ENG to HUN</ShortName>
+    <Description>Sztaki Dictionary</Description>
+        <Image width="16" height="16" type="image/x-icon">http://szotar.sztaki.hu/sites/all/themes/szotar1/favicon.ico</Image>
+    <Url type="text/html" method="GET" template="http://szotar.sztaki.hu/search">
+        <Param name="searchWord" value="{searchTerms}"/>
+        <Param name="fromlang" value="eng"/>
+        <Param name="tolang" value="hun"/>
+    </Url>
+    <moz:SearchForm>http://szotar.sztaki.hu/search</moz:SearchForm>
+</OpenSearchDescription>
