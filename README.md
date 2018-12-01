@@ -71,6 +71,14 @@ mklink "%APPDATA%\WinRAR\WinRAR.ini" %USERPROFILE%\.config\winrar\WinRAR.ini
 mklink "%APPDATA%\GHISLER\wincmd.ini" %USERPROFILE%\.config\totalcommander\wincmd.ini
 ```
 
+### Firefox
+
+Install search providers: https://crash5.github.io/.config/firefox/searchengines/
+
+#### Windows
+```
+mklink "%APPDATA%\Mozilla\Firefox\Profiles\<PROFILE DIR>\user.js" %USERPROFILE%\.config\firefox\user.js
+```
 
 ---
 Sources:
