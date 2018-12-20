@@ -101,5 +101,10 @@
         "key": "shift+enter",
         "command": "workbench.action.terminal.runSelectedText",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+d",
+        "command": "editor.action.moveSelectionToNextFindMatch",
+        "when": "editorFocus"
     }
 ]
