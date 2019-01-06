@@ -62,6 +62,7 @@
 	rh = reset --hard
 	rh1 = reset --hard HEAD^
 	rh2 = reset --hard HEAD^^
+	rhu = reset --hard @{u}
 
 	rei = rebase -i
 	reiu = rebase -i @{u}
