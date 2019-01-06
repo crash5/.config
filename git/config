@@ -90,7 +90,7 @@
 [core]
 	editor = notepad++.exe -multiInst -nosession -noPlugin -ldiff
 	autocrlf = input
-	pager = less -x4 -+X
+	pager = less -x4 -+X # enable mouse wheel scroll in mintty
 	ignorecase = false
 [log]
 	date = format:%Y-%m-%d %H:%M:%S
