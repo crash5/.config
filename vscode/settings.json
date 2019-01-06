@@ -83,5 +83,6 @@
         "NOTE": {},
         "WARNING": {}
     },
+    "html.format.endWithNewline": true,
 // < Additional plugins
 }
