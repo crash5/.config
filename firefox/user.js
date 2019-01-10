@@ -1,7 +1,7 @@
-// user_pref("dom.push.enabled", false); // web push
-// user_pref("dom.serviceWorkers.enabled", false); // web push notifications
-// user_pref("dom.webnotifications.enabled", false); // web push notifications
-// user_pref("dom.webnotifications.serviceworker.enabled", false); // sites can still generate desktop notifications while you have a tab open to the site 
+user_pref("dom.push.enabled", false); // web push
+user_pref("dom.serviceWorkers.enabled", false); // web push notifications
+user_pref("dom.webnotifications.enabled", false); // web push notifications
+user_pref("dom.webnotifications.serviceworker.enabled", false); // sites can still generate desktop notifications while you have a tab open to the site 
 user_pref("accessibility.force_disabled", 1);
 user_pref("app.normandy.api_url", "");
 user_pref("app.normandy.enabled", false);
