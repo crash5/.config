@@ -49,7 +49,7 @@ user_pref("browser.tabs.drawInTitlebar", false);
 user_pref("browser.tabs.warnOnClose", false);
 user_pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\":[],\"PersonalToolbar\":[\"personal-bookmarks\"],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"urlbar-container\",\"downloads-button\",\"ublock0_raymondhill_net-browser-action\",\"_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action\",\"umatrix_raymondhill_net-browser-action\"],\"toolbar-menubar\":[\"menubar-items\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"history-panelmenu\",\"new-tab-button\",\"privatebrowsing-button\",\"alltabs-button\"]},\"seen\":[\"developer-button\",\"ublock0_raymondhill_net-browser-action\",\"_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action\",\"webide-button\",\"umatrix_raymondhill_net-browser-action\"],\"dirtyAreaCache\":[\"PersonalToolbar\",\"nav-bar\",\"toolbar-menubar\",\"TabsToolbar\"],\"currentVersion\":14,\"newElementCount\":15}");
 user_pref("browser.uidensity", 1);
-user_pref("browser.urlbar.clickSelectsAll", false);
+user_pref("browser.urlbar.clickSelectsAll", true);
 user_pref("browser.urlbar.maxRichResults", 25);
 user_pref("browser.urlbar.searchSuggestionsChoice", false);
 user_pref("browser.urlbar.suggest.searches", false);
