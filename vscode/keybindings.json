@@ -106,5 +106,29 @@
         "key": "ctrl+alt+d",
         "command": "editor.action.moveSelectionToNextFindMatch",
         "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+shift+i",
+        "command": "type",
+        "args": { "text": "\t" },
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+alt+left",
+        "command": "editor.action.jumpToBracket",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+alt+left",
+        "command": "editor.action.selectToBracket"
+    },
+    {
+        "key": "ctrl+shift+alt+left",
+        "command": "-cursorColumnSelectLeft",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+alt+left",
+        "command": "-workbench.action.moveEditorToPreviousGroup"
     }
 ]
