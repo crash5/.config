@@ -104,7 +104,7 @@ user_pref("permissions.default.desktop-notification", 2);
 user_pref("permissions.default.geo", 2);
 user_pref("permissions.default.microphone", 2);
 user_pref("privacy.donottrackheader.enabled", true);
-user_pref("privacy.resistFingerprinting", true);
+// user_pref("privacy.resistFingerprinting", true); // block spotify web player
 user_pref("privacy.spoof_english", 2);
 user_pref("privacy.trackingprotection.enabled", true);
 user_pref("reader.parse-on-load.enabled", false);
