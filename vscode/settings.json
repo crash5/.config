@@ -84,5 +84,7 @@
         "WARNING": {}
     },
     "html.format.endWithNewline": true,
+    "workbench.settings.useSplitJSON": true,
+    "zenMode.hideLineNumbers": false
 // < Additional plugins
 }
