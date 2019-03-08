@@ -39,15 +39,12 @@ $className$&amp; operator=(const $className$&amp; other) = default;
 // move
 $className$($className$&amp;&amp; other) = default;
 $className$&amp; operator=($className$&amp;&amp; other) = default;</snippet>
-    <snippet group="C++" trigger="for" id="cpp_for" complement="" removed="false" modified="true">for (int $var$ = 0; $var$ &lt; $total$; ++$var$) {
-    $$
-}</snippet>
     <snippet group="C++" trigger="for" id="" complement="iterate container" removed="false" modified="false">for (auto it = $container$.cbegin(), lastIt = $container$.cend(); it != lastIt; ++it) {
 	$$
 }
 </snippet>
-    <snippet group="C++" trigger="for" id="" complement="ranged" removed="false" modified="false">for (const auto&amp; item : $container$) {
-	$$
+    <snippet group="C++" trigger="for" id="cpp_for_rangebased" complement="range-based" removed="false" modified="true">for (const auto&amp; $var$ : $container$) {
+    $$
 }</snippet>
     <snippet group="C++" trigger="ifndef" id="" complement="include guard" removed="false" modified="false">#ifndef $name:u$
 #define $name:u$
