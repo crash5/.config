@@ -13,6 +13,12 @@
 				<HandleFolders Value="True"/>
 				<RefreshWhenDone Value="True"/>
 			</_0>
+			<_1>
+				<CmdLine Value="%LOCALAPPDATA%/Programs/Microsoft VS Code/Code.exe -g %f:%l"/>
+				<Description Value="VSCode"/>
+				<RefreshWhenDone Value="True"/>
+				<WorkingDir Value="&lt;base folder>"/>
+			</_1>
 		</OpenWiths>
 		<SessionAutoSavedCapacity Value="0"/>
 		<UseIPv6 Value="False"/>
