@@ -8,6 +8,9 @@
             <Action type="2" message="0" wParam="42024" lParam="0" sParam="" />
             <Action type="2" message="0" wParam="41006" lParam="0" sParam="" />
         </Macro>
+	<Macro name="Enable virtual space" Ctrl="no" Alt="no" Shift="no" Key="0">
+		<Action type="0" message="2596" wParam="3" lParam="0" sParam="" />
+	</Macro>
     </Macros>
     <UserDefinedCommands>
         <Command name="Launch in Firefox" Ctrl="yes" Alt="yes" Shift="yes" Key="88">firefox &quot;$(FULL_CURRENT_PATH)&quot;</Command>
