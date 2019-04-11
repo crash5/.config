@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE KeyboardMappingScheme>
+<mapping>
+	<shortcut id="QtCreator.Locate">
+		<key value="Ctrl+G" />
+	</shortcut>
+
+	<shortcut id="TextEditor.DuplicateSelection">
+		<key value="Ctrl+Shift+D" />
+	</shortcut>
+
+
+	<shortcut id="Tools.External.SublimeText">
+		<key value="Ctrl+E, S" />
+	</shortcut>
+
+	<shortcut id="TextEditor.VisualizeWhitespace" />
+	<shortcut id="Tools.External.VSCode">
+		<key value="Ctrl+E, V" />
+	</shortcut>
+
+	<shortcut id="Tools.External.Notepad__">
+		<key value="Ctrl+E, N" />
+	</shortcut>
+
+
+	<shortcut id="AutoTest.RunSelected">
+		<key value="F12" />
+	</shortcut>
+	<shortcut id="AutoTest.RunAll">
+		<key value="Shift+F12" />
+	</shortcut>
+	<shortcut id="AutoTest.RunFile">
+		<key value="Ctrl+F12" />
+	</shortcut>
+
+
+	<shortcut id="QtCreator.Close_Alternative" />
+	<shortcut id="CppTools.OpenHeaderSourceInNextSplit">
+		<key value="Ctrl+F4" />
+	</shortcut>
+
+	<shortcut id="TextEditor.FollowSymbolUnderCursorInNextSplit">
+		<key value="Ctrl+F2" />
+	</shortcut>
+	<shortcut id="TextEditor.JumpToFileUnderCursorInNextSplit">
+		<key value="Ctrl+F2" />
+	</shortcut>
+
+	<shortcut id="TextEditor.GotoBlockStartWithSelection">
+		<key value="Ctrl+Alt+Shift+Left" />
+	</shortcut>
+	<shortcut id="TextEditor.GotoBlockEndWithSelection">
+		<key value="Ctrl+Alt+Shift+Right" />
+	</shortcut>
+
+	<shortcut id="TextEditor.GotoBlockStart">
+		<key value="Ctrl+Alt+Left" />
+	</shortcut>
+	<shortcut id="TextEditor.GotoBlockEnd">
+		<key value="Ctrl+Alt+Right" />
+	</shortcut>
+
+	<shortcut id="TextEditor.SelectBlockUp">
+		<key value="Alt+Shift+Right" />
+	</shortcut>
+	<shortcut id="TextEditor.SelectBlockDown">
+		<key value="Alt+Shift+Left" />
+	</shortcut>
+
+
+	<shortcut id="TextEditor.LowercaseSelection">
+		<key value="Ctrl+Shift+L" />
+	</shortcut>
+
+	<shortcut id="TextEditor.FindUsages" />
+	<shortcut id="TextEditor.UppercaseSelection">
+		<key value="Ctrl+Shift+U" />
+	</shortcut>
+
+
+	<shortcut id="QmlDesigner.ToggleStatesEditor" />
+	<shortcut id="QtCreator.SaveAs">
+		<key value="Ctrl+Alt+S" />
+	</shortcut>
+</mapping>
