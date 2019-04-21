@@ -1,78 +1,53 @@
-" xdg directory structure support {
-    set undodir=$XDG_CACHE_HOME/vim/undo
-    set directory=$XDG_CACHE_HOME/vim/swap
-    set backupdir=$XDG_CACHE_HOME/vim/backup
-    set viminfo+='1000,n$XDG_CACHE_HOME/vim/viminfo
-    set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
-"}
+" XDG configs
+set undodir=$XDG_CACHE_HOME/vim/undo
+set directory=$XDG_CACHE_HOME/vim/swap
+set backupdir=$XDG_CACHE_HOME/vim/backup
+set viminfo+='1000,n$XDG_CACHE_HOME/vim/viminfo
+set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
 
 
-" altalanos beallitasok {
-   set nocompatible
-   syntax on
-   set showmode
-   set number
-   set showmatch
-   set ruler
-   "set cursorline
-   set bs=2
-   set noai
-   set autochdir
-   set hlsearch
-   set incsearch
-   set ignorecase
-   set visualbell
-   set viminfo=""
-   set history=50
-   set expandtab
-   set shiftwidth=4
-   set tabstop=4
-   "set textwidth=0
-   "statusline
-
-   if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
-       set fileencodings=utf-8,latin1
-   endif
-
-   if has('mouse')
-      set mouse=a
-   endif
-"}
+filetype indent plugin on
 
 
-" allapotsor {
-   set laststatus=2
-   set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%04.8b]\ [HEX=\%04.4B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]\ [FENC=%{\(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")\}]
-"}
+set cursorline              " highlight current line
+set number                  " show line numbers
+set showmatch               " highlight matching [{()}]
+set softtabstop=4           " number of spaces in tab when editing
+set tabstop=4               " number of visual spaces per TAB
+set virtualedit=all         " allow the cursor to go in to "invalid" places
+syntax on                   " Enable syntax highlighting
 
 
-" billentyuk {
-   :map <F2> <ESC>:w<CR>
-   :map <C-s> <ESC>:w<CR>
-   :map <F10> <ESC>:q!<CR>
-   :map t2t :w<CR>:!txt2tags %<CR>
-   ":vmap <C-c> y
-   ":imap <C-p> <esc>P
-"}
+set hlsearch                " highlight matches
+set ignorecase
+set incsearch               " search as characters are entered
+set smartcase
 
 
-" roviditesek {
-   "ab #d #define
-"}
+set laststatus=2            " Always display the status line, even if only one window is displayed
+set ruler                   " Display the cursor position on the last line of the screen or in the status line of a window
+set showcmd                 " show command in bottom bar
+set showmode                " always show what mode we're currently editing in
+set wildmenu
+
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%04.8b]\ [HEX=\%04.4B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]\ [FENC=%{\(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")\}]
 
 
-" autocmd-s cuccok {
-   if has("autocmd")
-      "au BufNewFile * silent! 0r $HOME/.vim/templates/%:e.tpl
-      "au BufNewFile *.html 0r $HOME/.vim/templates/html.tpl
-      au FileType html setlocal matchpairs+=<:>
-      au BufNewFile,BufRead *.t2t set ft=txt2tags
+set hidden
+set history=1000            " remember more commands and search history
+set noerrorbells            " don't beep
+set nrformats=              " make <C-a> and <C-x> play well with zero-padded numbers (i.e. don't consider them octal or hex)
+set undolevels=1000         " use many muchos levels of undo
+set visualbell              " don't beep
 
-      "au FileType text setlocal textwidth=78
-      "au Syntax python set textwidth=0
-      "au Syntax c set textwidth=0
-      "au Syntax muttrc set textwidth=0
-      au Syntax *sh set textwidth=0
 
-   endif
-"}
+cnoremap w!! w !sudo tee % >/dev/null           " Sudo to write
+map Y y$                                        " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy, which is the default
+nnoremap <C-L> :nohl<CR><C-L>
+nnoremap j gj                                   " move vertically by visual line
+nnoremap k gk                                   " move vertically by visual line
+
+
+if has('mouse')
+    set mouse=a
+endif
