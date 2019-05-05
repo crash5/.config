@@ -10,7 +10,11 @@
 # TODO: use patch instead of file copying
 
 # Called with parameters: WORK_TREE_VERSION INDEX_VERSION
-DIFF_TOOL="c:/Program Files/Beyond Compare 4/BCompare.exe"
+if [[ "$OSTYPE" == "msys" ]]; then
+    DIFF_TOOL="c:/Program Files/Beyond Compare 4/BCompare.exe"
+else
+    DIFF_TOOL="bcompare"
+fi
 
 # handle space in path and file names
 IFS=$'\n'
