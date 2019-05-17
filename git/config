@@ -9,8 +9,10 @@
 
 	p = push
 	pushu = !git p -u origin $(git branch-name)
-
+	preview-master = push -u origin HEAD:refs/for/master
+	pdraft-master = push -u origin HEAD:refs/drafts/master
 	co = checkout
+	coc = "!f() { git co $(git brr | fzf --tac -q ${1:-''} | awk '{ print $1 }'); }; f"
 
 	br = branch -vv
 	bra = !git br -a
@@ -46,6 +48,7 @@
 	diffn = diff --name-only
 	diffw = diff --color-words
 	diffurange = range-diff @{u}...@
+	diffrange-rebase = range-diff @{1}...HEAD
 
 	mt = mergetool
 
