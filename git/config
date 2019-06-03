@@ -12,7 +12,7 @@
 	preview-master = push -u origin HEAD:refs/for/master
 	pdraft-master = push -u origin HEAD:refs/drafts/master
 	co = checkout
-	coc = "!f() { git fetch -q && git co $(git brr | fzf --tac -q ${1:-''} | awk '{ print $1 }'); }; f"
+	cos = "!f() { git fetch -q && git co $(git brr | fzf --tac -q ${1:-''} | awk '{ print $1 }'); }; f"
 	cod = checkout --detach
 
 	br = branch -vv
