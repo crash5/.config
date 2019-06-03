@@ -40,13 +40,21 @@ set nrformats=              " make <C-a> and <C-x> play well with zero-padded nu
 set undolevels=1000         " use many muchos levels of undo
 set visualbell              " don't beep
 
+" Write as sudo
+cnoremap w!! w !sudo tee % >/dev/null
 
-cnoremap w!! w !sudo tee % >/dev/null           " Sudo to write
-map Y y$                                        " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy, which is the default
+" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy, which is the default
+map Y y$
+
 nnoremap <C-L> :nohl<CR><C-L>
-nnoremap j gj                                   " move vertically by visual line
-nnoremap k gk                                   " move vertically by visual line
 
+" move by visual line
+"noremap j gj
+"noremap k gk
+"noremap 0 g0
+"noremap $ g$
+"onoremap j gj
+"onoremap k gk
 
 if has('mouse')
     set mouse=a
