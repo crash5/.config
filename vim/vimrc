@@ -18,6 +18,10 @@ set virtualedit=all               " allow the cursor to go in to "invalid" place
 syntax on                         " Enable syntax highlighting
 set backspace=indent,eol,start    " allow backspacing over everything in insert mode
 
+set showbreak=↪\ 
+set listchars=tab:»-,nbsp:␣,trail:·,extends:»,precedes:«
+set list
+
 set hlsearch                " highlight matches
 set ignorecase
 set incsearch               " search as characters are entered
