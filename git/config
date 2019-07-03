@@ -42,6 +42,7 @@
 	dtdc = !git dtd --cached
 	dtds = !git dtd stash
 	dtdu = !git dtd @{u}
+	dtds = "!f() { git fetch -q && git dtd $(git brr | fzf --tac -q ${1:-''} | awk '{ print $1 }'); }; f"
 
 	diffc = diff --cached
 	diffcw = diff --cached --color-words
