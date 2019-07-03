@@ -22,6 +22,9 @@ set showbreak=↪\
 set listchars=tab:»-,nbsp:␣,trail:·,extends:»,precedes:«
 set list
 
+set colorcolumn=80,120                          " set column guides
+highlight ColorColumn ctermbg=black guibg=Black " background color for column guides
+
 set hlsearch                " highlight matches
 set ignorecase
 set incsearch               " search as characters are entered
