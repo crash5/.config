@@ -10,10 +10,9 @@
     "editor.renderLineHighlight": "all",
     "editor.renderIndentGuides": true,
     "editor.rulers": [
-        75,
+        80,
         120
     ],
-    "workbench.statusBar.feedback.visible": false,
     "window.title": "${dirty}${activeEditorLong}${separator}${rootName}${separator}${appName}",
     "workbench.colorCustomizations":
     {
@@ -85,6 +84,18 @@
     },
     "html.format.endWithNewline": true,
     "workbench.settings.useSplitJSON": true,
-    "zenMode.hideLineNumbers": false
+    "zenMode.hideLineNumbers": false,
+    "[git-commit]": {
+        "editor.rulers": [
+            50,
+            72,
+          ]
+    },
+    "files.associations": {
+        "*.md.html": "markdown"
+    },
+    "[python]": {
+        "files.trimTrailingWhitespace": true
+    }
 // < Additional plugins
 }
