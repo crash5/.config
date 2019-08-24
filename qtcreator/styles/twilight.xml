@@ -30,9 +30,9 @@
   <style name="Punctuation"/>
   <style name="Preprocessor" foreground="#cda869" bold="true"/>
   <style name="Label" foreground="#dad085"/>
-  <style name="Comment" foreground="#5f5a60"/>
-  <style name="Doxygen.Comment" foreground="#5f5a60" italic="true"/>
-  <style name="Doxygen.Tag" foreground="#5f5a60" bold="true" italic="true"/>
+  <style name="Comment" foreground="#6e696f"/>
+  <style name="Doxygen.Comment" foreground="#6e696f" italic="true"/>
+  <style name="Doxygen.Tag" foreground="#6e696f" bold="true" italic="true"/>
   <style name="VisualWhitespace" foreground="#5f5a60"/>
   <style name="QmlLocalId" foreground="#8a9cb4" italic="true"/>
   <style name="QmlExternalId" foreground="#2572b8" italic="true"/>
