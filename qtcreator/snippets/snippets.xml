@@ -43,6 +43,11 @@ $className$&amp; operator=($className$&amp;&amp; other) = default;</snippet>
 	$$
 }
 </snippet>
+    <snippet group="C++" trigger="for" id="" complement="iterate container check for first item" removed="false" modified="false">for (auto it = $container$.cbegin(), lastIt = $container$.cend(); it != lastIt; ++it) {
+    if (it != $container$.cbegin()) { /*except first item*/ }
+    $$
+}
+</snippet>
     <snippet group="C++" trigger="for" id="cpp_for_rangebased" complement="range-based" removed="false" modified="true">for (const auto&amp; $var$ : $container$) {
     $$
 }</snippet>
