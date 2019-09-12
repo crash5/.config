@@ -14,6 +14,7 @@ set number                        " show line numbers
 set showmatch                     " highlight matching [{()}]
 set softtabstop=4                 " number of spaces in tab when editing
 set tabstop=4                     " number of visual spaces per TAB
+set shiftwidth=4                  " Number of spaces to use for each step of (auto)indent
 set virtualedit=all               " allow the cursor to go in to "invalid" places
 syntax on                         " Enable syntax highlighting
 set backspace=indent,eol,start    " allow backspacing over everything in insert mode
