@@ -66,3 +66,8 @@ nnoremap <C-L> :nohl<CR><C-L>
 if has('mouse')
     set mouse=a
 endif
+
+if has('clipboard')
+    set clipboard^=unnamed,unnamedplus
+endif
+
