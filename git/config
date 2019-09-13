@@ -7,6 +7,8 @@
 	branch-name = rev-parse --abbrev-ref HEAD
 	branch-name-tracking = rev-parse --abbrev-ref --symbolic-full-name "@{u}"
 
+	pullas = pull --autostash
+
 	p = push
 	pushu = !git push -u origin $(git branch-name)
 	preview = "!f() { : git checkout ; git push origin HEAD:refs/for/\"${@:?Missing parameter (branch, etc.)}\"; }; f"
