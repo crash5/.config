@@ -5,5 +5,5 @@
 # Load Aliases and Functions
 [ -f "$XDG_CONFIG_HOME"/sh/aliases.sh ] && . $XDG_CONFIG_HOME/sh/aliases.sh
 
-export EDITOR="mcedit"
+export EDITOR="vim"
 export VISUAL=$EDITOR
