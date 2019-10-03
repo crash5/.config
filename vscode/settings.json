@@ -96,6 +96,7 @@
     },
     "[python]": {
         "files.trimTrailingWhitespace": true
-    }
+    },
+    "editor.wrappingIndent": "deepIndent"
 // < Additional plugins
 }
