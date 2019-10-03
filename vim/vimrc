@@ -61,10 +61,10 @@ set statusline+=\ \|\
 set statusline+=%{\(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")\}
 set statusline+=]
 set statusline+=\ [
-set statusline+=%04l
+set statusline+=%l
 set statusline+=:
-set statusline+=%04v
-set statusline+=\ \|\ 
+set statusline+=%v
+set statusline+=\/
 set statusline+=%L
 set statusline+=]
 
