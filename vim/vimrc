@@ -52,7 +52,7 @@ set statusline+=\ \|\
 set statusline+=HEX=\%04.4B
 set statusline+=]
 set statusline+=\ [
-set statusline+=%Y
+set statusline+=%{&ft==\"\"?\"no\ ft\":&ft}
 set statusline+=\ \|\ 
 set statusline+=%{&ff}
 set statusline+=\ \|\ 
