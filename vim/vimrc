@@ -51,6 +51,7 @@ set statusline+=ASCII=\%04.8b
 set statusline+=\ \|\ 
 set statusline+=HEX=\%04.4B
 set statusline+=]
+set statusline+=%=
 set statusline+=\ [
 set statusline+=%{&ft==\"\"?\"no\ ft\":&ft}
 set statusline+=\ \|\ 
