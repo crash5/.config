@@ -32,8 +32,8 @@
 	addp = !git_add_gui.sh
 
 	cl = clone
-	st = status -uno
-	stu = status -unormal
+	st = status
+	stnu = status -uno
 
 	dt = "!f() { git difftool -y \"$@\" & }; f"
 	dtt = difftool
