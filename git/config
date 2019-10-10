@@ -33,7 +33,7 @@
 
 	cl = clone
 	st = status
-	stnu = status -uno
+	stn = status -uno
 
 	dt = "!f() { git difftool -y \"$@\" & }; f"
 	dtt = difftool
