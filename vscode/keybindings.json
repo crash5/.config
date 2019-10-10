@@ -196,6 +196,10 @@
         "key": "ctrl+[KeyZ]",
         "command": "undo",
         "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+v alt+v",
+        "command": "toggleVim"
     }
     // > Other
 ]
