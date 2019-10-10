@@ -57,31 +57,6 @@
         "files.trimTrailingWhitespace": true
     },
 // < Settings/filetype
-
-// > Additional plugins
-    "cmake.cmakePath": "C:/Program Files/CMake/bin/cmake.exe",
-    "todo-tree.expanded": true,
-    "todo-tree.flat": true,
-    "todo-tree.tags": [
-        "TODO",
-        "FIXME",
-        "BUG",
-        "HACK",
-        "NOTE",
-        "WARNING"
-    ],
-    "todo-tree.defaultHighlight": {
-        "foreground": "green",
-        "type": "tag"
-    },
-    "todo-tree.customHighlight": {
-        "TODO": {},
-        "FIXME": {},
-        "BUG": {},
-        "HACK": {},
-        "NOTE": {},
-        "WARNING": {}
-    },
     "html.format.endWithNewline": true,
     "workbench.settings.useSplitJSON": true,
     "zenMode.hideLineNumbers": false,
@@ -97,6 +72,34 @@
     "[python]": {
         "files.trimTrailingWhitespace": true
     },
-    "editor.wrappingIndent": "deepIndent"
-// < Additional plugins
+    "editor.wrappingIndent": "deepIndent",
+    "workbench.settings.openDefaultKeybindings": true,
+    "workbench.settings.openDefaultSettings": true,
+    "workbench.quickOpen.preserveInput": true,
+    "workbench.view.alwaysShowHeaderActions": true,
+    "workbench.tips.enabled": false,
+    "workbench.editor.openPositioning": "last",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {},
+        "FIXME": {},
+        "BUG": {},
+        "HACK": {},
+        "NOTE": {},
+        "WARNING": {}
+    },
+    "todo-tree.highlights.defaultHighlight": {
+        "foreground": "green",
+        "type": "tag"
+    },
+    "todo-tree.tree.expanded": true,
+    "todo-tree.tree.flat": true,
+    "todo-tree.general.tags": [
+        "TODO",
+        "FIXME",
+        "BUG",
+        "HACK",
+        "NOTE",
+        "WARNING"
+    ],
 }
