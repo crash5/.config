@@ -143,6 +143,19 @@
         "key": "alt+right",
         "command": "workbench.action.navigateForward"
     },
+    // > zoom
+    {
+        "key": "ctrl+shift+[Equal]",
+        "command": "editor.action.fontZoomIn"
+    },
+    {
+        "key": "ctrl+[Minus]",
+        "command": "editor.action.fontZoomOut"
+    },
+    {
+        "key": "ctrl+0",
+        "command": "editor.action.fontZoomReset"
+    },
     {
         "key": "ctrl+numpad_add",
         "command": "editor.action.fontZoomIn"
@@ -154,5 +167,35 @@
     {
         "key": "ctrl+numpad0",
         "command": "editor.action.fontZoomReset"
+    },
+    // < zoom
+    // > refactor
+    {
+        "key": "ctrl+shift+r",
+        "command": "editor.action.changeAll",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    // < refactor
+    // > goto defintion
+    {
+        "key": "f2",
+        "command": "editor.action.revealDeclaration"
+    },
+    {
+        "key": "f2",
+        "command": "editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+        "key": "ctrl+f2",
+        "command": "editor.action.revealDefinitionAside",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    // < goto defintion
+    {
+        "key": "ctrl+[KeyZ]",
+        "command": "undo",
+        "when": "textInputFocus && !editorReadonly"
     }
+    // > Other
 ]
