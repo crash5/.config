@@ -73,6 +73,9 @@
         "files.trimTrailingWhitespace": true
     },
     "editor.wrappingIndent": "deepIndent",
+    "markdown.preview.markEditorSelection": false,
+    "markdown.preview.scrollEditorWithPreview": false,
+    "files.trimTrailingWhitespace": true,
     "workbench.settings.openDefaultKeybindings": true,
     "workbench.settings.openDefaultSettings": true,
     "workbench.quickOpen.preserveInput": true,
@@ -80,6 +83,9 @@
     "workbench.tips.enabled": false,
     "workbench.editor.openPositioning": "last",
     "workbench.editor.enablePreviewFromQuickOpen": false,
+    "bracket-pair-colorizer-2.forceUniqueOpeningColor": true,
+    "bracket-pair-colorizer-2.showBracketsInGutter": true,
+    "bracket-pair-colorizer-2.showHorizontalScopeLine": false,
     "todo-tree.highlights.customHighlight": {
         "TODO": {},
         "FIXME": {},
@@ -102,4 +108,9 @@
         "NOTE",
         "WARNING"
     ],
+    "vim.disableExtension": true,
+    "vim.highlightedyank.enable": true,
+    "vim.hlsearch": true,
+    "vim.mouseSelectionGoesIntoVisualMode": false,
+    "vim.useSystemClipboard": true,
 }
