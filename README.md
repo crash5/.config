@@ -18,6 +18,14 @@ Add computer specific modifications to `~/.local/gitconfig`
 
 ### VS Code
 
+Plugins:
+  - [Bracket Pair Colorizer 2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2)
+  - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+  - [Sort lines](https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines)
+  - [Vim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim)
+  - [Better Align](https://marketplace.visualstudio.com/items?itemName=wwm.better-align)
+
+
 #### Windows
 
 ```
@@ -44,8 +52,8 @@ mklink %APPDATA%\QtProject\qtcreator\externaltools\VSCode.xml %USERPROFILE%\.con
 Set the cloud directory: Settings -> Preferences -> Cloud
 
 Menu ids:
-* Scintilal command ids: https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.h
-* NP++ menu ids: https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/menuCmdID.h
+  - Scintilal command ids: https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.h
+  - NP++ menu ids: https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/menuCmdID.h
 
 ### Beyond Compare
 
@@ -79,6 +87,14 @@ Install search providers: https://crash5.github.io/.config/firefox/searchengines
 ```
 mklink "%APPDATA%\Mozilla\Firefox\Profiles\<PROFILE DIR>\user.js" %USERPROFILE%\.config\firefox\user.js
 ```
+
+### Vim
+
+Plugins:
+  - [vim-sandwich](https://github.com/machakann/vim-sandwich)
+  - [Tabular](https://github.com/godlygeek/tabular)
+  - [Editorconfig](https://github.com/editorconfig/editorconfig-vim)
+  - [vim-commentary](https://github.com/tpope/vim-commentary)
 
 ---
 Sources:
