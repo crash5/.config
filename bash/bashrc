@@ -1,8 +1,8 @@
-#Source global bashrc if required
-    [ -f /etc/bashrc ] && . /etc/bashrc
+# Source global bashrc
+    [ -f /etc/bashrc ] && source /etc/bashrc
 
-# enable programmable completion features
-    [ -f /etc/bash_completion ] && ! shopt -oq posix && . /etc/bash_completion
+# Enable programmable completion features
+    [ -f /etc/bash_completion ] && ! shopt -oq posix && source /etc/bash_completion
 
 # Set Shell options to increase functionality
     shopt -s autocd               # Enable changing directory without cd
@@ -18,8 +18,7 @@
 
 # Source common shell config
     XDG_CONFIG_HOME="$(dirname ${BASH_SOURCE[0]})/.."
-    source "$XDG_CONFIG_HOME/sh/xdg.sh"
-    source "$XDG_CONFIG_HOME/sh/rc.sh"
+    source "$XDG_CONFIG_HOME/bash/xdg.sh"
 
 # For Git
     export GIT_PS1_SHOWDIRTYSTATE=1
@@ -33,11 +32,20 @@
 # Other
     bind Space:magic-space
     #export TERM=xterm-256color
-    export PATH=$PATH:${XDG_CONFIG_HOME}/sh/utilities/
+    export PATH=$PATH:${XDG_CONFIG_HOME}/bash/utilities/
 
 ## Enable commands for fzf ** completion
     complete -F _fzf_path_completion -o default -o bashdefault bcompare
 
+# Load Aliases and Functions
+[ -f "$XDG_CONFIG_HOME"/bash/aliases.sh ] && source $XDG_CONFIG_HOME/bash/aliases.sh
+
+# Set default editor
+export EDITOR="vim"
+export VISUAL=$EDITOR
+
+
+# Custom command prompt
 function setMyPrompt()
 {
     local GREEN="\[\033[0;32m\]"

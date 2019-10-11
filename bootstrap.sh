@@ -31,7 +31,7 @@ for file in "${files[@]}"; do
 	echo "touched $file"
 done
 
-for file in "$XDG_CONFIG_HOME/sh/utilities/"*.*; do
+for file in "$XDG_CONFIG_HOME/bash/utilities/"*.*; do
 	base=$(basename $(basename "$file" .sh) .py)
 	[[ -e "$XDG_BIN_HOME/$base" ]] || ln -s "$file" "$XDG_BIN_HOME/$base"
 	echo "Added utility $base"
