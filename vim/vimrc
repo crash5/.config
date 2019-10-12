@@ -14,8 +14,11 @@ endif
 
 filetype indent plugin on
 
+set guifont=DejaVu\ Sans\ Mono
+
 set nomodeline
 
+set lazyredraw                    " redraw only when we need to.
 "set cursorline                    " highlight current line
 set number                        " show line numbers
 set showmatch                     " highlight matching [{()}]
