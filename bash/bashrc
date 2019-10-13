@@ -32,7 +32,7 @@
 # Other
     bind Space:magic-space
     #export TERM=xterm-256color
-    export PATH=$PATH:${XDG_CONFIG_HOME}/bash/utilities/
+    export PATH=$PATH:${XDG_BIN_HOME}
 
 ## Enable commands for fzf ** completion
     complete -F _fzf_path_completion -o default -o bashdefault bcompare
