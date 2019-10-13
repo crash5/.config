@@ -88,6 +88,9 @@ map Y y$
 
 nnoremap <C-L> :nohl<CR><C-L>
 
+" highlight last inserted text
+nnoremap gV `[v`]
+
 " move by visual line
 "noremap j gj
 "noremap k gk
