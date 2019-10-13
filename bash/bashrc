@@ -44,7 +44,6 @@
 export EDITOR="vim"
 export VISUAL=$EDITOR
 
-
 # Custom command prompt
 function setMyPrompt()
 {
@@ -70,10 +69,10 @@ function setMyPrompt()
     local returnCode="[\$?]"
     local userAndHost="\u@\h"
     local path="\w"
-    local gitPrompt='$(__git_ps1 " (%s)")'
+    local gitPrompt='$(__git_ps1 "(%s) ")'
     local tail="\\$"
 
-    export PS1="${windowTitle}${newLine}${returnCode} ${chrootLocation:+${RED}${chrootLocation} }${LIGHT_GREEN}${userAndHost} ${MSYSTEM:+${PURPLE}${MSYSTEM} }${LIGHT_BLUE}${path}${YELLOW}${gitPrompt}${RESTORE} ${tail} "
+    export PS1="${windowTitle}${newLine}${returnCode} ${chrootLocation:+${RED}${chrootLocation} }${LIGHT_GREEN}${userAndHost} ${MSYSTEM:+${PURPLE}${MSYSTEM} }${LIGHT_BLUE}${path} ${YELLOW}${gitPrompt}${RESTORE}${tail} "
 }
 
 setMyPrompt
