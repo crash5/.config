@@ -115,3 +115,8 @@ let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 let &t_ti.="\e[1 q"
 
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_visibility="high"
+colorscheme solarized
+
