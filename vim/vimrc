@@ -17,6 +17,7 @@ filetype indent plugin on
 set guifont=DejaVu\ Sans\ Mono
 
 set nomodeline
+nnoremap <leader>ml :setlocal invmodeline <bar> doautocmd BufRead <bar> setlocal invmodeline<cr>
 
 set lazyredraw                    " redraw only when we need to.
 "set cursorline                    " highlight current line
