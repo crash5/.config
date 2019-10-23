@@ -100,6 +100,8 @@
 	worktreeaddupdir = "!git worktree add ../$1"
 
 	snap = "!git stash push -m \"snapshot: $(date +'%Y. %m. %d. %H:%M')\" && git stash apply -q stash@{0}"
+	#stashold = "!git log --merges --no-walk --oneline $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
+	stashold = "!git hist --date=iso --merges $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
 [core]
 	#editor = notepad++.exe -multiInst -nosession -noPlugin -ldiff
 	editor = vim
