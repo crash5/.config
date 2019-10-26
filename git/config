@@ -35,7 +35,7 @@
 	st = status
 	stn = status -uno
 
-	dt = "!f() { git difftool -y \"$@\" & }; f"
+	dt = difftool -y
 	dtt = difftool
 	dtc = difftool --cached -y
 	dtcc = difftool --cached
