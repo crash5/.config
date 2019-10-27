@@ -15,41 +15,51 @@ endif
 filetype indent plugin on
 
 set guifont=DejaVu\ Sans\ Mono
+set background=dark
 
 set nomodeline
-nnoremap <leader>ml :setlocal invmodeline <bar> doautocmd BufRead <bar> setlocal invmodeline<cr>
+set lazyredraw                                           " redraw only when we need to.
 
-set lazyredraw                    " redraw only when we need to.
-"set cursorline                    " highlight current line
-set number                        " show line numbers
-set showmatch                     " highlight matching [{()}]
-set softtabstop=4                 " number of spaces in tab when editing
-set tabstop=4                     " number of visual spaces per TAB
-set shiftwidth=4                  " Number of spaces to use for each step of (auto)indent
-set shiftround                    " round indent to multiple of shiftwidth when using < or >
-set expandtab                     " use space instead of tab character
-set virtualedit=all               " allow the cursor to go in to "invalid" places
-syntax on                         " Enable syntax highlighting
-set backspace=indent,eol,start    " allow backspacing over everything in insert mode
+set history=1000                                         " remember more commands and search history
+set undolevels=1000                                      " use many muchos levels of undo
 
-set showbreak=↪\ 
+set noerrorbells                                         " don't beep
+set visualbell                                           " don't beep
+
+set hidden
+set nrformats=                                           " make <C-a> and <C-x> play well with zero-padded numbers (i.e. don't consider them octal or hex)
+set virtualedit=all                                      " allow the cursor to go in to "invalid" places
+set backspace=indent,eol,start                           " allow backspacing over everything in insert mode
+
+set softtabstop=4                                        " number of spaces in tab when editing
+set tabstop=4                                            " number of visual spaces per TAB
+set shiftwidth=4                                         " Number of spaces to use for each step of (auto)indent
+set shiftround                                           " round indent to multiple of shiftwidth when using < or >
+set expandtab                                            " use space instead of tab character
+
+set hlsearch                                             " highlight matches
+set showmatch                                            " highlight matching [{()}]
+set ignorecase
+set incsearch                                            " search as characters are entered
+set smartcase
+
+" set cursorline                                         " highlight current line
+syntax on                                                " Enable syntax highlighting
+set number                                               " show line numbers
+
+set showbreak=↪\
 set listchars=tab:»-,nbsp:␣,trail:·,extends:»,precedes:«
 set list
 
-set colorcolumn=80,120                          " set column guides
-highlight ColorColumn ctermbg=black guibg=Black " background color for column guides
-
-set hlsearch                " highlight matches
-set ignorecase
-set incsearch               " search as characters are entered
-set smartcase
+set colorcolumn=80,120                                   " set column guides
+highlight ColorColumn ctermbg=black guibg=Black          " background color for column guides
 
 
-set laststatus=2            " Always display the status line, even if only one window is displayed
-set ruler                   " Display the cursor position on the last line of the screen or in the status line of a window
-set showcmd                 " show command in bottom bar
-set showmode                " always show what mode we're currently editing in
+set ruler                                                " Display the cursor position on the last line of the screen or in the status line of a window
+set showcmd                                              " show command in bottom bar
+set showmode                                             " always show what mode we're currently editing in
 set wildmenu
+set laststatus=2                                         " Always display the status line, even if only one window is displayed
 
 set statusline=%F%m%r%h%w
 set statusline+=\ [
@@ -74,22 +84,17 @@ set statusline+=%L
 set statusline+=]
 
 
-set hidden
-set history=1000            " remember more commands and search history
-set noerrorbells            " don't beep
-set nrformats=              " make <C-a> and <C-x> play well with zero-padded numbers (i.e. don't consider them octal or hex)
-set undolevels=1000         " use many muchos levels of undo
-set visualbell              " don't beep
-
 " Write as sudo
 cnoremap w!! w !sudo tee % >/dev/null
 
-" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy, which is the default
+" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy
 map Y y$
 
+" Clear highlights
 nnoremap <C-L> :nohl<CR><C-L>
+nnoremap <leader><leader> :nohl<CR>
 
-" highlight last inserted text
+" Select last inserted text
 nnoremap gV `[v`]
 
 " move by visual line
@@ -99,6 +104,16 @@ nnoremap gV `[v`]
 "noremap $ g$
 "onoremap j gj
 "onoremap k gk
+
+" Parse modeline
+nnoremap <leader>ml :setlocal invmodeline <bar> doautocmd BufRead <bar> setlocal invmodeline<cr>
+
+" System clipboard interaction
+noremap <leader>y "*y
+noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
+noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
+vnoremap <leader>y "*ygv
+
 
 if has('mouse')
     set mouse=a
@@ -115,8 +130,9 @@ let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 let &t_ti.="\e[1 q"
 
-set background=dark
 let g:solarized_termcolors=256
 let g:solarized_visibility="high"
 colorscheme solarized
 
+" load vim-surround keymaps for vim-sanwich
+runtime macros/sandwich/keymap/surround.vim
