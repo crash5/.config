@@ -110,8 +110,8 @@ nnoremap <leader>ml :setlocal invmodeline <bar> doautocmd BufRead <bar> setlocal
 
 " System clipboard interaction
 noremap <leader>y "*y
-noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
-noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
+noremap <leader>p :set paste<CR>"*p:set nopaste<CR>
+noremap <leader>P :set paste<CR>"*P:set nopaste<CR>
 vnoremap <leader>y "*ygv
 
 
