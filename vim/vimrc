@@ -114,6 +114,11 @@ noremap <leader>p :set paste<CR>"*p:set nopaste<CR>
 noremap <leader>P :set paste<CR>"*P:set nopaste<CR>
 vnoremap <leader>y "*ygv
 
+" Apply macro from q register
+nnoremap Q @q
+vnoremap Q :norm @q<cr>
+
+nnoremap <leader>q :q<cr>
 
 if has('mouse')
     set mouse=a
