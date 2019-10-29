@@ -108,9 +108,53 @@
         "NOTE",
         "WARNING"
     ],
+    // > vim
     "vim.disableExtension": true,
     "vim.highlightedyank.enable": true,
     "vim.hlsearch": true,
-    "vim.mouseSelectionGoesIntoVisualMode": false,
-    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["Y"],
+            "after": ["y", "$"]
+        },
+        {
+            "before": ["s", "a"],
+            "after": ["y", "s"]
+        },
+        {
+            "before": ["s", "d"],
+            "after": ["d", "s"]
+        },
+        {
+            "before": ["s", "r"],
+            "after": ["c", "s"]
+        },
+        {
+            "before": ["<leader>", "y"],
+            "after": ["\"", "+", "y"]
+        },
+        {
+            "before": ["<leader>", "p"],
+            "after": ["\"", "+", "p"]
+        },
+        {
+            "before": ["<leader>", "P"],
+            "after": ["\"", "+", "P"]
+        },
+        {
+            "before": ["<leader>", "<leader>"],
+            "commands": [":nohl"]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "y"],
+            "after": ["\"", "+", "y", "g", "v"]
+        },
+    ],
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    // < vim
 }
