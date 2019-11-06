@@ -17,7 +17,7 @@ filetype indent plugin on
 set guifont=DejaVu\ Sans\ Mono
 set background=dark
 
-set nomodeline
+set nomodeline                                           " disable modeline parsing
 set lazyredraw                                           " redraw only when we need to.
 
 set history=1000                                         " remember more commands and search history
@@ -43,16 +43,16 @@ set ignorecase
 set incsearch                                            " search as characters are entered
 set smartcase
 
-" set cursorline                                         " highlight current line
+set cursorline                                           " highlight current line
 syntax on                                                " Enable syntax highlighting
 set number                                               " show line numbers
 
-set showbreak=↪\
+set showbreak=↪\ 
 set listchars=tab:»-,nbsp:␣,trail:·,extends:»,precedes:«
 set list
 
 set colorcolumn=80,120                                   " set column guides
-highlight ColorColumn ctermbg=black guibg=Black          " background color for column guides
+" highlight ColorColumn ctermbg=black guibg=Black          " background color for column guides
 
 
 set ruler                                                " Display the cursor position on the last line of the screen or in the status line of a window
@@ -98,35 +98,39 @@ nnoremap <leader><leader> :nohl<CR>
 nnoremap gV `[v`]
 
 " move by visual line
-"noremap j gj
-"noremap k gk
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
 "noremap 0 g0
 "noremap $ g$
-"onoremap j gj
-"onoremap k gk
+onoremap j gj
+onoremap k gk
+onoremap gj j
+onoremap gk k
 
 " Parse modeline
 nnoremap <leader>ml :setlocal invmodeline <bar> doautocmd BufRead <bar> setlocal invmodeline<cr>
 
 " System clipboard interaction
-noremap <leader>y "*y
-noremap <leader>p :set paste<CR>"*p:set nopaste<CR>
-noremap <leader>P :set paste<CR>"*P:set nopaste<CR>
-vnoremap <leader>y "*ygv
+noremap <leader>y "+y
+noremap <leader>p :set paste<CR>"+p:set nopaste<CR>
+noremap <leader>P :set paste<CR>"+P:set nopaste<CR>
+vnoremap <leader>y "+ygv
 
 " Apply macro from q register
 nnoremap Q @q
 vnoremap Q :norm @q<cr>
 
-nnoremap <leader>q :q<cr>
+nnoremap <leader>q :q!<cr>
 
 if has('mouse')
     set mouse=a
 endif
 
-if has('clipboard')
-    set clipboard=unnamed,unnamedplus
-endif
+" if has('clipboard')
+"     set clipboard=unnamed,unnamedplus
+" endif
 
 " enable cursor change in WSL when switch to/from insert and normal mode
 let &t_SI.="\e[5 q"
@@ -141,3 +145,4 @@ colorscheme solarized
 
 " load vim-surround keymaps for vim-sanwich
 runtime macros/sandwich/keymap/surround.vim
+
