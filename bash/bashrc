@@ -70,9 +70,10 @@ function setMyPrompt()
     local userAndHost="\u@\h"
     local path="\w"
     local gitPrompt='$(__git_ps1 "(%s) ")'
+    local virtualEnvName='${VIRTUAL_ENV:+($(basename "${VIRTUAL_ENV}")) }'
     local tail="\\$"
 
-    export PS1="${windowTitle}${newLine}${returnCode} ${chrootLocation:+${RED}${chrootLocation} }${LIGHT_GREEN}${userAndHost} ${MSYSTEM:+${PURPLE}${MSYSTEM} }${LIGHT_BLUE}${path} ${YELLOW}${gitPrompt}${RESTORE}${tail} "
+    export PS1="${windowTitle}${newLine}${returnCode} ${virtualEnvName}${chrootLocation:+${RED}${chrootLocation} }${LIGHT_GREEN}${userAndHost} ${MSYSTEM:+${PURPLE}${MSYSTEM} }${LIGHT_BLUE}${path} ${YELLOW}${gitPrompt}${RESTORE}${tail} "
 }
 
 setMyPrompt
