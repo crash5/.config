@@ -6,4 +6,4 @@ if [ "$1" == "" ]; then
 fi
 
 #grep -n --color=always $2 "$1" `find .` 2>/dev/null
-grep -R -n --color=always --exclude-dir=.git $2 "$1"
+grep -R -n --color=always --exclude-dir=.git $2 "$1" 2>/dev/null
