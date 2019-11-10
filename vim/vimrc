@@ -141,7 +141,7 @@ let &t_ti.="\e[1 q"
 
 let g:solarized_termcolors=256
 let g:solarized_visibility="high"
-colorscheme solarized
+silent! colorscheme solarized
 
 " load vim-surround keymaps for vim-sanwich
 runtime macros/sandwich/keymap/surround.vim
