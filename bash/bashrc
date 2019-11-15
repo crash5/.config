@@ -33,6 +33,10 @@
     bind Space:magic-space
     #export TERM=xterm-256color
     export PATH=$PATH:${XDG_BIN_HOME}
+    # have to press ctrl+d twice to close terminal
+    # export IGNOREEOF=1
+    # save commandline history after every command
+    PROMPT_COMMAND='history -a'
 
 ## Enable commands for fzf ** completion
     complete -F _fzf_path_completion -o default -o bashdefault bcompare
