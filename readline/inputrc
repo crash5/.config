@@ -30,3 +30,8 @@ set mark-symlinked-directories on
 # up/down with ANSI mode
 "\C-[[A": history-search-backward
 "\C-[[B": history-search-forward
+
+# alt+s cycle through possible completions
+"\es": menu-complete
+"\eS": menu-complete-backward
+
