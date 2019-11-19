@@ -14,3 +14,7 @@ alias rl='readlink -m'
 alias me="python3 -c 'import requests,pprint; pprint.pprint(requests.get(\"https://ifconfig.co/json\").json())'"
 alias treeimpl='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 alias treeimplwogit='find . -not -path "./.git/*" | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
+
+alias g='_f() { if [[ $# == 0 ]]; then git st; else git "$@"; fi }; _f'
+complete -o bashdefault -o default -o nospace -F __git_wrap__git_main  g
+
