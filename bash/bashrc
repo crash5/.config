@@ -44,6 +44,11 @@
 # Load Aliases and Functions
     [ -f "$XDG_CONFIG_HOME"/bash/aliases.sh ] && source $XDG_CONFIG_HOME/bash/aliases.sh
 
+# Load completions
+    for file in "$XDG_CONFIG_HOME/bash/completions/"*.*; do
+        source ${file}
+    done
+
 # Set default editor
     export EDITOR="vim"
     export VISUAL=$EDITOR
