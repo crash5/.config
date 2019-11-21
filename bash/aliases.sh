@@ -18,3 +18,6 @@ alias treeimplwogit='find . -not -path "./.git/*" | sed -e "s/[^-][^\/]*\//  |/g
 alias g='_f() { if [[ $# == 0 ]]; then git st; else git "$@"; fi }; _f'
 complete -o bashdefault -o default -o nospace -F __git_wrap__git_main  g
 
+alias k='kubectl'
+complete -o default -F __start_kubectl k
+
