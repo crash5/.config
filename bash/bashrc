@@ -18,7 +18,7 @@
 
 # Source common shell config
     XDG_CONFIG_HOME="$(dirname ${BASH_SOURCE[0]})/.."
-    source "$XDG_CONFIG_HOME/bash/xdg.sh"
+    [ -f "$XDG_CONFIG_HOME/bash/xdg.sh" ] && source "$XDG_CONFIG_HOME/bash/xdg.sh"
 
 # For Git
     export GIT_PS1_SHOWDIRTYSTATE=1
@@ -43,11 +43,14 @@
     complete -F _fzf_path_completion -o default -o bashdefault mc
 
 # Load Aliases and Functions
-    [ -f "$XDG_CONFIG_HOME"/bash/aliases.sh ] && source $XDG_CONFIG_HOME/bash/aliases.sh
+    [ -f "$XDG_CONFIG_HOME"/bash/aliases.sh ] && source "$XDG_CONFIG_HOME/bash/aliases.sh"
 
 # Load completions
-    for file in "$XDG_CONFIG_HOME/bash/completions/"*.*; do
-        source ${file}
+    for file in "$XDG_CONFIG_HOME/bash/completions/"*; do
+        if [ ! -z "$(type -P ${file##*/})" ]
+        then
+            source ${file}
+        fi
     done
 
 # Set default editor
