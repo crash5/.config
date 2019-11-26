@@ -85,6 +85,9 @@ set statusline+=%L
 set statusline+=]
 
 
+
+let mapleader = "\<Space>"
+
 " Write as sudo
 cnoremap w!! w !sudo tee % >/dev/null
 
