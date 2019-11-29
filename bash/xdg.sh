@@ -19,6 +19,7 @@
     export PSQL_HISTORY="$XDG_DATA_HOME/psql/history"
     export MYSQL_HISTFILE="$XDG_DATA_HOME/mysql/history"
 
+    export PATH="$PATH:${XDG_BIN_HOME}"
 # Alias respecting programs
     alias emacs="emacs -q --load $XDG_CONFIG_HOME/emacs/emacsrc"
     alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"

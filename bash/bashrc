@@ -25,16 +25,17 @@
     export GIT_PS1_SHOWUPSTREAM="auto"
 
 # History
-    export HISTCONTROL=ignoreboth
+    export HISTCONTROL=ignoreboth:erasedups
     export HISTSIZE=10000
-    export HISTFILESIZE=20000
+    export HISTFILESIZE=10000
 
 # Other
     bind Space:magic-space
-    #export TERM=xterm-256color
-    export PATH=$PATH:${XDG_BIN_HOME}
+    # export TERM=xterm-256color
+
     # have to press ctrl+d twice to close terminal
     # export IGNOREEOF=1
+
     # save commandline history after every command
     PROMPT_COMMAND='history -a'
 
@@ -43,13 +44,13 @@
     complete -F _fzf_path_completion -o default -o bashdefault mc
 
 # Load Aliases and Functions
-    [ -f "$XDG_CONFIG_HOME"/bash/aliases.sh ] && source "$XDG_CONFIG_HOME/bash/aliases.sh"
+    [ -f "$XDG_CONFIG_HOME/bash/aliases.sh" ] && source "$XDG_CONFIG_HOME/bash/aliases.sh"
 
 # Load completions
     for file in "$XDG_CONFIG_HOME/bash/completions/"*; do
         if [ ! -z "$(type -P ${file##*/})" ]
         then
-            source ${file}
+            source "${file}"
         fi
     done
 
