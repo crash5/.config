@@ -37,7 +37,9 @@
     # export IGNOREEOF=1
 
     # save commandline history after every command
-    PROMPT_COMMAND='history -a'
+    if [[ ${PROMPT_COMMAND} != *"history -a"* ]]; then
+        export PROMPT_COMMAND="history -a;${PROMPT_COMMAND}"
+    fi
 
 ## Enable commands for fzf ** completion
     complete -F _fzf_path_completion -o default -o bashdefault bcompare
