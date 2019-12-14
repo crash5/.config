@@ -96,7 +96,7 @@ map Y y$
 
 " Clear highlights
 nnoremap <C-L> :nohl<CR><C-L>
-nnoremap <leader><leader> :set hls! hls?<CR>
+nnoremap <leader><leader> :nohlsearch<CR>
 
 " Select last inserted text
 nnoremap gV `[v`]
