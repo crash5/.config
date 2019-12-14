@@ -5,6 +5,7 @@ alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
+alias ..5='cd ../../../../..'
 alias -- -='cd -'
 alias df='df -h'
 #alias du='du -hsL'
@@ -27,3 +28,6 @@ mkcd() {
     mkdir -p "${1:? need a directory}" && cd "${1}"
 }
 
+cdl() {
+    cd "${1:? need a directory}" && ll
+}
