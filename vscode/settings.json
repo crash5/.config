@@ -19,7 +19,7 @@
         "editor.lineHighlightBackground": "#172d38",
     },
     "files.trimFinalNewlines": true,
-    "editor.find.autoFindInSelection": true,
+    "editor.find.autoFindInSelection": "multiline",
     "editor.roundedSelection": false,
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.labelFormat": "medium",
@@ -67,7 +67,9 @@
           ]
     },
     "files.associations": {
-        "*.md.html": "markdown"
+        "*.md.html": "markdown",
+        "*.yaml.in": "yaml",
+        "Dockerfile.in": "dockerfile"
     },
     "[python]": {
         "files.trimTrailingWhitespace": true
@@ -159,5 +161,7 @@
         "<C-a>": false,
         "<C-f>": false
     },
+    "editor.find.addExtraSpaceOnTop": false,
+    "search.searchOnType": false,
     // < vim
 }
