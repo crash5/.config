@@ -98,6 +98,9 @@ map Y y$
 nnoremap <C-L> :nohl<CR><C-L>
 nnoremap <leader><leader> :nohlsearch<CR>
 
+" search for selected text
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
 " Select last inserted text
 nnoremap gV `[v`]
 
