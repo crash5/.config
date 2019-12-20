@@ -59,7 +59,7 @@
 
 	hist = log --pretty=format:'%C(yellow)%h %C(reset)%ad | %C(cyan)%s%C(red)%d%C(reset) [%an]' --graph --date=short
 	hista = !git hist --all
-	h = !git hist -25
+	h = "! : git log ; git hist -25"
 	ha = !git h --all
 	hd = !git hist $(git merge-base develop HEAD)..HEAD
 	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate
