@@ -8,7 +8,8 @@ Clone repository
 
 In bash or git bash:
 ```
-echo ". ~/.config/bash/bashrc" > .bash_profile
+echo ". ~/.config/bash/bashrc" >> .bashrc
+echo ". ~/.config/bash/profile" >> .profile
 cd ~/.config && ./bootstrap.sh
 ```
 

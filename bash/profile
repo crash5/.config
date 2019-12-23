@@ -1,0 +1,6 @@
+# attach to running tmux or create new with name default
+# added here because mc subshell open uses bashrc and too slow
+    if [ -z "$TMUX" ] && [ ! -z "$(type -P tmux)" ]
+    then
+        tmux attach -t default || tmux new -s default
+    fi
