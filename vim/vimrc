@@ -143,12 +143,22 @@ endif
 "     set clipboard=unnamed,unnamedplus
 " endif
 
-" enable cursor change in WSL when switch to/from insert and normal mode
+
+" enable cursor change in WSL
 let &t_SI.="\e[5 q"
-let &t_SR.="\e[4 q"
 let &t_EI.="\e[1 q"
-let &t_te.="\e[0 q"
-let &t_ti.="\e[1 q"
+let &t_SR.="\e[4 q"
+
+" enable cursor change in putty
+let &t_SI .= "\e[=1c"
+let &t_EI .= "\e[=2c"
+if exists('$TMUX')
+    let &t_SI .= "\ePtmux;\e\e[=1c\e\\"
+    let &t_EI .= "\ePtmux;\e\e[=2c\e\\"
+endif
+
+" let &t_te.="\e[0 q"
+" let &t_ti.="\e[1 q"
 
 let g:solarized_termcolors=256
 let g:solarized_visibility="high"
