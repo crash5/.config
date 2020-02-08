@@ -39,3 +39,8 @@ mkcd() {
 cdl() {
     cd "${1:? need a directory}" && ll
 }
+
+go() {
+    docker run --rm -v "$(pwd)":/go golang:alpine go "$@"
+}
+
