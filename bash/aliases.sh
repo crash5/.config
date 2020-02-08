@@ -18,16 +18,19 @@ alias me="python3 -c 'import requests,pprint; pprint.pprint(requests.get(\"https
 alias treeimpl='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 alias treeimplwogit='find . -not -path "./.git/*" | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 
-alias g='_f() { if [[ $# == 0 ]]; then git st; else git "$@"; fi }; _f'
- _completion_loader git
-complete -o bashdefault -o default -o nospace -F __git_wrap__git_main  g
-
 alias k='kubectl'
 complete -o default -F __start_kubectl k
 
 alias d='docker'
 _completion_loader docker
 complete -F _docker d
+
+
+g() {
+    if [[ $# == 0 ]]; then git st; else git "$@"; fi
+}
+_completion_loader git
+complete -o bashdefault -o default -o nospace -F __git_wrap__git_main  g
 
 mkcd() {
     mkdir -p "${1:? need a directory}" && cd "${1}"
