@@ -41,10 +41,6 @@
         export PROMPT_COMMAND="history -a;${PROMPT_COMMAND}"
     fi
 
-## Enable commands for fzf ** completion
-    complete -F _fzf_path_completion -o default -o bashdefault bcompare
-    complete -F _fzf_path_completion -o default -o bashdefault mc
-
 # Load Aliases and Functions
     [ -f "$XDG_CONFIG_HOME/bash/aliases.sh" ] && source "$XDG_CONFIG_HOME/bash/aliases.sh"
 
@@ -55,6 +51,9 @@
             source "${file}"
         fi
     done
+
+## Enable commands for fzf ** completion
+    _fzf_setup_completion path bcompare mc
 
 # Set default editor
     export EDITOR="vim"
