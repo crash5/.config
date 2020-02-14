@@ -167,5 +167,11 @@
     },
     "editor.find.addExtraSpaceOnTop": false,
     "search.searchOnType": false,
+    "search.smartCase": true,
+    "vim.leader": " ",
+    "vim.easymotionMarkerFontFamily": "dejavu sans mono",
+    "vim.sneak": true,
+    "vim.useSystemClipboard": true,
+    "vim.replaceWithRegister": true,
     // < vim
 }
