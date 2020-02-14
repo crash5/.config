@@ -96,6 +96,7 @@ Plugins:
   - [Tabular](https://github.com/godlygeek/tabular)
   - [Editorconfig](https://github.com/editorconfig/editorconfig-vim)
   - [vim-commentary](https://github.com/tpope/vim-commentary)
+  - [Replace with register](https://github.com/vim-scripts/ReplaceWithRegister)
 
 ---
 Sources:
