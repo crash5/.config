@@ -150,6 +150,10 @@
             "before": ["<leader>", "<leader>"],
             "commands": [":nohl"]
         },
+        {
+            "before": ["g", "V"],
+            "after": ["`", "[", "v", "`", "]"]
+        },
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
