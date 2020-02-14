@@ -166,6 +166,7 @@ let g:solarized_termcolors=256
 let g:solarized_visibility="high"
 silent! colorscheme solarized
 
+packloadall
 " load vim-surround keymaps for vim-sanwich
 runtime macros/sandwich/keymap/surround.vim
 
