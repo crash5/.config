@@ -127,6 +127,8 @@ nnoremap <leader>ml :setlocal invmodeline <bar> doautocmd BufRead <bar> setlocal
 noremap <leader>y "+y
 noremap <leader>p :set paste<CR>"+p:set nopaste<CR>
 noremap <leader>P :set paste<CR>"+P:set nopaste<CR>
+vnoremap <leader>p "+p<CR>
+vnoremap <leader>P "+P<CR>
 vnoremap <leader>y "+ygv
 
 " Apply macro from q register
