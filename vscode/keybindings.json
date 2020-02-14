@@ -200,6 +200,10 @@
     {
         "key": "alt+v alt+v",
         "command": "toggleVim"
+    },
+    {
+        "key": "ctrl+capslock ctrl+[BracketLeft]",
+        "command": "extension.vim_escape"
     }
     // > Other
 ]
