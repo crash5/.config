@@ -108,6 +108,9 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " Select last inserted text
 nnoremap gV `[v`]
 
+" ctrl+p for fzf file search
+nnoremap <C-p> :<C-u>FZF<CR>
+
 " move by visual line
 noremap j gj
 noremap k gk
