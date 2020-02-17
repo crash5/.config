@@ -119,9 +119,9 @@
 	stat = true
 	missingCommitsCheck = warn
 [difftool "bc"]
-	cmd = BComp.exe $LOCAL $REMOTE
+	cmd = BComp.exe "$LOCAL" "$REMOTE"
 [mergetool "bc"]
-	cmd = BComp.exe $LOCAL $REMOTE $BASE $MERGED
+	cmd = BComp.exe "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 	trustExitCode = false
 	keepBackup = false
 [diff]
