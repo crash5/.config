@@ -111,6 +111,9 @@ nnoremap gV `[v`]
 " ctrl+p for fzf file search
 nnoremap <C-p> :<C-u>FZF<CR>
 
+" use leader for camel case motion plugin
+let g:camelcasemotion_key = '<leader>'
+
 " move by visual line
 noremap j gj
 noremap k gk
