@@ -97,6 +97,10 @@ Plugins:
   - [Editorconfig](https://github.com/editorconfig/editorconfig-vim)
   - [vim-commentary](https://github.com/tpope/vim-commentary)
   - [Replace with register](https://github.com/vim-scripts/ReplaceWithRegister)
+  - [Highlighted yank](https://github.com/machakann/vim-highlightedyank)
+  - [Unimpaired](https://github.com/tpope/vim-unimpaired)
+  - [Visual star search](https://github.com/bronson/vim-visual-star-search)
+  - [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion)
 
 ---
 Sources:
