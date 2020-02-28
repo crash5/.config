@@ -168,6 +168,16 @@ endif
 " let &t_te.="\e[0 q"
 " let &t_ti.="\e[1 q"
 
+" use leader+tab to switch buffers
+set wildcharm=<Tab>
+nnoremap <Leader><Tab> :buffer<Space><Tab>
+
+" use ag instead of grep if available
+if executable('ag')
+    set grepprg=ag\ --vimgrep\ $*
+    set grepformat^=%f:%l:%c:%m
+endif
+
 let g:solarized_termcolors=256
 let g:solarized_visibility="high"
 silent! colorscheme solarized
