@@ -92,15 +92,23 @@ mklink "%APPDATA%\Mozilla\Firefox\Profiles\<PROFILE DIR>\user.js" %USERPROFILE%\
 ### Vim
 
 Plugins:
-  - [vim-sandwich](https://github.com/machakann/vim-sandwich)
-  - [Tabular](https://github.com/godlygeek/tabular)
-  - [Editorconfig](https://github.com/editorconfig/editorconfig-vim)
-  - [vim-commentary](https://github.com/tpope/vim-commentary)
-  - [Replace with register](https://github.com/vim-scripts/ReplaceWithRegister)
-  - [Highlighted yank](https://github.com/machakann/vim-highlightedyank)
-  - [Unimpaired](https://github.com/tpope/vim-unimpaired)
-  - [Visual star search](https://github.com/bronson/vim-visual-star-search)
-  - [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion)
+```
+packages=(
+    "https://github.com/machakann/vim-sandwich"
+    "https://github.com/godlygeek/tabular"
+    "https://github.com/editorconfig/editorconfig-vim"
+    "https://github.com/tpope/vim-commentary"
+    "https://github.com/vim-scripts/ReplaceWithRegister"
+    "https://github.com/machakann/vim-highlightedyank"
+    "https://github.com/tpope/vim-unimpaired"
+    "https://github.com/bronson/vim-visual-star-search"
+    "https://github.com/bkad/CamelCaseMotion"
+)
+
+for url in ${packages[@]}; do
+    git clone --depth 1 --single-branch ${url} pack/bundle/start/${url##*/}
+done
+```
 
 ---
 Sources:
