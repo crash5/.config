@@ -22,14 +22,14 @@ alias k='kubectl'
 complete -o default -F __start_kubectl k
 
 alias d='docker'
-_completion_loader docker
+function_exists _completion_loader && _completion_loader docker
 complete -F _docker d
 
 
 g() {
     if [[ $# == 0 ]]; then git st; else git "$@"; fi
 }
-_completion_loader git
+function_exists _completion_loader && _completion_loader git
 complete -o bashdefault -o default -o nospace -F __git_wrap__git_main  g
 
 mkcd() {

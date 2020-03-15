@@ -4,6 +4,12 @@
 # Enable programmable completion features
     [ -f /etc/bash_completion ] && ! shopt -oq posix && source /etc/bash_completion
 
+
+function_exists() {
+    declare -f -F $1 > /dev/null
+    return $?
+}
+
 # Set Shell options to increase functionality
     shopt -s autocd               # Enable changing directory without cd
     shopt -s cdspell              # Spelling correction for cd
@@ -53,7 +59,7 @@
     done
 
 ## Enable commands for fzf ** completion
-    _fzf_setup_completion path bcompare mc
+    function_exists _fzf_setup_completion && _fzf_setup_completion path bcompare mc
 
 # Set default editor
     export EDITOR="vim"
