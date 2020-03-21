@@ -1,137 +1,143 @@
 [user]
-	name = Imre NAGY
-	email = crash5@users.noreply.github.com
+    name = Imre NAGY
+    email = crash5@users.noreply.github.com
 [color]
-	ui = auto
+    ui = auto
 [alias]
-	branch-name = rev-parse --abbrev-ref HEAD
-	branch-name-tracking = rev-parse --abbrev-ref --symbolic-full-name "@{u}"
+    branch-name = rev-parse --abbrev-ref HEAD
+    branch-name-tracking = rev-parse --abbrev-ref --symbolic-full-name "@{u}"
 
-	pullas = pull --autostash
+    pullas = pull --autostash
 
-	p = push
-	pushu = !git push -u origin $(git branch-name)
-	preview = "!f() { : git checkout ; git push origin HEAD:refs/for/\"${@:?Missing parameter (branch, etc.)}\"; }; f"
-	pdraft = "!f() { : git checkout ; git push origin HEAD:refs/drafts/\"${@:?Missing parameter (branch, etc.)}\"; }; f"
-	co = checkout
-	cos = "!f() { git fetch -q && git co $(git brr | fzf --tac -q ${1:-''} | awk '{ print $1 }'); }; f"
-	cod = checkout --detach
+    p = push
+    pushu = !git push -u origin $(git branch-name)
+    preview = "!f() { : git checkout ; git push origin HEAD:refs/for/\"${@:?Missing parameter (branch, etc.)}\"; }; f"
+    pdraft = "!f() { : git checkout ; git push origin HEAD:refs/drafts/\"${@:?Missing parameter (branch, etc.)}\"; }; f"
+    co = checkout
+    cos = "!f() { git fetch -q && git co $(git brr | fzf --tac -q ${1:-''} | awk '{ print $1 }'); }; f"
+    cod = checkout --detach
 
-	br = branch -vv
-	bra = !git br -a
-	brr = !git br -r
+    br = branch -vv
+    bra = !git br -a
+    brr = !git br -r
 
-	ci = commit
-	cia = commit --amend
-	ciane = commit --amend --no-edit
-	cif = commit --fixup
-	cis = commit --squash
-	ff = "!f() { git commit --fixup=$(git log --all --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
-	ff-develop = "!f() { git commit --fixup=$(git log $(git merge-base develop HEAD)..HEAD --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
+    ci = commit
+    cia = commit --amend
+    ciane = commit --amend --no-edit
+    cif = commit --fixup
+    cis = commit --squash
+    ff = "!f() { git commit --fixup=$(git log --all --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
+    ff-develop = "!f() { git commit --fixup=$(git log $(git merge-base develop HEAD)..HEAD --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
 
-	addp = !git_add_gui.sh
+    addp = !git_add_gui.sh
 
-	cl = clone
-	st = status
-	stn = status -uno
+    cl = clone
+    st = status
+    stn = status -uno
 
-	dt = difftool -y
-	dtt = difftool
-	dtc = difftool --cached -y
-	dtcc = difftool --cached
+    dt = difftool -y
+    dtt = difftool
+    dtc = difftool --cached -y
+    dtcc = difftool --cached
 
-	dtd = difftool --dir-diff
-	dtdoc = !git dtd $1^
-	dtdc = !git dtd --cached
-	dtds = !git dtd stash
-	dtdu = !git dtd @{u}
-	dtdse = "!f() { git fetch -q && git dtd $(git brr | fzf --tac -q ${1:-''} | awk '{ print $1 }'); }; f"
+    dtd = difftool --dir-diff
+    dtdoc = !git dtd $1^
+    dtdc = !git dtd --cached
+    dtds = !git dtd stash
+    dtdu = !git dtd @{u}
+    dtdse = "!f() { git fetch -q && git dtd $(git brr | fzf --tac -q ${1:-''} | awk '{ print $1 }'); }; f"
 
-	diffc = diff --cached
-	diffcw = diff --cached --color-words
-	diffu = diff @{u}
-	diffn = diff --name-only
-	diffw = diff --color-words
-	diffurange = range-diff @{u}...@
-	diffrange-rebase = range-diff @{1}...HEAD
+    diffc = diff --cached
+    diffcw = diff --cached --color-words
+    diffu = diff @{u}
+    diffn = diff --name-only
+    diffw = diff --color-words
+    diffurange = range-diff @{u}...@
+    diffrange-rebase = range-diff @{1}...HEAD
 
-	mt = mergetool
+    mt = mergetool
 
-	hist = log --pretty=format:'%C(yellow)%h %C(reset)%ad | %C(cyan)%s%C(red)%d%C(reset) [%an]' --graph --date=short
-	hista = !git hist --all
-	h = "! : git log ; git hist -25"
-	ha = !git h --all
-	hd = !git hist $(git merge-base develop HEAD)..HEAD
-	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate
-	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [a:%an,c:%cn]" --decorate --numstat
+    hist = log --pretty=format:'%C(yellow)%h %C(reset)%ad | %C(cyan)%s%C(red)%d%C(reset) [%an]' --graph --date=short
+    hista = !git hist --all
+    h = "! : git log ; git hist -25"
+    ha = !git h --all
+    hd = !git hist $(git merge-base develop HEAD)..HEAD
+    ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [a:%an,c:%cn]" --decorate --numstat
 
-	unstage = "reset HEAD --"
-	r = reset
-	r1 = reset HEAD^
-	r2 = reset HEAD^^
-	rs = reset --soft
-	rs1 = reset --soft HEAD^
-	rh = reset --hard
-	rh1 = reset --hard HEAD^
-	rh2 = reset --hard HEAD^^
-	rhu = reset --hard @{u}
+    unstage = "reset HEAD --"
+    r = reset
+    r1 = reset HEAD^
+    r2 = reset HEAD^^
+    rs = reset --soft
+    rs1 = reset --soft HEAD^
+    rh = reset --hard
+    rh1 = reset --hard HEAD^
+    rh2 = reset --hard HEAD^^
+    rhu = reset --hard @{u}
 
-	rei = rebase -i
-	reiu = rebase -i @{u}
-	rec = rebase --continue
-	rea = rebase --abort
-	rei-develop = !git rebase -i $(git merge-base develop HEAD)
+    rei = rebase -i
+    reiu = rebase -i @{u}
+    rec = rebase --continue
+    rea = rebase --abort
+    rei-develop = !git rebase -i $(git merge-base develop HEAD)
 
-	cleanrepo = clean -dfx
-	pruneorigin = remote prune origin
-	gones = !git fetch -q -p && git branch -vv | awk '/: gone]/{print $1}'
-	deletegones = !git gones | xargs -n 1 -r -p git branch -d
-	deletegones-force = !git gones | xargs -n 1 -r -p git branch -D
-	deletegonesnoask = !git gones | xargs -n 1 -r git branch -d
-	deletegonesnoask-force = !git gones | xargs -n 1 -r git branch -D
+    cleanrepo = clean -dfx
+    pruneorigin = remote prune origin
+    gones = !git fetch -q -p && git branch -vv | awk '/: gone]/{print $1}'
+    deletegones = !git gones | xargs -n 1 -r -p git branch -d
+    deletegones-force = !git gones | xargs -n 1 -r -p git branch -D
+    deletegonesnoask = !git gones | xargs -n 1 -r git branch -d
+    deletegonesnoask-force = !git gones | xargs -n 1 -r git branch -D
 
-	assume = update-index --assume-unchanged
-	unassume = update-index --no-assume-unchanged
-	assumedlist = !git ls-files -v | grep ^h | cut -c 3-
+    assume = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    assumedlist = !git ls-files -v | grep ^h | cut -c 3-
 
-	skipworktree = update-index --skip-worktree
-	unskipworktree = update-index --no-skip-worktree
-	skipworktreelist = !git ls-files -v | grep ^S | cut -c 3-
-	worktreeaddupdir = "!git worktree add ../$1"
+    skipworktree = update-index --skip-worktree
+    unskipworktree = update-index --no-skip-worktree
+    skipworktreelist = !git ls-files -v | grep ^S | cut -c 3-
+    worktreeaddupdir = "!git worktree add ../$1"
 
-	snap = "!git stash push -m \"snapshot: $(date +'%Y. %m. %d. %H:%M')\" && git stash apply -q stash@{0}"
-	#stashold = "!git log --merges --no-walk --oneline $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
-	stashold = "!git hist --date=iso --merges $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
+    snap = "!git stash push -m \"snapshot: $(date +'%Y. %m. %d. %H:%M')\" && git stash apply -q stash@{0}"
+    #stashold = "!git log --merges --no-walk --oneline $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
+    stashold = "!git hist --date=iso --merges $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
 [core]
-	#editor = notepad++.exe -multiInst -nosession -noPlugin -ldiff
-	editor = vim
-	autocrlf = input
-	pager = less -x4 -+X # enable mouse wheel scroll in mintty
-	ignorecase = false
+    #editor = notepad++.exe -multiInst -nosession -noPlugin -ldiff
+    editor = vim
+    autocrlf = input
+    pager = less -x4 -+X # enable mouse wheel scroll in mintty
+    ignorecase = false
 [log]
-	date = format:%Y-%m-%d %H:%M:%S
+    date = format:%Y-%m-%d %H:%M:%S
 [commit]
-	verbose = true
+    verbose = true
 [pull]
-	rebase = true
+    rebase = true
 [rebase]
-	autoSquash = true
-	stat = true
-	missingCommitsCheck = warn
+    autoSquash = true
+    stat = true
+    missingCommitsCheck = warn
 [difftool "bc"]
-	cmd = BComp.exe "$LOCAL" "$REMOTE"
+    cmd = BComp.exe "$LOCAL" "$REMOTE"
 [mergetool "bc"]
-	cmd = BComp.exe "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
-	trustExitCode = false
-	keepBackup = false
+    cmd = BComp.exe "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+    trustExitCode = false
+    keepBackup = false
+[difftool "bcwsl"]
+    cmd = BComp.exe "$(wslpath -aw $LOCAL)" "$(wslpath -aw $REMOTE)"
+[mergetool "bcwsl"]
+    cmd = BComp.exe "$(wslpath -aw $LOCAL)" "$(wslpath -aw $REMOTE)" "$(wslpath -aw $BASE)" "$(wslpath -aw $MERGED)"
+    trustExitCode = false
+    keepBackup = false
 [diff]
-	tool = bc
+    tool = bc
 [merge]
-	tool = bc
-	summary = true
+    tool = bc
+    summary = true
 [mergetool]
-	keepBackup = false
+    keepBackup = false
 [rerere]
-	enabled = true
+    enabled = true
 [include]
-	path = ~/.local/gitconfig
+    path = ~/.local/gitconfig
