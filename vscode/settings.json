@@ -114,7 +114,6 @@
         "WARNING"
     ],
     // > vim
-    "vim.disableExtension": true,
     "vim.highlightedyank.enable": true,
     "vim.hlsearch": true,
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -147,12 +146,16 @@
             "after": ["\"", "+", "P"]
         },
         {
+            "before": ["<leader>", "q"],
+            "commands": [":q"]
+        },
+        {
             "before": ["<leader>", "<leader>"],
             "commands": [":nohl"]
         },
         {
             "before": ["g", "V"],
-            "after": ["`", "[", "v", "`", "]"]
+            "after": ["`", "[", "v", "`", "]", "h"]
         },
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
@@ -173,5 +176,7 @@
     "vim.sneak": true,
     "vim.useSystemClipboard": true,
     "vim.replaceWithRegister": true,
+    "vim.camelCaseMotion.enable": true,
+    "vim.visualstar": true,
     // < vim
 }
