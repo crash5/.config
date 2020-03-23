@@ -204,6 +204,10 @@
     {
         "key": "ctrl+capslock ctrl+[BracketLeft]",
         "command": "extension.vim_escape"
+    },
+    {
+        "key": "ctrl+alt+p",
+        "command": "workbench.action.showEditorsInGroup"
     }
     // > Other
 ]
