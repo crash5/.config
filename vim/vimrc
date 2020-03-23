@@ -167,6 +167,9 @@ let &t_SR.="\e[1 q"
 set wildcharm=<Tab>
 nnoremap <Leader><Tab> :buffer<Space><Tab>
 
+" Opens an edit command with the path of the currently edited file filled in
+map <Leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
+
 " use ag instead of grep if available
 if executable('ag')
     set grepprg=ag\ --vimgrep\ $*
