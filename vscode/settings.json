@@ -178,5 +178,6 @@
     "vim.replaceWithRegister": true,
     "vim.camelCaseMotion.enable": true,
     "vim.visualstar": true,
+    "editor.semanticHighlighting.enabled": true,
     // < vim
 }
