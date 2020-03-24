@@ -44,13 +44,6 @@
         "when": "editorTextFocus && editorLangId == 'cpp'"
     },
     // < C/C++
-    // > multi clipboard
-    {
-        "key": "ctrl+shift+v",
-        "command": "multiclip.list",
-        "when": "editorTextFocus"
-    },
-    // < multi clipboard
     // > Other...
     {
         "key": "ctrl+numpad_divide",
@@ -91,11 +84,6 @@
     {
         "key": "ctrl+shift+alt+s",
         "command": "workbench.action.files.saveWithoutFormatting"
-    },
-    {
-        "key": "ctrl+alt+v",
-        "command": "-multiclip.list",
-        "when": "editorTextFocus"
     },
     {
         "key": "shift+enter",
