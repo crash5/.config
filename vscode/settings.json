@@ -122,18 +122,6 @@
             "after": ["y", "$"]
         },
         {
-            "before": ["s", "a"],
-            "after": ["y", "s"]
-        },
-        {
-            "before": ["s", "d"],
-            "after": ["d", "s"]
-        },
-        {
-            "before": ["s", "r"],
-            "after": ["c", "s"]
-        },
-        {
             "before": ["<leader>", "y"],
             "after": ["\"", "+", "y"]
         },
@@ -157,6 +145,16 @@
             "before": ["g", "V"],
             "after": ["`", "[", "v", "`", "]", "h"]
         },
+        {
+            "before": ["<C-k>", "<CR>"],
+            "commands": ["workbench.action.keepEditor"]
+        },
+    ],
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": ["k", "j"],
+            "after": ["<esc>"]
+        },
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
@@ -168,16 +166,18 @@
         "<C-a>": false,
         "<C-f>": false
     },
-    "editor.find.addExtraSpaceOnTop": false,
-    "search.searchOnType": false,
-    "search.smartCase": true,
-    "vim.leader": " ",
+    "vim.leader": "<space>",
     "vim.easymotionMarkerFontFamily": "dejavu sans mono",
     "vim.sneak": true,
     "vim.useSystemClipboard": true,
     "vim.replaceWithRegister": true,
     "vim.camelCaseMotion.enable": true,
     "vim.visualstar": true,
-    "editor.semanticHighlighting.enabled": true,
+    "vim.startofline": false,
     // < vim
+    "timeline.showView": true,
+    "editor.semanticHighlighting.enabled": true,
+    "editor.find.addExtraSpaceOnTop": false,
+    "search.searchOnType": false,
+    "search.smartCase": true,
 }
