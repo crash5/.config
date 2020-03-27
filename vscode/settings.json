@@ -143,17 +143,22 @@
         },
         {
             "before": ["g", "V"],
-            "after": ["`", "[", "v", "`", "]", "h"]
+            "after": ["`", "[", "v", "`", "]", "g", "e"]
         },
         {
             "before": ["<C-k>", "<CR>"],
             "commands": ["workbench.action.keepEditor"]
         },
+        {
+            "before": ["<C-k>", "m"],
+            "commands": ["workbench.action.editor.changeLanguageMode"]
+        },
     ],
     "vim.insertModeKeyBindingsNonRecursive": [
         {
             "before": ["k", "j"],
-            "after": ["<esc>"]
+            "after": ["<Esc>"]
+            // "commands": ["extension.vim_escape"]
         },
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
