@@ -1,0 +1,2 @@
+# have to press ctrl+d twice to close terminal
+export IGNOREEOF=1
