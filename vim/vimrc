@@ -171,6 +171,7 @@ nnoremap <Leader><Tab> :buffer<Space><Tab>
 map <Leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
 
 inoremap kj <ESC>
+inoremap jk <ESC>
 
 nnoremap <tab> %
 vnoremap <tab> %
