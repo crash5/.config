@@ -132,6 +132,7 @@
     keepBackup = false
 [diff]
     tool = bc
+    colorMoved = zebra
 [merge]
     tool = bc
     summary = true
