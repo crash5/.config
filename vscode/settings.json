@@ -154,11 +154,14 @@
             "commands": ["workbench.action.editor.changeLanguageMode"]
         },
     ],
-    "vim.insertModeKeyBindingsNonRecursive": [
+    "vim.insertModeKeyBindings": [
         {
             "before": ["k", "j"],
             "after": ["<Esc>"]
-            // "commands": ["extension.vim_escape"]
+        },
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
         },
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
