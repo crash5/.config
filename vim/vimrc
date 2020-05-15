@@ -173,12 +173,13 @@ map <Leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
 inoremap kj <ESC>
 inoremap jk <ESC>
 
+
 nnoremap <tab> %
 vnoremap <tab> %
 
 " use ag instead of grep if available
-if executable('ag')
-    set grepprg=ag\ --vimgrep\ $*
+if executable('rg')
+    set grepprg=rg\ -z\ --vimgrep\ $*
     set grepformat^=%f:%l:%c:%m
 endif
 
