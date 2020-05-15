@@ -1,0 +1,3 @@
+# Turn off flow control
+# Disable freeze/unfreeze with CTRL-S/CTRL-Q
+stty -ixon
