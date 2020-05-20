@@ -85,7 +85,6 @@ set statusline+=%L
 set statusline+=]
 
 
-
 let mapleader = "\<Space>"
 
 " Write as sudo
@@ -93,7 +92,6 @@ cnoremap w!! w !sudo tee % >/dev/null
 
 " expand to the file path
 cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
-
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy
 map Y y$
@@ -108,11 +106,6 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " Select last inserted text
 nnoremap gV `[v`]
 
-" ctrl+p for fzf file search
-nnoremap <C-p> :<C-u>FZF<CR>
-
-" use leader for camel case motion plugin
-let g:camelcasemotion_key = '<leader>'
 
 " move by visual line
 noremap j gj
@@ -142,6 +135,8 @@ nnoremap Q @q
 vnoremap Q :norm @q<cr>
 
 nnoremap <leader>q :q!<cr>
+
+nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
 
 if has('mouse')
     set mouse=a
@@ -174,13 +169,20 @@ inoremap kj <ESC>
 inoremap jk <ESC>
 
 
-nnoremap <tab> %
-vnoremap <tab> %
 
-" use ag instead of grep if available
+" plugin and external things
+" ctrl+p for fzf file search
+nnoremap <C-p> :<C-u>FZF<CR>
+nnoremap <leader><C-p> :<C-u>FZF <C-R>=expand("%:p:h") . "/"<CR><CR>
+
+" use leader for camel case motion plugin
+let g:camelcasemotion_key = '<leader>'
+"
+" use rg instead of grep if available
 if executable('rg')
     set grepprg=rg\ -z\ --vimgrep\ $*
     set grepformat^=%f:%l:%c:%m
+    nnoremap <leader>g :silent execute "grep! " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
 endif
 
 let g:solarized_termcolors=256
