@@ -171,9 +171,6 @@ inoremap jk <ESC>
 
 
 " plugin and external things
-" ctrl+p for fzf file search
-nnoremap <C-p> :<C-u>FZF<CR>
-nnoremap <leader><C-p> :<C-u>FZF <C-R>=expand("%:p:h") . "/"<CR><CR>
 
 " use leader for camel case motion plugin
 let g:camelcasemotion_key = '<leader>'
@@ -193,3 +190,21 @@ packloadall
 " load vim-surround keymaps for vim-sanwich
 runtime macros/sandwich/keymap/surround.vim
 
+" ctrl+p for fzf file search
+if exists('g:loaded_fzf') && executable('fzf')
+    nnoremap <C-p> :<C-u>FZF<CR>
+    nnoremap <leader><C-p> :<C-u>FZF <C-R>=expand("%:p:h") . "/"<CR><CR>
+endif
+
+" coc.vim
+if exists('g:did_coc_loaded')
+    set cmdheight=2
+    set signcolumn=yes
+    xmap if <Plug>(coc-funcobj-i)
+    xmap af <Plug>(coc-funcobj-a)
+    omap if <Plug>(coc-funcobj-i)
+    omap af <Plug>(coc-funcobj-a)
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+endif
