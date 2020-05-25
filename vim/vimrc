@@ -123,12 +123,10 @@ onoremap gk k
 nnoremap <leader>ml :setlocal invmodeline <bar> doautocmd BufRead <bar> setlocal invmodeline<cr>
 
 " System clipboard interaction
-noremap <leader>y "+y
-noremap <leader>p :set paste<CR>"+p:set nopaste<CR>
-noremap <leader>P :set paste<CR>"+P:set nopaste<CR>
-vnoremap <leader>p "+p<CR>
-vnoremap <leader>P "+P<CR>
-vnoremap <leader>y "+ygv
+nnoremap <F9> :set invpaste paste?<CR>
+set pastetoggle=<F9>
+noremap <leader>s "+
+vnoremap <leader>s "+
 
 " Apply macro from q register
 nnoremap Q @q
