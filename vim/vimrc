@@ -120,7 +120,7 @@ onoremap gj j
 onoremap gk k
 
 " Parse modeline
-nnoremap <leader>ml :setlocal invmodeline <bar> doautocmd BufRead <bar> setlocal invmodeline<cr>
+nnoremap <leader>ml :setlocal invmodeline <bar> doautocmd BufRead <bar> setlocal invmodeline<CR>
 
 " System clipboard interaction
 nnoremap <F9> :set invpaste paste?<CR>
@@ -130,9 +130,9 @@ vnoremap <leader>s "+
 
 " Apply macro from q register
 nnoremap Q @q
-vnoremap Q :norm @q<cr>
+vnoremap Q :norm @q<CR>
 
-nnoremap <leader>q :q!<cr>
+nnoremap <leader>q :<C-u>q!<CR>
 
 nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
 
