@@ -1,14 +1,29 @@
-" XDG config
-set undodir=$XDG_DATA_HOME/vim/undo//
-set directory=$XDG_DATA_HOME/vim/swap//
-set backupdir=$XDG_DATA_HOME/vim/backup//
-set runtimepath+=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
-set packpath+=$XDG_CONFIG_HOME/vim
+" vim: foldmethod=marker
 
 set viminfo='100,<1000,s100,h
 
-if !has('nvim')
-    set viminfofile=$XDG_DATA_HOME/vim/viminfo
+" XDG path config {{{
+if !empty($XDG_DATA_HOME)
+    set undodir=$XDG_DATA_HOME/vim/undo//
+    set directory=$XDG_DATA_HOME/vim/swap//
+    set backupdir=$XDG_DATA_HOME/vim/backup//
+
+    if !has('nvim')
+        set viminfo+=n$XDG_DATA_HOME/vim/viminfo
+    endif
+endif
+
+if !empty($XDG_CONFIG_HOME)
+    set runtimepath^=$XDG_CONFIG_HOME/vim
+    set runtimepath+=$XDG_CONFIG_HOME/vim/after
+    set packpath^=$XDG_CONFIG_HOME/vim
+    set packpath+=$XDG_CONFIG_HOME/vim/after
+endif
+" }}}
+
+
+if has('crypt-blowfish2')
+    set cryptmethod=blowfish2
 endif
 
 
@@ -85,7 +100,8 @@ set statusline+=%L
 set statusline+=]
 
 
-let mapleader = "\<Space>"
+" Keybindings {{{
+let g:mapleader = "\<Space>"
 
 " Write as sudo
 cnoremap w!! w !sudo tee % >/dev/null
@@ -105,7 +121,6 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " Select last inserted text
 nnoremap gV `[v`]
-
 
 " move by visual line
 noremap j gj
@@ -136,13 +151,22 @@ nnoremap <leader>q :<C-u>q!<CR>
 
 nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
 
+" use leader+tab to switch buffers
+set wildcharm=<Tab>
+nnoremap <Leader><Tab> :buffer<Space><Tab>
+
+" Opens an edit command with the path of the currently edited file filled in
+map <Leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
+
+inoremap kj <ESC>
+inoremap jk <ESC>
+
+" }}}
+
+
 if has('mouse')
     set mouse=a
 endif
-
-" if has('clipboard')
-"     set clipboard=unnamed,unnamedplus
-" endif
 
 
 " enable cursor change
@@ -156,15 +180,6 @@ let &t_SR.="\e[1 q"
 "     let &t_ER .= "\ePtmux;\e\e[1 q\e\\"
 " endif
 
-" use leader+tab to switch buffers
-set wildcharm=<Tab>
-nnoremap <Leader><Tab> :buffer<Space><Tab>
-
-" Opens an edit command with the path of the currently edited file filled in
-map <Leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
-
-inoremap kj <ESC>
-inoremap jk <ESC>
 
 
 
