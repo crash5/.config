@@ -150,6 +150,7 @@ vnoremap Q :norm @q<CR>
 nnoremap <leader>q :<C-u>q!<CR>
 
 nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
+xnoremap <leader>g y :silent execute "grep! -R " . shellescape(getreg('"')) . " ."<CR>:copen<CR>
 
 " use leader+tab to switch buffers
 set wildcharm=<Tab>
@@ -192,7 +193,8 @@ let g:camelcasemotion_key = '<leader>'
 if executable('rg')
     set grepprg=rg\ -z\ --vimgrep\ $*
     set grepformat^=%f:%l:%c:%m
-    nnoremap <leader>g :silent execute "grep! " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
+    nnoremap <leader>g :silent execute "grep! -F " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
+    xnoremap <leader>g y :silent execute "grep! -F " . shellescape(getreg('"')) . " ."<CR>:copen<CR>
 endif
 
 let g:solarized_termcolors=256
