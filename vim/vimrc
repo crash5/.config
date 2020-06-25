@@ -1,5 +1,9 @@
 " vim: foldmethod=marker
 
+let g:mapleader = "\<Space>"
+
+filetype indent plugin on
+
 set viminfo='100,<1000,s100,h
 
 " XDG path config {{{
@@ -21,65 +25,94 @@ if !empty($XDG_CONFIG_HOME)
 endif
 " }}}
 
-
+" Security {{{
 if has('crypt-blowfish2')
     set cryptmethod=blowfish2
 endif
 
-
-filetype indent plugin on
-
-set guifont=DejaVu\ Sans\ Mono
-set background=dark
-
 set nomodeline                                           " disable modeline parsing
-set lazyredraw                                           " redraw only when we need to.
+set modelines=2
+" parse modeline with keybinding
+nnoremap <leader>ml :setlocal modeline <bar> doautocmd BufRead <bar> setlocal nomodeline<CR>
+" }}}
 
-set history=1000                                         " remember more commands and search history
-set undolevels=1000                                      " use many muchos levels of undo
+" Display {{{
+set guifont=DejaVu\ Sans\ Mono
 
-set noerrorbells                                         " don't beep
-set visualbell                                           " don't beep
-
-set hidden
-set nrformats=                                           " make <C-a> and <C-x> play well with zero-padded numbers (i.e. don't consider them octal or hex)
-set virtualedit=all                                      " allow the cursor to go in to "invalid" places
-set backspace=indent,eol,start                           " allow backspacing over everything in insert mode
-
-set softtabstop=4                                        " number of spaces in tab when editing
-set tabstop=4                                            " number of visual spaces per TAB
-set shiftwidth=4                                         " Number of spaces to use for each step of (auto)indent
-set shiftround                                           " round indent to multiple of shiftwidth when using < or >
-set expandtab                                            " use space instead of tab character
-
-set hlsearch                                             " highlight matches
-set showmatch                                            " highlight matching [{()}]
-set ignorecase
-set incsearch                                            " search as characters are entered
-set smartcase
-
-set cursorline                                           " highlight current line
+set background=dark
 syntax on                                                " Enable syntax highlighting
-set number                                               " show line numbers
+
+set lazyredraw                                           " redraw only when we need to.
 
 set showbreak=↪\ 
 set listchars=tab:»-,nbsp:␣,trail:·,extends:»,precedes:«
 set list
 
 set colorcolumn=80,120                                   " set column guides
-" highlight ColorColumn ctermbg=black guibg=Black          " background color for column guides
-
-
+set cursorline                                           " highlight current line
+set number                                               " show line numbers
 set ruler                                                " Display the cursor position on the last line of the screen or in the status line of a window
 set showcmd                                              " show command in bottom bar
 set showmode                                             " always show what mode we're currently editing in
-set wildmenu
-set laststatus=2                                         " Always display the status line, even if only one window is displayed
+" }}}
 
-" more natural split directions
+" Other (history, bell, mouse) {{{
+set history=1000                                         " remember more commands and search history
+set undolevels=1000                                      " use many muchos levels of undo
+
+set wildmenu
+
+set noerrorbells                                         " don't beep
+set visualbell                                           " don't beep
+
+if has('mouse')
+    set mouse=a
+endif
+" }}}
+
+" Operation {{{
+set hidden
+set nrformats=                                           " make <C-a> and <C-x> play well with zero-padded numbers (i.e. don't consider them octal or hex)
+set virtualedit=all                                      " allow the cursor to go in to "invalid" places
+set backspace=indent,eol,start                           " allow backspacing over everything in insert mode
+
+" More natural split directions
 set splitbelow
 set splitright
+" }}}
 
+" Whitespace {{{
+set softtabstop=4                                        " number of spaces in tab when editing
+set tabstop=4                                            " number of visual spaces per TAB
+set shiftwidth=4                                         " Number of spaces to use for each step of (auto)indent
+set shiftround                                           " round indent to multiple of shiftwidth when using < or >
+set expandtab                                            " use space instead of tab character
+" }}}
+
+" Search/Replace {{{
+set hlsearch                                             " highlight matches
+set showmatch                                            " highlight matching [{()}]
+set ignorecase
+set incsearch                                            " search as characters are entered
+set smartcase
+
+" Clear highlights
+nnoremap <leader><leader> :nohlsearch<CR>
+
+" search word under cursor or selected text
+nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
+xnoremap <leader>g y :silent execute "grep! -R " . shellescape(getreg('"')) . " ."<CR>:copen<CR>
+
+" search for selected text
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+" search and replace word/selection
+nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
+vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
+" }}}
+
+" Statuline {{{
+set laststatus=2                                         " Always display the status line, even if only one window is displayed
 set statusline=%F%m%r%h%w
 set statusline+=\ [
 set statusline+=ASCII=\%04.8b
@@ -102,82 +135,58 @@ set statusline+=%v
 set statusline+=\/
 set statusline+=%L
 set statusline+=]
+" }}}
 
+" System clipboard interaction {{{
+nnoremap <F9> :set invpaste paste?<CR>
+set pastetoggle=<F9>
+noremap <leader>s "+
+vnoremap <leader>s "+
+" }}}
 
-" Keybindings {{{
-let g:mapleader = "\<Space>"
+" Other keybindings {{{
 
-" Write as sudo
-cnoremap w!! w !sudo tee % >/dev/null
+inoremap kj <ESC>
+inoremap jk <ESC>
 
-" expand to the file path
-cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
+noremap <leader>q :<C-u>q!<CR>
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy
-map Y y$
-
-" Clear highlights
-nnoremap <C-L> :nohl<CR><C-L>
-nnoremap <leader><leader> :nohlsearch<CR>
-
-" search for selected text
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-
-" Select last inserted text
-nnoremap gV `[v`]
+noremap Y y$
 
 " move by visual line
 noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
-"noremap 0 g0
-"noremap $ g$
 onoremap j gj
 onoremap k gk
 onoremap gj j
 onoremap gk k
 
-" Parse modeline
-nnoremap <leader>ml :setlocal invmodeline <bar> doautocmd BufRead <bar> setlocal invmodeline<CR>
+" Select last inserted text
+nnoremap gV `[v`]
 
-" System clipboard interaction
-nnoremap <F9> :set invpaste paste?<CR>
-set pastetoggle=<F9>
-noremap <leader>s "+
-vnoremap <leader>s "+
-
-" Apply macro from q register
-nnoremap Q @q
-vnoremap Q :norm @q<CR>
-
-nnoremap <leader>q :<C-u>q!<CR>
-
-nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
-xnoremap <leader>g y :silent execute "grep! -R " . shellescape(getreg('"')) . " ."<CR>:copen<CR>
+" Opens an edit command with the path of the currently edited file filled in
+map <Leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " use leader+tab to switch buffers
 set wildcharm=<Tab>
 nnoremap <Leader><Tab> :buffer<Space><Tab>
 
-" Opens an edit command with the path of the currently edited file filled in
-map <Leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
+" expand to the file path
+cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 
-inoremap kj <ESC>
-inoremap jk <ESC>
+" Write as sudo
+cnoremap w!! w !sudo tee % >/dev/null
 
-" search and replace word/selection
-nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
-vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
+" Apply macro from q register
+nnoremap Q @q
+vnoremap Q :norm @q<CR>
+
 " }}}
 
-
-if has('mouse')
-    set mouse=a
-endif
-
-
-" enable cursor change
+" Terminal cursor change support {{{
 let &t_SI.="\e[5 q"
 let &t_EI.="\e[2 q"
 let &t_SR.="\e[1 q"
@@ -187,15 +196,17 @@ let &t_SR.="\e[1 q"
 "     let &t_EI .= "\ePtmux;\e\e[2 q\e\\"
 "     let &t_ER .= "\ePtmux;\e\e[1 q\e\\"
 " endif
+" }}}
 
+" Plugins and external things {{{
 
+packloadall
 
-
-" plugin and external things
-
-" use leader for camel case motion plugin
+" CamelCase motion {{{
 let g:camelcasemotion_key = '<leader>'
-"
+" }}}
+
+" Ripgrep {{{
 " use rg instead of grep if available
 if executable('rg')
     set grepprg=rg\ -z\ --vimgrep\ $*
@@ -203,22 +214,28 @@ if executable('rg')
     nnoremap <leader>g :silent execute "grep! -F " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
     xnoremap <leader>g y :silent execute "grep! -F " . shellescape(getreg('"')) . " ."<CR>:copen<CR>
 endif
+" }}}
 
+" Solarized color scheme {{{
 let g:solarized_termcolors=256
 let g:solarized_visibility="high"
 silent! colorscheme solarized
+" }}}
 
-packloadall
+" Sandwitch (surround) {{{
 " load vim-surround keymaps for vim-sanwich
 runtime macros/sandwich/keymap/surround.vim
+" }}}
 
+" Fzf {{{
 " ctrl+p for fzf file search
 if exists('g:loaded_fzf') && executable('fzf')
     nnoremap <C-p> :<C-u>FZF<CR>
     nnoremap <leader><C-p> :<C-u>FZF <C-R>=expand("%:p:h") . "/"<CR><CR>
 endif
+" }}}
 
-" coc.vim
+" coc.vim {{{
 if exists('g:did_coc_loaded')
     set cmdheight=2
     set signcolumn=yes
@@ -230,3 +247,7 @@ if exists('g:did_coc_loaded')
     nmap <silent> gy <Plug>(coc-type-definition)
     nmap <silent> gi <Plug>(coc-implementation)
 endif
+" }}}
+
+" }}}
+
