@@ -28,6 +28,8 @@
     "window.zoomLevel": 0,
     "editor.accessibilitySupport": "off",
     "search.showLineNumbers": true,
+    "search.searchOnType": false,
+    "search.seedWithNearestWord": true,
     "workbench.editor.highlightModifiedTabs": true,
     "breadcrumbs.symbolSortOrder": "name",
     "terminal.integrated.scrollback": 20000,
@@ -50,6 +52,7 @@
     "npm.fetchOnlinePackageInfo": false,
     "git.autofetch": false,
     "update.enableWindowsBackgroundUpdates": false,
+    "json.schemaDownload.enable": false,
 // < Disable internet usage
 
 // > Settings/filetype
@@ -122,18 +125,6 @@
             "after": ["y", "$"]
         },
         {
-            "before": ["<leader>", "y"],
-            "after": ["\"", "+", "y"]
-        },
-        {
-            "before": ["<leader>", "p"],
-            "after": ["\"", "+", "p"]
-        },
-        {
-            "before": ["<leader>", "P"],
-            "after": ["\"", "+", "P"]
-        },
-        {
             "before": ["<leader>", "q"],
             "commands": [":q"]
         },
@@ -153,6 +144,10 @@
             "before": ["<C-k>", "m"],
             "commands": ["workbench.action.editor.changeLanguageMode"]
         },
+        {
+            "before": ["<leader>", "g"],
+            "commands": ["workbench.view.search"]
+        },
     ],
     "vim.insertModeKeyBindings": [
         {
@@ -166,8 +161,8 @@
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
-            "before": ["<leader>", "y"],
-            "after": ["\"", "+", "y", "g", "v"]
+            "before": ["<leader>", "g"],
+            "commands": ["workbench.view.search"]
         },
     ],
     "vim.handleKeys": {
@@ -181,7 +176,8 @@
     "vim.replaceWithRegister": true,
     "vim.camelCaseMotion.enable": true,
     "vim.visualstar": true,
-    "vim.startofline": false,
+    "vim.foldfix": true,
+    "vim.vimrc.path": "$HOME/.config/vim/vimrc",
     // < vim
     "timeline.showView": true,
     "editor.semanticHighlighting.enabled": true,
