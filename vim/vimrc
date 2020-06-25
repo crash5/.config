@@ -76,6 +76,10 @@ set showmode                                             " always show what mode
 set wildmenu
 set laststatus=2                                         " Always display the status line, even if only one window is displayed
 
+" more natural split directions
+set splitbelow
+set splitright
+
 set statusline=%F%m%r%h%w
 set statusline+=\ [
 set statusline+=ASCII=\%04.8b
@@ -162,6 +166,9 @@ map <Leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
 inoremap kj <ESC>
 inoremap jk <ESC>
 
+" search and replace word/selection
+nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
+vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
 " }}}
 
 
