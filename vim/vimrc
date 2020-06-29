@@ -209,10 +209,10 @@ let g:camelcasemotion_key = '<leader>'
 " Ripgrep {{{
 " use rg instead of grep if available
 if executable('rg')
-    set grepprg=rg\ -z\ --vimgrep\ $*
+    set grepprg=rg\ --search-zip\ --follow\ --hidden\ --vimgrep\ $*
     set grepformat^=%f:%l:%c:%m
-    nnoremap <leader>g :silent execute "grep! -F " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
-    xnoremap <leader>g y :silent execute "grep! -F " . shellescape(getreg('"')) . " ."<CR>:copen<CR>
+    nnoremap <leader>g :silent execute "grep! -F " . shellescape(expand("<cWORD>")) . " ."<CR>:copen <BAR> redraw!<CR>
+    xnoremap <leader>g y :silent execute "grep! -F " . shellescape(getreg('"')) . " ."<CR>:copen <BAR> redraw!<CR>
 endif
 " }}}
 
