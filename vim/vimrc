@@ -239,6 +239,10 @@ endif
 if exists('g:did_coc_loaded')
     set cmdheight=2
     set signcolumn=yes
+
+    inoremap <silent><expr> <NUL> coc#refresh()
+    inoremap <silent><expr> <c-space> coc#refresh()
+
     xmap if <Plug>(coc-funcobj-i)
     xmap af <Plug>(coc-funcobj-a)
     omap if <Plug>(coc-funcobj-i)
