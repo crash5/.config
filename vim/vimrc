@@ -183,7 +183,6 @@ cnoremap w!! w !sudo tee % >/dev/null
 " Apply macro from q register
 nnoremap Q @q
 vnoremap Q :norm @q<CR>
-
 " }}}
 
 " Terminal cursor change support {{{
@@ -222,9 +221,17 @@ let g:solarized_visibility="high"
 silent! colorscheme solarized
 " }}}
 
-" Sandwitch (surround) {{{
+" Sandwitch / Surround {{{
 " load vim-surround keymaps for vim-sanwich
-runtime macros/sandwich/keymap/surround.vim
+if exists('g:loaded_sandwich')
+    runtime macros/sandwich/keymap/surround.vim
+endif
+
+" surround current word
+if exists('g:loaded_sandwich') || exists('g:loaded_surround')
+    nmap <leader>' ysiw'
+    nmap <leader>" ysiw"
+endif
 " }}}
 
 " Fzf {{{
