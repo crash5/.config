@@ -196,6 +196,14 @@
     {
         "key": "ctrl+alt+p",
         "command": "workbench.action.showEditorsInGroup"
-    }
+    },
     // > Other
+    {
+        "key": "f5",
+        "command": "workbench.action.files.revert"
+    },
+    {
+        "key": "f5",
+        "command": "-workbench.action.debug.start",
+    }
 ]
