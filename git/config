@@ -81,6 +81,7 @@
     rec = rebase --continue
     rea = rebase --abort
     rei-develop = !git rebase -i $(git merge-base develop HEAD)
+    reshow = show REBASE_HEAD
 
     cleanrepo = clean -dfx
     pruneorigin = remote prune origin
@@ -136,6 +137,7 @@
 [merge]
     tool = bc
     summary = true
+    conflictstyle = diff3
 [mergetool]
     keepBackup = false
 [rerere]
