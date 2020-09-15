@@ -1,6 +1,7 @@
 alias cp='cp -i'
 alias mv='mv -i'
 alias ll='ls -lahF --color=always --group-directories-first'
+alias llsd='ls -lahF --color=always --group-directories-first --sort=time --reverse'
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
@@ -19,3 +20,4 @@ alias rg='rg --hidden --smart-case --follow'
 
 alias treeimpl='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 alias treeimplwogit='find . -not -path "./.git/*" | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"' 
+
