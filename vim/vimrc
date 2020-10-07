@@ -80,6 +80,9 @@ set backspace=indent,eol,start                           " allow backspacing ove
 " More natural split directions
 set splitbelow
 set splitright
+
+" :find look for files in sub-directories
+set path+=**
 " }}}
 
 " Whitespace {{{
