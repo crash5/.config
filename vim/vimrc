@@ -258,10 +258,20 @@ if exists('g:did_coc_loaded')
     inoremap <silent><expr> <NUL> coc#refresh()
     inoremap <silent><expr> <c-space> coc#refresh()
 
+    nmap <leader>rn <Plug>(coc-rename)
+
+    xmap <leader>f  <Plug>(coc-format-selected)
+    nmap <leader>f  <Plug>(coc-format-selected)
+
     xmap if <Plug>(coc-funcobj-i)
-    xmap af <Plug>(coc-funcobj-a)
     omap if <Plug>(coc-funcobj-i)
+    xmap af <Plug>(coc-funcobj-a)
     omap af <Plug>(coc-funcobj-a)
+    xmap ic <Plug>(coc-classobj-i)
+    omap ic <Plug>(coc-classobj-i)
+    xmap ac <Plug>(coc-classobj-a)
+    omap ac <Plug>(coc-classobj-a)
+
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gy <Plug>(coc-type-definition)
     nmap <silent> gi <Plug>(coc-implementation)
