@@ -1,5 +1,9 @@
 " vim: foldmethod=marker
 
+if &compatible
+    set nocompatible
+endif
+
 let g:mapleader = "\<Space>"
 
 filetype indent plugin on
@@ -194,9 +198,9 @@ nnoremap <F5> :<C-u>edit!<CR>
 " }}}
 
 " Terminal cursor change support {{{
-let &t_SI.="\e[5 q"
-let &t_EI.="\e[2 q"
-let &t_SR.="\e[1 q"
+if exists("&t_SI") | let &t_SI.="\e[5 q" | endif
+if exists("&t_EI") | let &t_EI.="\e[2 q" | endif
+if exists("&t_SR") | let &t_SR.="\e[1 q" | endif
 
 " if exists('$TMUX')
 "     let &t_SI .= "\ePtmux;\e\e[5 q\e\\"
@@ -207,7 +211,9 @@ let &t_SR.="\e[1 q"
 
 " Plugins and external things {{{
 
-packloadall
+if exists(":packloadall")
+    packloadall
+endif
 
 " CamelCase motion {{{
 let g:camelcasemotion_key = '<leader>'
