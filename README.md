@@ -91,6 +91,8 @@ mklink "%APPDATA%\Mozilla\Firefox\Profiles\<PROFILE DIR>\user.js" %USERPROFILE%\
 
 ### Vim
 
+Add local changes to: `~/.local/vimrc`
+
 Plugins:
 ```
 packages=(

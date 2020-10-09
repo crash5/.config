@@ -286,3 +286,8 @@ endif
 
 " }}}
 
+" local changes {{{
+if filereadable(expand("~/.local/vimrc"))
+    source ~/.local/vimrc
+endif
+" }}}
