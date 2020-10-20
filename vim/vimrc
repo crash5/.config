@@ -214,10 +214,6 @@ if exists("&t_SR") | let &t_SR.="\e[1 q" | endif
 
 " Plugins and external things {{{
 
-if exists(":packloadall")
-    packloadall
-endif
-
 " CamelCase motion {{{
 let g:camelcasemotion_key = '<leader>'
 " }}}
@@ -237,6 +233,10 @@ let g:solarized_termcolors=256
 let g:solarized_visibility="high"
 silent! colorscheme solarized
 " }}}
+
+if exists(":packloadall")
+    packloadall
+endif
 
 " Sandwitch / Surround {{{
 " load vim-surround keymaps for vim-sanwich
