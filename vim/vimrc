@@ -192,7 +192,9 @@ cnoremap w!! w !sudo tee % >/dev/null
 
 " Apply macro from q register
 nnoremap Q @q
-vnoremap Q :norm @q<CR>
+vnoremap Q :normal @q<CR>
+
+vnoremap <leader>. :normal .<CR>
 
 " reload file, discard any chagnes
 nnoremap <F5> :<C-u>edit!<CR>
