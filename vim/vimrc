@@ -159,6 +159,7 @@ inoremap kj <ESC>
 inoremap jk <ESC>
 
 noremap <leader>q :<C-u>q!<CR>
+noremap <leader>Q :<C-u>qall!<CR>
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy
 noremap Y y$
