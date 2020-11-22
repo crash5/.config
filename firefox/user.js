@@ -1,7 +1,4 @@
-user_pref("dom.push.enabled", false); // web push
-user_pref("dom.serviceWorkers.enabled", false); // web push notifications
-user_pref("dom.webnotifications.enabled", false); // web push notifications
-user_pref("dom.webnotifications.serviceworker.enabled", false); // sites can still generate desktop notifications while you have a tab open to the site 
+// user_pref("privacy.resistFingerprinting", true); // block spotify web player
 user_pref("accessibility.force_disabled", 1);
 user_pref("app.normandy.api_url", "");
 user_pref("app.normandy.enabled", false);
@@ -21,11 +18,13 @@ user_pref("browser.crashReports.unsubmittedCheck.autoSubmit", false); // (FF51-5
 user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false); // (FF58+)
 user_pref("browser.crashReports.unsubmittedCheck.enabled", false); // (FF51+)
 user_pref("browser.ctrlTab.previews", true);
+user_pref("browser.discovery.enabled", false);
 user_pref("browser.download.animateNotifications", false);
 user_pref("browser.eme.ui.firstContentShown", true);
 user_pref("browser.fixup.hide_user_pass", true);
 user_pref("browser.link.open_newwindow.restriction", 0);
 user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 user_pref("browser.newtabpage.activity-stream.telemetry", false);
 user_pref("browser.newtabpage.enabled", false);
 user_pref("browser.onboarding.enabled", false);
@@ -51,6 +50,7 @@ user_pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-f
 user_pref("browser.uidensity", 1);
 user_pref("browser.urlbar.clickSelectsAll", true);
 user_pref("browser.urlbar.maxRichResults", 25);
+user_pref("browser.urlbar.openViewOnFocus", false);
 user_pref("browser.urlbar.searchSuggestionsChoice", false);
 user_pref("browser.urlbar.suggest.searches", false);
 user_pref("browser.urlbar.timesBeforeHidingSuggestionsHint", 0);
@@ -65,9 +65,15 @@ user_pref("devtools.webconsole.timestampMessages", true);
 user_pref("devtools.webide.autoinstallADBHelper", false);
 user_pref("devtools.webide.enabled", false);
 user_pref("dom.ipc.plugins.reportCrashURL", false);
+user_pref("dom.push.enabled", false); // web push
+user_pref("dom.serviceWorkers.enabled", false); // web push notifications
+user_pref("dom.webnotifications.enabled", false); // web push notifications
+user_pref("dom.webnotifications.serviceworker.enabled", false); // sites can still generate desktop notifications while you have a tab open to the site 
 user_pref("extensions.formautofill.creditCards.enabled", false); // (FF56+)
 user_pref("extensions.getAddons.cache.enabled", false);
 user_pref("extensions.getAddons.showPane", false); // hidden pref
+user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
+user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
 user_pref("extensions.pocket.enabled", false);
 user_pref("extensions.screenshots.upload-disabled", true);
 user_pref("extensions.update.autoUpdateDefault", false);
@@ -104,7 +110,6 @@ user_pref("permissions.default.desktop-notification", 2);
 user_pref("permissions.default.geo", 2);
 user_pref("permissions.default.microphone", 2);
 user_pref("privacy.donottrackheader.enabled", true);
-// user_pref("privacy.resistFingerprinting", true); // block spotify web player
 user_pref("privacy.spoof_english", 2);
 user_pref("privacy.trackingprotection.enabled", true);
 user_pref("reader.parse-on-load.enabled", false);
@@ -114,8 +119,8 @@ user_pref("services.sync.declinedEngines", "passwords,tabs");
 user_pref("services.sync.engine.passwords", false);
 user_pref("services.sync.engine.prefs.modified", false);
 user_pref("services.sync.engine.tabs", false);
-user_pref("signon.autofillForms.http", false);
 user_pref("signon.autofillForms", false);
+user_pref("signon.autofillForms.http", false);
 user_pref("toolkit.cosmeticAnimations.enabled", false);
 user_pref("toolkit.telemetry.archive.enabled", false);
 user_pref("toolkit.telemetry.bhrPing.enabled", false);
@@ -130,9 +135,4 @@ user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
 user_pref("toolkit.telemetry.unified", false);
 user_pref("toolkit.telemetry.updatePing.enabled", false);
 user_pref("ui.SpellCheckerUnderlineStyle", 4);
-user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
-user_pref("browser.discovery.enabled", false);
-user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
-user_pref("browser.urlbar.openViewOnFocus", false);
-user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 user_pref("_user.js.parrot", "Every user.js applyed!");
