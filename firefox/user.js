@@ -133,6 +133,6 @@ user_pref("ui.SpellCheckerUnderlineStyle", 4);
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
 user_pref("browser.discovery.enabled", false);
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
-
+user_pref("browser.urlbar.openViewOnFocus", false);
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 user_pref("_user.js.parrot", "Every user.js applyed!");
-
