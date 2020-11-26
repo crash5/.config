@@ -108,7 +108,10 @@ packages=(
 )
 
 for url in ${packages[@]}; do
-    git clone --depth 1 --single-branch ${url} pack/bundle/start/${url##*/}
+    git fetch --depth 1 --no-tags ${url}
+    git merge -s subtree --squash FETCH_HEAD
+    # if not work reset the merge and use this
+    # git merge -X subtree=vim/pack/bundle/start/ --squash FETCH_HEAD
 done
 ```
 
