@@ -142,5 +142,7 @@
     keepBackup = false
 [rerere]
     enabled = true
+[init]
+    defaultBranch = master
 [include]
     path = ~/.local/gitconfig
