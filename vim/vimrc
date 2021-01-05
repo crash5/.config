@@ -283,7 +283,7 @@ if exists('g:did_coc_loaded')
 
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gy <Plug>(coc-type-definition)
-    nmap <silent> gi <Plug>(coc-implementation)
+    " nmap <silent> gi <Plug>(coc-implementation)
 endif
 " }}}
 
