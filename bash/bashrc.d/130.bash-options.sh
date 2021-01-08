@@ -8,3 +8,4 @@ shopt -s globstar             # ZSH-like ** globbing (recursive dir match)
 shopt -s histappend           # Append to history, don't overwrite
 shopt -s histreedit           # Re-edit failed history substitutions
 shopt -s nocaseglob           # Ignore cases for globbing filenames
+shopt -s histverify           # Re-edit history item before run
