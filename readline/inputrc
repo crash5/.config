@@ -10,6 +10,9 @@ set completion-prefix-display-length 2
 set completion-ignore-case on
 #set completion-map-case on
 
+# don't run pasted command after paste
+set enable-bracketed-paste On
+
 #set bell-style none
 set bell-style visible
 set enable-keypad on
