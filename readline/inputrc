@@ -17,6 +17,9 @@ set enable-keypad on
 set mark-directories on
 set mark-symlinked-directories on
 
+$if Bash
+    Space: magic-space
+$endif
 
 ### search in history
 # up/down
