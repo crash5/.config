@@ -145,6 +145,6 @@
 [init]
     defaultBranch = master
 [help]
-    autocorrect = false
+    autocorrect = 0
 [include]
     path = ~/.local/gitconfig
