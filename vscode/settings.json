@@ -192,6 +192,5 @@
     "timeline.showView": true,
     "editor.semanticHighlighting.enabled": true,
     "editor.find.addExtraSpaceOnTop": false,
-    "search.searchOnType": false,
     "search.smartCase": true,
 }
