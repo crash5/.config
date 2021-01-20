@@ -96,22 +96,22 @@ Add local changes to: `~/.local/vimrc`
 Plugins:
 ```
 packages=(
-    "https://github.com/machakann/vim-sandwich"
-    "https://github.com/godlygeek/tabular"
+    "https://github.com/bkad/CamelCaseMotion"
     "https://github.com/editorconfig/editorconfig-vim"
-    "https://github.com/tpope/vim-commentary"
     "https://github.com/vim-scripts/ReplaceWithRegister"
+    "https://github.com/godlygeek/tabular"
+    "https://github.com/tpope/vim-commentary"
     "https://github.com/machakann/vim-highlightedyank"
+    "https://github.com/machakann/vim-sandwich"
     "https://github.com/tpope/vim-unimpaired"
     "https://github.com/bronson/vim-visual-star-search"
-    "https://github.com/bkad/CamelCaseMotion"
 )
 
 for url in ${packages[@]}; do
     git fetch --depth 1 --no-tags ${url}
-    git merge -s subtree --squash FETCH_HEAD
-    # if not work reset the merge and use this
-    # git merge -X subtree=vim/pack/bundle/start/ --squash FETCH_HEAD
+    # git merge -s subtree --squash FETCH_HEAD
+    git merge --allow-unrelated-histories -X theirs -X subtree=vim/pack/bundle/start/${url##*/}/ --squash FETCH_HEAD
+    git commit -m "vim: update plugin: ${url##*/}" -- vim/pack/bundle/start/${url##*/}/
 done
 ```
 
