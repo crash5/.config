@@ -42,6 +42,7 @@ nnoremap <leader>ml :setlocal modeline <bar> doautocmd BufRead <bar> setlocal no
 
 " Display {{{
 set guifont=DejaVu\ Sans\ Mono
+set termguicolors
 
 set background=dark
 syntax on                                                " Enable syntax highlighting
