@@ -35,6 +35,9 @@
     st = status
     stn = status -uno
 
+    s = show --pretty=fuller --name-status
+    ss = show --pretty=fuller --patch
+
     dt = difftool -y
     dtt = difftool
     dtc = difftool --cached -y
@@ -57,13 +60,22 @@
 
     mt = mergetool
 
-    hist = log --pretty=format:'%C(yellow)%h %C(reset)%ad | %C(cyan)%s%C(red)%d%C(reset) [%an]' --graph --date=short
-    hista = !git hist --all
-    h = "! : git log ; git hist -25"
-    ha = !git h --all
-    hd = !git hist $(git merge-base develop HEAD)..HEAD
-    ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [a:%an,c:%cn]" --decorate --numstat
+    lp = log --pretty=log
+    ll = "! : git log ; git lp --graph --date=short"
+    l = "! : git log ; git ll -25"
+    ls = log --pretty=fuller --name-status
+    lss = log --pretty=fuller --patch
+    ld = !git l $(git merge-base develop HEAD)..HEAD
+
+    rll = reflog --pretty=rlog
+    rl = "! : git reflog ; git rll -25"
+    rls = reflog --pretty=fuller --name-status
+    rlss = reflog --pretty=fuller --patch
+
+    sll = stash list --pretty=slog
+    sl = "! : git stash ; git sll -25"
+    sls = stash list --pretty=fuller --name-status
+    slss = stash list --pretty=fuller --patch
 
     unstage = "reset HEAD --"
     r = reset
@@ -146,5 +158,9 @@
     defaultBranch = master
 [help]
     autocorrect = 0
+[pretty]
+    log = %C(auto)%h %C(green)%ad %C(reset)| %C(cyan)%s%C(auto)%d %C(blue)[%an]
+    rlog = %C(auto)%h %C(bold red)%gd%C(reset): %gs %C(cyan)[%s]%C(auto)%d
+    slog = %C(bold red)%gd%C(reset): %C(cyan)%s%C(auto)%d
 [include]
     path = ~/.local/gitconfig
