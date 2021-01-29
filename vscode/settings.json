@@ -176,7 +176,6 @@
         }
     ],
     "vim.handleKeys": {
-        "<C-a>": false,
         "<C-f>": false
     },
     "vim.leader": "<space>",
