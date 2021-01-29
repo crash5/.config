@@ -88,7 +88,7 @@
     {
         "key": "shift+enter",
         "command": "workbench.action.terminal.runSelectedText",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && editorLangId ~= 'python'"
     },
     {
         "key": "ctrl+alt+d",
@@ -198,6 +198,10 @@
         "command": "workbench.action.showEditorsInGroup"
     },
     // > Other
+    {
+        "key": "ctrl+e v",
+        "command": "open-in-vim.open"
+    },
     {
         "key": "f5",
         "command": "workbench.action.files.revert"
