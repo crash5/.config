@@ -1,3 +1,10 @@
+alias ..='cd ..'
+alias ..2='cd ../..'
+alias ..3='cd ../../..'
+alias ..4='cd ../../../..'
+alias ..5='cd ../../../../..'
+alias -- -='cd -'
+
 cd() {
     if [ $# -eq 0 ] ; then
         # no arguments
@@ -12,4 +19,16 @@ cd() {
         # another argument type
         builtin cd "$(dirname $1)"
     fi
+}
+
+mkcd() {
+    mkdir -p "${1:? need a directory}" && cd "${1}"
+}
+
+cdd() {
+    cd "${1:? need a directory}" && ll
+}
+
+cds() {
+    cd "${1:? need a directory}" && llsd
 }
