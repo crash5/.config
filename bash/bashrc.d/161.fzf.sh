@@ -9,3 +9,9 @@ if function_exists _fzf_setup_completion; then
         fi
     done
 fi
+
+export FZF_DEFAULT_OPTS="--bind 'f4:execute(vim {})'"
+
+if program_exists fzf; then
+    source 161.fzf-key-bindings.bash
+fi
