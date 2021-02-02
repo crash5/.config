@@ -11,7 +11,7 @@ set completion-ignore-case on
 #set completion-map-case on
 
 # don't run pasted command after paste
-set enable-bracketed-paste On
+set enable-bracketed-paste on
 
 #set bell-style none
 set bell-style visible
