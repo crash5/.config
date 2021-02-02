@@ -58,6 +58,7 @@ set lazyredraw                                           " redraw only when we n
 set showbreak=↪\ 
 set listchars=tab:»-,nbsp:␣,trail:·,extends:»,precedes:«
 set list
+set linebreak                                            " don't cut words into pieces on line break
 
 set colorcolumn=80,120                                   " set column guides
 set cursorline                                           " highlight current line
@@ -73,6 +74,7 @@ set undolevels=1000                                      " use many muchos level
 set undofile                                             " enable persistent undo
 
 set wildmenu
+set wildmode=longest:full,full                           " autocomplete to common substr and iterate over resulst
 
 set noerrorbells                                         " don't beep
 set visualbell                                           " don't beep
