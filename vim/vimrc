@@ -236,9 +236,10 @@ endif
 " }}}
 
 " Solarized color scheme {{{
-let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
 let g:solarized_visibility="high"
-silent! colorscheme solarized
+let g:solarized_extra_hi_groups=1
+silent! colorscheme solarized8
 " }}}
 
 if exists(":packloadall")
