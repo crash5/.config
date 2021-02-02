@@ -4,3 +4,7 @@ for file in "$XDG_CONFIG_HOME/bash/completions/"*; do
         source "${file}"
     fi
 done
+
+if program_exists minikube; then
+    source <(minikube completion bash)
+fi
