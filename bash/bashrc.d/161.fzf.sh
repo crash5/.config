@@ -13,5 +13,6 @@ fi
 export FZF_DEFAULT_OPTS="--bind 'f4:execute(vim {})'"
 
 if program_exists fzf; then
-    source 161.fzf-key-bindings.bash
+    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+    source "${SCRIPT_DIR}"/161.fzf-key-bindings.bash
 fi
