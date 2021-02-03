@@ -37,7 +37,10 @@ $endif
 "\C-[[A": history-search-backward
 "\C-[[B": history-search-forward
 
-# alt+s cycle through possible completions
+Control-p: history-search-backward
+Control-n: history-search-forward
+
+# alt+s/S cycle through possible completions
 "\es": menu-complete
 "\eS": menu-complete-backward
 
