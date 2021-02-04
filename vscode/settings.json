@@ -1,78 +1,28 @@
 {
-    "workbench.startupEditor": "newUntitledFile",
-    "editor.fontFamily": "Dejavu sans mono",
-    "editor.fontSize": 12,
-    "editor.renderWhitespace": "all",
-    "files.insertFinalNewline": true,
-    "editor.cursorWidth": 3,
-    "editor.minimap.enabled": false,
-    "editor.renderControlCharacters": true,
-    "editor.renderLineHighlight": "all",
-    "editor.renderIndentGuides": true,
-    "editor.rulers": [
-        80,
-        120
-    ],
-    "window.title": "${dirty}${activeEditorLong}${separator}${rootName}${separator}${appName}",
-    "workbench.colorCustomizations":
-    {
-        "editor.lineHighlightBackground": "#172d38",
-    },
-    "files.trimFinalNewlines": true,
-    "editor.find.autoFindInSelection": "multiline",
-    "editor.roundedSelection": false,
-    "workbench.editor.closeOnFileDelete": false,
-    "workbench.editor.labelFormat": "medium",
-    "extensions.ignoreRecommendations": true,
-    "breadcrumbs.enabled": true,
-    "window.zoomLevel": 0,
-    "editor.accessibilitySupport": "off",
-    "search.showLineNumbers": true,
-    "search.searchOnType": false,
-    "search.seedWithNearestWord": true,
-    "workbench.editor.highlightModifiedTabs": true,
-    "breadcrumbs.symbolSortOrder": "name",
-    "terminal.integrated.scrollback": 20000,
-    "javascript.referencesCodeLens.enabled": true,
-    "typescript.referencesCodeLens.enabled": true,
 // > Disable internet usage
     "extensions.autoCheckUpdates": false,
     "extensions.autoUpdate": false,
-    "extensions.showRecommendationsOnlyOnDemand": true,
-
-    "workbench.settings.enableNaturalLanguageSearch": false,
-    "workbench.enableExperiments": false,
-
+    "extensions.ignoreRecommendations": true,
+    "git.autofetch": false,
+    "json.schemaDownload.enable": false,
+    "npm.fetchOnlinePackageInfo": false,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
-
+    "update.enableWindowsBackgroundUpdates": false,
     "update.mode": "none",
     "update.showReleaseNotes": false,
-
-    "npm.fetchOnlinePackageInfo": false,
-    "git.autofetch": false,
-    "update.enableWindowsBackgroundUpdates": false,
-    "json.schemaDownload.enable": false,
+    "workbench.enableExperiments": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
 // < Disable internet usage
-
 // > Settings/filetype
     "[cmake]": {
         "files.trimTrailingWhitespace": true
     },
-// < Settings/filetype
-    "html.format.endWithNewline": true,
-    "workbench.settings.useSplitJSON": true,
-    "zenMode.hideLineNumbers": false,
     "[git-commit]": {
         "editor.rulers": [
             50,
             72,
           ]
-    },
-    "files.associations": {
-        "*.md.html": "markdown",
-        "*.yaml.in": "yaml",
-        "Dockerfile.in": "dockerfile"
     },
     "[python]": {
         "files.trimTrailingWhitespace": true
@@ -80,45 +30,8 @@
     "[markdown]": {
         "files.trimTrailingWhitespace": false
     },
-    "editor.wrappingIndent": "deepIndent",
-    "markdown.preview.markEditorSelection": false,
-    "markdown.preview.scrollEditorWithPreview": false,
-    "files.trimTrailingWhitespace": true,
-    "workbench.settings.openDefaultKeybindings": true,
-    "workbench.settings.openDefaultSettings": true,
-    "workbench.quickOpen.preserveInput": true,
-    "workbench.view.alwaysShowHeaderActions": true,
-    "workbench.tips.enabled": false,
-    "workbench.editor.openPositioning": "last",
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "bracket-pair-colorizer-2.forceUniqueOpeningColor": true,
-    "bracket-pair-colorizer-2.showBracketsInGutter": true,
-    "bracket-pair-colorizer-2.showHorizontalScopeLine": false,
-    "todo-tree.highlights.customHighlight": {
-        "TODO": {},
-        "FIXME": {},
-        "BUG": {},
-        "HACK": {},
-        "NOTE": {},
-        "WARNING": {}
-    },
-    "todo-tree.highlights.defaultHighlight": {
-        "foreground": "green",
-        "type": "tag"
-    },
-    "todo-tree.tree.expanded": true,
-    "todo-tree.tree.flat": true,
-    "todo-tree.general.tags": [
-        "TODO",
-        "FIXME",
-        "BUG",
-        "HACK",
-        "NOTE",
-        "WARNING"
-    ],
-    // > vim
-    "vim.highlightedyank.enable": true,
-    "vim.hlsearch": true,
+// < Settings/filetype
+// > vim
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["Y"],
@@ -178,27 +91,116 @@
     "vim.handleKeys": {
         "<C-f>": false
     },
-    "vim.leader": "<space>",
-    "vim.easymotionMarkerFontFamily": "dejavu sans mono",
-    "vim.sneak": true,
-    "vim.useSystemClipboard": true,
-    "vim.replaceWithRegister": true,
     "vim.camelCaseMotion.enable": true,
-    "vim.visualstar": true,
-    "vim.textwidth": 79,
-    "vim.history": 100,
     "vim.foldfix": true,
+    "vim.highlightedyank.enable": true,
+    "vim.history": 100,
+    "vim.hlsearch": true,
+    "vim.leader": "<space>",
+    "vim.replaceWithRegister": true,
+    "vim.sneak": true,
+    "vim.textwidth": 79,
+    "vim.useSystemClipboard": true,
     "vim.vimrc.path": "$HOME/.config/vim/vimrc",
-    // < vim
-    "timeline.showView": true,
-    "editor.semanticHighlighting.enabled": true,
-    "editor.find.addExtraSpaceOnTop": false,
-    "explorer.confirmDragAndDrop": false,
+    "vim.visualstar": true,
+// < vim
+// > todo tree
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {},
+        "FIXME": {},
+        "BUG": {},
+        "HACK": {},
+        "NOTE": {},
+        "WARNING": {}
+    },
+    "todo-tree.highlights.defaultHighlight": {
+        "foreground": "green",
+        "type": "tag"
+    },
+    "todo-tree.general.tags": [
+        "TODO",
+        "FIXME",
+        "BUG",
+        "HACK",
+        "NOTE",
+        "WARNING"
+    ],
+    "todo-tree.tree.expanded": true,
+    "todo-tree.tree.flat": true,
     "todo-tree.tree.showScanModeButton": false,
-    "tabnine.experimentalAutoImports": true,
-    "alt-editor.name": "vim",
-    "open-in-vim.openMethod": "linux.gnome-terminal",
+// < todo tree
+// > bracket pair colorizer
+    "bracket-pair-colorizer-2.forceUniqueOpeningColor": true,
+    "bracket-pair-colorizer-2.showBracketsInGutter": true,
+    "bracket-pair-colorizer-2.showHorizontalScopeLine": false,
+// < bracket pair colorizer
+// > open in vim
     "open-in-vim.linux.gnome-terminal.args": "",
+    "open-in-vim.openMethod": "linux.gnome-terminal",
+// < open in vim
+// > tabnine
+    "tabnine.experimentalAutoImports": true,
+// < tabnine
+    "files.associations": {
+        "*.md.html": "markdown",
+        "*.yaml.in": "yaml",
+        "Dockerfile.in": "dockerfile"
+    },
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "workbench.colorCustomizations":
+    {
+        "editor.lineHighlightBackground": "#172d38",
+    },
+    "breadcrumbs.enabled": true,
+    "breadcrumbs.symbolSortOrder": "name",
+    "editor.accessibilitySupport": "off",
+    "editor.cursorWidth": 3,
+    "editor.find.addExtraSpaceOnTop": false,
+    "editor.find.autoFindInSelection": "multiline",
+    "editor.fontFamily": "Dejavu sans mono",
+    "editor.fontSize": 12,
+    "editor.minimap.enabled": false,
+    "editor.renderControlCharacters": true,
+    "editor.renderIndentGuides": true,
+    "editor.renderLineHighlight": "all",
+    "editor.renderWhitespace": "all",
+    "editor.roundedSelection": false,
+    "editor.semanticHighlighting.enabled": true,
     "editor.suggest.showStatusBar": true,
+    "editor.wrappingIndent": "deepIndent",
+    "explorer.confirmDragAndDrop": false,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "html.format.endWithNewline": true,
+    "javascript.referencesCodeLens.enabled": true,
+    "markdown.preview.markEditorSelection": false,
+    "markdown.preview.scrollEditorWithPreview": false,
     "python.showStartPage": false,
+    "search.searchOnType": false,
+    "search.seedWithNearestWord": true,
+    "search.showLineNumbers": true,
+    "terminal.integrated.scrollback": 20000,
+    "timeline.showView": true,
+    "typescript.referencesCodeLens.enabled": true,
+    "window.title": "${dirty}${activeEditorLong}${separator}${rootName}${separator}${appName}",
+    "window.zoomLevel": 0,
+    "workbench.editor.closeOnFileDelete": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.labelFormat": "medium",
+    "workbench.editor.openPositioning": "last",
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.editor.wrapTabs": true,
+    "workbench.quickOpen.preserveInput": true,
+    "workbench.settings.openDefaultKeybindings": true,
+    "workbench.settings.openDefaultSettings": true,
+    "workbench.settings.useSplitJSON": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.tips.enabled": false,
+    "workbench.view.alwaysShowHeaderActions": true,
+    "zenMode.hideLineNumbers": false,
 }
