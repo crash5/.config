@@ -57,6 +57,8 @@
     diffw = diff --color-words
     diffurange = range-diff @{u}...@
     diffrange-rebase = range-diff @{1}...HEAD
+    dr = diff HEAD@{1}
+    dr2 = diff HEAD@{2}
 
     mt = mergetool
 
@@ -114,7 +116,7 @@
 
     snap = "!git stash push -m \"snapshot: $(date +'%Y. %m. %d. %H:%M')\" && git stash apply -q stash@{0}"
     #stashold = "!git log --merges --no-walk --oneline $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
-    stashold = "!git hist --date=iso --merges $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
+    stashold = "!git lp --merges --no-walk $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
 [core]
     #editor = notepad++.exe -multiInst -nosession -noPlugin -ldiff
     editor = vim
