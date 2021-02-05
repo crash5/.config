@@ -61,19 +61,19 @@
     mt = mergetool
 
     lp = log --pretty=log
-    ll = "! : git log ; git lp --graph --date=short"
-    l = "! : git log ; git ll -25"
+    ll = lp --graph --date=short
+    l = ll -25
     ls = log --pretty=fuller --name-status
     lss = log --pretty=fuller --patch
     ld = !git l $(git merge-base develop HEAD)..HEAD
 
     rll = reflog --pretty=rlog
-    rl = "! : git reflog ; git rll -25"
+    rl = rll -25
     rls = reflog --pretty=fuller --name-status
     rlss = reflog --pretty=fuller --patch
 
     sll = stash list --pretty=slog
-    sl = "! : git stash ; git sll -25"
+    sl = sll -25
     sls = stash list --pretty=fuller --name-status
     slss = stash list --pretty=fuller --patch
 
