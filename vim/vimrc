@@ -100,9 +100,9 @@ set path+=**
 " }}}
 
 " Whitespace {{{
-set softtabstop=4                                        " number of spaces in tab when editing
-set tabstop=4                                            " number of visual spaces per TAB
-set shiftwidth=4                                         " Number of spaces to use for each step of (auto)indent
+set softtabstop=-1                                        " number of spaces in tab when editing - when -1 use shiftwidth
+set tabstop=4                                            " number of visual spaces per TAB character
+set shiftwidth=0                                         " Number of spaces to use for each step of (auto)indent (<<, >>) - when 0 use tabstop
 set shiftround                                           " round indent to multiple of shiftwidth when using < or >
 set expandtab                                            " use space instead of tab character
 " }}}
