@@ -226,6 +226,9 @@ if exists("&t_SR") | let &t_SR.="\e[1 q" | endif
 
 " Plugins and external things {{{
 
+" diff current modified buffer to the file on the disk
+command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
+
 " netrw {{
 " open preview window to the right
 let g:netrw_preview=1
