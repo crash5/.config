@@ -203,4 +203,7 @@
     "workbench.tips.enabled": false,
     "workbench.view.alwaysShowHeaderActions": true,
     "zenMode.hideLineNumbers": false,
+    "workbench.editor.pinnedTabSizing": "shrink",
+    "search.experimental.searchInOpenEditors": true,
+    "workbench.editor.decorations.badges": true,
 }
