@@ -148,6 +148,8 @@
 [diff]
     tool = bc
     colorMoved = zebra
+    indentHeuristic = true
+    algorithm = histogram
 [merge]
     tool = bc
     summary = true
