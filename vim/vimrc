@@ -99,6 +99,20 @@ set splitright
 set path+=**
 " }}}
 
+" Diff {{{
+if has("patch-8.1.0360") || has("nvim")
+    set diffopt+=internal
+    set diffopt+=algorithm:histogram
+    set diffopt+=indent-heuristic
+endif
+
+" diff current modified buffer to the file on the disk
+if !exists(":DiffOrig")
+    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+        \ | wincmd p | diffthis
+endif
+" }}}
+
 " Whitespace {{{
 set softtabstop=-1                                        " number of spaces in tab when editing - when -1 use shiftwidth
 set tabstop=4                                            " number of visual spaces per TAB character
@@ -225,12 +239,6 @@ if exists("&t_SR") | let &t_SR.="\e[1 q" | endif
 " }}}
 
 " Plugins and external things {{{
-
-" diff current modified buffer to the file on the disk
-if !exists(":DiffOrig")
-    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-        \ | wincmd p | diffthis
-endif
 
 " netrw {{
 " open preview window to the right
