@@ -1,4 +1,4 @@
-// user_pref("privacy.resistFingerprinting", true); // block spotify web player
+// user_pref("privacy.resistFingerprinting", true); // blocks spotify web player
 user_pref("accessibility.force_disabled", 1);
 user_pref("app.normandy.api_url", "");
 user_pref("app.normandy.enabled", false);
@@ -158,4 +158,6 @@ user_pref("toolkit.telemetry.unified", false);
 user_pref("toolkit.telemetry.updatePing.enabled", false);
 user_pref("trailhead.firstrun.didSeeAboutWelcome", true);
 user_pref("ui.SpellCheckerUnderlineStyle", 4);
+//user_pref("network.dns.disableIPv6", true); // only if ipv6 not needed
+user_pref("browser.sessionstore.restore_pinned_tabs_on_demand", true); // load pinned tabs only when activated
 user_pref("_user.js.parrot", "Every user.js applyed!");
