@@ -216,7 +216,7 @@ onoremap gj j
 onoremap gk k
 
 " Select last inserted text
-nnoremap gV `[v`]
+nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Opens an edit command with the path of the currently edited file filled in
 map <Leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
