@@ -113,6 +113,21 @@ if !exists(":DiffOrig")
 endif
 " }}}
 
+" Ask for directory creation on save/new file {{{
+augroup AutoMkdir
+    autocmd!
+    autocmd  BufNewFile,BufWritePre  *  :call <SID>EnsureDirExists()
+augroup END
+function! s:EnsureDirExists ()
+    let required_dir = expand("%:h")
+    if !isdirectory(required_dir)
+        if confirm("Directory '" . required_dir . "' doesn't exist.", "&Abort?\n&Create it?") == 2
+            call mkdir( required_dir, 'p' )
+        endif
+    endif
+endfunction
+" }}}
+
 " Whitespace {{{
 set softtabstop=-1                                        " number of spaces in tab when editing - when -1 use shiftwidth
 set tabstop=4                                            " number of visual spaces per TAB character
