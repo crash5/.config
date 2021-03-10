@@ -206,4 +206,6 @@
     "workbench.editor.pinnedTabSizing": "shrink",
     "search.experimental.searchInOpenEditors": true,
     "workbench.editor.decorations.badges": true,
+    "search.seedOnFocus": true,
+    "editor.foldingHighlight": false,
 }
