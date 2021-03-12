@@ -88,6 +88,16 @@
             "after": ["y", "s", "i", "w", "\""]
         }
     ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": ["<leader>", "'"],
+            "after": ["S", "'"]
+        },
+        {
+            "before": ["<leader>", "\""],
+            "after": ["S", "\""]
+        }
+    ],
     "vim.handleKeys": {
         "<C-f>": false
     },
