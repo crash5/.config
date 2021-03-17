@@ -315,6 +315,13 @@ let g:solarized_extra_hi_groups=1
 silent! colorscheme solarized8
 " }}}
 
+" highlight the current line {{{
+highlight LineHighlight ctermbg=black guibg=black
+nnoremap <silent> <Leader>hh :call matchadd('LineHighlight', '\%'.line('.').'l', 10, line('.'))<CR>
+nnoremap <silent> <Leader>hd :call matchdelete(line('.'))<CR>
+nnoremap <silent> <Leader>hc :call clearmatches()<CR>
+" }}}
+
 if exists(":packloadall")
     packloadall
 endif
