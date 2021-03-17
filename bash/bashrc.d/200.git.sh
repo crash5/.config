@@ -1,5 +1,6 @@
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_COMPLETION_SHOW_ALL=1
 
 if program_exists git; then
     g() {
