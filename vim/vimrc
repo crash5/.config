@@ -255,11 +255,11 @@ if exists("&t_SR") | let &t_SR.="\e[1 q" | endif
 
 " Plugins and external things {{{
 
-" netrw {{
+" netrw {{{
 " open preview window to the right
 let g:netrw_preview=1
 let g:netrw_alto=0
-" }}
+" }}}
 
 " CamelCase motion {{{
 let g:camelcasemotion_key = '<leader>'
