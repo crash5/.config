@@ -1,5 +1,7 @@
 " vim: foldmethod=marker
 
+if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
+
 if &compatible
     set nocompatible
 endif
