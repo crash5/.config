@@ -75,7 +75,7 @@
     "vim.visualModeKeyBindingsNonRecursive": [
         {
             "before": ["<leader>", "g"],
-            "commands": ["workbench.view.search"]
+            "commands": ["workbench.action.findInFiles"]
         },
     ],
     "vim.normalModeKeyBindings": [
