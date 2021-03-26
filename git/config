@@ -54,6 +54,7 @@
     diffcw = diff --cached --color-words
     diffu = diff @{u}
     diffn = diff --name-only
+    diffns = diff --name-status
     diffw = diff --color-words
     diffurange = range-diff @{u}...@
     diffrange-rebase = range-diff @{1}...HEAD
