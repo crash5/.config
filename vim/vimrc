@@ -146,7 +146,7 @@ set incsearch                                            " search as characters 
 set smartcase
 
 " Clear highlights
-nnoremap <silent> <leader><leader> :setlocal hlsearch!<CR>
+nnoremap <silent> <leader><leader> :nohlsearch<CR>
 
 " search word under cursor or selected text
 nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
