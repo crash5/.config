@@ -15,14 +15,26 @@ alias me="python3 -c 'import requests,pprint; pprint.pprint(requests.get(\"https
 [ -f /usr/lib/mc/mc-wrapper.sh ] && alias mc='. /usr/lib/mc/mc-wrapper.sh -x'
 
 alias rl='readlink -m'
-alias rg='rg --hidden --smart-case --follow --binary --search-zip --glob "!**/.git/**"'
-
 alias treeimpl='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 alias treeimplwogit='find . -not -path "./.git/*" | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 
 if program_exists bat; then
     alias cat='bat -p'
 fi
+# }}}
+
+# ripgrep {{{
+alias rg='rg --hidden --smart-case --follow --binary --search-zip --glob "!**/.git/**"'
+
+rgg() {
+    local search_for=$1
+    rg --files-with-matches --smart-case "${search_for}" | \
+        fzf --query "${search_for}" --disabled --multi \
+            --bind "change:reload:rg --files-with-matches --smart-case {q} || true" \
+            --preview-window right:wrap \
+            --preview "rg --smart-case --color=always --context 3 {q} {}" | \
+        xargs --no-run-if-empty --open-tty vim
+}
 # }}}
 
 # ls, file listing {{{
