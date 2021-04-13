@@ -134,7 +134,10 @@ if function_exists _fzf_setup_completion; then
 fi
 
 if program_exists fzf; then
-    export FZF_DEFAULT_OPTS="--bind 'f4:execute(vim {})'"
+    export FZF_DEFAULT_OPTS="
+        --bind 'f4:execute(vim {})'
+        --bind 'shift-left:preview-page-up'
+        --bind 'shift-right:preview-page-down'"
     SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
     source "${SCRIPT_DIR}"/161.fzf-key-bindings.bash
 fi
