@@ -73,16 +73,8 @@ cd() {
     fi
 }
 
-mkcd() {
+mkdirr() {
     mkdir -p "${1:? need a directory}" && cd "${1}"
-}
-
-cdd() {
-    cd "${1:? need a directory}" && ll
-}
-
-cds() {
-    cd "${1:? need a directory}" && llsd
 }
 # }}}
 
