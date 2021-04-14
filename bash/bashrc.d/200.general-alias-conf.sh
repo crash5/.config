@@ -95,9 +95,15 @@ fi
 
 # vim, neovim {{{
 alias vi='vim'
-alias vis='vi -S'
+alias vis='vim -S'
+vii() {
+    if [ "$#" -gt 0 ]; then
+        find "$@" | fzf --multi | xargs --no-run-if-empty --open-tty vim
+    else
+        fzf --multi | xargs --no-run-if-empty --open-tty vim
+    fi
+}
 
-alias nvi=nvim
 alias vin=nvim
 
 vip() {
