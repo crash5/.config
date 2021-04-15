@@ -61,6 +61,10 @@
     dr = diff HEAD@{1}
     dr2 = diff HEAD@{2}
 
+    diffp = diff --diff-algorithm=patience
+    diffm = diff --diff-algorithm=myers
+    diffmm = diff --diff-algorithm=minimal
+
     mt = mergetool
 
     lp = log --pretty=log
