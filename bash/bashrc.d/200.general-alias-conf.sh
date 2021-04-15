@@ -24,7 +24,14 @@ fi
 # }}}
 
 # ripgrep {{{
-alias rg='rg --hidden --smart-case --follow --binary --search-zip --glob "!**/.git/**"'
+alias rg="rg \
+    --hidden \
+    --smart-case \
+    --follow \
+    --binary \
+    --search-zip \
+    --no-ignore \
+    --glob '!**/.git/**'"
 
 rgg() {
     local search_for=$1
