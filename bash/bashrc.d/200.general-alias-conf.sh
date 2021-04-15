@@ -133,7 +133,11 @@ fi
 
 if program_exists fzf; then
     export FZF_DEFAULT_OPTS="
+        --preview 'cat {}'
+        --preview-window hidden
         --bind 'f4:execute(vim {})'
+        --bind 'ctrl-a:select-all'
+        --bind 'f3:toggle-preview'
         --bind 'shift-left:preview-page-up'
         --bind 'shift-right:preview-page-down'"
     SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
