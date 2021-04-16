@@ -24,22 +24,13 @@ fi
 # }}}
 
 # ripgrep {{{
-alias rg="rg \
-    --hidden \
-    --smart-case \
-    --follow \
-    --binary \
-    --search-zip \
-    --no-ignore \
-    --glob '!**/.git/**'"
-
 rgg() {
     local search_for=$1
-    rg --files-with-matches --smart-case "${search_for}" | \
+    rg --files-with-matches "${search_for}" | \
         fzf --query "${search_for}" --disabled --multi \
-            --bind "change:reload:rg --files-with-matches --smart-case {q} || true" \
+            --bind "change:reload:rg --files-with-matches {q} || true" \
             --preview-window right:wrap:nohidden \
-            --preview "rg --smart-case --color=always --context 3 {q} {}"
+            --preview "rg --color=always --context 3 {q} {}"
 }
 
 rgv() {

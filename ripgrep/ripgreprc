@@ -1,0 +1,8 @@
+--hidden
+--no-ignore
+--smart-case
+--follow
+--binary
+--search-zip
+--glob=!.git
+--glob=!.svn
