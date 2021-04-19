@@ -97,6 +97,10 @@ set nrformats=                                           " make <C-a> and <C-x> 
 " set virtualedit=all                                      " allow the cursor to go in to "invalid" places
 set backspace=indent,eol,start                           " allow backspacing over everything in insert mode
 
+if has("patch-8.2.2772")
+    set sessionoptions+=skiprtp                          " skip runtimepath and packpath on Session file save
+endif
+
 " More natural split directions
 set splitbelow
 set splitright
