@@ -59,7 +59,7 @@
         },
         {
             "before": ["<leader>", "g"],
-            "commands": ["workbench.view.search"]
+            "commands": ["workbench.action.findInFiles"]
         },
     ],
     "vim.insertModeKeyBindings": [
