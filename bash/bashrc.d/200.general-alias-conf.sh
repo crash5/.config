@@ -30,7 +30,7 @@ rgg() {
         fzf --query "${search_for}" --disabled --multi \
             --bind "change:reload:rg --files-with-matches {q} || true" \
             --preview-window right:wrap:nohidden \
-            --preview "rg --color=always --context 3 {q} {}"
+            --preview "rg --color=always --line-number --context 3 {q} {}"
 }
 
 rgv() {
