@@ -44,9 +44,12 @@ alias ll='ls -lahF --color=always --group-directories-first'
 alias llsd='ls -lahF --color=always --group-directories-first --sort=time --reverse'
 
 if program_exists exa; then
-    alias ll='exa --long --group-directories-first --all --all --git'
-    alias llt='exa --long --group-directories-first --all --git --tree -I.git'
+    alias ll='exa --group-directories-first --long --all --all --git'
+    alias lld='ll -D'
+    alias llt='exa --group-directories-first --long --all --git --tree -I.git'
+    alias lltd='llt -D'
     alias llts='exa --group-directories-first --all --tree -I.git'
+    alias lltsd='llts -D'
     alias llsd='ll -s date'
 fi
 # }}}
