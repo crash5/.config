@@ -82,6 +82,7 @@ set undofile                                             " enable persistent und
 
 set wildmenu
 set wildmode=longest:full,full                           " autocomplete to common substr and iterate over resulst
+set wildignorecase                                       " ignore casing on completion
 
 set noerrorbells                                         " don't beep
 set visualbell                                           " don't beep
