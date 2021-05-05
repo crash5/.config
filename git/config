@@ -73,6 +73,7 @@
     ls = log --pretty=fuller --name-status
     lss = log --pretty=fuller --patch
     ld = !git l $(git merge-base develop HEAD)..HEAD
+    mostchangedayear = "!git log --format=format: --name-only --since=12.month | egrep -v '^$' | sort | uniq -c | sort -nr | head -50"
 
     rll = reflog --pretty=rlog
     rl = rll -25
