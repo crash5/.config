@@ -37,10 +37,6 @@ endif
 " }}}
 
 " Security {{{
-if has('crypt-blowfish2')
-    set cryptmethod=blowfish2
-endif
-
 set nomodeline                                           " disable modeline parsing
 set modelines=2
 " parse modeline with keybinding
