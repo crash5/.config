@@ -248,10 +248,22 @@ vnoremap <leader>. :normal .<CR>
 nnoremap <F5> :<C-u>edit!<CR>
 " }}}
 
-" Terminal cursor change support {{{
+" Terminal support {{{
+
+" handle cursor shape change
 if exists("&t_SI") | let &t_SI.="\e[5 q" | endif
 if exists("&t_EI") | let &t_EI.="\e[2 q" | endif
 if exists("&t_SR") | let &t_SR.="\e[1 q" | endif
+
+" handle ctrl+arrows under tmux in insert and command-line mode
+if &term == "tmux-256color"
+    map!  <Esc>[1;5A <C-Up>
+    map!  <Esc>[1;5B <C-Down>
+    map!  <Esc>[1;5D <C-Left>
+    map!  <Esc>[1;5C <C-Right>
+    map!  <Esc>[1;2D <S-Left>
+    map!  <Esc>[1;2C <S-Right>
+endif
 
 " if exists('$TMUX')
 "     let &t_SI .= "\ePtmux;\e\e[5 q\e\\"
