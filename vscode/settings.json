@@ -86,6 +86,14 @@
         {
             "before": ["<leader>", "\""],
             "after": ["y", "s", "i", "w", "\""]
+        },
+        {
+            "before": ["<leader>", "m"],
+            "commands": ["bookmarks.toggle"]
+        },
+        {
+            "before": ["<leader>", "b"],
+            "commands": ["bookmarks.list"]
         }
     ],
     "vim.visualModeKeyBindings": [
