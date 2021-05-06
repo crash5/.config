@@ -313,6 +313,15 @@ endfunction
 command! -nargs=1 -complete=command -bar -range Redir silent call Redir(<q-args>, <range>, <line1>, <line2>)
 " }}}
 
+" Bookmarks {{{
+if !empty($XDG_DATA_HOME)
+    let g:bookmark_auto_save_file = $XDG_DATA_HOME.'/vim/bookmarks'
+endif
+let g:bookmark_no_default_key_mappings = 1
+nmap <leader>m <Plug>BookmarkToggle
+nmap <leader>lm <Plug>BookmarkShowAll
+" }}}
+
 " CamelCase motion {{{
 let g:camelcasemotion_key = '<leader>'
 " }}}
