@@ -92,8 +92,12 @@
             "commands": ["bookmarks.toggle"]
         },
         {
-            "before": ["<leader>", "b"],
+            "before": ["<leader>", "l", "l", "m"],
             "commands": ["bookmarks.list"]
+        },
+        {
+            "before": ["<leader>", "l", "m"],
+            "commands": ["bookmarks.listFromAllFiles"]
         }
     ],
     "vim.visualModeKeyBindings": [
