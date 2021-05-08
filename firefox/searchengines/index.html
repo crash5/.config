@@ -9,8 +9,7 @@
 <body>
     Engine locations: <input type="text" id="baseUrl" placeholder="http://" style="width: 30%;">
     <button type="button" id="get">Get</button> <br />
-    Engines:<br />
-    <ul id="engines"></ul>
+    To install search engines use your browser's menu. (Firefox: three dot next to the URL field -> Add search engine)
 </body>
 
 <script>
@@ -18,17 +17,17 @@
         return document.getElementById("baseUrl").value;
     }
 
-    function installEngine(fileName) {
-        const baseUrl = baseUrlAddress();
-        window.external.AddSearchProvider(`${baseUrl}/${fileName}`);
-    }
-
     function populateList(engines) {
-        let list = document.getElementById("engines");
-        list.innerHTML = "";
+        const headID = document.getElementsByTagName('head')[0];
+        const baseUrl = baseUrlAddress();
 
         engines.forEach(function (item) {
-            list.innerHTML += `<li><a href="javascript:installEngine('${item.file}');">${item.name}</a> (${item.file})</li>`;
+            let link = document.createElement('link');
+            link.type = 'application/opensearchdescription+xml';
+            link.rel = 'search';
+            link.href = `${baseUrl}/${item.file}`;
+            link.title = item.name
+            headID.appendChild(link);
         });
     }
 
