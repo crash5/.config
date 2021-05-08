@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
     <ShortName>XE.com PLN to HUF</ShortName>
     <Description>XE Currency Converter</Description>
@@ -9,5 +8,6 @@
         <Param name="From" value="PLN"/>
         <Param name="To" value="HUF"/>
     </Url>
+    <Url type="application/opensearchdescription+xml" rel="self" template="https://crash5.github.io/.config/firefox/searchengines/xe-pln-to-huf.xml" />
     <moz:SearchForm>https://www.xe.com/currencyconverter/convert/</moz:SearchForm>
 </OpenSearchDescription>

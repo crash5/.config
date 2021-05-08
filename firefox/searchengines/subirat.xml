@@ -6,5 +6,6 @@
     <Url type="text/html" method="POST" template="http://subirat.net/search/simple">
         <Param name="qsinput" value="{searchTerms}"/>
     </Url>
+    <Url type="application/opensearchdescription+xml" rel="self" template="https://crash5.github.io/.config/firefox/searchengines/subirat.xml" />
     <moz:SearchForm>http://subirat.net/search/simple</moz:SearchForm>
 </OpenSearchDescription>

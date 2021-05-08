@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
     <ShortName>Feliratok.info</ShortName>
     <Description>Feliratok.info Subtitle</Description>
@@ -8,5 +7,6 @@
         <Param name="search" value="{searchTerms}"/>
         <Param name="nyelv" value=""/>
     </Url>
+    <Url type="application/opensearchdescription+xml" rel="self" template="https://crash5.github.io/.config/firefox/searchengines/feliratok_info.xml" />
     <moz:SearchForm>https://www.feliratok.info/</moz:SearchForm>
 </OpenSearchDescription>

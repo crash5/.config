@@ -8,5 +8,6 @@
         <Param name="fromlang" value="eng"/>
         <Param name="tolang" value="hun"/>
     </Url>
+    <Url type="application/opensearchdescription+xml" rel="self" template="https://crash5.github.io/.config/firefox/searchengines/sztaki-eng-to-hun.xml" />
     <moz:SearchForm>http://szotar.sztaki.hu/search</moz:SearchForm>
 </OpenSearchDescription>

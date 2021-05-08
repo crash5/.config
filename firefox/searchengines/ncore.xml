@@ -7,6 +7,5 @@
         <Param name="mire" value="{searchTerms}"/>
     </Url>
     <Url type="application/opensearchdescription+xml" rel="self" template="https://crash5.github.io/.config/firefox/searchengines/ncore.xml" />
-    <Url type="application/x-moz-keywordsearch" template="nc" />
     <moz:SearchForm>https://ncore.pro/torrents.php</moz:SearchForm>
 </OpenSearchDescription>
