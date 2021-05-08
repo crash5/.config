@@ -19,12 +19,12 @@
     }
 
     function installEngine(fileName) {
-        var baseUrl = baseUrlAddress();
+        const baseUrl = baseUrlAddress();
         window.external.AddSearchProvider(`${baseUrl}/${fileName}`);
     }
 
     function populateList(engines) {
-        var list = document.getElementById("engines");
+        let list = document.getElementById("engines");
         list.innerHTML = "";
 
         engines.forEach(function (item) {
@@ -33,13 +33,13 @@
     }
 
     function loadFromUrl(url) {
-        var requestURL = baseUrlAddress() + "/engines.json";
-        var request = new XMLHttpRequest();
+        const requestURL = baseUrlAddress() + "/engines.json";
+        let request = new XMLHttpRequest();
         request.open('GET', requestURL);
         request.responseType = 'json';
         request.send();
         request.onload = function () {
-            var engines = request.response.engines;
+            const engines = request.response.engines;
             populateList(engines);
         }
     }
@@ -49,16 +49,16 @@
     }
 
     window.onload = function () {
-        var baseUrlField = document.getElementById("baseUrl");
+        const baseUrlField = document.getElementById("baseUrl");
         baseUrlField.addEventListener("keyup", function (event) {
             if (event.key === "Enter") {
                 loadEngines();
             }
         });
-        var location = window.location.href;
+        const location = window.location.href;
         baseUrlField.value = location.slice(0, location.lastIndexOf("/"));
 
-        var getButton = document.getElementById("get");
+        const getButton = document.getElementById("get");
         getButton.addEventListener("click", function () {
             loadEngines();
         });
