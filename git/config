@@ -6,6 +6,7 @@
 [alias]
     branch-name = rev-parse --abbrev-ref HEAD
     branch-name-tracking = rev-parse --abbrev-ref --symbolic-full-name "@{u}"
+    ctags = "!$XDG_CONFIG_HOME/git/template/hooks/ctags"
 
     pullas = pull --autostash
 
