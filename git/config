@@ -14,6 +14,8 @@
     pushu = !git push -u origin $(git branch-name)
     preview = "!f() { : git checkout ; git push origin HEAD:refs/for/\"${@:?Missing parameter (branch, etc.)}\"; }; f"
     pdraft = "!f() { : git checkout ; git push --no-verify origin HEAD:refs/drafts/\"${@:?Missing parameter (branch, etc.)}\"; }; f"
+    ; preview = "!f() { : git checkout ; git push origin HEAD:refs/for/\"${@:?Missing parameter (branch, etc.)}\"%ready; }; f"
+    ; pdraft = "!f() { : git checkout ; git push --no-verify origin HEAD:refs/for/\"${@:?Missing parameter (branch, etc.)}\"%wip; }; f"
     co = checkout
     cos = "!f() { git fetch -q && git co $(git brr | fzf --tac -q ${1:-''} | awk '{ print $1 }'); }; f"
     cod = checkout --detach
