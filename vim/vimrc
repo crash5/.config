@@ -350,6 +350,8 @@ nnoremap <silent> <Leader>hd :call matchdelete(line('.'))<CR>
 nnoremap <silent> <Leader>hc :call clearmatches()<CR>
 " }}}
 
+packadd! matchit
+
 if exists(":packloadall")
     packloadall
 endif
