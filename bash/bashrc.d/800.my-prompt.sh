@@ -1,5 +1,8 @@
 function setMyPrompt()
 {
+    # disable python virtual environment prompt changing on activation
+    VIRTUAL_ENV_DISABLE_PROMPT=1
+
     local GREEN="\[\033[0;32m\]"
     local CYAN="\[\033[0;36m\]"
     local RED="\[\033[0;31m\]"
