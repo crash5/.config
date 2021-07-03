@@ -106,6 +106,7 @@ packages=(
     "https://github.com/tpope/vim-unimpaired"
     "https://github.com/bronson/vim-visual-star-search"
     "https://github.com/michaeljsmith/vim-indent-object"
+    "https://github.com/unblevable/quick-scope.git"
 )
 
 for url in ${packages[@]}; do
