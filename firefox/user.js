@@ -158,6 +158,13 @@ user_pref("toolkit.telemetry.unified", false);
 user_pref("toolkit.telemetry.updatePing.enabled", false);
 user_pref("trailhead.firstrun.didSeeAboutWelcome", true);
 user_pref("ui.SpellCheckerUnderlineStyle", 4);
+user_pref("browser.backspace_action", 0); // backspace behaves like back button
 //user_pref("network.dns.disableIPv6", true); // only if ipv6 not needed
 user_pref("browser.sessionstore.restore_pinned_tabs_on_demand", true); // load pinned tabs only when activated
 user_pref("_user.js.parrot", "Every user.js applyed!");
+user_pref("ui.prefersReducedMotion", 1); // reduce animations
+user_pref("browser.compactmode.show", true);
+// user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+user_pref("browser.proton.enabled", false);
+user_pref("browser.urlbar.suggest.calculator", true);
+user_pref("browser.urlbar.unitConversion.enabled", true); // from FF 90.0
