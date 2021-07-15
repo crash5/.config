@@ -238,10 +238,6 @@ cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 " Write as sudo
 cnoremap w!! w !sudo tee % >/dev/null
 
-" Apply macro from q register
-nnoremap Q @q
-vnoremap Q :normal @q<CR>
-
 vnoremap <leader>. :normal .<CR>
 
 " reload file, discard any chagnes
