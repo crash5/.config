@@ -12,6 +12,7 @@ user_pref("browser.aboutConfig.showWarning", false);
 user_pref("browser.aboutHomeSnippets.updateUrl", "");
 user_pref("browser.altClickSave", true);
 user_pref("browser.bookmarks.editDialog.firstEditField", "tagsField");
+user_pref("bookmarks.editDialog.firstEditField", "tagsField");
 user_pref("browser.bookmarks.restore_default_bookmarks", false);
 user_pref("browser.bookmarks.showMobileBookmarks", true);
 user_pref("browser.chrome.errorReporter.enabled", false);
