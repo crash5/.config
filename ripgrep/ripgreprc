@@ -4,5 +4,7 @@
 --follow
 --binary
 --search-zip
+--no-messages
 --glob=!.git
 --glob=!.svn
+--glob=!.cache
