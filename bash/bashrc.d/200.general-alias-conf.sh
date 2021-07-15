@@ -26,7 +26,7 @@ fi
 # ripgrep {{{
 rgg() {
     local search_for=$1
-    rg --files-with-matches "${search_for}" | \
+    rg --files-with-matches "${search_for}" --no-messages | \
         fzf --query "${search_for}" --disabled --multi \
             --bind "change:reload:rg --files-with-matches {q} || true" \
             --preview-window right:wrap:nohidden \
