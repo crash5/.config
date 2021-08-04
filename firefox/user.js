@@ -52,7 +52,7 @@ user_pref("browser.safebrowsing.provider.google4.reportURL", ""); // (FF50+)
 user_pref("browser.safebrowsing.reportPhishURL", "");
 user_pref("browser.search.suggest.enabled", false);
 user_pref("browser.search.update", false);
-user_pref("browser.startup.homepage_override.mstone", "ignore")
+user_pref("browser.startup.homepage_override.mstone", "ignore");
 user_pref("browser.startup.page", 0);
 user_pref("browser.tabs.closeWindowWithLastTab", false);
 user_pref("browser.tabs.crashReporting.sendReport", false);
@@ -84,7 +84,7 @@ user_pref("dom.security.https_only_mode", true);
 user_pref("dom.serviceWorkers.enabled", false); // web push notifications
 user_pref("dom.webnotifications.enabled", false); // web push notifications
 user_pref("dom.webnotifications.serviceworker.enabled", false); // sites can still generate desktop notifications while you have a tab open to the site 
-user_pref("extensions.formautofill.addresses.enabled", false)
+user_pref("extensions.formautofill.addresses.enabled", false);
 user_pref("extensions.formautofill.creditCards.enabled", false); // (FF56+)
 user_pref("extensions.getAddons.cache.enabled", false);
 user_pref("extensions.getAddons.showPane", false); // hidden pref
@@ -115,7 +115,7 @@ user_pref("media.peerconnection.enabled", false);
 user_pref("media.webspeech.recognition.enable", false);
 user_pref("media.webspeech.synth.enabled", false);
 user_pref("network.allow-experiments", false);
-user_pref("network.captive-portal-service.enabled", false)
+user_pref("network.captive-portal-service.enabled", false);
 user_pref("network.cookie.cookieBehavior", 4);
 user_pref("network.cookie.lifetimePolicy", 2);
 user_pref("network.dns.disablePrefetch", true);
