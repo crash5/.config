@@ -1,4 +1,5 @@
 for FN in "${XDG_CONFIG_HOME:-$HOME/.config}/bash/profile.d/"*.sh ; do
-    [ -f "$FN" ] || continue
-    source "$FN"
+    [ -e "$FN" ] || continue
+    . "$FN"
 done
+unset -v FN
