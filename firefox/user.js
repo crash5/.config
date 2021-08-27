@@ -168,3 +168,4 @@ user_pref("browser.compactmode.show", true);
 // user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("browser.urlbar.suggest.calculator", true);
 user_pref("browser.urlbar.unitConversion.enabled", true); // from FF 90.0
+user_pref("media.autoplay.default", 5);
