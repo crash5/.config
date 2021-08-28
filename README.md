@@ -117,6 +117,14 @@ for url in ${packages[@]}; do
 done
 ```
 
+### Apps
+
+- https://github.com/junegunn/fzf
+- https://github.com/BurntSushi/ripgrep
+- https://github.com/ogham/exa
+- https://github.com/vim/vim-appimage
+- https://github.com/flameshot-org/flameshot
+
 ---
 Sources:
  * https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
