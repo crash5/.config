@@ -110,9 +110,6 @@
             "after": ["S", "\""]
         }
     ],
-    "vim.handleKeys": {
-        "<C-f>": false
-    },
     "vim.camelCaseMotion.enable": true,
     "vim.foldfix": true,
     "vim.highlightedyank.enable": true,
