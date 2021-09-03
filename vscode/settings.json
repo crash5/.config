@@ -148,11 +148,6 @@
     "todo-tree.tree.flat": true,
     "todo-tree.tree.showScanModeButton": false,
 // < todo tree
-// > bracket pair colorizer
-    "bracket-pair-colorizer-2.forceUniqueOpeningColor": true,
-    "bracket-pair-colorizer-2.showBracketsInGutter": true,
-    "bracket-pair-colorizer-2.showHorizontalScopeLine": false,
-// < bracket pair colorizer
 // > open in vim
     "open-in-vim.linux.gnome-terminal.args": "",
     "open-in-vim.openMethod": "linux.gnome-terminal",
@@ -227,4 +222,5 @@
     "workbench.editor.decorations.badges": true,
     "search.seedOnFocus": true,
     "editor.foldingHighlight": false,
+    "editor.bracketPairColorization.enabled": true, // replaces bracket pair colorizer addon after v1.60
 }
