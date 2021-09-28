@@ -361,14 +361,6 @@ endif
 if exists('g:loaded_sandwich')
     runtime macros/sandwich/keymap/surround.vim
 endif
-
-" surround current word
-if exists('g:loaded_sandwich') || exists('g:loaded_surround')
-    nmap <leader>' ysiw'
-    nmap <leader>" ysiw"
-    xmap <leader>' S'
-    xmap <leader>" S"
-endif
 " }}}
 
 " Fzf {{{
