@@ -77,8 +77,6 @@ EOF
 lua <<EOF
 local nvim_lsp = require 'lspconfig'
 
-nvim_lsp.pyright.setup{}
-
 local on_attach = function(_, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
