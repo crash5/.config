@@ -99,8 +99,19 @@ fi
 # }}}
 
 # vim, neovim {{{
-alias vi='vim'
-alias vis='vim -S'
+alias vi=vi-chooser
+
+vi-chooser() {
+    if program_exists nvim; then
+        nvim $@
+    elif program_exists vim; then
+        vim $@
+    else
+        vi $@
+    fi
+}
+
+alias vis='vi -S'
 vii() {
     if [ "$#" -gt 0 ]; then
         find "$@" | fzf --multi | xargs --no-run-if-empty --open-tty vim
@@ -109,18 +120,16 @@ vii() {
     fi
 }
 
-alias vin=nvim
-
 vip() {
-    if [[ $# == 0 ]]; then vim <(fc -s); else vim <("$@"); fi
+    if [[ $# == 0 ]]; then vi <(fc -s); else vi <("$@"); fi
 }
 
 vipq() {
-    if [[ $# == 0 ]]; then vim -q <(fc -s); else vim -q <("$@"); fi
+    if [[ $# == 0 ]]; then vi -q <(fc -s); else vi -q <("$@"); fi
 }
 
 via() {
-    if [[ $# == 0 ]]; then vim $(fc -s); else vim $("$@"); fi
+    if [[ $# == 0 ]]; then vi $(fc -s); else vi $("$@"); fi
 }
 # }}}
 
