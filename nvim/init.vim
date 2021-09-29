@@ -1,7 +1,11 @@
 source $XDG_CONFIG_HOME/vim/vimrc
 
-set shada+=n$XDG_DATA_HOME/vim/nviminfo
+set shadafile=$XDG_DATA_HOME/nvim/nviminfo
+set undodir&
 
+set inccommand=nosplit
+
+" Treesitter {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
     ensure_installed = 'maintained',
@@ -10,9 +14,9 @@ require'nvim-treesitter.configs'.setup {
     incremental_selection = {
         enable = true,
         keymaps = {
-            init_selection = "gnn",
+            init_selection = "<S-A-Right>",
             node_incremental = "<S-A-Right>",
-            scope_incremental = "grc",
+            scope_incremental = "<S-A-Up>",
             node_decremental = "<S-A-Left>",
         }
     },
@@ -66,4 +70,9 @@ require'nvim-treesitter.configs'.setup {
         }
     }
 }
+EOF
+" }}}
+
+lua <<EOF
+require'lspconfig'.pyright.setup{}
 EOF
