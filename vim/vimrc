@@ -14,18 +14,13 @@ set viminfo='100,<1000,s100,h
 
 " XDG path config {{{
 if !empty($XDG_DATA_HOME)
+    set viminfofile=$XDG_DATA_HOME/vim/viminfo
+
+    set undodir=$XDG_DATA_HOME/vim/undo//     | call mkdir(&undodir,   'p')
+    set directory=$XDG_DATA_HOME/vim/swap//   | call mkdir(&directory, 'p')
+    set backupdir=$XDG_DATA_HOME/vim/backup// | call mkdir(&backupdir, 'p')
     set viewdir=$XDG_DATA_HOME/vim/views// | call mkdir(&viewdir, 'p')
     let g:netrw_home = $XDG_DATA_HOME."/vim/"
-
-    if !has('nvim')
-        set viminfo+=n$XDG_DATA_HOME/vim/viminfo
-    endif
-endif
-
-if !empty($XDG_CACHE_HOME)
-    set undodir=$XDG_CACHE_HOME/vim/undo//     | call mkdir(&undodir,   'p')
-    set directory=$XDG_CACHE_HOME/vim/swap//   | call mkdir(&directory, 'p')
-    set backupdir=$XDG_CACHE_HOME/vim/backup// | call mkdir(&backupdir, 'p')
 endif
 
 if !empty($XDG_CONFIG_HOME)
