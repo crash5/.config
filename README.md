@@ -124,6 +124,7 @@ done
 - https://github.com/ogham/exa
 - https://github.com/vim/vim-appimage
 - https://github.com/flameshot-org/flameshot
+- https://github.com/vifm/vifm
 
 ---
 Sources:

@@ -14,6 +14,10 @@ alias me="python3 -c 'import requests,pprint; pprint.pprint(requests.get(\"https
 
 [ -f /usr/lib/mc/mc-wrapper.sh ] && alias mc='. /usr/lib/mc/mc-wrapper.sh -x'
 
+if program_exists vifm; then
+    alias mc='vifm'
+fi
+
 alias rl='readlink -m'
 alias treeimpl='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 alias treeimplwogit='find . -not -path "./.git/*" | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'

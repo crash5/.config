@@ -3,6 +3,7 @@
 declare -rA apps=(
     [vim]="vim/vim-appimage"
     [flameshot]="flameshot-org/flameshot"
+    [vifm]="vifm/vifm"
 )
 
 
