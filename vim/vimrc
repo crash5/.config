@@ -1,4 +1,4 @@
-" vim: foldmethod=marker
+" vim: foldmethod=marker formatoptions-=o
 
 if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
 
@@ -170,7 +170,7 @@ vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
 command! ClearQuickfixList cexpr []
 " }}}
 
-" Statuline {{{
+" Statusline {{{
 set laststatus=2                                         " Always display the status line, even if only one window is displayed
 set statusline=%F%m%r%h%w
 set statusline+=\ [
@@ -246,7 +246,6 @@ vnoremap <leader>. :normal .<CR>
 " reload file, discard any chagnes
 nnoremap <F5> :<C-u>edit!<CR>
 
-
 " move lines up/down
 nnoremap <c-j> :m .+1<CR>==
 nnoremap <c-k> :m .-2<CR>==
@@ -294,7 +293,6 @@ augroup vim_commentary_custom
     autocmd FileType cpp  setlocal commentstring=//\ %s
 augroup END
 " }}}
-
 
 " Redirect command output to a scratch buffer {{{
 " from: https://gist.github.com/romainl/eae0a260ab9c135390c30cd370c20cd7
