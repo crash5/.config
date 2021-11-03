@@ -99,6 +99,14 @@ set splitright
 
 " :find look for files in sub-directories
 set path+=**
+
+" disable persistent undo for files in tmp (eg: for sudoedit-ed files)
+augroup undofile_custom
+    autocmd!
+    autocmd BufWritePre /tmp/* setlocal noundofile
+    autocmd BufWritePre /var/tmp/* setlocal noundofile
+augroup END
+
 " }}}
 
 " Diff {{{
