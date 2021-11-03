@@ -288,6 +288,14 @@ let g:netrw_preview=1
 let g:netrw_alto=0
 " }}}
 
+" vim-commentary {{{
+augroup vim_commentary_custom
+    autocmd!
+    autocmd FileType cpp  setlocal commentstring=//\ %s
+augroup END
+" }}}
+
+
 " Redirect command output to a scratch buffer {{{
 " from: https://gist.github.com/romainl/eae0a260ab9c135390c30cd370c20cd7
 function! Redir(cmd, rng, start, end)
