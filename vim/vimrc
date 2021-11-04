@@ -2,144 +2,135 @@
 
 if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
 
-if &compatible
-    set nocompatible
-endif
+augroup Vimrc | autocmd! | augroup end
 
-let g:mapleader = "\<Space>"
+let g:mapleader = "\<SPACE>"
 
-filetype indent plugin on
 
-set viminfo='100,<1000,s100,h
+" XDG, path config {{{
+if empty($XDG_DATA_HOME)   | let $VIMDATA = expand('~/.local/share/vim/') | else | let $VIMDATA = $XDG_DATA_HOME.'/vim/'     | endif
+if empty($XDG_CONFIG_HOME) | let $VIMCONFIG  = expand('~/.config/vim/')   | else | let $VIMCONFIG = $XDG_CONFIG_HOME.'/vim/' | endif
 
-" XDG path config {{{
-if !empty($XDG_DATA_HOME)
-    set viminfofile=$XDG_DATA_HOME/vim/viminfo
+let $VIMPLUGINS = $VIMCONFIG.'/plugged'
 
-    set undodir=$XDG_DATA_HOME/vim/undo//     | call mkdir(&undodir,   'p')
-    set directory=$XDG_DATA_HOME/vim/swap//   | call mkdir(&directory, 'p')
-    set backupdir=$XDG_DATA_HOME/vim/backup// | call mkdir(&backupdir, 'p')
-    set viewdir=$XDG_DATA_HOME/vim/views// | call mkdir(&viewdir, 'p')
-    let g:netrw_home = $XDG_DATA_HOME."/vim/"
-endif
-
-if !empty($XDG_CONFIG_HOME)
-    set runtimepath^=$XDG_CONFIG_HOME/vim
-    set runtimepath+=$XDG_CONFIG_HOME/vim/after
-    set packpath^=$XDG_CONFIG_HOME/vim
-    set packpath+=$XDG_CONFIG_HOME/vim/after
-endif
+set runtimepath^=$VIMCONFIG
+set runtimepath+=$VIMCONFIG/after
+set packpath^=$VIMCONFIG
+set packpath+=$VIMCONFIG/after
 " }}}
 
-" Security {{{
-set nomodeline                                           " disable modeline parsing
+" Basic keymap {{{
+inoremap kj <ESC>
+nnoremap <silent> <leader><leader> :nohlsearch<CR>
+
+noremap <leader>q :<C-u>q!<CR>
+noremap <leader>Q :<C-u>qall!<CR>
+
+" Yank to the end of the line
+noremap Y y$
+
+" Select last inserted text
+nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" reload file, discard any chagnes
+nnoremap <F5> :<C-u>edit!<CR>
+
+" Opens an edit command with the path of the currently edited file filled in
+map <Leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" Move by visual line
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+onoremap j gj
+onoremap k gk
+onoremap gj j
+onoremap gk k
+
+" Move lines up/down
+nnoremap <c-j> :m .+1<CR>==
+nnoremap <c-k> :m .-2<CR>==
+inoremap <c-j> <Esc>:m .+1<CR>==gi
+inoremap <c-k> <Esc>:m .-2<CR>==gi
+vnoremap <c-j> :m '>+1<CR>gv=gv
+vnoremap <c-k> :m '<-2<CR>gv=gv
+" }}}
+
+" Security, modeline {{{
+set nomodeline
 set modelines=2
 " parse modeline with keybinding
-nnoremap <leader>ml :setlocal modeline <bar> doautocmd BufRead <bar> setlocal nomodeline<CR>
+nnoremap <leader>ml :setlocal modeline <BAR> doautocmd BufRead <BAR> setlocal nomodeline<CR>
+" }}}
+
+" History, undo, state, session etc. {{{
+set undodir=$VIMDATA/undo//     | call mkdir(&undodir,   'p')
+set directory=$VIMDATA/swap//   | call mkdir(&directory, 'p')
+set backupdir=$VIMDATA/backup// | call mkdir(&backupdir, 'p')
+set viewdir=$VIMDATA/views//    | call mkdir(&viewdir, 'p')
+
+set viminfofile=$VIMDATA/viminfo
+set viminfo='100,<1000,s100,h
+
+set history=1000                                 " search and cmd line history
+set undolevels=1000                              " in-memory undo count
+set undofile                                     " enable persistent undo
+
+augroup Vimrc
+    " disable persistent undo for files in tmp (eg: for sudoedit-ed files)
+    autocmd BufWritePre /tmp/* setlocal noundofile
+    autocmd BufWritePre /var/tmp/* setlocal noundofile
+augroup END
+
+" skip runtimepath and packpath on Session file save
+if has("patch-8.2.2772")
+    set sessionoptions+=skiprtp
+endif
 " }}}
 
 " Display {{{
-set guifont=DejaVu\ Sans\ Mono
-
-if !has('nvim')
-    " set Vim-specific sequences for RGB colors
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
 set termguicolors
-
 set background=dark
-syntax on                                                " Enable syntax highlighting
 
-set lazyredraw                                           " redraw only when we need to.
+set number
+set showmode
+
+set cursorline
+set colorcolumn=80,120
 
 set showbreak=↪\ 
 set listchars=tab:»-,nbsp:␣,trail:·,extends:»,precedes:«
 set list
-set linebreak                                            " don't cut words into pieces on line break
 
-set colorcolumn=80,120                                   " set column guides
-set cursorline                                           " highlight current line
-set number                                               " show line numbers
-set ruler                                                " Display the cursor position on the last line of the screen or in the status line of a window
-set showcmd                                              " show command in bottom bar
-set showmode                                             " always show what mode we're currently editing in
+set splitbelow
+set splitright
+
+set linebreak               " don't cut words into pieces on line break
+
+set lazyredraw
 " }}}
 
-" Other (history, bell, mouse) {{{
-set history=1000                                         " remember more commands and search history
-set undolevels=1000                                      " use many muchos levels of undo
-set undofile                                             " enable persistent undo
+" Basic operation, mouse {{{
+set backspace=indent,eol,start
+set hidden
 
-set wildmenu
-set wildmode=longest:full,full                           " autocomplete to common substr and iterate over resulst
-set wildignorecase                                       " ignore casing on completion
-
-set noerrorbells                                         " don't beep
-set visualbell                                           " don't beep
+set virtualedit=block
+set nrformats-=octal          " <C-a> and <C-x> with zero-padded numbers (don't consider them octal)
 
 if has('mouse')
     set mouse=a
 endif
 " }}}
 
-" Operation {{{
-set hidden
-set nrformats-=octal                                     " make <C-a> and <C-x> play well with zero-padded numbers (i.e. don't consider them octal)
-" set virtualedit=all                                      " allow the cursor to go in to "invalid" places
-set backspace=indent,eol,start                           " allow backspacing over everything in insert mode
-
-if has("patch-8.2.2772")
-    set sessionoptions+=skiprtp                          " skip runtimepath and packpath on Session file save
-endif
-
-" More natural split directions
-set splitbelow
-set splitright
-
-" :find look for files in sub-directories
-set path+=**
-
-" disable persistent undo for files in tmp (eg: for sudoedit-ed files)
-augroup undofile_custom
-    autocmd!
-    autocmd BufWritePre /tmp/* setlocal noundofile
-    autocmd BufWritePre /var/tmp/* setlocal noundofile
-augroup END
-
-" }}}
-
-" Diff {{{
-if has("patch-8.1.0360") || has("nvim")
-    set diffopt+=internal
-    set diffopt+=algorithm:histogram
-    set diffopt+=indent-heuristic
-endif
-
-" diff current modified buffer to the file on the disk
-if !exists(":DiffOrig")
-    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-        \ | wincmd p | diffthis
-endif
-" }}}
-
-" Ask for directory creation on save/new file {{{
-augroup AutoMkdir
-    autocmd!
-    autocmd  BufNewFile,BufWritePre  *  :call <SID>EnsureDirExists()
-augroup END
-function! s:EnsureDirExists ()
-    let required_dir = expand("%:h")
-    if !isdirectory(required_dir)
-        if confirm("Directory '" . required_dir . "' doesn't exist.", "&Abort?\n&Create it?") == 2
-            call mkdir( required_dir, 'p' )
-        endif
-    endif
-endfunction
+" Wildmenu, completion {{{
+set wildmenu
+set wildignorecase
+set wildmode=longest:full,full
 " }}}
 
 " Whitespace {{{
-set softtabstop=-1                                        " number of spaces in tab when editing - when -1 use shiftwidth
+set softtabstop=-1                                       " number of spaces in tab when editing - when -1 use shiftwidth
 set tabstop=4                                            " number of visual spaces per TAB character
 set shiftwidth=0                                         " Number of spaces to use for each step of (auto)indent (<<, >>) - when 0 use tabstop
 set shiftround                                           " round indent to multiple of shiftwidth when using < or >
@@ -153,25 +144,31 @@ set ignorecase
 set incsearch                                            " search as characters are entered
 set smartcase
 
-" Clear highlights
-nnoremap <silent> <leader><leader> :nohlsearch<CR>
-
 " search word under cursor or selected text
 nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
 xnoremap <leader>g y :silent execute "grep! -R " . shellescape(getreg('"')) . " ."<CR>:copen<CR>
 
-" search for selected text
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+" Ripgrep
+if executable('rg')
+    set grepprg=rg\ --search-zip\ --follow\ --hidden\ --vimgrep\ --no-messages\ --no-binary\ $*
+    set grepformat^=%f:%l:%c:%m
+    nnoremap <leader>g :silent execute "grep! -F " . shellescape(expand("<cWORD>")) . " ."<CR>:copen <BAR> redraw!<CR>
+    xnoremap <leader>g y :silent execute "grep! -F " . shellescape(getreg('"')) . " ."<CR>:copen <BAR> redraw!<CR>
+endif
+" }}}
 
-" search and replace word/selection
-nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
-vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
+" Command line {{{
+" Expand to the file path
+cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
+
+" Write as sudo
+cnoremap w!! w !sudo tee % >/dev/null
 
 command! ClearQuickfixList cexpr []
 " }}}
 
 " Statusline {{{
-set laststatus=2                                         " Always display the status line, even if only one window is displayed
+set laststatus=2
 set statusline=%F%m%r%h%w
 set statusline+=\ [
 set statusline+=ASCII=\%04.8b
@@ -196,7 +193,7 @@ set statusline+=%L
 set statusline+=]
 " }}}
 
-" System clipboard interaction {{{
+" System clipboard {{{
 nnoremap <F9> :set invpaste paste?<CR>
 set pastetoggle=<F9>
 noremap <leader>s "+
@@ -204,65 +201,27 @@ vnoremap <leader>s "+
 noremap <leader>ss :let @+=@"<CR>
 " }}}
 
-" Other keybindings {{{
+" Diff {{{
+if has("patch-8.1.0360") || has("nvim")
+    set diffopt+=internal
+    set diffopt+=algorithm:histogram
+    set diffopt+=indent-heuristic
+endif
 
-inoremap kj <ESC>
-inoremap jk <ESC>
-
-noremap <leader>q :<C-u>q!<CR>
-noremap <leader>Q :<C-u>qall!<CR>
-
-" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy
-noremap Y y$
-
-" move by visual line
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
-onoremap j gj
-onoremap k gk
-onoremap gj j
-onoremap gk k
-
-" Select last inserted text
-nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
-
-" Opens an edit command with the path of the currently edited file filled in
-map <Leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
-
-" use leader+tab to switch buffers
-set wildcharm=<Tab>
-nnoremap <Leader><Tab> :buffer<Space><Tab>
-
-" expand to the file path
-cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
-
-" Write as sudo
-cnoremap w!! w !sudo tee % >/dev/null
-
-vnoremap <leader>. :normal .<CR>
-
-" reload file, discard any chagnes
-nnoremap <F5> :<C-u>edit!<CR>
-
-" move lines up/down
-nnoremap <c-j> :m .+1<CR>==
-nnoremap <c-k> :m .-2<CR>==
-inoremap <c-j> <Esc>:m .+1<CR>==gi
-inoremap <c-k> <Esc>:m .-2<CR>==gi
-vnoremap <c-j> :m '>+1<CR>gv=gv
-vnoremap <c-k> :m '<-2<CR>gv=gv
+" diff current modified buffer to the file on the disk
+if !exists(":DiffOrig")
+    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+        \ | wincmd p | diffthis
+endif
 " }}}
 
 " Terminal support {{{
-
-" handle cursor shape change
+" Handle cursor shape change in different modes
 if exists("&t_SI") | let &t_SI.="\e[5 q" | endif
 if exists("&t_EI") | let &t_EI.="\e[2 q" | endif
 if exists("&t_SR") | let &t_SR.="\e[1 q" | endif
 
-" handle ctrl+arrows under tmux in insert and command-line mode
+" Handle ctrl+arrows under tmux in insert and command-line mode
 if &term == "tmux-256color"
     map!  <Esc>[1;5A <C-Up>
     map!  <Esc>[1;5B <C-Down>
@@ -272,26 +231,44 @@ if &term == "tmux-256color"
     map!  <Esc>[1;2C <S-Right>
 endif
 
-" if exists('$TMUX')
-"     let &t_SI .= "\ePtmux;\e\e[5 q\e\\"
-"     let &t_EI .= "\ePtmux;\e\e[2 q\e\\"
-"     let &t_ER .= "\ePtmux;\e\e[1 q\e\\"
-" endif
+" Set Vim-specific sequences for RGB colors
+if !has('nvim')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 " }}}
 
-" Plugins and external things {{{
+" Syntax, colorscheme {{{
+filetype plugin indent on
+syntax on
+
+" let g:solarized_termcolors=256
+let g:solarized_visibility="high"
+let g:solarized_extra_hi_groups=1
+silent! colorscheme solarized8
+" }}}
 
 " netrw {{{
 " open preview window to the right
+let g:netrw_home = $VIMDATA
 let g:netrw_preview=1
 let g:netrw_alto=0
 " }}}
 
-" vim-commentary {{{
-augroup vim_commentary_custom
-    autocmd!
-    autocmd FileType cpp  setlocal commentstring=//\ %s
+" Mini scripts and additions
+
+" Ask for directory creation on save/new file {{{
+augroup Vimrc
+    autocmd  BufNewFile,BufWritePre  *  :call <SID>EnsureDirExists()
 augroup END
+function! s:EnsureDirExists ()
+    let required_dir = expand("%:h")
+    if !isdirectory(required_dir)
+        if confirm("Directory '" . required_dir . "' doesn't exist.", "&Abort?\n&Create it?") == 2
+            call mkdir( required_dir, 'p' )
+        endif
+    endif
+endfunction
 " }}}
 
 " Redirect command output to a scratch buffer {{{
@@ -327,114 +304,32 @@ endfunction
 command! -nargs=1 -complete=command -bar -range Redir silent call Redir(<q-args>, <range>, <line1>, <line2>)
 " }}}
 
-" Bookmarks {{{
-if !empty($XDG_DATA_HOME)
-    let g:bookmark_auto_save_file = $XDG_DATA_HOME.'/vim/bookmarks'
-endif
-let g:bookmark_no_default_key_mappings = 1
-nmap <leader>m <Plug>BookmarkToggle
-nmap <leader>lm <Plug>BookmarkShowAll
-" }}}
-
-" CamelCase motion {{{
-let g:camelcasemotion_key = '<leader>'
-" }}}
-
-" Ripgrep {{{
-" use rg instead of grep if available
-if executable('rg')
-    set grepprg=rg\ --search-zip\ --follow\ --hidden\ --vimgrep\ --no-messages\ --no-binary\ $*
-    set grepformat^=%f:%l:%c:%m
-    nnoremap <leader>g :silent execute "grep! -F " . shellescape(expand("<cWORD>")) . " ."<CR>:copen <BAR> redraw!<CR>
-    xnoremap <leader>g y :silent execute "grep! -F " . shellescape(getreg('"')) . " ."<CR>:copen <BAR> redraw!<CR>
-endif
-" }}}
-
-" Solarized color scheme {{{
-" let g:solarized_termcolors=256
-let g:solarized_visibility="high"
-let g:solarized_extra_hi_groups=1
-silent! colorscheme solarized8
-" }}}
-
-" highlight the current line {{{
+" Highlight the current line {{{
 highlight LineHighlight ctermbg=black guibg=black
 nnoremap <silent> <Leader>hh :call matchadd('LineHighlight', '\%'.line('.').'l', 10, line('.'))<CR>
 nnoremap <silent> <Leader>hd :call matchdelete(line('.'))<CR>
 nnoremap <silent> <Leader>hc :call clearmatches()<CR>
 " }}}
 
-" quickscope {{{
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-" }}}
 
+" External plugins {{{
 packadd! matchit
 
-if exists(":packloadall")
-    packloadall
-endif
+" quick-scope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-" Sandwitch / Surround {{{
-" load vim-surround keymaps for vim-sanwich
-if exists('g:loaded_sandwich')
-    runtime macros/sandwich/keymap/surround.vim
-endif
+" CamelcaseMotion
+let g:camelcasemotion_key = '<leader>'
+
+" vim-bookmarks
+let g:bookmark_auto_save_file = $VIMDATA.'/bookmarks'
+let g:bookmark_no_default_key_mappings = 1
+nmap <leader>m <Plug>BookmarkToggle
+nmap <leader>lm <Plug>BookmarkShowAll
 " }}}
 
-" Fzf {{{
-" ctrl+p for fzf file search
-if exists('g:loaded_fzf') && executable('fzf')
-    nnoremap <C-p> :<C-u>FZF<CR>
-    nnoremap <leader><C-p> :<C-u>FZF <C-R>=expand("%:p:h") . "/"<CR><CR>
-endif
-" }}}
 
-" coc.vim {{{
-if exists('g:did_coc_loaded')
-    set cmdheight=2
-    set signcolumn=yes
-
-    inoremap <silent><expr> <NUL> coc#refresh()
-    inoremap <silent><expr> <c-space> coc#refresh()
-
-    " Use K to show documentation in preview window
-    nnoremap <silent> K :call <SID>show_documentation()<CR>
-    function! s:show_documentation()
-      if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-      else
-        call CocAction('doHover')
-      endif
-    endfunction
-
-    nmap <leader>rn <Plug>(coc-rename)
-
-    xmap <leader>f  <Plug>(coc-format-selected)
-    nmap <leader>f  <Plug>(coc-format-selected)
-
-    xmap if <Plug>(coc-funcobj-i)
-    omap if <Plug>(coc-funcobj-i)
-    xmap af <Plug>(coc-funcobj-a)
-    omap af <Plug>(coc-funcobj-a)
-    xmap ic <Plug>(coc-classobj-i)
-    omap ic <Plug>(coc-classobj-i)
-    xmap ac <Plug>(coc-classobj-a)
-    omap ac <Plug>(coc-classobj-a)
-
-    nmap <silent> gd <Plug>(coc-definition)
-    nmap <silent> gy <Plug>(coc-type-definition)
-    " nmap <silent> gi <Plug>(coc-implementation)
-
-    " Use `[g` and `]g` to navigate diagnostics
-    " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-    nmap <silent> [g <Plug>(coc-diagnostic-prev)
-    nmap <silent> ]g <Plug>(coc-diagnostic-next)
-endif
-" }}}
-
-" }}}
-
-" local changes {{{
+" Load local changes {{{
 if filereadable(expand("~/.local/vimrc"))
     source ~/.local/vimrc
 endif
