@@ -8,7 +8,7 @@
     "npm.fetchOnlinePackageInfo": false,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
-    "telemetry.telemetryLevel'": "off",
+    "telemetry.telemetryLevel": "off",
     "update.enableWindowsBackgroundUpdates": false,
     "update.mode": "none",
     "update.showReleaseNotes": false,
