@@ -101,6 +101,7 @@ set background=dark
 
 set number
 set showmode
+set showcmd
 
 set cursorline
 set colorcolumn=80,120
@@ -115,6 +116,10 @@ set splitright
 set linebreak               " don't cut words into pieces on line break
 
 set lazyredraw
+
+set display+=lastline
+
+set shortmess-=S            " show matches count on search
 " }}}
 
 " Basic operation, mouse {{{
