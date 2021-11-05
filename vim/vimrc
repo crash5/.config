@@ -124,6 +124,7 @@ set shortmess-=S            " show matches count on search
 
 " Basic operation, mouse {{{
 set backspace=indent,eol,start
+set autoindent
 set hidden
 
 set virtualedit=block
