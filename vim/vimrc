@@ -1,5 +1,9 @@
 " vim: foldmethod=marker formatoptions-=o
 
+if &compatible
+  set nocompatible
+endif
+
 if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
 
 augroup Vimrc | autocmd! | augroup end
