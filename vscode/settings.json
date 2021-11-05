@@ -123,6 +123,7 @@
     "vim.useSystemClipboard": true,
     "vim.vimrc.path": "$HOME/.config/vim/vimrc",
     "vim.visualstar": true,
+    "vim.showMarksInGutter": true,
 // < vim
 // > todo tree
     "todo-tree.highlights.customHighlight": {
