@@ -126,6 +126,9 @@
     snap = "!git stash push -m \"snapshot: $(date +'%Y. %m. %d. %H:%M')\" && git stash apply -q stash@{0}"
     #stashold = "!git log --merges --no-walk --oneline $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
     stashold = "!git lp --merges --no-walk $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
+
+    vic = "!vim $(git diff --name-only)"
+    vicc = "!vim $(git show --name-only --pretty=)"
 [core]
     #editor = notepad++.exe -multiInst -nosession -noPlugin -ldiff
     editor = vim
