@@ -6,8 +6,6 @@ endif
 
 if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
 
-augroup Vimrc | autocmd! | augroup end
-
 let g:mapleader = "\<SPACE>"
 
 
@@ -83,7 +81,8 @@ set history=1000                                 " search and cmd line history
 set undolevels=1000                              " in-memory undo count
 set undofile                                     " enable persistent undo
 
-augroup Vimrc
+augroup Vimrc_Undo
+    autocmd!
     " disable persistent undo for files in tmp (eg: for sudoedit-ed files)
     autocmd BufWritePre /tmp/* setlocal noundofile
     autocmd BufWritePre /var/tmp/* setlocal noundofile
@@ -260,7 +259,8 @@ let g:netrw_alto=0
 " Mini scripts and additions
 
 " Ask for directory creation on save/new file {{{
-augroup Vimrc
+augroup Vimrc_EnsureDirExists
+    autocmd!
     autocmd  BufNewFile,BufWritePre  *  :call <SID>EnsureDirExists()
 augroup END
 function! s:EnsureDirExists ()
