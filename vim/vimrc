@@ -40,7 +40,7 @@ nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
 nnoremap <F5> :<C-u>edit!<CR>
 
 " Opens an edit command with the path of the currently edited file filled in
-map <Leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>p :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Move by visual line
 noremap j gj
