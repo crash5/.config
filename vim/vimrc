@@ -176,6 +176,10 @@ cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 cnoremap w!! w !sudo tee % >/dev/null
 
 command! ClearQuickfixList cexpr []
+command! ClearTrailingWhitespaces %s/\s\+$//e
+
+command! -range=% YamlToJson :execute '<line1>,<line2>!yq eval --tojson -' <BAR> set ft=json
+command! -range=% JsonToYaml :execute '<line1>,<line2>!yq eval --prettyPrint -' <BAR> set ft=yaml
 " }}}
 
 " Statusline {{{
