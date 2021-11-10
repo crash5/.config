@@ -140,6 +140,7 @@ endif
 set wildmenu
 set wildignorecase
 set wildmode=longest:full,full
+set completeopt=menuone,preview
 " }}}
 
 " Whitespace {{{
