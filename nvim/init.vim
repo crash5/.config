@@ -1,3 +1,5 @@
+" vim: foldmethod=marker formatoptions-=o
+
 source $XDG_CONFIG_HOME/vim/vimrc
 
 set shadafile=$XDG_DATA_HOME/nvim/nviminfo
