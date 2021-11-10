@@ -5,6 +5,11 @@ set undodir&
 
 set inccommand=nosplit
 
+augroup Vimrc_highlight_on_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank{timeout=250}
+augroup END
+
 " Treesitter {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
