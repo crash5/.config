@@ -109,14 +109,22 @@ packages=(
     "https://github.com/tpope/vim-unimpaired"
     "https://github.com/bronson/vim-visual-star-search"
     "https://github.com/michaeljsmith/vim-indent-object"
-    "https://github.com/unblevable/quick-scope.git"
+    "https://github.com/unblevable/quick-scope"
 )
 
 for url in ${packages[@]}; do
-    git fetch --depth 1 --no-tags ${url}
-    # git merge -s subtree --squash FETCH_HEAD
-    git merge --allow-unrelated-histories -X theirs -X subtree=vim/pack/bundle/start/${url##*/}/ --squash FETCH_HEAD
-    git commit -m "vim: update plugin: ${url##*/}" -- vim/pack/bundle/start/${url##*/}/
+    path=vim/pack/bundle/start/${url##*/}/
+    if [ ! -d "$path" ]; then
+        path=vim/pack/bundle/opt/${url##*/}/
+    fi
+    if [ ! -d "$path" ]; then
+        echo "Plugin not found, skipping... ${path}"
+        continue
+    fi
+    git fetch --depth 1 --no-tags "${url}" &&
+    git rm -r --ignore-unmatch "${path}" && git read-tree --prefix="${path}" FETCH_HEAD && git checkout -- "${path}" &&
+    git commit -m "vim: update plugin: ${url##*/}" -- "${path}"
+    # read  -n 1 -p "Check next?" mainmenuinput
 done
 ```
 
