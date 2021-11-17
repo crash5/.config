@@ -224,10 +224,12 @@ endif
 " }}}
 
 " Terminal support {{{
-" Handle cursor shape change in different modes
-if exists("&t_SI") | let &t_SI.="\e[5 q" | endif
-if exists("&t_EI") | let &t_EI.="\e[2 q" | endif
-if exists("&t_SR") | let &t_SR.="\e[1 q" | endif
+" Handle cursor shape change in insert/normal/replace modes
+" 1 or 0 -> blinking block 2 -> solid block 3 -> blinking underscore
+" 4 -> solid underscore 5 -> blinking vertical bar 6 -> solid vertical bar
+if exists("&t_SI") | let &t_SI .= "\e[5 q" | endif
+if exists("&t_EI") | let &t_EI .= "\e[2 q" | endif
+if exists("&t_SR") | let &t_SR .= "\e[1 q" | endif
 
 " Handle ctrl+arrows under tmux in insert and command-line mode
 if &term == "tmux-256color"
