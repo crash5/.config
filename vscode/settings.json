@@ -70,6 +70,14 @@
             "before": ["N"],
             "after": ["N", "z", "z", "z", "v"]
         },
+        {
+            "before": ["<C-j>"],
+            "commands": ["editor.action.moveLinesDownAction"]
+        },
+        {
+            "before": ["<C-k>"],
+            "commands": ["editor.action.moveLinesUpAction"]
+        },
     ],
     "vim.insertModeKeyBindings": [
         {
