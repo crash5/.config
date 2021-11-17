@@ -76,10 +76,6 @@
             "before": ["k", "j"],
             "after": ["<Esc>"]
         },
-        {
-            "before": ["j", "k"],
-            "after": ["<Esc>"]
-        },
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
