@@ -8,3 +8,7 @@ done
 if program_exists minikube; then
     source <(minikube completion bash)
 fi
+
+if program_exists kind; then
+    source <(kind completion bash)
+fi
