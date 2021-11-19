@@ -260,7 +260,6 @@ endif
 " }}}
 
 " Syntax, colorscheme {{{
-filetype plugin indent on
 syntax on
 
 " let g:solarized_termcolors=256
@@ -356,6 +355,9 @@ nmap <leader>m <Plug>BookmarkToggle
 nmap <leader>lm <Plug>BookmarkShowAll
 " }}}
 
+
+" Filetype plugin, required to call after the packadd commands
+filetype plugin indent on
 
 " Load local changes {{{
 if filereadable(expand("~/.local/vimrc"))
