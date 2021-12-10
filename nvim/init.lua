@@ -1,5 +1,19 @@
 -- vim: foldmethod=marker formatoptions-=o
 
+vim.cmd [[
+    source $XDG_CONFIG_HOME/vim/vimrc
+
+    set shadafile=$XDG_DATA_HOME/nvim/nviminfo
+    set undodir&
+
+    set inccommand=nosplit
+
+    augroup Vimrc_highlight_on_yank
+        autocmd!
+        autocmd TextYankPost * silent! lua vim.highlight.on_yank{timeout=250}
+    augroup END
+]]
+
 -- Treesitter {{{
 require 'nvim-treesitter.configs'.setup {
     ensure_installed = 'maintained',
@@ -53,8 +67,12 @@ require 'nvim-treesitter.configs'.setup {
         },
         swap = {
             enable = true,
-            swap_next = {["<leader>xa"] = "@parameter.inner"},
-            swap_previous = {["<leader>xa"] = "@parameter.inner"}
+            swap_next = {
+                ["g>>"] = "@parameter.inner"
+            },
+            swap_previous = {
+                ["g<<"] = "@parameter.inner"
+            }
         },
         lsp_interop = {
             enable = true,
