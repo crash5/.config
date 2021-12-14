@@ -15,75 +15,78 @@ vim.cmd [[
 ]]
 
 -- Treesitter {{{
-require 'nvim-treesitter.configs'.setup {
-    ensure_installed = 'maintained',
-    highlight = {enable = true},
-    indent = { enable = true },
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = "<S-A-Right>",
-            node_incremental = "<S-A-Right>",
-            scope_incremental = "<S-A-Up>",
-            node_decremental = "<S-A-Left>",
-        }
-    },
-    -- external plugin
-    rainbow = { enable = true },
-    context_commentstring = { enable = true },
-    textobjects = {
-        select = {
+local status, nvim_treesitter = pcall(require, 'nvim-treesitter.configs')
+if(status) then
+    nvim_treesitter.setup {
+        ensure_installed = 'maintained',
+        highlight = {enable = true},
+        indent = { enable = true },
+        incremental_selection = {
             enable = true,
-            lookahead = true,
             keymaps = {
-                -- You can use the capture groups defined in textobjects.scm
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner",
-                ["aa"] = "@parameter.outer",
-                ["ia"] = "@parameter.inner",
+                init_selection = "<S-A-Right>",
+                node_incremental = "<S-A-Right>",
+                scope_incremental = "<S-A-Up>",
+                node_decremental = "<S-A-Left>",
             }
         },
-        move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-                [']m'] = '@function.outer',
-                [']]'] = '@class.outer'
+        -- external plugin
+        rainbow = { enable = true },
+        context_commentstring = { enable = true },
+        textobjects = {
+            select = {
+                enable = true,
+                lookahead = true,
+                keymaps = {
+                    -- You can use the capture groups defined in textobjects.scm
+                    ["af"] = "@function.outer",
+                    ["if"] = "@function.inner",
+                    ["ac"] = "@class.outer",
+                    ["ic"] = "@class.inner",
+                    ["aa"] = "@parameter.outer",
+                    ["ia"] = "@parameter.inner",
+                }
             },
-            goto_next_end = {
-                [']M'] = '@function.outer',
-                [']['] = '@class.outer'
+            move = {
+                enable = true,
+                set_jumps = true,
+                goto_next_start = {
+                    [']m'] = '@function.outer',
+                    [']]'] = '@class.outer'
+                },
+                goto_next_end = {
+                    [']M'] = '@function.outer',
+                    [']['] = '@class.outer'
+                },
+                goto_previous_start = {
+                    ['[m'] = '@function.outer',
+                    ['[['] = '@class.outer'
+                },
+                goto_previous_end = {
+                    ['[M'] = '@function.outer',
+                    ['[]'] = '@class.outer'
+                }
             },
-            goto_previous_start = {
-                ['[m'] = '@function.outer',
-                ['[['] = '@class.outer'
+            swap = {
+                enable = true,
+                swap_next = {
+                    ["g>>"] = "@parameter.inner"
+                },
+                swap_previous = {
+                    ["g<<"] = "@parameter.inner"
+                }
             },
-            goto_previous_end = {
-                ['[M'] = '@function.outer',
-                ['[]'] = '@class.outer'
-            }
-        },
-        swap = {
-            enable = true,
-            swap_next = {
-                ["g>>"] = "@parameter.inner"
-            },
-            swap_previous = {
-                ["g<<"] = "@parameter.inner"
-            }
-        },
-        lsp_interop = {
-            enable = true,
-            border = 'none',
-            peek_definition_code = {
-                ["<leader>hf"] = "@function.outer",
-                ["<leader>hc"] = "@class.outer"
+            lsp_interop = {
+                enable = true,
+                border = 'none',
+                peek_definition_code = {
+                    ["<leader>hf"] = "@function.outer",
+                    ["<leader>hc"] = "@class.outer"
+                }
             }
         }
     }
-}
+end
 -- }}}
 
 -- LSP {{{
@@ -116,11 +119,13 @@ local on_attach = function(client, bufnr)
 end
 
 -- Enable the following language servers
-local nvim_lsp = require 'lspconfig'
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
-for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup{
-        on_attach = on_attach
-    }
+local status, nvim_lsp = pcall(require, 'lspconfig')
+if(status) then
+    local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+    for _, lsp in ipairs(servers) do
+        nvim_lsp[lsp].setup{
+            on_attach = on_attach
+        }
+    end
 end
 -- }}}
