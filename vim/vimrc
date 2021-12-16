@@ -128,6 +128,8 @@ set lazyredraw
 set display+=lastline
 
 set shortmess-=S            " show matches count on search
+
+set foldlevelstart=99       " open folds by default
 " }}}
 
 " Basic operation, mouse {{{
