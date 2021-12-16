@@ -14,7 +14,11 @@ vim.cmd [[
     augroup END
 ]]
 
+
 -- Treesitter {{{
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 local status, nvim_treesitter = pcall(require, 'nvim-treesitter.configs')
 if(status) then
     nvim_treesitter.setup {
