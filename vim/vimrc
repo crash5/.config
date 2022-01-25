@@ -66,6 +66,17 @@ inoremap ! <C-g>u!
 
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
+" 24 simple pseudo-text objects https://gist.github.com/romainl/c0a8b57a36aec71a986f1120e1931f20
+" i_ i. i: i, i; i| i/ i\ i* i+ i- i#
+" a_ a. a: a, a; a| a/ a\ a* a+ a- a#
+" can take a count: 2i: 3a/
+for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '-', '#' ]
+	execute "xnoremap i" . char . " :<C-u>execute 'normal! ' . v:count1 . 'T" . char . "v' . (v:count1 + (v:count1 - 1)) . 't" . char . "'<CR>"
+	execute "onoremap i" . char . " :normal vi" . char . "<CR>"
+	execute "xnoremap a" . char . " :<C-u>execute 'normal! ' . v:count1 . 'F" . char . "v' . (v:count1 + (v:count1 - 1)) . 'f" . char . "'<CR>"
+	execute "onoremap a" . char . " :normal va" . char . "<CR>"
+endfor
 " }}}
 
 " Security, modeline {{{
