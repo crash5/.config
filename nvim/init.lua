@@ -94,6 +94,12 @@ end
 -- }}}
 
 -- LSP {{{
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    float = { border = "single" },
+})
+
 local on_attach = function(client, bufnr)
     print("LSP started.");
     -- require'completion'.on_attach(client)
