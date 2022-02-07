@@ -97,7 +97,7 @@ user_pref("extensions.webcompat-reporter.enabled", false);
 user_pref("extensions.webservice.discoverURL", "");
 user_pref("findbar.highlightAll", true);
 user_pref("general.warnOnAboutConfig", false);
-user_pref("geo.enabled", false);
+// user_pref("geo.enabled", false); // munch.hu show empty page when this is disabled
 user_pref("intl.accept_languages", "en-US, en");
 user_pref("javascript.use_us_english_locale", true);
 user_pref("layout.spellcheckDefault", 2);
@@ -109,7 +109,6 @@ user_pref("loop.enabled", false);
 user_pref("media.autoplay.allow-muted", false);
 user_pref("media.autoplay.ask-permission", true);
 user_pref("media.autoplay.block-webaudio", true);
-user_pref("media.autoplay.default", 1);
 user_pref("media.navigator.enabled", false);
 user_pref("media.peerconnection.enabled", false);
 user_pref("media.webspeech.recognition.enable", false);
@@ -169,3 +168,8 @@ user_pref("browser.compactmode.show", true);
 user_pref("browser.urlbar.suggest.calculator", true);
 user_pref("browser.urlbar.unitConversion.enabled", true); // from FF 90.0
 user_pref("media.autoplay.default", 5);
+user_pref("browser.bookmarks.openInTabClosesMenu", false); // don't close bookmarks menu after open-in-new-tab click
+user_pref("media.autoplay.allow-extension-background-pages", false);
+user_pref("media.autoplay.block-event.enabled", true);
+user_pref("media.autoplay.enabled.user-gestures-needed", false);
+user_pref("media.autoplay.blocking_policy", 1);
