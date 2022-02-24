@@ -48,7 +48,7 @@
         },
         {
             "before": ["g", "V"],
-            "after": ["`", "[", "v", "`", "]", "g", "e"]
+            "after": ["`", "[", "v", "`", "]"]
         },
         {
             "before": ["<C-k>", "<CR>"],
@@ -78,28 +78,6 @@
             "before": ["<C-k>"],
             "commands": ["editor.action.moveLinesUpAction"]
         },
-    ],
-    "vim.insertModeKeyBindings": [
-        {
-            "before": ["k", "j"],
-            "after": ["<Esc>"]
-        },
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": ["<leader>", "g"],
-            "commands": ["workbench.action.findInFiles"]
-        },
-    ],
-    "vim.normalModeKeyBindings": [
-        {
-            "before": ["<leader>", "'"],
-            "after": ["y", "s", "i", "w", "'"]
-        },
-        {
-            "before": ["<leader>", "\""],
-            "after": ["y", "s", "i", "w", "\""]
-        },
         {
             "before": ["<leader>", "m"],
             "commands": ["bookmarks.toggle"]
@@ -113,15 +91,17 @@
             "commands": ["bookmarks.listFromAllFiles"]
         }
     ],
-    "vim.visualModeKeyBindings": [
+    "vim.insertModeKeyBindings": [
         {
-            "before": ["<leader>", "'"],
-            "after": ["S", "'"]
+            "before": ["k", "j"],
+            "after": ["<Esc>"]
         },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
         {
-            "before": ["<leader>", "\""],
-            "after": ["S", "\""]
-        }
+            "before": ["<leader>", "g"],
+            "commands": ["workbench.action.findInFiles"]
+        },
     ],
     "vim.camelCaseMotion.enable": true,
     "vim.foldfix": true,
