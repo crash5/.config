@@ -179,4 +179,4 @@
     rlog = %C(auto)%h %C(bold red)%gd%C(reset): %gs %C(cyan)[%s]%C(auto)%d
     slog = %C(bold red)%gd%C(reset): %C(cyan)%s%C(auto)%d
 [include]
-    path = ~/.local/gitconfig
+    path = ~/.local/config/gitconfig

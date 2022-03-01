@@ -373,7 +373,7 @@ nmap <leader>lm <Plug>BookmarkShowAll
 filetype plugin indent on
 
 " Load local changes {{{
-if filereadable(expand("~/.local/vimrc"))
-    source ~/.local/vimrc
+if filereadable(expand("~/.local/config/vimrc"))
+    source ~/.local/config/vimrc
 endif
 " }}}
