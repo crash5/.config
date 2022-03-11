@@ -173,3 +173,4 @@ user_pref("media.autoplay.allow-extension-background-pages", false);
 user_pref("media.autoplay.block-event.enabled", true);
 user_pref("media.autoplay.enabled.user-gestures-needed", false);
 user_pref("media.autoplay.blocking_policy", 1);
+user_pref("browser.download.improvements_to_download_panel", false); // after v98, ask before download
