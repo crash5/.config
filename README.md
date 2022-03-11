@@ -134,8 +134,10 @@ done
 - https://github.com/BurntSushi/ripgrep
 - https://github.com/ogham/exa
 - https://github.com/vim/vim-appimage
+- https://github.com/neovim/neovim
 - https://github.com/flameshot-org/flameshot
 - https://github.com/vifm/vifm
+- https://github.com/sharkdp/bat
 
 ---
 Sources:
