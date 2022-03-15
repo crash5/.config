@@ -276,9 +276,10 @@ endif
 syntax on
 
 " let g:solarized_termcolors=256
-let g:solarized_visibility="high"
-let g:solarized_extra_hi_groups=1
-silent! colorscheme solarized8
+" let g:solarized_visibility="high"
+" let g:solarized_extra_hi_groups=1
+" silent! colorscheme solarized8
+silent! colorscheme PaperColor
 " }}}
 
 " netrw {{{
