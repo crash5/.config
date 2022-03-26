@@ -1,26 +1,11 @@
 # vim: foldmethod=marker
 
 # General {{{
-alias cp='cp -i'
-alias mv='mv -i'
-
-alias df='df -h'
-#alias du='du -hsL'
-
-alias openports='netstat -nape --inet'
-
-alias shareonhttp='python -m SimpleHTTPServer'
-alias me="python3 -c 'import requests,pprint; pprint.pprint(requests.get(\"https://ifconfig.co/json\").json())'"
-
 [ -f /usr/lib/mc/mc-wrapper.sh ] && alias mc='. /usr/lib/mc/mc-wrapper.sh -x'
 
 if program_exists vifm; then
     alias mc='vifm'
 fi
-
-alias rl='readlink -m'
-alias treeimpl='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
-alias treeimplwogit='find . -not -path "./.git/*" | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 
 if program_exists bat; then
     alias cat='bat -p'
@@ -44,9 +29,6 @@ rgv() {
 # }}}
 
 # ls, file listing {{{
-alias ll='ls -lahF --color=always --group-directories-first'
-alias llsd='ls -lahF --color=always --group-directories-first --sort=time --reverse'
-
 if program_exists exa; then
     alias ll='exa --group-directories-first --long --all --all --git'
     alias lld='ll -D'
@@ -59,13 +41,6 @@ fi
 # }}}
 
 # cd, mkdir, directory handling {{{
-alias ..='cd ..'
-alias ..2='cd ../..'
-alias ..3='cd ../../..'
-alias ..4='cd ../../../..'
-alias ..5='cd ../../../../..'
-alias -- -='cd -'
-
 cd() {
     if [ $# -eq 0 ]; then
         # no arguments
@@ -80,10 +55,6 @@ cd() {
         # another argument type
         builtin cd "$(dirname $1)"
     fi
-}
-
-mkdirr() {
-    mkdir -p "${1:? need a directory}" && cd "${1}"
 }
 # }}}
 
@@ -103,19 +74,9 @@ fi
 # }}}
 
 # vim, neovim {{{
-alias vi=vi-chooser
-
-vi-chooser() {
-    if program_exists nvim; then
-        nvim $@
-    elif program_exists vim; then
-        vim $@
-    else
-        vi $@
-    fi
-}
-
+alias vi=vim
 alias vis='vi -S'
+
 vii() {
     if [ "$#" -gt 0 ]; then
         find "$@" | fzf --multi | xargs --no-run-if-empty --open-tty vim
