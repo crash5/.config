@@ -22,3 +22,5 @@ alias openports='netstat -nape --inet'
 
 alias shareonhttp='python -m SimpleHTTPServer'
 alias me="python3 -c 'import requests,pprint; pprint.pprint(requests.get(\"https://ifconfig.co/json\").json())'"
+
+alias rcmd="head -n -2 \"${BASH_SOURCE[0]}\" | xclip -i > /dev/null"
