@@ -220,4 +220,5 @@
     "editor.foldingHighlight": false,
     "editor.bracketPairColorization.enabled": true, // replaces bracket pair colorizer addon after v1.60
     "editor.suggest.preview": true,
+    "workbench.reduceMotion": "on",
 }
