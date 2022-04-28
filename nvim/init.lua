@@ -22,7 +22,7 @@ vim.cmd [[
 local status, nvim_treesitter = pcall(require, 'nvim-treesitter.configs')
 if(status) then
     nvim_treesitter.setup {
-        ensure_installed = 'maintained',
+        ensure_installed = 'all',
         highlight = {enable = true},
         indent = { enable = true },
         incremental_selection = {
