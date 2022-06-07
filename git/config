@@ -178,5 +178,9 @@
     log = %C(auto)%h %C(green)%cd%C(reset) | %C(cyan)%s%C(auto)%d [%C(bold blue)a:%an%C(reset),%C(blue)c:%cn%C(reset)]
     rlog = %C(auto)%h %C(bold red)%gd%C(reset): %gs %C(cyan)[%s]%C(auto)%d
     slog = %C(bold red)%gd%C(reset): %C(cyan)%s%C(auto)%d
+[url "ssh://git@github.com/"]
+    pushInsteadOf = https://github.com/
+[url "ssh://git@gitlab.com/"]
+    pushInsteadOf = https://gitlab.com/
 [include]
     path = ~/.local/config/gitconfig
