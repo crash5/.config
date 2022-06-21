@@ -13,6 +13,14 @@ echo ". ~/.config/bash/profile" >> .profile
 cd ~/.config && ./bootstrap.sh
 ```
 
+Additional for windows (slash direction matters):
+```
+setx XDG_CACHE_HOME  "C:/Users/%USERNAME%/.cache/"
+setx XDG_CONFIG_HOME "C:/Users/%USERNAME%/.config/"
+setx XDG_DATA_HOME   "C:/Users/%USERNAME%/.local/share/"
+```
+
+
 ### Git
 
 Add computer specific modifications to `~/.local/gitconfig`
