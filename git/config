@@ -11,6 +11,7 @@
     pullas = pull --autostash
 
     p = push
+    pf = push --force-with-lease --force-if-includes
     pushu = !git push -u origin $(git branch-name)
     preview = "!f() { : git checkout ; git push origin HEAD:refs/for/\"${@:?Missing parameter (branch, etc.)}\"; }; f"
     pdraft = "!f() { : git checkout ; git push --no-verify origin HEAD:refs/drafts/\"${@:?Missing parameter (branch, etc.)}\"; }; f"
@@ -28,9 +29,10 @@
     cia = commit --amend
     ciane = commit --amend --no-edit
     cif = commit --fixup
+    cifs = "!f() { git commit --fixup=$(git ll | fzf | cut -d ' ' -f 2) \"${@}\"; }; f"
     cis = commit --squash
-    ff = "!f() { git commit --fixup=$(git log --all --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
-    ff-develop = "!f() { git commit --fixup=$(git log $(git merge-base develop HEAD)..HEAD --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
+    ff = "!f() { git commit --fixup=$(git log --all --full-history -1 --format=format:%h -- \"$1\") \"$@\"; }; f"
+    ff-develop = "!f() { git commit --fixup=$(git log $(git merge-base develop HEAD)..HEAD --full-history -1 --format=format:%h -- \"$1\") \"$@\"; }; f"
 
     addp = !git_add_gui
 
@@ -100,6 +102,7 @@
     rhu = reset --hard @{u}
 
     rei = rebase -i
+    reis = "!f() { git rebase --interactive $(git ll | fzf | cut -d ' ' -f 2)^; }; f"
     reiu = rebase -i @{u}
     rec = rebase --continue
     rea = rebase --abort
