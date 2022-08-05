@@ -14,6 +14,9 @@
     "update.showReleaseNotes": false,
     "workbench.enableExperiments": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
+    "vsintellicode.features.apiExamples": "disabled",
+    "vsintellicode.features.apiExamplests": "disabled",
+    "vsintellicode.features.python.deepLearning": "disabled",
 // < Disable internet usage
 // > Settings/filetype
     "[cmake]": {
