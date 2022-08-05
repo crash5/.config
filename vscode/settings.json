@@ -119,6 +119,7 @@
     "vim.vimrc.path": "$HOME/.config/vim/vimrc",
     "vim.visualstar": true,
     "vim.showMarksInGutter": true,
+    "vim.targets.enable": true,
 // < vim
 // > todo tree
     "todo-tree.highlights.customHighlight": {
