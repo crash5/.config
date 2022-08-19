@@ -74,14 +74,6 @@
             "after": ["N", "z", "z", "z", "v"]
         },
         {
-            "before": ["<C-j>"],
-            "commands": ["editor.action.moveLinesDownAction"]
-        },
-        {
-            "before": ["<C-k>"],
-            "commands": ["editor.action.moveLinesUpAction"]
-        },
-        {
             "before": ["<leader>", "m"],
             "commands": ["bookmarks.toggle"]
         },
@@ -92,6 +84,18 @@
         {
             "before": ["<leader>", "l", "m"],
             "commands": ["bookmarks.listFromAllFiles"]
+        },
+        {
+            "before": ["<leader>", "d"],
+            "commands": ["editor.action.showHover"]
+        },
+        {
+            "before": ["]", "d"],
+            "commands": ["editor.action.marker.next"]
+        },
+        {
+            "before": ["[", "d"],
+            "commands": ["editor.action.marker.prev"]
         }
     ],
     "vim.insertModeKeyBindings": [
