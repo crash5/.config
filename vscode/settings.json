@@ -55,23 +55,26 @@
         },
         {
             "before": ["<C-k>", "<CR>"],
-            "commands": ["workbench.action.keepEditor"]
+            "commands": ["workbench.action.keepEditor"],
+            "silent": true
         },
         {
             "before": ["<C-k>", "m"],
-            "commands": ["workbench.action.editor.changeLanguageMode"]
+            "commands": ["workbench.action.editor.changeLanguageMode"],
+            "silent": true
         },
         {
             "before": ["<leader>", "g"],
-            "commands": ["workbench.action.findInFiles"]
+            "commands": ["workbench.action.findInFiles"],
+            "silent": true
         },
         {
             "before": ["n"],
-            "after": ["n", "z", "z", "z", "v"]
+            "after": ["n", "z", "v"]
         },
         {
             "before": ["N"],
-            "after": ["N", "z", "z", "z", "v"]
+            "after": ["N", "z", "v"]
         },
         {
             "before": ["<leader>", "m"],
@@ -87,15 +90,28 @@
         },
         {
             "before": ["<leader>", "d"],
-            "commands": ["editor.action.showHover"]
+            "commands": ["editor.action.showHover"],
+            "silent": true
         },
         {
             "before": ["]", "d"],
-            "commands": ["editor.action.marker.next"]
+            "commands": ["editor.action.marker.next"],
+            "silent": true
         },
         {
             "before": ["[", "d"],
-            "commands": ["editor.action.marker.prev"]
+            "commands": ["editor.action.marker.prev"],
+            "silent": true
+        },
+        {
+            "before": ["[", "q"],
+            "commands": ["search.action.focusPreviousSearchResult"],
+            "silent": true
+        },
+        {
+            "before": ["]", "q"],
+            "commands": ["search.action.focusNextSearchResult"],
+            "silent": true
         }
     ],
     "vim.insertModeKeyBindings": [
