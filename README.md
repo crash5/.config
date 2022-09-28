@@ -86,6 +86,7 @@ mklink "%APPDATA%\WinRAR\WinRAR.ini" %USERPROFILE%\.config\winrar\WinRAR.ini
 #### Windows
 ```
 mklink "%APPDATA%\GHISLER\wincmd.ini" %USERPROFILE%\.config\totalcommander\wincmd.ini
+mklink "%APPDATA%\GHISLER\usercmd.ini" %USERPROFILE%\.config\totalcommander\usercmd.ini
 ```
 
 ### Firefox
