@@ -139,6 +139,7 @@
     "vim.visualstar": true,
     "vim.showMarksInGutter": true,
     "vim.targets.enable": true,
+    "vim.matchpairs": "(:),{:},[:],<:>",
 // < vim
 // > todo tree
     "todo-tree.highlights.customHighlight": {
