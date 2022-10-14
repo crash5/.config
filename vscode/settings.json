@@ -133,7 +133,6 @@
     "vim.hlsearch": true,
     "vim.leader": "<space>",
     "vim.replaceWithRegister": true,
-    "vim.sneak": true,
     "vim.textwidth": 79,
     "vim.useSystemClipboard": true,
     "vim.vimrc.path": "$HOME/.config/vim/vimrc",
