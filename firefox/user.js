@@ -174,3 +174,6 @@ user_pref("media.autoplay.block-event.enabled", true);
 user_pref("media.autoplay.enabled.user-gestures-needed", false);
 user_pref("media.autoplay.blocking_policy", 1);
 user_pref("browser.download.improvements_to_download_panel", false); // after v98, ask before download
+user_pref("browser.tabs.firefox-view", false); // hide firefox view from top left corner
+user_pref("browser.privateWindowSeparation.enabled", false); // disable different status bar icon for private browser
+user_pref("browser.privatebrowsing.enable-new-indicator", false); // disable different top right corner icon for private browser
