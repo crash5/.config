@@ -191,3 +191,5 @@
     pushInsteadOf = https://gitlab.com/
 [include]
     path = ~/.local/config/gitconfig
+[safe]
+    bareRepository = explicit
