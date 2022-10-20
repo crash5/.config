@@ -151,6 +151,7 @@
     autoSquash = true
     stat = true
     missingCommitsCheck = warn
+    updateRefs = true
 [difftool "bc"]
     cmd = BComp.exe "$LOCAL" "$REMOTE"
 [mergetool "bc"]
