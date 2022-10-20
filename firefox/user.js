@@ -177,3 +177,4 @@ user_pref("browser.download.improvements_to_download_panel", false); // after v9
 user_pref("browser.tabs.firefox-view", false); // hide firefox view from top left corner
 user_pref("browser.privateWindowSeparation.enabled", false); // disable different status bar icon for private browser
 user_pref("browser.privatebrowsing.enable-new-indicator", false); // disable different top right corner icon for private browser
+user_pref("browser.tabs.tabmanager.enabled", true); // always show the tab selection dropdown on the top right corner
