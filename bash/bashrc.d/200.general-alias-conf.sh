@@ -133,6 +133,14 @@ fi
 # }}}
 
 # Docker, Helm, Kubectl {{{
+
+if program_exists podman; then
+    alias d='podman'
+    if function_exists _completion_loader; then
+        complete -F  __start_podman d
+    fi
+fi
+
 if program_exists docker; then
     alias d='docker'
     if function_exists _completion_loader; then
