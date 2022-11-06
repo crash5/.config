@@ -19,6 +19,12 @@
 				<RefreshWhenDone Value="True"/>
 				<WorkingDir Value="&lt;base folder>"/>
 			</_1>
+			<_2>
+				<CmdLine Value="%LOCALAPPDATA%\Programs\Neovim\bin\nvim-qt.exe %f"/>
+				<Description Value="Neovim"/>
+				<HandleFolders Value="True"/>
+				<RefreshWhenDone Value="True"/>
+			</_2>
 		</OpenWiths>
 		<SessionAutoSavedCapacity Value="0"/>
 		<UseIPv6 Value="False"/>
