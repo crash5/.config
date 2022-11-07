@@ -2,7 +2,15 @@
 ; eclipse plugin repository: https://vrapper.sourceforge.net/update-site/stable/
 
 imap kj <esc>
-map <space>q :q!<cr>
+noremap <space>q :<C-u>q!<CR>
+
+noremap Y y$
+
+noremap <space>s "+
+vnoremap <space>s "+
+noremap <space>ss :let @+=@"<CR>
+
+noremap <space><space> :nohlsearch<CR>
 
 set contentassistmode
 set hlsearch
