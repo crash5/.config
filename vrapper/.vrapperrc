@@ -1,0 +1,11 @@
+; DBeaver/Eclipse vim plugin
+; eclipse plugin repository: https://vrapper.sourceforge.net/update-site/stable/
+
+imap kj <esc>
+map <space>q :q!<cr>
+
+set contentassistmode
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
