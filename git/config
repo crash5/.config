@@ -141,6 +141,7 @@
     autocrlf = input
     pager = less -x4 -+X # enable mouse wheel scroll in mintty
     ignorecase = false
+    hooksPath = ~/.config/git/template/hooks
 [log]
     date = format:%Y-%m-%d %H:%M:%S
 [commit]
