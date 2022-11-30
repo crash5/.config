@@ -183,7 +183,7 @@
 [help]
     autocorrect = 0
 [pretty]
-    log = %C(auto)%h %C(green)%cd%C(reset) | %C(cyan)%s%C(auto)%d [%C(bold blue)a:%an%C(reset),%C(blue)c:%cn%C(reset)]
+    log = %C(auto)%h %C(green)%cd%C(reset) | %C(cyan)%s%C(auto)%d [%C(bold blue)a:%aN%C(reset),%C(blue)c:%cN%C(reset)]
     rlog = %C(auto)%h %C(bold red)%gd%C(reset): %gs %C(cyan)[%s]%C(auto)%d
     slog = %C(bold red)%gd%C(reset): %C(cyan)%s%C(auto)%d
 [url "ssh://git@github.com/"]
