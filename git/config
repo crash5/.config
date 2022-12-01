@@ -190,7 +190,9 @@
     pushInsteadOf = https://github.com/
 [url "ssh://git@gitlab.com/"]
     pushInsteadOf = https://gitlab.com/
-[include]
-    path = ~/.local/config/gitconfig
 [safe]
     bareRepository = explicit
+
+# Put things before this so it can be overridden locally
+[include]
+    path = ~/.local/config/gitconfig
