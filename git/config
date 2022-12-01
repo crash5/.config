@@ -173,7 +173,7 @@
 [merge]
     tool = bc
     summary = true
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 [mergetool]
     keepBackup = false
 [rerere]
