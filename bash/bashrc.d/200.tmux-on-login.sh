@@ -4,5 +4,6 @@ then
     if [[ "$(</proc/sys/kernel/osrelease)" == *Microsoft* ]]; then
         tmux new-window -t default -c "$PWD"
     fi
-    tmux attach -t default || tmux new -s default
+    # tmux attach -t default || tmux new -s default
+    tmux new-session -A -s default
 fi
