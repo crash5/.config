@@ -176,6 +176,7 @@
     colorMoved = zebra
     indentHeuristic = true
     algorithm = histogram
+    wsErrorHighlight = all
 [merge]
     tool = bc
     summary = true
