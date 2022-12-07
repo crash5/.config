@@ -178,6 +178,7 @@
     indentHeuristic = true
     algorithm = histogram
     wsErrorHighlight = all
+    mnemonicPrefix = true
 [merge]
     tool = bc
     summary = true
