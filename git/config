@@ -68,6 +68,7 @@
     dr = diff HEAD@{1}
     dr2 = diff HEAD@{2}
     diffs = "!f() { selection=$(git diffn | fzf --preview 'git diff --color {+1}' --preview-window right:wrap:nohidden) && selection=$(echo \"$selection\") || return ; git diff \"${selection}\" \"${@}\"; }; f"
+    diffis = diff --ignore-all-space
 
     diffp = diff --diff-algorithm=patience
     diffm = diff --diff-algorithm=myers
