@@ -94,13 +94,13 @@
 
     unstage = "reset HEAD --"
     r = reset
-    r1 = reset HEAD^
-    r2 = reset HEAD^^
+    r1 = reset HEAD~1
+    r2 = reset HEAD~2
     rs = reset --soft
-    rs1 = reset --soft HEAD^
+    rs1 = reset --soft HEAD~1
     rh = reset --hard
-    rh1 = reset --hard HEAD^
-    rh2 = reset --hard HEAD^^
+    rh1 = reset --hard HEAD~1
+    rh2 = reset --hard HEAD~2
     rhu = reset --hard @{u}
 
     rei = rebase -i
