@@ -104,6 +104,7 @@
     rhu = reset --hard @{u}
 
     rei = rebase -i
+    reii = rebase -i HEAD~5 --autostash
     reis = "!f() { git rebase --interactive $(git ll | fzf --preview 'git s {+2}' --preview-window right:wrap:nohidden | cut -d ' ' -f 2)^ \"${@}\"; }; f"
     reiu = rebase -i @{u}
     rec = rebase --continue
