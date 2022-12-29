@@ -65,8 +65,6 @@
     diffw = diff --color-words
     diffurange = range-diff @{u}...@
     diffrange-rebase = range-diff @{1}...HEAD
-    dr = diff HEAD@{1}
-    dr2 = diff HEAD@{2}
     diffs = "!f() { selection=$(git diffn | fzf --preview 'git diff --color {+1}' --preview-window right:wrap:nohidden) && selection=$(echo \"$selection\") || return ; git diff \"${selection}\" \"${@}\"; }; f"
     diffiw = diff --ignore-all-space
 
