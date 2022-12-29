@@ -112,7 +112,6 @@
     rei-develop = !git rebase -i $(git merge-base develop HEAD)
     reshow = show REBASE_HEAD
 
-    cleanrepo = clean -dfx
     pruneorigin = remote prune origin
     gones = !git fetch -q -p && git branch -vv | awk '/: gone]/{print $1}'
     deletegones = !git gones | xargs -n 1 -r -p git branch -d
@@ -136,7 +135,6 @@
     worktreeaddupdir = "!git worktree add ../$1"
 
     snap = "!git stash push -m \"snapshot: $(date +'%Y. %m. %d. %H:%M')\" && git stash apply -q stash@{0}"
-    #stashold = "!git log --merges --no-walk --oneline $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
     stashold = "!git lp --merges --no-walk $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
 
     vic = "!vim $(git diff --name-only)"
