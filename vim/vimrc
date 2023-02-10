@@ -222,7 +222,7 @@ set statusline+=\ %{&ff}
 set statusline+=\ \|
 set statusline+=\ %{(&fenc==''?&enc:&fenc).((exists('+bomb')&&&bomb)?',B':'')}
 set statusline+=%{&endofline?'':'\ \ \|\ noeol'}]
-set statusline+=\ [%l:%v/%L]
+set statusline+=\ [%l:%c%V/%L]
 " }}}
 
 " System clipboard {{{
