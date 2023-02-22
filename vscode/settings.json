@@ -242,7 +242,6 @@
     "workbench.tips.enabled": false,
     "workbench.view.alwaysShowHeaderActions": true,
     "zenMode.hideLineNumbers": false,
-    "workbench.editor.pinnedTabSizing": "shrink",
     "search.experimental.searchInOpenEditors": true,
     "workbench.editor.decorations.badges": true,
     "search.seedOnFocus": true,
@@ -250,4 +249,16 @@
     "editor.bracketPairColorization.enabled": true, // replaces bracket pair colorizer addon after v1.60
     "editor.suggest.preview": true,
     "workbench.reduceMotion": "on",
+    "explorer.confirmDelete": false,
+    "python.linting.flake8Args": [
+        "--max-line-length=140"
+    ],
+    "python.linting.pylintArgs": [
+        "--rcfile=.pylintrc"
+    ],
+    "python.experiments.enabled": false,
+    "python.testing.pytestEnabled": true,
+    "markdown.validate.enabled": true,
+    "debug.toolBarLocation": "docked",
+    "workbench.editor.pinnedTabSizing": "shrink",
 }
