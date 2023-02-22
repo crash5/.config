@@ -244,17 +244,5 @@
         "command": "search.action.focusNextSearchResult",
         "when": "hasSearchResult || inSearchEditor"
     },
-    {
-        "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode == insert",
-        "key": "ctrl+n",
-        "args": "<C-n>"
-    },
-    {
-        "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode == insert",
-        "key": "ctrl+p",
-        "args": "<C-p>"
-    }
     // < neovim
 ]
