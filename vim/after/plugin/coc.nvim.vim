@@ -1,4 +1,4 @@
-if exists('g:did_coc_loaded')
+if !exists('g:did_coc_loaded')
     finish
 endif
 
