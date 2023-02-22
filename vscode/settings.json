@@ -141,6 +141,11 @@
     "vim.targets.enable": true,
     "vim.matchpairs": "(:),{:},[:],<:>",
 // < vim
+// > neovim
+"extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+},
+// < neovim
 // > todo tree
     "todo-tree.highlights.customHighlight": {
         "TODO": {},

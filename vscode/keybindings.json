@@ -219,5 +219,42 @@
     {
         "key": "f5",
         "command": "-workbench.action.debug.start",
+    },
+    // < Other
+    // > neovim
+    {
+        "command": "vscode-neovim.compositeEscape1",
+        "key": "k",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "k"
+    },
+    {
+        "command": "vscode-neovim.compositeEscape2",
+        "key": "j",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "j"
+    },
+    {
+        "key": "[q",
+        "command": "search.action.focusPreviousSearchResult",
+        "when": "hasSearchResult || inSearchEditor"
+    },
+    {
+        "key": "]q",
+        "command": "search.action.focusNextSearchResult",
+        "when": "hasSearchResult || inSearchEditor"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode == insert",
+        "key": "ctrl+n",
+        "args": "<C-n>"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode == insert",
+        "key": "ctrl+p",
+        "args": "<C-p>"
     }
+    // < neovim
 ]
