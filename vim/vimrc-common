@@ -1,0 +1,313 @@
+" vim: foldmethod=marker formatoptions-=o
+
+" Basic keymap, commands {{{
+let g:mapleader = "\<SPACE>"
+
+inoremap kj <ESC>
+nnoremap <silent> <leader><leader> :nohlsearch<CR>
+
+noremap <leader>q :<C-u>q!<CR>
+noremap <leader>Q :<C-u>qall!<CR>
+
+" Yank to the end of the line
+noremap Y y$
+
+" Select last inserted text
+nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" reload file, discard any chagnes
+nnoremap <F5> :<C-u>edit!<CR>
+
+" Opens an edit command with the path of the currently edited file filled in
+map <Leader>p :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" Move by visual line
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+onoremap j gj
+onoremap k gk
+onoremap gj j
+onoremap gk k
+
+" Move lines up/down
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" create undo points
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+inoremap , <C-g>u,
+inoremap ! <C-g>u!
+
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" search word under cursor or selected text
+nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
+xnoremap <leader>g y :silent execute "grep! -R " . shellescape(getreg('"')) . " ."<CR>:copen<CR>
+
+" search and replace word/selection
+nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
+vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
+
+cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
+
+command! ClearQuickfixList cexpr []
+command! ClearTrailingWhitespaces %s/\s\+$//e
+
+command! -range=% YamlToJson :execute '<line1>,<line2>!yq eval --tojson -' <BAR> set ft=json
+command! -range=% JsonToYaml :execute '<line1>,<line2>!yq eval --prettyPrint -' <BAR> set ft=yaml
+
+" 24 simple pseudo-text objects https://gist.github.com/romainl/c0a8b57a36aec71a986f1120e1931f20
+" i_ i. i: i, i; i| i/ i\ i* i+ i- i#
+" a_ a. a: a, a; a| a/ a\ a* a+ a- a#
+" can take a count: 2i: 3a/
+for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '-', '#' ]
+	execute "xnoremap i" . char . " :<C-u>execute 'normal! ' . v:count1 . 'T" . char . "v' . (v:count1 + (v:count1 - 1)) . 't" . char . "'<CR>"
+	execute "onoremap i" . char . " :normal vi" . char . "<CR>"
+	execute "xnoremap a" . char . " :<C-u>execute 'normal! ' . v:count1 . 'F" . char . "v' . (v:count1 + (v:count1 - 1)) . 'f" . char . "'<CR>"
+	execute "onoremap a" . char . " :normal va" . char . "<CR>"
+endfor
+" }}}
+
+" History, undo, state, session etc. {{{
+" set backupdir=$VIMDATA/backup// | call mkdir(&backupdir, 'p')
+set directory=$VIMDATA/swap//   | call mkdir(&directory, 'p')
+set viewdir=$VIMDATA/views//    | call mkdir(&viewdir, 'p')
+
+set nobackup
+set nowritebackup
+set undofile                                     " enable persistent undo
+set viminfo='100,<1000,s100,h
+set history=10000                                " search and cmd line history
+set undolevels=1000                              " in-memory undo count
+
+augroup Vimrc_Undo
+    autocmd!
+    " disable persistent undo for files in tmp (eg: for sudoedit-ed files)
+    autocmd BufWritePre /tmp/* setlocal noundofile
+    autocmd BufWritePre /var/tmp/* setlocal noundofile
+augroup END
+" }}}
+
+" Plugin config {{{
+let g:netrw_home = $VIMDATA
+let g:netrw_preview = 1
+let g:netrw_alto = 0
+
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:camelcasemotion_key = '<leader>'
+" }}}
+
+" Display {{{
+if &t_Co >= 256
+  set termguicolors
+end
+
+" Terminal support
+" Handle cursor shape change in insert/normal/replace modes
+" 1 or 0 -> blinking block 2 -> solid block 3 -> blinking underscore
+" 4 -> solid underscore 5 -> blinking vertical bar 6 -> solid vertical bar
+if exists("&t_SI") | let &t_SI .= "\e[5 q" | endif
+if exists("&t_EI") | let &t_EI .= "\e[2 q" | endif
+if exists("&t_SR") | let &t_SR .= "\e[1 q" | endif
+
+set background=dark
+
+set number
+set showmode
+set showcmd
+
+set cursorline
+set colorcolumn=80,120
+
+set showbreak=↪\ 
+set listchars=tab:»-,nbsp:␣,trail:·,extends:»,precedes:«
+set list
+
+set splitbelow
+set splitright
+
+set linebreak               " don't cut words into pieces on line break
+
+set lazyredraw
+
+set display+=lastline
+
+set shortmess-=S            " show matches count on search
+
+set foldlevelstart=99       " open folds by default
+" }}}
+
+" Statusline {{{
+set laststatus=2
+set statusline=%F%m%r%h%w
+set statusline+=\ [ASCII=%04.8b
+set statusline+=\ \|
+set statusline+=\ HEX=%04.4B]
+set statusline+=%=
+set statusline+=\ [%{&ft==''?'no\ ft':&ft}
+set statusline+=\ \|
+set statusline+=\ %{&ff}
+set statusline+=\ \|
+set statusline+=\ %{(&fenc==''?&enc:&fenc).((exists('+bomb')&&&bomb)?',B':'')}
+set statusline+=%{&endofline?'':'\ \ \|\ noeol'}]
+set statusline+=\ [%l:%c%V/%L]
+" }}}
+
+" Security, modeline {{{
+set nomodeline
+set modelines=2
+" parse modeline with keybinding
+nnoremap <leader>ml :setlocal modeline <BAR> doautocmd BufRead <BAR> setlocal nomodeline<CR>
+" }}}
+
+" Basic operation, mouse {{{
+set backspace=indent,eol,start
+set autoindent
+set hidden
+
+set virtualedit=block
+set nrformats-=octal          " <C-a> and <C-x> with zero-padded numbers (don't consider them octal)
+
+if has('mouse')
+    set mouse=a
+endif
+" }}}
+
+" Wildmenu, completion {{{
+set wildmenu
+set wildignorecase
+set wildmode=longest:full,full
+set completeopt=menuone,preview
+" }}}
+
+" Whitespace {{{
+set softtabstop=-1                                       " number of spaces in tab when editing - when -1 use shiftwidth
+set tabstop=4                                            " number of visual spaces per TAB character
+set shiftwidth=0                                         " Number of spaces to use for each step of (auto)indent (<<, >>) - when 0 use tabstop
+set shiftround                                           " round indent to multiple of shiftwidth when using < or >
+set expandtab                                            " use space instead of tab character
+" }}}
+
+" Search/Replace {{{
+set hlsearch                                             " highlight matches
+set showmatch                                            " highlight matching [{()}]
+set ignorecase
+set incsearch                                            " search as characters are entered
+set smartcase
+" }}}
+
+" System clipboard {{{
+nnoremap <F9> :set invpaste paste?<CR>
+set pastetoggle=<F9>
+noremap <leader>s "+
+vnoremap <leader>s "+
+noremap <leader>ss :let @+=@"<CR>
+" }}}
+
+" Syntax, colorscheme {{{
+syntax on
+silent! colorscheme PaperColor
+" }}}
+
+" Version, feature depentent {{{
+" skip runtimepath and packpath on Session file save
+if has("patch-8.2.2772")
+    set sessionoptions+=skiprtp
+endif
+
+if has("patch-8.1.0360") || has("nvim")
+    set diffopt+=internal
+    set diffopt+=algorithm:histogram
+    set diffopt+=indent-heuristic
+endif
+" }}}
+
+" Diff current modified buffer to the file on the disk {{{
+if !exists(":DiffOrig")
+    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+        \ | wincmd p | diffthis
+endif
+" }}}
+
+" Ask for directory creation on save/new file {{{
+augroup Vimrc_EnsureDirExists
+    autocmd!
+    autocmd  BufNewFile,BufWritePre  *  :call <SID>EnsureDirExists()
+augroup END
+function! s:EnsureDirExists ()
+    let required_dir = expand("%:h")
+    if !isdirectory(required_dir)
+        if confirm("Directory '" . required_dir . "' doesn't exist.", "&Abort?\n&Create it?") == 2
+            call mkdir( required_dir, 'p' )
+        endif
+    endif
+endfunction
+" }}}
+
+" Redirect command output to a scratch buffer {{{
+" from: https://gist.github.com/romainl/eae0a260ab9c135390c30cd370c20cd7
+function! Redir(cmd, rng, start, end)
+    for win in range(1, winnr('$'))
+        if getwinvar(win, 'scratch')
+            execute win . 'windo close'
+        endif
+    endfor
+    if a:cmd =~ '^!'
+        let cmd = a:cmd =~' %'
+            \ ? matchstr(substitute(a:cmd, ' %', ' ' . expand('%:p'), ''), '^!\zs.*')
+            \ : matchstr(a:cmd, '^!\zs.*')
+        if a:rng == 0
+            let output = systemlist(cmd)
+        else
+            let joined_lines = join(getline(a:start, a:end), '\n')
+            let cleaned_lines = substitute(shellescape(joined_lines), "'\\\\''", "\\\\'", 'g')
+            let output = systemlist(cmd . " <<< $" . cleaned_lines)
+        endif
+    else
+        redir => output
+        execute a:cmd
+        redir END
+        let output = split(output, "\n")
+    endif
+    vnew
+    let w:scratch = 1
+    setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
+    call setline(1, output)
+endfunction
+command! -nargs=1 -complete=command -bar -range Redir silent call Redir(<q-args>, <range>, <line1>, <line2>)
+" }}}
+
+" Highlight the current line {{{
+highlight LineHighlight ctermbg=black guibg=black
+nnoremap <silent> <Leader>hh :call matchadd('LineHighlight', '\%'.line('.').'l', 10, line('.'))<CR>
+nnoremap <silent> <Leader>hd :call matchdelete(line('.'))<CR>
+nnoremap <silent> <Leader>hc :call clearmatches()<CR>
+" }}}
+
+" Ripgrep
+if executable('rg')
+    set grepprg=rg\ --search-zip\ --follow\ --hidden\ --vimgrep\ --no-messages\ --no-binary\ $*
+    set grepformat^=%f:%l:%c:%m
+    nnoremap <leader>g :silent execute "grep! -F " . shellescape(expand("<cWORD>")) . " ."<CR>:copen <BAR> redraw!<CR>
+    xnoremap <leader>g y :silent execute "grep! -F " . shellescape(getreg('"')) . " ."<CR>:copen <BAR> redraw!<CR>
+endif
+" }}}
+
+" Handle ctrl+arrows under tmux in insert and command-line mode {{{
+if &term == "tmux-256color"
+    map!  <Esc>[1;5A <C-Up>
+    map!  <Esc>[1;5B <C-Down>
+    map!  <Esc>[1;5D <C-Left>
+    map!  <Esc>[1;5C <C-Right>
+    map!  <Esc>[1;2D <S-Left>
+    map!  <Esc>[1;2C <S-Right>
+endif
+" }}}
