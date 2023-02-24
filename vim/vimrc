@@ -1,68 +1,30 @@
 " vim: foldmethod=marker formatoptions-=o
 
-if &compatible
-  set nocompatible
-endif
+source $XDG_CONFIG_HOME/vim/common-before
 
-if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
-
-" XDG path config
-if empty($XDG_DATA_HOME)   | let $VIMDATA = expand('~/.local/share/vim/') | else | let $VIMDATA = $XDG_DATA_HOME.'/vim/'     | endif
-if empty($XDG_CONFIG_HOME) | let $VIMCONFIG  = expand('~/.config/vim/')   | else | let $VIMCONFIG = $XDG_CONFIG_HOME.'/vim/' | endif
-
-set runtimepath^=$VIMCONFIG
-set runtimepath+=$VIMCONFIG/after
-set packpath^=$VIMCONFIG
-set packpath+=$VIMCONFIG/after
-
-source $VIMCONFIG/vimrc-common
-
+set viminfofile=$VIMDATA/viminfo
+set undodir=$VIMDATA/vimundo//     | call mkdir(&undodir,   'p')
 
 packadd! CamelCaseMotion
 packadd! ReplaceWithRegister
+packadd! editorconfig-vim
+packadd! matchit
+packadd! papercolor-theme
 packadd! targets.vim
+packadd! vim-commentary
+packadd! vim-highlightedyank
+packadd! vim-indent-object
 packadd! vim-sandwich
+packadd! vim-unimpaired
+packadd! vim-visual-star-search
 
-if !exists('g:vscode')
-    packadd! editorconfig-vim
-    packadd! matchit
-    packadd! papercolor-theme
-    packadd! vim-commentary
-    packadd! vim-indent-object
-    packadd! vim-unimpaired
-endif
+let g:highlightedyank_highlight_duration = 250
 
-if has('nvim')
-    set shadafile=$VIMDATA/nviminfo
-    set undodir=$VIMDATA/nvimundo//     | call mkdir(&undodir,   'p')
+" Set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-    set inccommand=nosplit
+" Save as sudo
+cnoremap w!! w !sudo tee % >/dev/null
 
-    augroup Vimrc_highlight_on_yank
-        autocmd!
-        autocmd TextYankPost * silent! lua vim.highlight.on_yank{timeout=250}
-    augroup END
-else
-    " Vim only
-    set viminfofile=$VIMDATA/viminfo
-    set undodir=$VIMDATA/vimundo//     | call mkdir(&undodir,   'p')
-
-    let g:highlightedyank_highlight_duration = 250
-    packadd! vim-highlightedyank
-    packadd! vim-visual-star-search
-
-    " Set Vim-specific sequences for RGB colors
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-    " Save as sudo
-    cnoremap w!! w !sudo tee % >/dev/null
-endif
-
-" Filetype plugin, required to call after the packadd commands
-filetype plugin indent on
-
-" Load local changes
-if filereadable(expand("~/.local/config/vimrc"))
-    source ~/.local/config/vimrc
-endif
+source $VIMCONFIG/common-after

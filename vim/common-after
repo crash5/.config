@@ -1,0 +1,7 @@
+" Filetype plugin, required to call after the packadd commands
+filetype plugin indent on
+
+" Load local changes
+if filereadable(expand("~/.local/config/vimrc"))
+    source ~/.local/config/vimrc
+endif
