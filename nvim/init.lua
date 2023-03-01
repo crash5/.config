@@ -35,10 +35,21 @@ if vim.g.vscode then
         nnoremap <leader>q <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
         nnoremap <leader>Q <Cmd>call VSCodeNotify('workbench.action.closeAllEditors')<CR>
 
+        nnoremap <silent> za <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
+        nnoremap <silent> zR <Cmd>call VSCodeNotify('editor.unfoldAll')<CR>
+        nnoremap <silent> zM <Cmd>call VSCodeNotify('editor.foldAll')<CR>
+        nnoremap <silent> zo <Cmd>call VSCodeNotify('editor.unfold')<CR>
+        nnoremap <silent> zO <Cmd>call VSCodeNotify('editor.unfoldRecursively')<CR>
+        nnoremap <silent> zc <Cmd>call VSCodeNotify('editor.fold')<CR>
+        nnoremap <silent> zC <Cmd>call VSCodeNotify('editor.foldRecursively')<CR>
+        nnoremap <silent> zj <Cmd>call VSCodeNotify('editor.gotoNextFold')<CR>
+        nnoremap <silent> zk <Cmd>call VSCodeNotify('editor.gotoPreviousFold')<CR>
+
         xmap gc  <Plug>VSCodeCommentary
         nmap gc  <Plug>VSCodeCommentary
         omap gc  <Plug>VSCodeCommentary
         nmap gcc <Plug>VSCodeCommentaryLine
+
 
         highlight OperatorSandwichBuns guifg='#aa91a0' gui=underline ctermfg=172 cterm=underline
         highlight OperatorSandwichChange guifg='#edc41f' gui=underline ctermfg='yellow' cterm=underline
