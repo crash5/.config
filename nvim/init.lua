@@ -58,7 +58,6 @@ if vim.g.vscode then
     ]]
 else
     vim.cmd [[
-        packadd! editorconfig-vim
         packadd! matchit
         packadd! papercolor-theme
         packadd! vim-commentary
