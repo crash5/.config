@@ -137,6 +137,14 @@ for url in ${packages[@]}; do
 done
 ```
 
+### Python/Poetry
+
+#### Windows
+
+```
+mklink "%APPDATA%\pypoetry" %USERPROFILE%\.config\poetry\config.toml
+```
+
 ### Apps
 
 - https://github.com/junegunn/fzf
