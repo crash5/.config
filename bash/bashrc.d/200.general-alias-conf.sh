@@ -71,6 +71,7 @@ if program_exists git; then
     export GIT_PS1_SHOWDIRTYSTATE=1
     export GIT_PS1_SHOWUPSTREAM="auto"
     export GIT_COMPLETION_SHOW_ALL=1
+    export GIT_COMPLETION_SHOW_ALL_COMMANDS=1
 
     g() {
         if [[ $# == 0 ]]; then git st; else git "$@"; fi
