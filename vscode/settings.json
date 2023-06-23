@@ -226,7 +226,7 @@
     "terminal.integrated.scrollback": 20000,
     "timeline.showView": true,
     "typescript.referencesCodeLens.enabled": true,
-    "window.title": "${remoteName}${separator}${dirty}${activeEditorLong}${separator}${rootName}",
+    "window.title": "${remoteName}${separator}${dirty}${rootName}${separator}${activeEditorLong}",
     "window.zoomLevel": 0,
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
