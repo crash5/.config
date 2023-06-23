@@ -199,6 +199,7 @@
     "editor.find.autoFindInSelection": "multiline",
     "editor.fontFamily": "Dejavu sans mono",
     "editor.fontSize": 12,
+    "editor.fontLigatures": false,
     "editor.minimap.enabled": false,
     "editor.renderControlCharacters": true,
     "editor.guides.indentation": true,
