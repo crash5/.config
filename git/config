@@ -116,7 +116,7 @@
     rec = rebase --continue
     rea = rebase --abort
     rei-develop = !git rebase -i $(git merge-base develop HEAD)
-    reshow = show REBASE_HEAD
+    showrebase = show REBASE_HEAD
 
     pruneorigin = remote prune origin
     gones = !git fetch -q -p && git branch -vv | awk '/: gone]/{print $1}'
