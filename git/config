@@ -141,6 +141,10 @@
 
     vic = "!vim $(git diff --name-only)"
     vicc = "!vim $(git show --name-only --pretty=)"
+
+    ta = "!f() { : git tag ; git tag ${1:?Missing tag} $1^{} -f -a ; }; f"
+    tl = tag --format='%(refname:strip=2) [%(objecttype) / %(creatordate:short) | commit: %(*objectname:short) / %(*creatordate:short)]\n%(contents:subject)\n%(contents:body)' --list --sort=-v:refname
+
 [core]
     #editor = notepad++.exe -multiInst -nosession -noPlugin -ldiff
     editor = vim
