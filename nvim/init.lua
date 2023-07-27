@@ -37,10 +37,11 @@ if vim.g.vscode then
         xnoremap <BS> <Cmd>call VSCodeNotify('editor.action.smartSelect.shrink')<CR>
 
         nnoremap <leader>g <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
+        xnoremap <leader>g <Cmd>call VSCodeNotify('workbench.action.findInFiles')<CR>
         nnoremap <leader>d <Cmd>call VSCodeNotify('editor.action.showHover')<CR>
 
-        nnoremap <leader>q <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
-        nnoremap <leader>Q <Cmd>call VSCodeNotify('workbench.action.closeAllEditors')<CR>
+        noremap <leader>q <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
+        noremap <leader>Q <Cmd>call VSCodeNotify('workbench.action.closeAllEditors')<CR>
 
         nnoremap <silent> za <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
         nnoremap <silent> zR <Cmd>call VSCodeNotify('editor.unfoldAll')<CR>
