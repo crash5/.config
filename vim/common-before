@@ -90,6 +90,11 @@ for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '-', 
 	execute "xnoremap a" . char . " :<C-u>execute 'normal! ' . v:count1 . 'F" . char . "v' . (v:count1 + (v:count1 - 1)) . 'f" . char . "'<CR>"
 	execute "onoremap a" . char . " :normal va" . char . "<CR>"
 endfor
+
+
+" Switch between windows
+nmap <TAB> <C-W>w
+nmap <S-TAB> <C-W>W
 " }}}
 
 " History, undo, state, session etc. {{{
