@@ -47,16 +47,8 @@ if vim.g.vscode then
         nnoremap <silent> zj <Cmd>call VSCodeNotify('editor.gotoNextFold')<CR>
         nnoremap <silent> zk <Cmd>call VSCodeNotify('editor.gotoPreviousFold')<CR>
 
-        xmap gc  <Plug>VSCodeCommentary
-        nmap gc  <Plug>VSCodeCommentary
-        omap gc  <Plug>VSCodeCommentary
-        nmap gcc <Plug>VSCodeCommentaryLine
-
-
-        highlight OperatorSandwichBuns guifg='#aa91a0' gui=underline ctermfg=172 cterm=underline
-        highlight OperatorSandwichChange guifg='#edc41f' gui=underline ctermfg='yellow' cterm=underline
-        highlight OperatorSandwichAdd guibg='#b1fa87' gui=none ctermbg='green' cterm=none
-        highlight OperatorSandwichDelete guibg='#cf5963' gui=none ctermbg='red' cterm=none
+        xmap gc  <Cmd>call VSCodeCall('editor.action.commentLine')<CR><Esc>
+        nmap gcc <Cmd>call VSCodeCall('editor.action.commentLine')<CR><Esc>
     ]]
 else
     vim.cmd [[
