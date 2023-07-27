@@ -85,6 +85,7 @@
     ls = log --pretty=fuller --name-status
     lss = log --pretty=fuller --patch
     ld = !git l $(git merge-base develop HEAD)..HEAD
+    lm = !git ll $(git merge-base main HEAD)..HEAD
 
     mostchangedayear = "!git log --format=format: --name-only --since=12.month | egrep -v '^$' | sort | uniq -c | sort -nr | head -50"
 
@@ -99,43 +100,43 @@
     slss = stash list --pretty=fuller --patch
 
     unstage = "reset HEAD --"
-    r = reset
-    r1 = reset HEAD~1
-    r2 = reset HEAD~2
-    rs = reset --soft
-    rs1 = reset --soft HEAD~1
-    rh = reset --hard
-    rh1 = reset --hard HEAD~1
-    rh2 = reset --hard HEAD~2
-    rhu = reset --hard @{u}
+    r =     reset
+    r1 =    reset HEAD~1
+    r2 =    reset HEAD~2
+    rs =    reset --soft
+    rs1 =   reset --soft HEAD~1
+    rh =    reset --hard
+    rh1 =   reset --hard HEAD~1
+    rh2 =   reset --hard HEAD~2
+    rhu =   reset --hard @{u}
 
-    rei = rebase -i
-    reii = rebase -i HEAD~5 --autostash
+    rei =   rebase -i
+    reii =  rebase -i HEAD~5 --autostash
+    reiu =  rebase -i @{u}
+    rec =   rebase --continue
+    rea =   rebase --abort
     reis = "!f() { git rebase --interactive $(git ll | fzf --preview 'git s {+2}' --preview-window right:wrap:nohidden | cut -d ' ' -f 2)^ \"${@}\"; }; f"
-    reiu = rebase -i @{u}
-    rec = rebase --continue
-    rea = rebase --abort
     rei-develop = !git rebase -i $(git merge-base develop HEAD)
     showrebase = show REBASE_HEAD
 
     pruneorigin = remote prune origin
     gones = !git fetch -q -p && git branch -vv | awk '/: gone]/{print $1}'
-    deletegones = !git gones | xargs -n 1 -r -p git branch -d
-    deletegones-force = !git gones | xargs -n 1 -r -p git branch -D
-    deletegonesnoask = !git gones | xargs -n 1 -r git branch -d
-    deletegonesnoask-force = !git gones | xargs -n 1 -r git branch -D
+    deletegones =               !git gones | xargs --max-args 1 --no-run-if-empty --interactive git branch -d
+    deletegones-force =         !git gones | xargs --max-args 1 --no-run-if-empty --interactive git branch -D
+    deletegonesnoask =          !git gones | xargs --max-args 1 --no-run-if-empty git branch -d
+    deletegonesnoask-force =    !git gones | xargs --max-args 1 --no-run-if-empty git branch -D
 
     ; Assumes that a developer shouldn’t change a file.
     ; This flag is meant for improving performance for not-changing folders like SDKs.
-    assume = update-index --assume-unchanged
-    unassume = update-index --no-assume-unchanged
+    assume =    update-index --assume-unchanged
+    unassume =  update-index --no-assume-unchanged
     assumedlist = !git ls-files -v | grep ^h | cut -c 3-
 
     ; Instruct git not to touch a specific file ever because developers should change it.
     ; For example, if the main repository upstream hosts some production-ready configuration files
     ; and you don’t want to accidentally commit changes to those files.
-    skipworktree = update-index --skip-worktree
-    unskipworktree = update-index --no-skip-worktree
+    skipworktree =      update-index --skip-worktree
+    unskipworktree =    update-index --no-skip-worktree
     skipworktreelist = !git ls-files -v | grep ^S | cut -c 3-
 
     snap = "!git stash push -m \"snapshot: $(date +'%Y. %m. %d. %H:%M')\" && git stash apply -q stash@{0}"
