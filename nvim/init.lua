@@ -22,6 +22,8 @@ vim.cmd [[
 
 if vim.g.vscode then
     vim.cmd [[
+        set shada=
+        set colorcolumn=
         set clipboard^=unnamed,unnamedplus
 
         nnoremap ]d <Cmd>call VSCodeNotify('editor.action.marker.next')<CR>
