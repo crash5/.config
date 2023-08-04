@@ -262,5 +262,14 @@
     "markdown.validate.enabled": true,
     "debug.toolBarLocation": "docked",
     "workbench.editor.pinnedTabSizing": "shrink",
+    "markdown.updateLinksOnFileMove.enabled": "prompt",
     "files.enableTrash": false,
+    "extensions.supportUntrustedWorkspaces": {
+        "asvetliakov.vscode-neovim": {
+            "supported": true
+        }
+    },
+    "editor.unicodeHighlight.includeComments": true,
+    "typescript.disableAutomaticTypeAcquisition": true,
+    "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
 }
