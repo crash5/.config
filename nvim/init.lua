@@ -2,6 +2,9 @@
 
 vim.cmd [[
     let g:loaded_python3_provider = 0
+    let g:loaded_node_provider = 0
+    let g:loaded_perl_provider = 0
+    let g:loaded_ruby_provider = 0
     source $XDG_CONFIG_HOME/vim/common-before
 
     set shadafile=$VIMDATA/nviminfo
