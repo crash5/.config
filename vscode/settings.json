@@ -146,31 +146,6 @@
     "asvetliakov.vscode-neovim": 1
 },
 // < neovim
-// > todo tree
-    "todo-tree.highlights.customHighlight": {
-        "TODO": {},
-        "FIXME": {},
-        "BUG": {},
-        "HACK": {},
-        "NOTE": {},
-        "WARNING": {}
-    },
-    "todo-tree.highlights.defaultHighlight": {
-        "foreground": "green",
-        "type": "tag"
-    },
-    "todo-tree.general.tags": [
-        "TODO",
-        "FIXME",
-        "BUG",
-        "HACK",
-        "NOTE",
-        "WARNING"
-    ],
-    "todo-tree.tree.expanded": true,
-    "todo-tree.tree.flat": true,
-    "todo-tree.tree.showScanModeButton": false,
-// < todo tree
 // > open in vim
     "open-in-vim.linux.gnome-terminal.args": "",
     "open-in-vim.openMethod": "linux.gnome-terminal",
