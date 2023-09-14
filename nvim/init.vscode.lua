@@ -53,6 +53,13 @@ vim.cmd [[
     nmap <S-TAB> <C-W>W
     " }}}
 
+    " Search/Replace {{{
+    set hlsearch                                             " highlight matches
+    set showmatch                                            " highlight matching [{()}]
+    set ignorecase
+    set incsearch                                            " search as characters are entered
+    set smartcase
+    " }}}
 
     " vscode calls
     nnoremap ]d <Cmd>call VSCodeNotify('editor.action.marker.next')<CR>
