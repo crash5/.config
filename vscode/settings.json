@@ -247,4 +247,7 @@
     "editor.unicodeHighlight.includeComments": true,
     "typescript.disableAutomaticTypeAcquisition": true,
     "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
+    "editor.experimental.asyncTokenization": true,
+    "python.analysis.gotoDefinitionInStringLiteral": true,
+    "testing.openTesting": "neverOpen",
 }
