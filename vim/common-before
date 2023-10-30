@@ -1,4 +1,4 @@
-" vim: foldmethod=marker formatoptions-=o
+" vim: foldmethod=marker formatoptions-=o filetype=vim
 
 if &compatible
   set nocompatible
@@ -6,7 +6,6 @@ endif
 
 if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
 
-" XDG path config
 if empty($XDG_DATA_HOME)   | let $VIMDATA = expand('~/.local/share/vim/') | else | let $VIMDATA = $XDG_DATA_HOME.'/vim/'     | endif
 if empty($XDG_CONFIG_HOME) | let $VIMCONFIG  = expand('~/.config/vim/')   | else | let $VIMCONFIG = $XDG_CONFIG_HOME.'/vim/' | endif
 
@@ -16,86 +15,14 @@ set packpath^=$VIMCONFIG
 set packpath+=$VIMCONFIG/after
 
 
+source $XDG_CONFIG_HOME/vim/keybinding
+
 " Basic keymap, commands {{{
-let g:mapleader = "\<SPACE>"
-
-inoremap kj <ESC>
-nnoremap <silent> <leader><leader> :nohlsearch<CR>
-
-noremap <leader>q :<C-u>q!<CR>
-noremap <leader>Q :<C-u>qall!<CR>
-
-" Yank to the end of the line
-noremap Y y$
-
-" Select last inserted text
-nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
-
-" reload file, discard any chagnes
-nnoremap <F5> :<C-u>edit!<CR>
-
-" Opens an edit command with the path of the currently edited file filled in
-map <Leader>p :e <C-R>=expand("%:p:h") . "/" <CR>
-
-" Move by visual line
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
-onoremap j gj
-onoremap k gk
-onoremap gj j
-onoremap gk k
-
-" Move lines up/down
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
-
-" create undo points
-inoremap <C-u> <C-g>u<C-u>
-inoremap <C-w> <C-g>u<C-w>
-inoremap , <C-g>u,
-inoremap ! <C-g>u!
-
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
-" search word under cursor or selected text
-nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
-xnoremap <leader>g y :silent execute "grep! -R " . shellescape(getreg('"')) . " ."<CR>:copen<CR>
-
-" search and replace word/selection
-nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
-vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
-
-cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
-
 command! ClearQuickfixList cexpr []
 command! ClearTrailingWhitespaces %s/\s\+$//e
 
 command! -range=% YamlToJson :execute '<line1>,<line2>!yq eval --tojson -' <BAR> set ft=json
 command! -range=% JsonToYaml :execute '<line1>,<line2>!yq eval --prettyPrint -' <BAR> set ft=yaml
-
-" 24 simple pseudo-text objects https://gist.github.com/romainl/c0a8b57a36aec71a986f1120e1931f20
-" i_ i. i: i, i; i| i/ i\ i* i+ i- i#
-" a_ a. a: a, a; a| a/ a\ a* a+ a- a#
-" can take a count: 2i: 3a/
-for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '-', '#' ]
-	execute "xnoremap i" . char . " :<C-u>execute 'normal! ' . v:count1 . 'T" . char . "v' . (v:count1 + (v:count1 - 1)) . 't" . char . "'<CR>"
-	execute "onoremap i" . char . " :normal vi" . char . "<CR>"
-	execute "xnoremap a" . char . " :<C-u>execute 'normal! ' . v:count1 . 'F" . char . "v' . (v:count1 + (v:count1 - 1)) . 'f" . char . "'<CR>"
-	execute "onoremap a" . char . " :normal va" . char . "<CR>"
-endfor
-
-
-" Switch between windows
-nmap <TAB> <C-W>w
-nmap <S-TAB> <C-W>W
-" }}}
 
 " History, undo, state, session etc. {{{
 " set backupdir=$VIMDATA/backup// | call mkdir(&backupdir, 'p')
@@ -225,14 +152,6 @@ set incsearch                                            " search as characters 
 set smartcase
 " }}}
 
-" System clipboard {{{
-nnoremap <F9> :set invpaste paste?<CR>
-set pastetoggle=<F9>
-noremap <leader>s "+
-vnoremap <leader>s "+
-noremap <leader>ss :let @+=@"<CR>
-" }}}
-
 " Syntax, colorscheme {{{
 syntax on
 silent! colorscheme PaperColor
@@ -304,13 +223,6 @@ function! Redir(cmd, rng, start, end)
     call setline(1, output)
 endfunction
 command! -nargs=1 -complete=command -bar -range Redir silent call Redir(<q-args>, <range>, <line1>, <line2>)
-" }}}
-
-" Highlight the current line {{{
-highlight LineHighlight ctermbg=black guibg=black
-nnoremap <silent> <Leader>hh :call matchadd('LineHighlight', '\%'.line('.').'l', 10, line('.'))<CR>
-nnoremap <silent> <Leader>hd :call matchdelete(line('.'))<CR>
-nnoremap <silent> <Leader>hc :call clearmatches()<CR>
 " }}}
 
 " Ripgrep {{{

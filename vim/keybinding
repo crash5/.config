@@ -1,0 +1,62 @@
+" vim: foldmethod=marker formatoptions-=o filetype=vim
+
+let g:mapleader = "\<SPACE>"
+
+inoremap kj <ESC>
+nnoremap <silent> <leader><leader> :nohlsearch<CR>
+
+noremap <leader>q :<C-u>q!<CR>
+noremap <leader>Q :<C-u>qall!<CR>
+
+" Yank to the end of the line
+noremap Y y$
+
+" Select last inserted text
+nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" Reload file, discard any chagnes
+nnoremap <F5> :<C-u>edit!<CR>
+
+" Create undo points
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+inoremap , <C-g>u,
+inoremap ! <C-g>u!
+
+" Search word under cursor or selected text
+nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
+xnoremap <leader>g y :silent execute "grep! -R " . shellescape(getreg('"')) . " ."<CR>:copen<CR>
+
+" Expand %% on command mode to relative path to actual file
+cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
+
+" Switch between windows
+nmap <TAB> <C-w>w
+nmap <S-TAB> <C-w>W
+
+" System clipboard
+nnoremap <F9> :set invpaste paste?<CR>
+set pastetoggle=<F9>
+noremap <leader>s "+
+vnoremap <leader>s "+
+noremap <leader>ss :let @+=@"<CR>
+
+" TODO(crash): maybe remove?
+" Highlight the current line
+highlight LineHighlight ctermbg=black guibg=black
+nnoremap <silent> <leader>hh :call matchadd('LineHighlight', '\%'.line('.').'l', 10, line('.'))<CR>
+nnoremap <silent> <leader>hd :call matchdelete(line('.'))<CR>
+nnoremap <silent> <leader>hc :call clearmatches()<CR>
+
+" TODO(crash): maybe remove?
+" 24 simple pseudo-text objects https://gist.github.com/romainl/c0a8b57a36aec71a986f1120e1931f20
+" i_ i. i: i, i; i| i/ i\ i* i+ i- i#
+" a_ a. a: a, a; a| a/ a\ a* a+ a- a#
+" can take a count: 2i: 3a/
+for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '-', '#' ]
+    execute "xnoremap i" . char . " :<C-u>execute 'normal! ' . v:count1 . 'T" . char . "v' . (v:count1 + (v:count1 - 1)) . 't" . char . "'<CR>"
+    execute "onoremap i" . char . " :normal vi" . char . "<CR>"
+    execute "xnoremap a" . char . " :<C-u>execute 'normal! ' . v:count1 . 'F" . char . "v' . (v:count1 + (v:count1 - 1)) . 'f" . char . "'<CR>"
+    execute "onoremap a" . char . " :normal va" . char . "<CR>"
+endfor
+
