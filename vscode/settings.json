@@ -250,4 +250,8 @@
     "editor.experimental.asyncTokenization": true,
     "python.analysis.gotoDefinitionInStringLiteral": true,
     "testing.openTesting": "neverOpen",
+    "editor.codeActionWidget.includeNearbyQuickFixes": true,
+    "editor.multiDocumentOccurrencesHighlight": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.variableTypes": true,
 }
