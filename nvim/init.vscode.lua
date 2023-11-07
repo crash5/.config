@@ -26,35 +26,7 @@ vim.cmd [[
     set shada=
     set clipboard^=unnamed,unnamedplus
 
-
-    " Basic keymap, commands {{{
-    let g:mapleader = "\<SPACE>"
-
-    inoremap kj <ESC>
-    nnoremap <silent> <leader><leader> :nohlsearch<CR>
-
-    noremap <leader>q :<C-u>q!<CR>
-    noremap <leader>Q :<C-u>qall!<CR>
-
-    " Yank to the end of the line
-    noremap Y y$
-
-    " Select last inserted text
-    nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
-
-    " reload file, discard any chagnes
-    nnoremap <F5> :<C-u>edit!<CR>
-
-    " create undo points
-    inoremap <C-u> <C-g>u<C-u>
-    inoremap <C-w> <C-g>u<C-w>
-    inoremap , <C-g>u,
-    inoremap ! <C-g>u!
-
-    " Switch between windows
-    nmap <TAB> <C-W>w
-    nmap <S-TAB> <C-W>W
-    " }}}
+    source $XDG_CONFIG_HOME/vim/keybinding
 
     " Search/Replace {{{
     set hlsearch                                             " highlight matches
