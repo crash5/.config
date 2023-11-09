@@ -1970,7 +1970,7 @@ fun! s:apply_syntax_highlightings()
   exec 'hi xmlEndTag' . s:fg_blue
   exec 'hi xmlNamespace' . s:fg_orange
 
-  " Exlixir Highlighting
+  " Elixir Highlighting
   " @target https://github.com/elixir-lang/vim-elixir
   exec 'hi elixirAlias' . s:fg_blue . s:ft_bold
   exec 'hi elixirAtom' . s:fg_navy
@@ -2162,6 +2162,14 @@ fun! s:apply_syntax_highlightings()
   exec 'hi DiffChange' . s:fg_diffchange_fg . s:bg_diffchange_bg . s:ft_none
   exec 'hi DiffDelete' . s:fg_diffdelete_fg . s:bg_diffdelete_bg . s:ft_none
   exec 'hi DiffText' . s:fg_difftext_fg . s:bg_difftext_bg . s:ft_none
+
+  " Plugin: vim-gitgutter
+  exec 'hi GitGutterAdd' . s:fg_diffadd_fg
+  exec 'hi GitGutterChange' . s:fg_diffchange_fg
+  exec 'hi GitGutterDelete' . s:fg_diffdelete_fg
+  exec 'hi GitGutterAddLine' . s:fg_diffadd_fg . s:bg_diffadd_bg . s:ft_none
+  exec 'hi GitGutterChangeLine' . s:fg_diffchange_fg . s:bg_diffchange_bg . s:ft_none
+  exec 'hi GitGutterDeleteLine' . s:fg_diffdelete_fg . s:bg_diffdelete_bg . s:ft_none
 
   " Plugin: AGit
   exec 'hi agitHead' . s:fg_green . s:ft_bold

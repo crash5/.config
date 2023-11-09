@@ -1,6 +1,9 @@
 " recipes object
 
 " variables "{{{
+let s:TRUE = 1
+let s:FALSE = 0
+
 " types
 let s:type_num = type(0)
 let s:type_str = type('')
@@ -41,7 +44,7 @@ function! s:recipes.uniq(opt) dict abort "{{{
   endwhile
 endfunction
 "}}}
-function! s:recipes.query(opt, timeoutlen) dict abort "{{{
+function! s:recipes.query(opt, timeout, timeoutlen) dict abort "{{{
   let recipes = deepcopy(self.integrated)
   let clock = sandwich#clock#new()
   let input = ''
@@ -49,7 +52,7 @@ function! s:recipes.query(opt, timeoutlen) dict abort "{{{
   while 1
     let c = getchar(0)
     if empty(c)
-      if clock.started && a:timeoutlen > 0 && clock.elapsed() > a:timeoutlen
+      if clock.started && a:timeout && a:timeoutlen > 0 && clock.elapsed() > a:timeoutlen
         let [input, recipes] = last_compl_match
         break
       else
@@ -59,6 +62,13 @@ function! s:recipes.query(opt, timeoutlen) dict abort "{{{
     endif
 
     let c = type(c) == s:type_num ? nr2char(c) : c
+
+    " exit loop if <Esc> is pressed
+    if c is# "\<Esc>"
+      let input = "\<Esc>"
+      break
+    endif
+
     let input .= c
 
     " check forward match
@@ -94,7 +104,7 @@ function! s:recipes.query(opt, timeoutlen) dict abort "{{{
       let self.integrated = []
     endif
   else
-    if !(input ==# "\<Esc>" || input ==# "\<C-c>" || input ==# '')
+    if s:is_input_fallback(input)
       let c = split(input, '\zs')[0]
       let recipe = {'buns': [c, c], 'expr': 0, 'regex': 0}
       let self.integrated = [recipe]
@@ -252,6 +262,16 @@ function! s:is_input_matched(candidate, input, opt, flag) abort "{{{
   endif
 endfunction
 "}}}
+function! s:is_input_fallback(input) abort "{{{
+  if a:input ==# "\<Esc>" || a:input ==# '' || a:input =~# '^[\x80]'
+    return s:FALSE
+  endif
+  let input_fallback = get(g:, 'sandwich#input_fallback', s:TRUE)
+  if !input_fallback
+    return s:FALSE
+  endif
+  return s:TRUE
+endfunction "}}}
 
 " vim:set foldmethod=marker:
 " vim:set commentstring="%s:

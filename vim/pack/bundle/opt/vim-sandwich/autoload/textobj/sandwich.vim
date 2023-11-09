@@ -32,8 +32,9 @@ function! textobj#sandwich#query(mode, a_or_i, ...) abort  "{{{
   else
     let recipes = textobj#sandwich#recipes#new(kind, a:mode)
   endif
-  let timeoutlen = max([0, s:get('timeoutlen', &timeoutlen)])
-  call recipes.query(opt, timeoutlen)
+  let timeout = s:get_sandwich_option('timeout', &timeout)
+  let timeoutlen = max([0, s:get_sandwich_option('timeoutlen', &timeoutlen)])
+  call recipes.query(opt, timeout, timeoutlen)
 
   if recipes.integrated != []
     let g:textobj#sandwich#object = textobj#sandwich#textobj#new(
@@ -53,7 +54,7 @@ function! textobj#sandwich#select() abort  "{{{
   let view = winsaveview()
   let textobj = g:textobj#sandwich#object
   call textobj.initialize()
-  let stimeoutlen = max([0, s:get('stimeoutlen', 500)])
+  let stimeoutlen = max([0, s:get_textobj_option('stimeoutlen', 500)])
   let [virtualedit, whichwrap]   = [&virtualedit, &whichwrap]
   let [&virtualedit, &whichwrap] = ['onemore', 'h,l']
   try
@@ -62,7 +63,7 @@ function! textobj#sandwich#select() abort  "{{{
     call winrestview(view)
     call textobj.select(elected)
   finally
-    let mark_latestjump = s:get('latest_jump', 1)
+    let mark_latestjump = s:get_textobj_option('latest_jump', 1)
     call textobj.finalize(mark_latestjump)
     if !textobj.done
       call winrestview(view)
@@ -74,7 +75,17 @@ function! textobj#sandwich#select() abort  "{{{
 endfunction
 "}}}
 
-function! s:get(name, default) abort  "{{{
+function! s:get_sandwich_option(name, default) abort "{{{
+  if exists('g:textobj#sandwich#' . a:name)
+    return eval('g:textobj#sandwich#' . a:name)
+  endif
+  if exists('g:sandwich#' . a:name)
+    return eval('g:sandwich#' . a:name)
+  endif
+  return a:default
+endfunction
+"}}}
+function! s:get_textobj_option(name, default) abort  "{{{
   return get(g:, 'textobj#sandwich#' . a:name, a:default)
 endfunction
 "}}}
@@ -105,7 +116,7 @@ endfunction
 "}}}
 function! s:initialize_options(...) abort  "{{{
   let manner = a:0 ? a:1 : 'keep'
-  let g:textobj#sandwich#options = s:get('options', {})
+  let g:textobj#sandwich#options = s:get_textobj_option('options', {})
   for kind in ['auto', 'query']
     if !has_key(g:textobj#sandwich#options, kind)
       let g:textobj#sandwich#options[kind] = {}

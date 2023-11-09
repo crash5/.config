@@ -19,6 +19,26 @@ let s:is_in_cmdline_window = 0
 " Current set operator
 let s:operator = ''
 "}}}
+" highlight {{{
+function! s:default_highlight() abort
+  highlight default link OperatorSandwichBuns   IncSearch
+  highlight default link OperatorSandwichAdd    DiffAdd
+  highlight default link OperatorSandwichDelete DiffDelete
+
+  if hlexists('OperatorSandwichStuff')
+    highlight default link OperatorSandwichChange OperatorSandwichStuff
+  else
+    " obsolete
+    highlight default link OperatorSandwichChange DiffChange
+  endif
+endfunction
+call s:default_highlight()
+
+augroup sandwich-event-ColorScheme
+  autocmd!
+  autocmd ColorScheme * call s:default_highlight()
+augroup END
+"}}}
 
 """ Public functions
 " Prerequisite
@@ -89,22 +109,7 @@ endfunction
 function! s:saveregisters() abort "{{{
   let registers = {}
   let registers['0'] = s:getregister('0')
-  let registers['1'] = s:getregister('1')
-  let registers['2'] = s:getregister('2')
-  let registers['3'] = s:getregister('3')
-  let registers['4'] = s:getregister('4')
-  let registers['5'] = s:getregister('5')
-  let registers['6'] = s:getregister('6')
-  let registers['7'] = s:getregister('7')
-  let registers['8'] = s:getregister('8')
-  let registers['9'] = s:getregister('9')
   let registers['"'] = s:getregister('"')
-  if &clipboard =~# 'unnamed'
-    let registers['*'] = s:getregister('*')
-  endif
-  if &clipboard =~# 'unnamedplus'
-    let registers['+'] = s:getregister('+')
-  endif
   return registers
 endfunction
 "}}}
@@ -475,14 +480,13 @@ lockvar! g:operator#sandwich#default_recipes
 "}}}
 
 " options "{{{
-let [s:get] = operator#sandwich#lib#funcref(['get'])
 function! s:default_options(kind, motionwise) abort "{{{
   return get(b:, 'operator_sandwich_options', g:operator#sandwich#options)[a:kind][a:motionwise]
 endfunction
 "}}}
 function! s:initialize_options(...) abort  "{{{
   let manner = a:0 ? a:1 : 'keep'
-  let g:operator#sandwich#options = s:get('options', {})
+  let g:operator#sandwich#options = get(g:, 'operator#sandwich#options', {})
   for kind in ['add', 'delete', 'replace']
     if !has_key(g:operator#sandwich#options, kind)
       let g:operator#sandwich#options[kind] = {}

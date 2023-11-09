@@ -5,11 +5,7 @@
 let s:null_pos   = [0, 0, 0, 0]
 "}}}
 
-function! operator#sandwich#lib#funcref(list) abort "{{{
-  return map(copy(a:list), 'function("s:" . v:val)')
-endfunction
-"}}}
-
+let s:lib = {}
 function! s:get_wider_region(head_edge, tail_edge) abort "{{{
   return [s:get_left_pos(a:head_edge), s:get_right_pos(a:tail_edge)]
 endfunction
@@ -59,12 +55,51 @@ function! s:is_in_between(pos, head, tail) abort  "{{{
     \  && ((a:pos[1] < a:tail[1]) || ((a:pos[1] == a:tail[1]) && (a:pos[2] <= a:tail[2])))
 endfunction
 "}}}
-function! s:get(name, default) abort  "{{{
+function! s:get_sandwich_option(name, default) abort "{{{
+  if exists('g:operator#sandwich#' . a:name)
+    return eval('g:operator#sandwich#' . a:name)
+  endif
+  if exists('g:sandwich#' . a:name)
+    return eval('g:sandwich#' . a:name)
+  endif
+  return a:default
+endfunction
+"}}}
+function! s:get_operator_option(name, default) abort  "{{{
   return get(g:, 'operator#sandwich#' . a:name, a:default)
 endfunction
 "}}}
 function! s:escape(string) abort  "{{{
   return escape(a:string, '~"\.^$[]*')
+endfunction
+"}}}
+
+function! s:export(namelist) abort "{{{
+  let module = {}
+  for name in a:namelist
+    let module[name] = function('s:' . name)
+  endfor
+  return module
+endfunction
+"}}}
+let s:lib = s:export([
+ \ 'get_wider_region',
+ \ 'get_left_pos',
+ \ 'get_right_pos',
+ \ 'c2p',
+ \ 'is_valid_2pos',
+ \ 'is_valid_4pos',
+ \ 'is_ahead',
+ \ 'is_equal_or_ahead',
+ \ 'is_in_between',
+ \ 'get_sandwich_option',
+ \ 'get_operator_option',
+ \ 'escape',
+ \ ])
+lockvar! s:lib
+
+function! operator#sandwich#lib#import() abort "{{{
+  return s:lib
 endfunction
 "}}}
 
