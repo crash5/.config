@@ -6,10 +6,10 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 
-export HISTFILE="$XDG_DATA_HOME/bash/history"
-export LESSHISTFILE="$XDG_DATA_HOME/less/history"
-export PSQL_HISTORY="$XDG_DATA_HOME/psql/history"
-export MYSQL_HISTFILE="$XDG_DATA_HOME/mysql/history"
+export HISTFILE="$XDG_STATE_HOME/bash/history"
+export LESSHISTFILE="$XDG_STATE_HOME/less/history"
+export PSQL_HISTORY="$XDG_STATE_HOME/psql/history"
+export MYSQL_HISTFILE="$XDG_STATE_HOME/mysql/history"
 
 
 alias emacs="emacs -q --load $XDG_CONFIG_HOME/emacs/emacsrc"

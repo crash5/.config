@@ -7,18 +7,20 @@ fi
 
 dirs=(
 	"$XDG_BIN_HOME"
-	"$XDG_DATA_HOME/bash"
-	"$XDG_DATA_HOME/less"
-	"$XDG_DATA_HOME/python"
-	"$XDG_DATA_HOME/sqlite3"
+
+	"$XDG_STATE_HOME/bash"
+	"$XDG_STATE_HOME/less"
+	"$XDG_STATE_HOME/python"
+	"$XDG_STATE_HOME/sqlite3"
+
 	"$XDG_DATA_HOME/vim/undo"
 	"$XDG_DATA_HOME/vim/swap"
 	"$XDG_DATA_HOME/vim/backup"
 )
 
 files=(
-	"$XDG_DATA_HOME/sqlite3/sqlite_history"
-	"$XDG_DATA_HOME/python/python_history"
+	"$XDG_SATE_HOME/sqlite3/sqlite_history"
+	"$XDG_SATE_HOME/python/python_history"
 )
 
 for dir in "${dirs[@]}"; do

@@ -6,7 +6,7 @@ endif
 
 if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
 
-if empty($XDG_DATA_HOME)   | let $VIMDATA = expand('~/.local/share/vim/') | else | let $VIMDATA = $XDG_DATA_HOME.'/vim/'     | endif
+if empty($XDG_STATE_HOME)  | let $VIMDATA = expand('~/.local/state/vim/') | else | let $VIMDATA = $XDG_STATE_HOME.'/vim/'     | endif
 if empty($XDG_CONFIG_HOME) | let $VIMCONFIG  = expand('~/.config/vim/')   | else | let $VIMCONFIG = $XDG_CONFIG_HOME.'/vim/' | endif
 
 set runtimepath^=$VIMCONFIG
