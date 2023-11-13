@@ -50,7 +50,17 @@ let g:netrw_preview = 1
 let g:netrw_alto = 0
 
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-let g:camelcasemotion_key = '<leader>'
+
+let g:no_CamelCaseMotion_maps = 1
+map <leader>w <Plug>CamelCaseMotion_w
+map <leader>b <Plug>CamelCaseMotion_b
+map <leader>e <Plug>CamelCaseMotion_e
+omap <leader>iw <Plug>CamelCaseMotion_iw
+xmap <leader>iw <Plug>CamelCaseMotion_iw
+omap <leader>ib <Plug>CamelCaseMotion_ib
+xmap <leader>ib <Plug>CamelCaseMotion_ib
+omap <leader>ie <Plug>CamelCaseMotion_ie
+xmap <leader>ie <Plug>CamelCaseMotion_ie
 " }}}
 
 " Display {{{
