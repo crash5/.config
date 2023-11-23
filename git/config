@@ -159,6 +159,7 @@
     date = format:%Y-%m-%d %H:%M:%S
 [commit]
     verbose = true
+    cleanup = scissors
 [pull]
     rebase = true
 [rebase]
@@ -185,6 +186,7 @@
     algorithm = histogram
     wsErrorHighlight = all
     mnemonicPrefix = true
+    interHunkContext = 3
 [merge]
     tool = bc
     summary = true
