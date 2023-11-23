@@ -4,7 +4,7 @@
 [color]
     ui = auto
 [alias]
-    branch-name = rev-parse --abbrev-ref HEAD
+    branch-name = branch --show-current
     branch-name-tracking = rev-parse --abbrev-ref --symbolic-full-name "@{u}"
     ctags = "!$XDG_CONFIG_HOME/git/template/hooks/ctags"
 
@@ -155,8 +155,13 @@
     pager = less -x4 -+X # enable mouse wheel scroll in mintty
     ignorecase = false
     hooksPath = ~/.config/git/template/hooks
+[pager]
+    status = true
+[interactive]
+    singleKey = true
 [log]
     date = format:%Y-%m-%d %H:%M:%S
+    follow = true
 [commit]
     verbose = true
     cleanup = scissors
