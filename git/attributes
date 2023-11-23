@@ -25,7 +25,6 @@
 *.h++ diff=cpp
 *.hh diff=cpp
 *.hpp diff=cpp
-*.hpp diff=cpp
 *.htm diff=html
 *.html diff=html
 *.inc diff=pascal
