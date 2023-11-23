@@ -36,6 +36,17 @@ vim.cmd [[
     set smartcase
     " }}}
 
+    let g:no_CamelCaseMotion_maps = 1
+    map <leader>w <Plug>CamelCaseMotion_w
+    map <leader>b <Plug>CamelCaseMotion_b
+    map <leader>e <Plug>CamelCaseMotion_e
+    omap <leader>iw <Plug>CamelCaseMotion_iw
+    xmap <leader>iw <Plug>CamelCaseMotion_iw
+    omap <leader>ib <Plug>CamelCaseMotion_ib
+    xmap <leader>ib <Plug>CamelCaseMotion_ib
+    omap <leader>ie <Plug>CamelCaseMotion_ie
+    xmap <leader>ie <Plug>CamelCaseMotion_ie
+
     " vscode calls
     nnoremap ]d <Cmd>call VSCodeNotify('editor.action.marker.next')<CR>
     nnoremap [d <Cmd>call VSCodeNotify('editor.action.marker.prev')<CR>
