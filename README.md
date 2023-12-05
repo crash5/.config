@@ -18,6 +18,7 @@ Additional for windows (slash direction matters):
 setx XDG_CACHE_HOME  "C:/Users/%USERNAME%/.cache/"
 setx XDG_CONFIG_HOME "C:/Users/%USERNAME%/.config/"
 setx XDG_DATA_HOME   "C:/Users/%USERNAME%/.local/share/"
+setx XDG_STATE_HOME  "C:/Users/%USERNAME%/.local/state/"
 ```
 
 
