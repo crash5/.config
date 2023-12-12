@@ -3,7 +3,7 @@
 let g:mapleader = "\<SPACE>"
 
 inoremap kj <ESC>
-nnoremap <silent> <leader><leader> :nohlsearch<CR>
+nnoremap <silent> <leader><leader> :<C-u>nohlsearch<CR><C-l>
 
 noremap <leader>q :<C-u>q!<CR>
 noremap <leader>Q :<C-u>qall!<CR>
