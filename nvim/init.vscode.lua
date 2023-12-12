@@ -80,8 +80,6 @@ vim.cmd [[
     nnoremap gcc <Plug>VSCodeCommentaryLine
 
     " Plugins
-    let g:camelcasemotion_key = '<leader>'
-
     packadd! CamelCaseMotion
     packadd! ReplaceWithRegister
     packadd! vim-sandwich
