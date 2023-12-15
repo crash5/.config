@@ -277,4 +277,16 @@
     "python.analysis.typeCheckingMode": "basic",
     "python.interpreter.infoVisibility": "always",
     "python.missingPackage.severity": "Warning",
+    "git.alwaysShowStagedChangesResourceGroup": true,
+    "git.countBadge": "off",
+    "git.showActionButton": {
+        "publish": false,
+        "sync": false
+    },
+    "git.suggestSmartCommit": false,
+    "git.untrackedChanges": "separate",
+    "git.enableStatusBarSync": false,
+    "git.supportCancellation": true,
+    "window.commandCenter": false,
+// > Local changes
 }
