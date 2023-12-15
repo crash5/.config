@@ -3,6 +3,14 @@
     email = crash@veluna.eu
 [color]
     ui = auto
+[color "diff"]
+    frag = magenta bold
+    meta = yellow bold
+    whitespace = red reverse
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
 [alias]
     branch-name = branch --show-current
     branch-name-tracking = rev-parse --abbrev-ref --symbolic-full-name "@{u}"
