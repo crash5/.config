@@ -1,14 +1,21 @@
 #!/usr/bin/env bash
 
 if [[ -z "$XDG_CONFIG_HOME" ]]; then
-    echo "Please source shrc first"
-    exit
+    echo "No XDG env. vars found. Using the defaults for the install."
+    SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+    . "$SCRIPT_DIR"/bash/profile.d/200.xdg-dirs.sh
 fi
 
 dirs=(
     "$XDG_BIN_HOME"
+    "$XDG_CACHE_HOME"
+    "$XDG_CONFIG_HOME"
+    "$XDG_LIB_HOME"
 
-    "$XDG_DATA_HOME/bash"
+    "$XDG_DATA_HOME/bash/history"
+    "$XDG_DATA_HOME/git"
+    "$XDG_DATA_HOME/vim"
+    "$XDG_DATA_HOME/totalcommander"
 
     "$XDG_STATE_HOME/bash"
     "$XDG_STATE_HOME/less"

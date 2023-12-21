@@ -9,9 +9,15 @@ Clone repository
 
 In bash or git bash:
 ```
-echo ". ~/.config/bash/bashrc" >> .bashrc
-echo ". ~/.config/bash/profile" >> .profile
 cd ~/.config && ./bootstrap.sh
+
+echo ". $XDG_CONFIG_HOME/bash/bashrc" >> .bashrc
+echo ". $XDG_CONFIG_HOME/bash/profile" >> .profile
+
+echo ". ~/.profile" >> .bash_profile
+echo ". ~/.bashrc" >> .bash_profile
+
+ln -s $XDG_CONFIG_HOME/vim/vimrc ~/.vimrc
 ```
 
 
@@ -23,58 +29,21 @@ cd ~/.config && ./bootstrap.sh
 
 ## Other
 
-### Git
+### Local changes
 
-Add local changes to `~/.local/gitconfig`
-
-
-### Vim
-
-Add local changes to `~/.local/vimrc`
-
-```
-ln -s $XDG_CONFIG_HOME/vim/vimrc ~/.vimrc
-```
-
-Plugins:
-```
-packages=(
-    "https://github.com/bkad/CamelCaseMotion"
-    "https://github.com/editorconfig/editorconfig-vim"
-    "https://github.com/vim-scripts/ReplaceWithRegister"
-    "https://github.com/godlygeek/tabular"
-    "https://github.com/tpope/vim-commentary"
-    "https://github.com/machakann/vim-highlightedyank"
-    "https://github.com/machakann/vim-sandwich"
-    "https://github.com/tpope/vim-unimpaired"
-    "https://github.com/bronson/vim-visual-star-search"
-    "https://github.com/michaeljsmith/vim-indent-object"
-    "https://github.com/unblevable/quick-scope"
-)
-
-for url in ${packages[@]}; do
-    path=vim/pack/bundle/start/${url##*/}/
-    if [ ! -d "$path" ]; then
-        path=vim/pack/bundle/opt/${url##*/}/
-    fi
-    if [ ! -d "$path" ]; then
-        echo "Plugin not found, skipping... ${path}"
-        continue
-    fi
-    git fetch --depth 1 --no-tags "${url}" &&
-    git rm -r --ignore-unmatch "${path}" && git read-tree --prefix="${path}" FETCH_HEAD && git checkout -- "${path}" &&
-    git commit -m "vim: update plugin: ${url##*/}" -- "${path}"
-    # read  -n 1 -p "Check next?" mainmenuinput
-done
-```
-
+- Git: `~/.local/share/git/gitconfig`
+- Vim: `~/.local/share/vim/vimrc`
+- Bash: `~/.local/share/bash/bashrc`
 
 ### VS Code
 
 Plugins:
   - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-  - [Sort lines](https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines)
   - [Vim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim)
+  - [neovim](https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim)
+  - [Copy With Line Numbers](https://marketplace.visualstudio.com/items?itemName=yassh.copy-with-line-numbers)
+  - [autoDocstring - Python](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring)
+  - [Sort lines](https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines)
   - [Better Align](https://marketplace.visualstudio.com/items?itemName=wwm.better-align)
 
 

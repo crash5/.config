@@ -229,4 +229,4 @@
 
 # Put things before this so it can be overridden locally
 [include]
-    path = ~/.local/config/gitconfig
+    path = ~/.local/share/git/gitconfig

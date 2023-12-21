@@ -1,1 +1,1 @@
-[ -f ~/.local/config/bashrc ] && source ~/.local/config/bashrc
+[ -f "$XDG_DATA_HOME/bash/bashrc" ] && source "$XDG_DATA_HOME/bash/bashrc"
