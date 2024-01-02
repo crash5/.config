@@ -9,15 +9,16 @@ Clone repository
 
 In bash or git bash:
 ```
-cd ~/.config && ./bootstrap.sh
+~/.config/bootstrap.sh
 
-echo ". $XDG_CONFIG_HOME/bash/bashrc" >> .bashrc
-echo ". $XDG_CONFIG_HOME/bash/profile" >> .profile
-
-echo ". ~/.profile" >> .bash_profile
-echo ". ~/.bashrc" >> .bash_profile
+sed -i "1s/^/\. ~\/.config\/bash\/profile\n/" ~/.profile
+echo ". ~/.config/bash/bashrc" >> ~/.bashrc
 
 ln -s $XDG_CONFIG_HOME/vim/vimrc ~/.vimrc
+
+# Git for windows
+echo ". ~/.profile" >> ~/.bash_profile
+echo ". ~/.bashrc" >> ~/.bash_profile
 ```
 
 
