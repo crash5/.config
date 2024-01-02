@@ -1,0 +1,14 @@
+[Buttonbar]
+Buttoncount=3
+button1=wcmicons.dll,15
+cmd1=%USERPROFILE%\.config\totalcommander\horizontal.bar
+iconic1=0
+button2=wsl.exe
+cmd2=wt.exe new-tab --profile "Ubuntu" --startingDirectory
+param2=%P
+iconic2=0
+menu2=Ubuntu
+button3=WCMICONS.DLL,54
+cmd3=wsl --shutdown
+iconic3=0
+menu3=Shutdown WSL
