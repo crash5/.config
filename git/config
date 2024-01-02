@@ -213,7 +213,7 @@
 [rerere]
     enabled = true
 [init]
-    defaultBranch = master
+    defaultBranch = main
 [help]
     autocorrect = 0
 [pretty]
