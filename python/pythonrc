@@ -6,7 +6,7 @@ try:
 
     readline.parse_and_bind("tab: complete")
 
-    histfile = os.path.join(os.environ['XDG_DATA_HOME'], 'python/python_history')
+    histfile = os.path.join(os.environ['XDG_STATE_HOME'], 'python/python_history')
     try:
         readline.read_history_file(histfile)
         h_len = readline.get_current_history_length()
