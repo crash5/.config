@@ -75,6 +75,8 @@ vim.cmd [[
     nnoremap <silent> zj <Cmd>call VSCodeNotify('editor.gotoNextFold')<CR>
     nnoremap <silent> zk <Cmd>call VSCodeNotify('editor.gotoPreviousFold')<CR>
 
+    nnoremap <leader>rn <Cmd>call VSCodeNotify('editor.action.rename')<CR>
+
     xnoremap gc  <Plug>VSCodeCommentary
     nnoremap gc  <Plug>VSCodeCommentary
     nnoremap gcc <Plug>VSCodeCommentaryLine
