@@ -29,18 +29,18 @@ rgv() {
 # }}}
 
 # ls, file listing {{{
-if program_exists exa; then
-    alias ll='exa --group-directories-first --long --all --all --git'
+if program_exists eza; then
+    alias ll='eza --group-directories-first --long --all --all --git --classify'
     alias lld='ll -D'
     alias llsd='ll -s date'
 
-    alias llt='exa --group-directories-first --long --all --git --tree -I.git'
+    alias llt='eza --group-directories-first --long --all --git --tree -I.git --classify'
     alias llt2='llt -L 2'
     alias llt3='llt -L 3'
     alias llt4='llt -L 4'
     alias lltd='llt -D'
 
-    alias llts='exa --group-directories-first --all --tree -I.git'
+    alias llts='eza --group-directories-first --all --tree -I.git --classify'
     alias llts2='llts -L 2'
     alias llts3='llts -L 3'
     alias llts4='llts -L 4'
