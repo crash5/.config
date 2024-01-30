@@ -26,7 +26,13 @@ vim.cmd [[
     packadd! vim-commentary
     packadd! vim-indent-object
     packadd! vim-unimpaired
+    packadd! oil.nvim
 ]]
+
+
+require("oil").setup()
+vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
+
 
 -- Treesitter {{{
 -- vim.opt.foldmethod = "expr"
