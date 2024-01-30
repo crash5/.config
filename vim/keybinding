@@ -24,10 +24,11 @@ inoremap , <C-g>u,
 inoremap ! <C-g>u!
 
 " Search word under cursor or selected text
+xnoremap <leader>S :s/\%V<C-r>///g<left><left>
+
 if has('win32')
     nnoremap <leader>g :execute "vimgrep! /" . expand("<cWORD>") . "/j **"<CR>:copen<CR>
     xnoremap <leader>g y :execute "vimgrep! /" . getreg('"') . "/j **"<CR>:copen<CR>
-    xnoremap <leader>S :s/\%V<C-r>///g<left><left>
 else
     nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
     xnoremap <leader>g y :silent execute "grep! -R " . shellescape(getreg('"')) . " ."<CR>:copen<CR>
