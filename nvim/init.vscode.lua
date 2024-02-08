@@ -60,7 +60,6 @@ vim.cmd [[
 
     nnoremap <leader>g <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
     xnoremap <leader>g <Cmd>call VSCodeNotify('workbench.action.findInFiles')<CR>
-    nnoremap <leader>d <Cmd>call VSCodeNotify('editor.action.showHover')<CR>
 
     noremap <leader>q <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
     noremap <leader>Q <Cmd>call VSCodeNotify('workbench.action.closeAllEditors')<CR>
@@ -76,6 +75,11 @@ vim.cmd [[
     nnoremap <silent> zk <Cmd>call VSCodeNotify('editor.gotoPreviousFold')<CR>
 
     nnoremap <leader>rn <Cmd>call VSCodeNotify('editor.action.rename')<CR>
+    nnoremap <leader>ca <Cmd>call VSCodeNotify('editor.action.refactor')<CR>
+    xnoremap <leader>ca <Cmd>call VSCodeNotify('editor.action.refactor')<CR>
+
+    nnoremap <leader>rt <Cmd>call VSCodeNotify('testing.runAtCursor')<CR>
+    nnoremap <leader>rft <Cmd>call VSCodeNotify('testing.runCurrentFile')<CR>
 
     xnoremap gc  <Plug>VSCodeCommentary
     nnoremap gc  <Plug>VSCodeCommentary
