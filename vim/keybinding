@@ -37,10 +37,6 @@ endif
 " Expand %% on command mode to relative path to actual file
 cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 
-" Switch between windows
-nmap <TAB> <C-w>w
-nmap <S-TAB> <C-w>W
-
 " System clipboard
 nnoremap <F9> :set invpaste paste?<CR>
 set pastetoggle=<F9>
