@@ -263,14 +263,14 @@
         "Dockerfile.in": "dockerfile"
     },
     "editor.rulers": [
-        80,
-        120
+        88
     ],
-    "workbench.colorCustomizations":
-    {
-        "editor.lineHighlightBackground": "#172d38",
+    "workbench.colorCustomizations": {
+        // "editor.lineHighlightBackground": "#172d38",
+        // "editorStickyScroll.background": "#181a1f",
+        "editorStickyScroll.background": "#000000",
+        "editorStickyScroll.border": "#887878",
     },
-    "breadcrumbs.enabled": true,
     "breadcrumbs.symbolSortOrder": "name",
     "editor.accessibilitySupport": "off",
     "editor.cursorWidth": 3,
@@ -294,19 +294,15 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "html.format.endWithNewline": true,
     "javascript.referencesCodeLens.enabled": true,
     "markdown.preview.markEditorSelection": false,
     "markdown.preview.scrollEditorWithPreview": false,
-    "python.showStartPage": false,
     "search.searchOnType": false,
     "search.seedWithNearestWord": true,
     "search.showLineNumbers": true,
     "terminal.integrated.scrollback": 20000,
-    "timeline.showView": true,
     "typescript.referencesCodeLens.enabled": true,
     "window.title": "${remoteName}${separator}${dirty}${rootName}${separator}${activeEditorLong}",
-    "window.zoomLevel": 0,
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.editor.highlightModifiedTabs": true,
@@ -341,7 +337,6 @@
     "debug.toolBarLocation": "docked",
     "workbench.editor.pinnedTabSizing": "shrink",
     "markdown.updateLinksOnFileMove.enabled": "prompt",
-    "files.enableTrash": false,
     "extensions.supportUntrustedWorkspaces": {
         "asvetliakov.vscode-neovim": {
             "supported": true
@@ -392,5 +387,9 @@
     "git.enableStatusBarSync": false,
     "git.supportCancellation": true,
     "window.commandCenter": false,
-// > Local changes
+    "terminal.integrated.stickyScroll.enabled": true,
+    "debug.allowBreakpointsEverywhere": true,
+    "workbench.commandPalette.experimental.enableNaturalLanguageSearch": false,
+    "editor.stickyScroll.enabled": true,
+    // > Local changes
 }
