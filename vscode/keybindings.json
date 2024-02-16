@@ -108,7 +108,9 @@
     {
         "key": "ctrl+shift+i",
         "command": "type",
-        "args": { "text": "\t" },
+        "args": {
+            "text": "\t"
+        },
         "when": "editorTextFocus && !editorReadonly"
     },
     {
@@ -235,6 +237,5 @@
         "key": "]q",
         "command": "search.action.focusNextSearchResult",
         "when": "hasSearchResult || inSearchEditor"
-    },
-    // < neovim
+    }
 ]

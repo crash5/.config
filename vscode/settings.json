@@ -17,16 +17,16 @@
     "vsintellicode.features.apiExamples": "disabled",
     "vsintellicode.features.apiExamplests": "disabled",
     "vsintellicode.features.python.deepLearning": "disabled",
-// < Disable internet usage
-// > Settings/filetype
+    // < Disable internet usage
+    // > Settings/filetype
     "[cmake]": {
         "files.trimTrailingWhitespace": true
     },
     "[git-commit]": {
         "editor.rulers": [
             50,
-            72,
-          ]
+            72
+        ]
     },
     "[python]": {
         "files.trimTrailingWhitespace": true
@@ -34,97 +34,201 @@
     "[markdown]": {
         "files.trimTrailingWhitespace": false
     },
-// < Settings/filetype
-// > vim
+    // < Settings/filetype
+    // > vim
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": ["Y"],
-            "after": ["y", "$"]
+            "before": [
+                "Y"
+            ],
+            "after": [
+                "y",
+                "$"
+            ]
         },
         {
-            "before": ["<leader>", "q"],
-            "commands": [":q"]
+            "before": [
+                "<leader>",
+                "q"
+            ],
+            "commands": [
+                ":q"
+            ]
         },
         {
-            "before": ["<leader>", "<leader>"],
-            "commands": [":nohl"]
+            "before": [
+                "<leader>",
+                "<leader>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
         },
         {
-            "before": ["g", "V"],
-            "after": ["`", "[", "v", "`", "]"]
+            "before": [
+                "g",
+                "V"
+            ],
+            "after": [
+                "`",
+                "[",
+                "v",
+                "`",
+                "]"
+            ]
         },
         {
-            "before": ["<C-k>", "<CR>"],
-            "commands": ["workbench.action.keepEditor"],
+            "before": [
+                "<C-k>",
+                "<CR>"
+            ],
+            "commands": [
+                "workbench.action.keepEditor"
+            ],
             "silent": true
         },
         {
-            "before": ["<C-k>", "m"],
-            "commands": ["workbench.action.editor.changeLanguageMode"],
+            "before": [
+                "<C-k>",
+                "m"
+            ],
+            "commands": [
+                "workbench.action.editor.changeLanguageMode"
+            ],
             "silent": true
         },
         {
-            "before": ["<leader>", "g"],
-            "commands": ["workbench.action.findInFiles"],
+            "before": [
+                "<leader>",
+                "g"
+            ],
+            "commands": [
+                "workbench.action.findInFiles"
+            ],
             "silent": true
         },
         {
-            "before": ["n"],
-            "after": ["n", "z", "v"]
+            "before": [
+                "n"
+            ],
+            "after": [
+                "n",
+                "z",
+                "v"
+            ]
         },
         {
-            "before": ["N"],
-            "after": ["N", "z", "v"]
+            "before": [
+                "N"
+            ],
+            "after": [
+                "N",
+                "z",
+                "v"
+            ]
         },
         {
-            "before": ["<leader>", "m"],
-            "commands": ["bookmarks.toggle"]
+            "before": [
+                "<leader>",
+                "m"
+            ],
+            "commands": [
+                "bookmarks.toggle"
+            ]
         },
         {
-            "before": ["<leader>", "l", "l", "m"],
-            "commands": ["bookmarks.list"]
+            "before": [
+                "<leader>",
+                "l",
+                "l",
+                "m"
+            ],
+            "commands": [
+                "bookmarks.list"
+            ]
         },
         {
-            "before": ["<leader>", "l", "m"],
-            "commands": ["bookmarks.listFromAllFiles"]
+            "before": [
+                "<leader>",
+                "l",
+                "m"
+            ],
+            "commands": [
+                "bookmarks.listFromAllFiles"
+            ]
         },
         {
-            "before": ["<leader>", "d"],
-            "commands": ["editor.action.showHover"],
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ],
             "silent": true
         },
         {
-            "before": ["]", "d"],
-            "commands": ["editor.action.marker.next"],
+            "before": [
+                "]",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ],
             "silent": true
         },
         {
-            "before": ["[", "d"],
-            "commands": ["editor.action.marker.prev"],
+            "before": [
+                "[",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.prev"
+            ],
             "silent": true
         },
         {
-            "before": ["[", "q"],
-            "commands": ["search.action.focusPreviousSearchResult"],
+            "before": [
+                "[",
+                "q"
+            ],
+            "commands": [
+                "search.action.focusPreviousSearchResult"
+            ],
             "silent": true
         },
         {
-            "before": ["]", "q"],
-            "commands": ["search.action.focusNextSearchResult"],
+            "before": [
+                "]",
+                "q"
+            ],
+            "commands": [
+                "search.action.focusNextSearchResult"
+            ],
             "silent": true
         }
     ],
     "vim.insertModeKeyBindings": [
         {
-            "before": ["k", "j"],
-            "after": ["<Esc>"]
-        },
+            "before": [
+                "k",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
-            "before": ["<leader>", "g"],
-            "commands": ["workbench.action.findInFiles"]
-        },
+            "before": [
+                "<leader>",
+                "g"
+            ],
+            "commands": [
+                "workbench.action.findInFiles"
+            ]
+        }
     ],
     "vim.camelCaseMotion.enable": true,
     "vim.foldfix": true,
@@ -140,19 +244,19 @@
     "vim.showMarksInGutter": true,
     "vim.targets.enable": true,
     "vim.matchpairs": "(:),{:},[:],<:>",
-// < vim
-// > neovim
-"extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-},
-// < neovim
-// > open in vim
+    // < vim
+    // > neovim
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    // < neovim
+    // > open in vim
     "open-in-vim.linux.gnome-terminal.args": "",
     "open-in-vim.openMethod": "linux.gnome-terminal",
-// < open in vim
-// > tabnine
+    // < open in vim
+    // > tabnine
     "tabnine.experimentalAutoImports": true,
-// < tabnine
+    // < tabnine
     "files.associations": {
         "*.md.html": "markdown",
         "*.yaml.in": "yaml",
@@ -256,7 +360,7 @@
     "files.exclude": {
         "**/__pycache__": true,
         "**/.pytest_cache": true,
-        "**/.mypy_cache": true,
+        "**/.mypy_cache": true
     },
     "workbench.editor.empty.hint": "hidden",
     "javascript.inlayHints.enumMemberValues.enabled": true,
