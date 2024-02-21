@@ -50,10 +50,10 @@ if(status) then
                 -- init_selection = "<S-A-Right>",
                 -- node_incremental = "<S-A-Right>",
                 -- node_decremental = "<S-A-Left>",
-                scope_incremental = "<S-A-Up>",
-                init_selection = "<Enter>",
-                node_incremental = "<Enter>",
-                node_decremental = "<BS>",
+                -- scope_incremental = "<S-A-Up>",
+                -- init_selection = "<Enter>",
+                -- node_incremental = "<Enter>",
+                -- node_decremental = "<BS>",
             }
         },
         -- external plugin
