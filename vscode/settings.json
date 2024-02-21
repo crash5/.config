@@ -266,9 +266,7 @@
         88
     ],
     "workbench.colorCustomizations": {
-        // "editor.lineHighlightBackground": "#172d38",
-        // "editorStickyScroll.background": "#181a1f",
-        "editorStickyScroll.background": "#000000",
+        "editorStickyScroll.background": "#1F1F1F",
         "editorStickyScroll.border": "#887878",
     },
     "breadcrumbs.symbolSortOrder": "name",
@@ -332,7 +330,6 @@
         "--rcfile=.pylintrc"
     ],
     "python.experiments.enabled": false,
-    "python.testing.pytestEnabled": true,
     "markdown.validate.enabled": true,
     "debug.toolBarLocation": "docked",
     "workbench.editor.pinnedTabSizing": "shrink",
@@ -356,6 +353,12 @@
         "**/__pycache__": true,
         "**/.pytest_cache": true,
         "**/.mypy_cache": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        "**/.venv": true
     },
     "workbench.editor.empty.hint": "hidden",
     "javascript.inlayHints.enumMemberValues.enabled": true,
