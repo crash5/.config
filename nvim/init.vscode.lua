@@ -53,11 +53,6 @@ vim.cmd [[
     nnoremap ]q <Cmd>call VSCodeNotify('search.action.focusPreviousSearchResult')<CR>
     nnoremap [q <Cmd>call VSCodeNotify('search.action.focusNextSearchResult')<CR>
 
-    nnoremap <CR> <Cmd>call VSCodeNotify('editor.action.smartSelect.expand')<CR>
-    nnoremap <BS> <Cmd>call VSCodeNotify('editor.action.smartSelect.shrink')<CR>
-    xnoremap <CR> <Cmd>call VSCodeNotify('editor.action.smartSelect.expand')<CR>
-    xnoremap <BS> <Cmd>call VSCodeNotify('editor.action.smartSelect.shrink')<CR>
-
     nnoremap <leader>g <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
     xnoremap <leader>g <Cmd>call VSCodeNotify('workbench.action.findInFiles')<CR>
 
