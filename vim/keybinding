@@ -23,7 +23,7 @@ inoremap <C-w> <C-g>u<C-w>
 inoremap , <C-g>u,
 inoremap ! <C-g>u!
 
-" Search word under cursor or selected text
+" Search and replace in selection
 xnoremap <leader>S :s/\%V<C-r>///g<left><left>
 
 if has('win32')
