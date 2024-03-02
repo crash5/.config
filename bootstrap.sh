@@ -35,12 +35,12 @@ files=(
 )
 
 for dir in "${dirs[@]}"; do
-    mkdir -p $dir
+    mkdir -p "$dir"
     echo "made $dir"
 done
 
 for file in "${files[@]}"; do
-    touch $file
+    touch "$file"
     echo "touched $file"
 done
 
