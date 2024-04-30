@@ -249,6 +249,11 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
+    "vscode-neovim.compositeKeys": {
+        "kj": {
+            "command": "vscode-neovim.escape"
+        }
+    },
     // < neovim
     // > open in vim
     "open-in-vim.linux.gnome-terminal.args": "",
