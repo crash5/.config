@@ -20,6 +20,13 @@ local FIELD_META = constants.FIELD_META
 ---@field port nil|integer
 ---@field path string
 
+---@param args string[]
+local function scp(args, ...)
+  local cmd = vim.list_extend({ "scp", "-C" }, config.extra_scp_args)
+  vim.list_extend(cmd, args)
+  shell.run(cmd, ...)
+end
+
 ---@param oil_url string
 ---@return oil.sshUrl
 M.parse_url = function(oil_url)
@@ -303,7 +310,7 @@ M.perform_action = function(action, cb)
       local src_conn = get_connection(action.src_url)
       local dest_conn = get_connection(action.dest_url)
       if src_conn ~= dest_conn then
-        shell.run({ "scp", "-C", "-r", url_to_scp(src_res), url_to_scp(dest_res) }, function(err)
+        scp({ "-r", url_to_scp(src_res), url_to_scp(dest_res) }, function(err)
           if err then
             return cb(err)
           end
@@ -322,7 +329,7 @@ M.perform_action = function(action, cb)
       local src_res = M.parse_url(action.src_url)
       local dest_res = M.parse_url(action.dest_url)
       if not url_hosts_equal(src_res, dest_res) then
-        shell.run({ "scp", "-C", "-r", url_to_scp(src_res), url_to_scp(dest_res) }, cb)
+        scp({ "-r", url_to_scp(src_res), url_to_scp(dest_res) }, cb)
       else
         local src_conn = get_connection(action.src_url)
         src_conn:cp(src_res.path, dest_res.path, cb)
@@ -341,7 +348,7 @@ M.perform_action = function(action, cb)
         src_arg = fs.posix_to_os_path(path)
         dest_arg = url_to_scp(M.parse_url(action.dest_url))
       end
-      shell.run({ "scp", "-C", "-r", src_arg, dest_arg }, cb)
+      scp({ "-r", src_arg, dest_arg }, cb)
     end
   else
     cb(string.format("Bad action type: %s", action.type))
@@ -357,7 +364,9 @@ M.read_file = function(bufnr)
   local url = M.parse_url(bufname)
   local scp_url = url_to_scp(url)
   local basename = pathutil.basename(bufname)
-  local tmpdir = fs.join(vim.fn.stdpath("cache"), "oil")
+  local cache_dir = vim.fn.stdpath("cache")
+  assert(type(cache_dir) == "string")
+  local tmpdir = fs.join(cache_dir, "oil")
   fs.mkdirp(tmpdir)
   local fd, tmpfile = vim.loop.fs_mkstemp(fs.join(tmpdir, "ssh_XXXXXX"))
   if fd then
@@ -365,7 +374,7 @@ M.read_file = function(bufnr)
   end
   local tmp_bufnr = vim.fn.bufadd(tmpfile)
 
-  shell.run({ "scp", "-C", scp_url, tmpfile }, function(err)
+  scp({ scp_url, tmpfile }, function(err)
     loading.set_loading(bufnr, false)
     vim.bo[bufnr].modifiable = true
     vim.cmd.doautocmd({ args = { "BufReadPre", bufname }, mods = { silent = true } })
@@ -395,7 +404,9 @@ M.write_file = function(bufnr)
   local bufname = vim.api.nvim_buf_get_name(bufnr)
   local url = M.parse_url(bufname)
   local scp_url = url_to_scp(url)
-  local tmpdir = fs.join(vim.fn.stdpath("cache"), "oil")
+  local cache_dir = vim.fn.stdpath("cache")
+  assert(type(cache_dir) == "string")
+  local tmpdir = fs.join(cache_dir, "oil")
   local fd, tmpfile = vim.loop.fs_mkstemp(fs.join(tmpdir, "ssh_XXXXXXXX"))
   if fd then
     vim.loop.fs_close(fd)
@@ -405,7 +416,7 @@ M.write_file = function(bufnr)
   vim.cmd.write({ args = { tmpfile }, bang = true, mods = { silent = true, noautocmd = true } })
   local tmp_bufnr = vim.fn.bufadd(tmpfile)
 
-  shell.run({ "scp", "-C", tmpfile, scp_url }, function(err)
+  scp({ tmpfile, scp_url }, function(err)
     vim.bo[bufnr].modifiable = true
     if err then
       vim.notify(string.format("Error writing file: %s", err), vim.log.levels.ERROR)

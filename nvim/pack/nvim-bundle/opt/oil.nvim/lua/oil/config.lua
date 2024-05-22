@@ -73,10 +73,6 @@ local default_config = {
     ["g."] = "actions.toggle_hidden",
     ["g\\"] = "actions.toggle_trash",
   },
-  -- Configuration for the floating keymaps help window
-  keymaps_help = {
-    border = "rounded",
-  },
   -- Set to false to disable all of the above keymaps
   use_default_keymaps = true,
   view_options = {
@@ -99,6 +95,21 @@ local default_config = {
       { "type", "asc" },
       { "name", "asc" },
     },
+  },
+  -- Extra arguments to pass to SCP when moving/copying files over SSH
+  extra_scp_args = {},
+  -- EXPERIMENTAL support for performing file operations with git
+  git = {
+    -- Return true to automatically git add/mv/rm files
+    add = function(path)
+      return false
+    end,
+    mv = function(src_path, dest_path)
+      return false
+    end,
+    rm = function(path)
+      return false
+    end,
   },
   -- Configuration for the floating window in oil.open_float
   float = {
@@ -157,6 +168,10 @@ local default_config = {
   },
   -- Configuration for the floating SSH window
   ssh = {
+    border = "rounded",
+  },
+  -- Configuration for the floating keymaps help window
+  keymaps_help = {
     border = "rounded",
   },
 }

@@ -199,10 +199,6 @@ require("oil").setup({
     ["g."] = "actions.toggle_hidden",
     ["g\\"] = "actions.toggle_trash",
   },
-  -- Configuration for the floating keymaps help window
-  keymaps_help = {
-    border = "rounded",
-  },
   -- Set to false to disable all of the above keymaps
   use_default_keymaps = true,
   view_options = {
@@ -225,6 +221,21 @@ require("oil").setup({
       { "type", "asc" },
       { "name", "asc" },
     },
+  },
+  -- Extra arguments to pass to SCP when moving/copying files over SSH
+  extra_scp_args = {},
+  -- EXPERIMENTAL support for performing file operations with git
+  git = {
+    -- Return true to automatically git add/mv/rm files
+    add = function(path)
+      return false
+    end,
+    mv = function(src_path, dest_path)
+      return false
+    end,
+    rm = function(path)
+      return false
+    end,
   },
   -- Configuration for the floating window in oil.open_float
   float = {
@@ -285,6 +296,10 @@ require("oil").setup({
   ssh = {
     border = "rounded",
   },
+  -- Configuration for the floating keymaps help window
+  keymaps_help = {
+    border = "rounded",
+  },
 })
 ```
 
@@ -322,6 +337,7 @@ Note that at the moment the ssh adapter does not support Windows machines, and i
 - [toggle_float(dir)](doc/api.md#toggle_floatdir)
 - [open(dir)](doc/api.md#opendir)
 - [close()](doc/api.md#close)
+- [open_preview(opts)](doc/api.md#open_previewopts)
 - [select(opts, callback)](doc/api.md#selectopts-callback)
 - [save(opts, cb)](doc/api.md#saveopts-cb)
 - [setup(opts)](doc/api.md#setupopts)
