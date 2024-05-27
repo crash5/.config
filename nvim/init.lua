@@ -23,7 +23,6 @@ vim.cmd [[
     packadd! vim-sandwich
     packadd! matchit
     packadd! papercolor-theme
-    packadd! vim-commentary
     packadd! vim-indent-object
     packadd! vim-unimpaired
     packadd! oil.nvim
