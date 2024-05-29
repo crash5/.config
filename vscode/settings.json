@@ -1,5 +1,4 @@
 {
-// > Disable internet usage
     "extensions.autoCheckUpdates": false,
     "extensions.autoUpdate": false,
     "extensions.ignoreRecommendations": true,
@@ -17,8 +16,6 @@
     "vsintellicode.features.apiExamples": "disabled",
     "vsintellicode.features.apiExamplests": "disabled",
     "vsintellicode.features.python.deepLearning": "disabled",
-    // < Disable internet usage
-    // > Settings/filetype
     "[cmake]": {
         "files.trimTrailingWhitespace": true
     },
@@ -34,8 +31,6 @@
     "[markdown]": {
         "files.trimTrailingWhitespace": false
     },
-    // < Settings/filetype
-    // > vim
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
@@ -244,8 +239,6 @@
     "vim.showMarksInGutter": true,
     "vim.targets.enable": true,
     "vim.matchpairs": "(:),{:},[:],<:>",
-    // < vim
-    // > neovim
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
@@ -254,14 +247,9 @@
             "command": "vscode-neovim.escape"
         }
     },
-    // < neovim
-    // > open in vim
     "open-in-vim.linux.gnome-terminal.args": "",
     "open-in-vim.openMethod": "linux.gnome-terminal",
-    // < open in vim
-    // > tabnine
     "tabnine.experimentalAutoImports": true,
-    // < tabnine
     "files.associations": {
         "*.md.html": "markdown",
         "*.yaml.in": "yaml",
@@ -272,15 +260,15 @@
     ],
     "workbench.colorCustomizations": {
         "editorStickyScroll.background": "#1F1F1F",
-        "editorStickyScroll.border": "#887878",
+        "editorStickyScroll.border": "#887878"
     },
     "breadcrumbs.symbolSortOrder": "name",
     "editor.accessibilitySupport": "off",
     "editor.cursorWidth": 3,
     "editor.find.addExtraSpaceOnTop": false,
     "editor.find.autoFindInSelection": "multiline",
-    "editor.fontFamily": "Dejavu sans mono",
-    "editor.fontSize": 12,
+    "editor.fontFamily": "Intel One Mono",
+    "terminal.integrated.fontFamily": "Dejavu Sans Mono",
     "editor.fontLigatures": false,
     "editor.minimap.enabled": false,
     "editor.renderControlCharacters": true,
@@ -324,7 +312,7 @@
     "workbench.editor.decorations.badges": true,
     "search.seedOnFocus": true,
     "editor.foldingHighlight": false,
-    "editor.bracketPairColorization.enabled": true, // replaces bracket pair colorizer addon after v1.60
+    "editor.bracketPairColorization.enabled": true,
     "editor.suggest.preview": true,
     "workbench.reduceMotion": "on",
     "explorer.confirmDelete": false,
@@ -399,5 +387,21 @@
     "debug.allowBreakpointsEverywhere": true,
     "workbench.commandPalette.experimental.enableNaturalLanguageSearch": false,
     "editor.stickyScroll.enabled": true,
-    // > Local changes
+    "autoDocstring.startOnNewLine": true,
+    "autoDocstring.generateDocstringOnEnter": false,
+    "evenBetterToml.schema.enabled": false,
+    "evenBetterToml.taplo.configFile.enabled": false,
+    "[csv][dynamic csv][tsv][csv (semicolon)]": {
+        "editor.stickyScroll.enabled": true
+    },
+    "rainbow_csv.enable_auto_csv_lint": false,
+    "rainbow_csv.rbql_with_headers_by_default": true,
+    "go.inlayHints.assignVariableTypes": true,
+    "go.inlayHints.compositeLiteralFields": true,
+    "go.inlayHints.compositeLiteralTypes": true,
+    "go.inlayHints.constantValues": true,
+    "go.inlayHints.functionTypeParameters": true,
+    "go.inlayHints.rangeVariableTypes": true,
+    "debug.console.acceptSuggestionOnEnter": "on",
+    "azureFunctions.showPythonVenvWarning": false
 }
