@@ -9,7 +9,7 @@
     "telemetry.enableTelemetry": false,
     "telemetry.telemetryLevel": "off",
     "update.enableWindowsBackgroundUpdates": false,
-    "update.mode": "none",
+    "update.mode": "manual",
     "update.showReleaseNotes": false,
     "workbench.enableExperiments": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
