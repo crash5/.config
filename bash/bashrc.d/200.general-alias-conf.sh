@@ -128,8 +128,6 @@ if program_exists fzf; then
         --bind 'f3:toggle-preview'
         --bind 'shift-left:preview-page-up'
         --bind 'shift-right:preview-page-down'"
-    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-    source "${SCRIPT_DIR}"/161.fzf-key-bindings.bash
 fi
 # }}}
 
