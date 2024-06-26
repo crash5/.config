@@ -8,6 +8,8 @@ nnoremap <silent> <leader><leader> :<C-u>nohlsearch<CR><C-l>
 noremap <leader>q :<C-u>q!<CR>
 noremap <leader>Q :<C-u>qall!<CR>
 
+nnoremap <C-BS> :<C-u>e!<CR>
+
 " Yank to the end of the line
 noremap Y y$
 
