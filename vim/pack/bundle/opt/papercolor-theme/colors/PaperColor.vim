@@ -2344,7 +2344,7 @@ command! -nargs=0 PaperColor :call g:PaperColor()
 
 " =============================== MAIN ========================================
 
-hi clear
+"hi clear
 syntax reset
 let g:colors_name = "PaperColor"
 

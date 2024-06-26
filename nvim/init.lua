@@ -17,12 +17,22 @@ vim.cmd [[
         autocmd TextYankPost * silent! lua vim.highlight.on_yank{timeout=250}
     augroup END
 
+
+    " required for paper color theme after neovim v0.10.0
+    function! SourceIfExists(file)
+    if filereadable(expand(a:file))
+        exe 'source' a:file
+    endif
+    endfunction
+    call SourceIfExists("$VIMRUNTIME/colors/vim.lua")
+    silent! colorscheme PaperColor
+
     packadd! CamelCaseMotion
     packadd! ReplaceWithRegister
     packadd! targets.vim
     packadd! vim-sandwich
     packadd! matchit
-    packadd! papercolor-theme
+    "packadd! papercolor-theme
     packadd! vim-indent-object
     packadd! vim-unimpaired
     packadd! oil.nvim
