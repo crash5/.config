@@ -225,5 +225,9 @@
         "key": "]q",
         "command": "search.action.focusNextSearchResult",
         "when": "hasSearchResult || inSearchEditor"
+    },
+    {
+        "key": "ctrl+backspace",
+        "command": "workbench.action.files.revert"
     }
 ]
