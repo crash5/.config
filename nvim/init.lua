@@ -32,7 +32,6 @@ vim.cmd [[
     packadd! targets.vim
     packadd! vim-sandwich
     packadd! matchit
-    "packadd! papercolor-theme
     packadd! vim-indent-object
     packadd! vim-unimpaired
     packadd! oil.nvim
@@ -195,4 +194,3 @@ end
 vim.cmd [[
 source $XDG_CONFIG_HOME/vim/common-after
 ]]
-

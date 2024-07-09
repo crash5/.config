@@ -9,7 +9,6 @@ packadd! CamelCaseMotion
 packadd! ReplaceWithRegister
 packadd! editorconfig-vim
 packadd! matchit
-packadd! papercolor-theme
 packadd! targets.vim
 packadd! vim-commentary
 packadd! vim-highlightedyank
