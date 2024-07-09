@@ -3,27 +3,53 @@ vim-sandwich
 [![Build Status](https://travis-ci.org/machakann/vim-sandwich.svg)](https://travis-ci.org/machakann/vim-sandwich)
 [![Build status](https://ci.appveyor.com/api/projects/status/8hgvi5410lceq53x/branch/master?svg=true)](https://ci.appveyor.com/project/machakann/vim-sandwich/branch/master)
 
+`sandwich.vim` is a plugin that makes it super easy to work with stuff that comes in pairs, like brackets, quotes, and even HTML or XML tags. You can quickly get rid of them, swap them out, or slap new ones around your text.
 
-`sandwich.vim` is a set of operator and textobject plugins to add/delete/replace surroundings of a sandwiched textobject, like **(foo)**, **"bar"**.
+# Examples
 
-# Quick start
+Let's dive into some quick examples. If you're inside a string with double quotes and you hit `sr"'`, you'll swap those double quotes for single quotes.
 
-### Add
-Press `sa{motion/textobject}{addition}`.
-For example, a key sequence `saiw(` makes **foo** to **(foo)**.
+    "Hello world!"  ->  'Hello world!'
 
-### Delete
-Press `sdb` or `sd{deletion}`.
-For example, key sequences `sdb` or `sd(` makes **(foo)** to **foo**.
-`sdb` searches a set of surrounding automatically.
+Want to turn that into an HTML tag? Easy, just type `sr'<q>` and watch it transform.
 
-### Replace
-Press `srb{addition}` or `sr{deletion}{addition}`.
-For example, key sequences `srb"` or `sr("` makes **(foo)** to **"foo"**.
+    'Hello world!'  ->  <q>Hello world!</q>
 
-That's all. Now you already know enough about `sandwich.vim`. If you are using [vim-surround](https://github.com/tpope/vim-surround), you can use a preset keymappings similar as it. See [here](https://github.com/machakann/vim-sandwich/wiki/Introduce-vim-surround-keymappings)
+To switch it back to double quotes, you'd do `srt"`.
 
-`sandwich.vim` has some functional input for *{addition}*/*{deletion}*. Check [here](https://github.com/machakann/vim-sandwich/wiki/Magic-characters)!
+    <q>Hello world!</q>  ->  "Hello world!"
+
+To strip away those quotes, just press `sd"`.
+
+    "Hello world!"  ->  Hello world!
+
+Say you want to bracket the word "Hello", move your cursor there and press `saiw]`.
+
+    Hello world!  ->  [Hello] world!
+
+Fancy braces with some breathing room? Type `sr]{`.
+
+    [Hello] world!  ->  { Hello } world!
+
+Wrap the whole line in parentheses with `sasb` or `sas)`.
+
+    { Hello } world!  ->  ({ Hello } world!)
+
+To get back to where you started, just do `sd{sd)`.
+
+    ({ Hello } world!)  ->  Hello world!
+
+Highlight "Hello" with an HTML emphasis tag by typing `saiw<em>`.
+
+    Hello world!  ->  <em>Hello</em> world!
+
+For a bigger change, like wrapping the whole line in a paragraph tag with a class, first select the line with `V` and then apply `S<p class="important">`.
+
+    <em>Hello</em> world!  ->  <p class="important"><em>Hello</em> world!</p>
+
+This tool is a game-changer for editing HTML and XML in Vim, which is an area that doesn't have a ton of great tools right now. With vim-sandwich, adding, changing, or removing tag pairs is super simple.
+
+If you are using [vim-surround](https://github.com/tpope/vim-surround), you can use a preset keymappings similar as it. See [here](https://github.com/machakann/vim-sandwich/wiki/Introduce-vim-surround-keymappings)
 
 # Design
 
