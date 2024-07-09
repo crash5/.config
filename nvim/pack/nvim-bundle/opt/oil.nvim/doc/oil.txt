@@ -17,7 +17,7 @@ CONFIG                                                                *oil-confi
 >lua
     require("oil").setup({
       -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
-      -- Set to false if you still want to use netrw.
+      -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
       default_file_explorer = true,
       -- Id is automatically added at the beginning, and name at the end
       -- See :help oil-columns
@@ -65,7 +65,7 @@ CONFIG                                                                *oil-confi
       -- Set to `false` to disable, or "name" to keep it on the file names
       constrain_cursor = "editable",
       -- Set to true to watch the filesystem for changes and reload oil
-      experimental_watch_for_changes = false,
+      watch_for_changes = false,
       -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
       -- options with a `callback` (e.g. { callback = function() ... end, desc = "", mode = "n" })
       -- Additionally, if it is a string that matches "actions.<name>",
@@ -75,16 +75,16 @@ CONFIG                                                                *oil-confi
       keymaps = {
         ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
-        ["<C-s>"] = "actions.select_vsplit",
-        ["<C-h>"] = "actions.select_split",
-        ["<C-t>"] = "actions.select_tab",
+        ["<C-s>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
+        ["<C-h>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
+        ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
         ["<C-p>"] = "actions.preview",
         ["<C-c>"] = "actions.close",
         ["<C-l>"] = "actions.refresh",
         ["-"] = "actions.parent",
         ["_"] = "actions.open_cwd",
         ["`"] = "actions.cd",
-        ["~"] = "actions.tcd",
+        ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" },
         ["gs"] = "actions.change_sort",
         ["gx"] = "actions.open_external",
         ["g."] = "actions.toggle_hidden",
@@ -106,6 +106,8 @@ CONFIG                                                                *oil-confi
         -- Sort file names in a more intuitive order for humans. Is less performant,
         -- so you may want to set to false if you work with large directories.
         natural_order = true,
+        -- Sort file and directory names case insensitive
+        case_insensitive = false,
         sort = {
           -- sort order can be "asc" or "desc"
           -- see :help oil-columns to see which columns are sortable
@@ -138,6 +140,8 @@ CONFIG                                                                *oil-confi
         win_options = {
           winblend = 0,
         },
+        -- preview_split: Split direction: "auto", "left", "right", "above", "below".
+        preview_split = "auto",
         -- This is the config that will be passed to nvim_open_win.
         -- Change values here to customize the layout
         override = function(conf)
@@ -255,7 +259,12 @@ set_sort({sort})                                                    *oil.set_sor
     Change the sort order for oil
 
     Parameters:
-      {sort} `string[]` []
+      {sort} `oil.SortSpec[]` List of columns plus direction. See :help oil-
+             columns to see which ones are sortable.
+
+    Examples: >lua
+      require("oil").set_sort({ { "type", "asc" }, { "size", "desc" } })
+<
 
 set_is_hidden_file({is_hidden_file})                      *oil.set_is_hidden_file*
     Change how oil determines if the file is hidden
@@ -311,14 +320,14 @@ select({opts}, {callback})                                            *oil.selec
     Select the entry under the cursor
 
     Parameters:
-      {opts}     `nil|table`
-          {vertical}   `boolean` Open the buffer in a vertical split
-          {horizontal} `boolean` Open the buffer in a horizontal split
-          {split}      `"aboveleft"|"belowright"|"topleft"|"botright"` Split
+      {opts}     `nil|oil.SelectOpts`
+          {vertical}   `nil|boolean` Open the buffer in a vertical split
+          {horizontal} `nil|boolean` Open the buffer in a horizontal split
+          {split}      `nil|"aboveleft"|"belowright"|"topleft"|"botright"` Split
                        modifier
-          {tab}        `boolean` Open the buffer in a new tab
-          {close}      `boolean` Close the original oil buffer once selection is
-                       made
+          {tab}        `nil|boolean` Open the buffer in a new tab
+          {close}      `nil|boolean` Close the original oil buffer once
+                       selection is made
       {callback} `nil|fun(err: nil|string)` Called once all entries have been
                  opened
 
@@ -338,7 +347,7 @@ setup({opts})                                                          *oil.setu
     Initialize oil
 
     Parameters:
-      {opts} `nil|table`
+      {opts} `oil.setupOpts|nil`
 
 --------------------------------------------------------------------------------
 COLUMNS                                                              *oil-columns*
@@ -430,35 +439,71 @@ birthtime                                                       *column-birthtim
 --------------------------------------------------------------------------------
 ACTIONS                                                              *oil-actions*
 
-These are actions that can be used in the `keymaps` section of config options.
-You can also call them directly with
+The `keymaps` option in `oil.setup` allow you to create mappings using all the same parameters as |vim.keymap.set|.
+>lua
+    keymaps = {
+        -- Mappings can be a string
+        ["~"] = "<cmd>edit $HOME<CR>",
+        -- Mappings can be a function
+        ["gd"] = function()
+            require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+        end,
+        -- You can pass additional opts to vim.keymap.set by using
+        -- a table with the mapping as the first element.
+        ["<leader>ff"] = {
+            function()
+                require("telescope.builtin").find_files({
+                    cwd = require("oil").get_current_dir()
+                })
+            end,
+            mode = "n",
+            nowait = true,
+            desc = "Find files in the current directory"
+        },
+        -- Mappings that are a string starting with "actions." will be
+        -- one of the built-in actions, documented below.
+        ["`"] = "actions.tcd",
+        -- Some actions have parameters. These are passed in via the `opts` key.
+        ["<leader>:"] = {
+            "actions.open_cmdline",
+            opts = {
+                shorten_path = true,
+                modify = ":h",
+            },
+            desc = "Open the command line with the current directory as an argument",
+        },
+    }
+
+Below are the actions that can be used in the `keymaps` section of config
+options. You can refer to them as strings (e.g. "actions.<action_name>") or you
+can use the functions directly with
 `require("oil.actions").action_name.callback()`
-
-add_to_loclist                                            *actions.add_to_loclist*
-    Adds files in the current oil directory to the location list, keeping the
-    previous entries.
-
-add_to_qflist                                              *actions.add_to_qflist*
-    Adds files in the current oil directory to the quickfix list, keeping the
-    previous entries.
 
 cd                                                                    *actions.cd*
     :cd to the current oil directory
 
+    Parameters:
+      {scope}  `nil|"tab"|"win"` Scope of the directory change (e.g. use |:tcd|
+               or |:lcd|)
+      {silent} `boolean` Do not show a message when changing directories
+
 change_sort                                                  *actions.change_sort*
     Change the sort order
+
+    Parameters:
+      {sort} `oil.SortSpec[]` List of columns plus direction (see
+             |oil.set_sort|) instead of interactive selection
 
 close                                                              *actions.close*
     Close oil and restore original buffer
 
-copy_entry_path                                          *actions.copy_entry_path*
-    Yank the filepath of the entry under the cursor to a register
-
 open_cmdline                                                *actions.open_cmdline*
     Open vim cmdline with current entry as an argument
 
-open_cmdline_dir                                        *actions.open_cmdline_dir*
-    Open vim cmdline with current directory as an argument
+    Parameters:
+      {modify}       `string` Modify the path with |fnamemodify()| using this as
+                     the mods argument
+      {shorten_path} `boolean` Use relative paths when possible
 
 open_cwd                                                        *actions.open_cwd*
     Open oil in Neovim's current working directory
@@ -485,37 +530,46 @@ preview_scroll_up                                      *actions.preview_scroll_u
 refresh                                                          *actions.refresh*
     Refresh current directory list
 
+    Parameters:
+      {force} `boolean` When true, do not prompt user if they will be discarding
+              changes
+
 select                                                            *actions.select*
     Open the entry under the cursor
 
-select_split                                                *actions.select_split*
-    Open the entry under the cursor in a horizontal split
-
-select_tab                                                    *actions.select_tab*
-    Open the entry under the cursor in a new tab
-
-select_vsplit                                              *actions.select_vsplit*
-    Open the entry under the cursor in a vertical split
-
-send_to_loclist                                          *actions.send_to_loclist*
-    Sends files in the current oil directory to the location list, replacing the
-    previous entries.
+    Parameters:
+      {close}      `boolean` Close the original oil buffer once selection is
+                   made
+      {horizontal} `boolean` Open the buffer in a horizontal split
+      {split}      `"aboveleft"|"belowright"|"topleft"|"botright"` Split
+                   modifier
+      {tab}        `boolean` Open the buffer in a new tab
+      {vertical}   `boolean` Open the buffer in a vertical split
 
 send_to_qflist                                            *actions.send_to_qflist*
     Sends files in the current oil directory to the quickfix list, replacing the
     previous entries.
 
+    Parameters:
+      {action} `"r"|"a"` Replace or add to current quickfix list (see
+               |setqflist-action|)
+      {target} `"qflist"|"loclist"` The target list to send files to
+
 show_help                                                      *actions.show_help*
     Show default keymaps
-
-tcd                                                                  *actions.tcd*
-    :tcd to the current oil directory
 
 toggle_hidden                                              *actions.toggle_hidden*
     Toggle hidden files and directories
 
 toggle_trash                                                *actions.toggle_trash*
     Jump to and from the trash for the current directory
+
+yank_entry                                                    *actions.yank_entry*
+    Yank the filepath of the entry under the cursor to a register
+
+    Parameters:
+      {modify} `string` Modify the path with |fnamemodify()| using this as the
+               mods argument
 
 --------------------------------------------------------------------------------
 HIGHLIGHTS                                                        *oil-highlights*

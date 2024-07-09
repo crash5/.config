@@ -59,9 +59,14 @@ Change the display columns for oil
 `set_sort(sort)` \
 Change the sort order for oil
 
-| Param | Type       | Desc |
-| ----- | ---------- | ---- |
-| sort  | `string[]` | []   |
+| Param | Type             | Desc                                                                                  |
+| ----- | ---------------- | ------------------------------------------------------------------------------------- |
+| sort  | `oil.SortSpec[]` | List of columns plus direction. See :help oil-columns to see which ones are sortable. |
+
+**Examples:**
+```lua
+require("oil").set_sort({ { "type", "asc" }, { "size", "desc" } })
+```
 
 ## set_is_hidden_file(is_hidden_file)
 
@@ -134,15 +139,15 @@ Preview the entry under the cursor in a split
 `select(opts, callback)` \
 Select the entry under the cursor
 
-| Param    | Type                         | Desc                                               |                                                      |
-| -------- | ---------------------------- | -------------------------------------------------- | ---------------------------------------------------- |
-| opts     | `nil\|table`                 |                                                    |                                                      |
-|          | vertical                     | `boolean`                                          | Open the buffer in a vertical split                  |
-|          | horizontal                   | `boolean`                                          | Open the buffer in a horizontal split                |
-|          | split                        | `"aboveleft"\|"belowright"\|"topleft"\|"botright"` | Split modifier                                       |
-|          | tab                          | `boolean`                                          | Open the buffer in a new tab                         |
-|          | close                        | `boolean`                                          | Close the original oil buffer once selection is made |
-| callback | `nil\|fun(err: nil\|string)` | Called once all entries have been opened           |                                                      |
+| Param    | Type                         | Desc                                                    |                                                      |
+| -------- | ---------------------------- | ------------------------------------------------------- | ---------------------------------------------------- |
+| opts     | `nil\|oil.SelectOpts`        |                                                         |                                                      |
+|          | vertical                     | `nil\|boolean`                                          | Open the buffer in a vertical split                  |
+|          | horizontal                   | `nil\|boolean`                                          | Open the buffer in a horizontal split                |
+|          | split                        | `nil\|"aboveleft"\|"belowright"\|"topleft"\|"botright"` | Split modifier                                       |
+|          | tab                          | `nil\|boolean`                                          | Open the buffer in a new tab                         |
+|          | close                        | `nil\|boolean`                                          | Close the original oil buffer once selection is made |
+| callback | `nil\|fun(err: nil\|string)` | Called once all entries have been opened                |                                                      |
 
 ## save(opts, cb)
 
@@ -165,9 +170,9 @@ If you provide your own callback function, there will be no notification for err
 `setup(opts)` \
 Initialize oil
 
-| Param | Type         | Desc |
-| ----- | ------------ | ---- |
-| opts  | `nil\|table` |      |
+| Param | Type                 | Desc |
+| ----- | -------------------- | ---- |
+| opts  | `oil.setupOpts\|nil` |      |
 
 
 <!-- /API -->

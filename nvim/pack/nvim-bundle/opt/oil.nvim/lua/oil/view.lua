@@ -212,7 +212,12 @@ end
 ---Delete unmodified, hidden oil buffers and if none remain, clear the cache
 M.delete_hidden_buffers = function()
   local visible_buffers, hidden_buffers = get_visible_hidden_buffers()
-  if not visible_buffers or not hidden_buffers or not vim.tbl_isempty(visible_buffers) then
+  if
+    not visible_buffers
+    or not hidden_buffers
+    or not vim.tbl_isempty(visible_buffers)
+    or vim.fn.win_gettype() == "command"
+  then
     return
   end
   for _, bufnr in ipairs(hidden_buffers) do
@@ -326,7 +331,7 @@ M.initialize = function(bufnr)
   vim.b[bufnr].EditorConfig_disable = 1
   session[bufnr] = session[bufnr] or {}
   for k, v in pairs(config.buf_options) do
-    vim.api.nvim_buf_set_option(bufnr, k, v)
+    vim.bo[bufnr][k] = v
   end
   M.set_win_options()
   vim.api.nvim_create_autocmd("BufHidden", {
@@ -442,7 +447,7 @@ M.initialize = function(bufnr)
   if
     adapter
     and adapter.name == "files"
-    and config.experimental_watch_for_changes
+    and config.watch_for_changes
     and not session[bufnr].fs_event
   then
     local fs_event = assert(uv.new_fs_event())
@@ -732,6 +737,7 @@ local function get_used_columns()
   return cols
 end
 
+---@type table<integer, fun(message: string)[]>
 local pending_renders = {}
 
 ---@param bufnr integer
@@ -767,7 +773,7 @@ M.render_buffer_async = function(bufnr, opts, callback)
     vim.bo[bufnr].undolevels = vim.api.nvim_get_option_value("undolevels", { scope = "global" })
     util.render_text(bufnr, { "Error: " .. message })
     if pending_renders[bufnr] then
-      for _, cb in ipairs(pending_renders) do
+      for _, cb in ipairs(pending_renders[bufnr]) do
         cb(message)
       end
       pending_renders[bufnr] = nil
