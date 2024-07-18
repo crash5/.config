@@ -48,33 +48,33 @@ vim.cmd [[
     xmap <leader>ie <Plug>CamelCaseMotion_ie
 
     " vscode calls
-    nnoremap ]d <Cmd>call VSCodeNotify('editor.action.marker.next')<CR>
-    nnoremap [d <Cmd>call VSCodeNotify('editor.action.marker.prev')<CR>
-    nnoremap ]q <Cmd>call VSCodeNotify('search.action.focusPreviousSearchResult')<CR>
-    nnoremap [q <Cmd>call VSCodeNotify('search.action.focusNextSearchResult')<CR>
+    nnoremap ]d <Cmd>lua require('vscode').action('editor.action.marker.next')<CR>
+    nnoremap [d <Cmd>lua require('vscode').action('editor.action.marker.prev')<CR>
+    nnoremap ]q <Cmd>lua require('vscode').action('search.action.focusPreviousSearchResult')<CR>
+    nnoremap [q <Cmd>lua require('vscode').action('search.action.focusNextSearchResult')<CR>
 
-    nnoremap <leader>g <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
-    xnoremap <leader>g <Cmd>call VSCodeNotify('workbench.action.findInFiles')<CR>
+    nnoremap <leader>g <Cmd>lua require('vscode').action('workbench.action.findInFiles', { args = { query = vim.fn.expand('<cword>') } })<CR>
+    xnoremap <leader>g <Cmd>lua require('vscode').action('workbench.action.findInFiles')<CR>
 
-    noremap <leader>q <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
-    noremap <leader>Q <Cmd>call VSCodeNotify('workbench.action.closeAllEditors')<CR>
+    noremap <leader>q <Cmd>lua require('vscode').action('workbench.action.closeActiveEditor')<CR>
+    noremap <leader>Q <Cmd>lua require('vscode').action('workbench.action.closeAllEditors')<CR>
 
-    nnoremap <silent> za <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
-    nnoremap <silent> zR <Cmd>call VSCodeNotify('editor.unfoldAll')<CR>
-    nnoremap <silent> zM <Cmd>call VSCodeNotify('editor.foldAll')<CR>
-    nnoremap <silent> zo <Cmd>call VSCodeNotify('editor.unfold')<CR>
-    nnoremap <silent> zO <Cmd>call VSCodeNotify('editor.unfoldRecursively')<CR>
-    nnoremap <silent> zc <Cmd>call VSCodeNotify('editor.fold')<CR>
-    nnoremap <silent> zC <Cmd>call VSCodeNotify('editor.foldRecursively')<CR>
-    nnoremap <silent> zj <Cmd>call VSCodeNotify('editor.gotoNextFold')<CR>
-    nnoremap <silent> zk <Cmd>call VSCodeNotify('editor.gotoPreviousFold')<CR>
+    nnoremap <silent> za <Cmd>lua require('vscode').action('editor.toggleFold')<CR>
+    nnoremap <silent> zR <Cmd>lua require('vscode').action('editor.unfoldAll')<CR>
+    nnoremap <silent> zM <Cmd>lua require('vscode').action('editor.foldAll')<CR>
+    nnoremap <silent> zo <Cmd>lua require('vscode').action('editor.unfold')<CR>
+    nnoremap <silent> zO <Cmd>lua require('vscode').action('editor.unfoldRecursively')<CR>
+    nnoremap <silent> zc <Cmd>lua require('vscode').action('editor.fold')<CR>
+    nnoremap <silent> zC <Cmd>lua require('vscode').action('editor.foldRecursively')<CR>
+    nnoremap <silent> zj <Cmd>lua require('vscode').action('editor.gotoNextFold')<CR>
+    nnoremap <silent> zk <Cmd>lua require('vscode').action('editor.gotoPreviousFold')<CR>
 
-    nnoremap <leader>rn <Cmd>call VSCodeNotify('editor.action.rename')<CR>
-    nnoremap <leader>ca <Cmd>call VSCodeNotify('editor.action.refactor')<CR>
-    xnoremap <leader>ca <Cmd>call VSCodeNotify('editor.action.refactor')<CR>
+    nnoremap <leader>rn <Cmd>lua require('vscode').call('editor.action.rename')<CR>
+    nnoremap <leader>ca <Cmd>lua require('vscode').call('editor.action.refactor')<CR>
+    xnoremap <leader>ca <Cmd>lua require('vscode').call('editor.action.refactor')<CR>
 
-    nnoremap <leader>rt <Cmd>call VSCodeNotify('testing.runAtCursor')<CR>
-    nnoremap <leader>rft <Cmd>call VSCodeNotify('testing.runCurrentFile')<CR>
+    nnoremap <leader>rt <Cmd>lua require('vscode').action('testing.runAtCursor')<CR>
+    nnoremap <leader>rft <Cmd>lua require('vscode').action('testing.runCurrentFile')<CR>
 
     xnoremap gc  <Plug>VSCodeCommentary
     nnoremap gc  <Plug>VSCodeCommentary
