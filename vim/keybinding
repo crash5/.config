@@ -39,6 +39,8 @@ endif
 " Expand %% on command mode to relative path to actual file
 cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 
+nnoremap <leader>@ :let @q = input("Edit macro in q:", @q)<CR>
+
 " Switch between windows
 nmap <CR> <C-w>w
 nmap <BS> <C-w>W
