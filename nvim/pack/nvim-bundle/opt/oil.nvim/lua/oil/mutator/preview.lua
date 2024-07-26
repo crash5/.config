@@ -114,6 +114,8 @@ M.show = vim.schedule_wrap(function(actions, should_confirm, cb)
 
   render_lines(winid, bufnr, lines)
 
+  local restore_cursor = util.hide_cursor()
+
   -- Attach autocmds and keymaps
   local cancel
   local confirm
@@ -127,6 +129,7 @@ M.show = vim.schedule_wrap(function(actions, should_confirm, cb)
       end
       autocmds = {}
       vim.api.nvim_win_close(winid, true)
+      restore_cursor()
       cb(value)
     end
   end
