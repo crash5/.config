@@ -23,6 +23,7 @@ command! ClearTrailingWhitespaces %s/\s\+$//e
 
 command! -range=% YamlToJson :execute '<line1>,<line2>!yq eval --tojson -' <BAR> set ft=json
 command! -range=% JsonToYaml :execute '<line1>,<line2>!yq eval --prettyPrint -' <BAR> set ft=yaml
+command! -range=% PrettyCsv :set nowrap <BAR> execute '<line1>,<line2>!column -s, -t'
 
 " History, undo, state, session etc. {{{
 " set backupdir=$VIMDATA/backup// | call mkdir(&backupdir, 'p')
