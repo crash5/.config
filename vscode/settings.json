@@ -383,7 +383,6 @@
     "git.enableStatusBarSync": false,
     "git.supportCancellation": true,
     "window.commandCenter": false,
-    "terminal.integrated.stickyScroll.enabled": true,
     "debug.allowBreakpointsEverywhere": true,
     "workbench.commandPalette.experimental.enableNaturalLanguageSearch": false,
     "editor.stickyScroll.enabled": true,
@@ -403,5 +402,6 @@
     "go.inlayHints.functionTypeParameters": true,
     "go.inlayHints.rangeVariableTypes": true,
     "debug.console.acceptSuggestionOnEnter": "on",
-    "azureFunctions.showPythonVenvWarning": false
+    "azureFunctions.showPythonVenvWarning": false,
+    "debug.showVariableTypes": true
 }
