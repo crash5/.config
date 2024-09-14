@@ -16,4 +16,6 @@ alias emacs="emacs -q --load $XDG_CONFIG_HOME/emacs/emacsrc"
 alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
 alias rtorrent="rtorrent -n -o import=$XDG_CONFIG_HOME/rtorrent/conf"
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
+
 alias sqlite3="sqlite3 -init $XDG_CONFIG_HOME/sqlite/sqliterc"
+export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite/history"
