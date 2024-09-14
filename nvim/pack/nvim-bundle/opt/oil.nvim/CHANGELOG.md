@@ -1,5 +1,46 @@
 # Changelog
 
+## [2.12.2](https://github.com/stevearc/oil.nvim/compare/v2.12.1...v2.12.2) (2024-09-10)
+
+
+### Bug Fixes
+
+* ensure win_options are being set on correct window ([#469](https://github.com/stevearc/oil.nvim/issues/469)) ([30e0438](https://github.com/stevearc/oil.nvim/commit/30e0438ff08f197d7ce4a417445ab97ee72efe2d))
+* wrap git rm callback in schedule_wrap ([#475](https://github.com/stevearc/oil.nvim/issues/475)) ([b053744](https://github.com/stevearc/oil.nvim/commit/b05374428e5136d9b6c8e1e8e62a75f82283b1f8))
+
+
+### Performance Improvements
+
+* **view:** avoid running `is_hidden_file` when `show_hidden` is set ([#471](https://github.com/stevearc/oil.nvim/issues/471)) ([0fcd126](https://github.com/stevearc/oil.nvim/commit/0fcd1263a2e8b6200e2b9fd4ab83d40ed8899c54))
+
+## [2.12.1](https://github.com/stevearc/oil.nvim/compare/v2.12.0...v2.12.1) (2024-08-26)
+
+
+### Bug Fixes
+
+* gracefully handle trashing file that does not exist ([70337eb](https://github.com/stevearc/oil.nvim/commit/70337eb77f53cbff0b7f54f403d5b2b0a9430935))
+* process deletes in dir before moving dir ([349bca8](https://github.com/stevearc/oil.nvim/commit/349bca8c3eae4ab78629ed63ee55cc3458a367c0))
+
+## [2.12.0](https://github.com/stevearc/oil.nvim/compare/v2.11.0...v2.12.0) (2024-08-17)
+
+
+### Features
+
+* add support for `mini.icons` ([#439](https://github.com/stevearc/oil.nvim/issues/439)) ([a543ea5](https://github.com/stevearc/oil.nvim/commit/a543ea598eaef3363fe253e0e11837c1404eb04d))
+* allow bufnr optional parameter for get_current_dir function ([#440](https://github.com/stevearc/oil.nvim/issues/440)) ([cc23325](https://github.com/stevearc/oil.nvim/commit/cc2332599f8944076fba29ff7960729b3fcdd71b))
+* disable cursor in preview window ([#433](https://github.com/stevearc/oil.nvim/issues/433)) ([b15e4c1](https://github.com/stevearc/oil.nvim/commit/b15e4c1e647b9ddbb75a31caeb720b3b3ce4db54))
+
+
+### Bug Fixes
+
+* add compatibility for Lua 5.1 ([#456](https://github.com/stevearc/oil.nvim/issues/456)) ([b39a789](https://github.com/stevearc/oil.nvim/commit/b39a78959f3f69e9c1bf43c2634bbddf0af51c3e))
+* correctly check if `mini.icons` is actually setup ([#441](https://github.com/stevearc/oil.nvim/issues/441)) ([d5e5657](https://github.com/stevearc/oil.nvim/commit/d5e56574f896120b78cdf56dc1132e76057f8877))
+* cursor sometimes disappears after making changes ([#438](https://github.com/stevearc/oil.nvim/issues/438)) ([b5a1abf](https://github.com/stevearc/oil.nvim/commit/b5a1abfde00eead6814cae3321e4c90ff98cfff1))
+* Force standard C locale when getting `ls` input for parsing in SSH ([#455](https://github.com/stevearc/oil.nvim/issues/455)) ([71c972f](https://github.com/stevearc/oil.nvim/commit/71c972fbd218723a3c15afcb70421f67340f5a6d))
+* handle rare case where file watcher outlives buffer ([fcca212](https://github.com/stevearc/oil.nvim/commit/fcca212c2e966fc3dec1d4baf888e670631d25d1))
+* Handle users and groups with spaces over SSH ([#448](https://github.com/stevearc/oil.nvim/issues/448)) ([a6cea1a](https://github.com/stevearc/oil.nvim/commit/a6cea1a5b9bc9351769fe09a547c62fe4b669abd))
+* set floating window win_options when buffer changes ([#432](https://github.com/stevearc/oil.nvim/issues/432)) ([b0a6cf9](https://github.com/stevearc/oil.nvim/commit/b0a6cf98982cdcf82b19b0029b734bbbcd24bcc4))
+
 ## [2.11.0](https://github.com/stevearc/oil.nvim/compare/v2.10.0...v2.11.0) (2024-07-01)
 
 

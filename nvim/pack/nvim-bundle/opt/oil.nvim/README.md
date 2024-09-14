@@ -34,6 +34,8 @@ oil.nvim supports all the usual plugin managers
 ```lua
 {
   'stevearc/oil.nvim',
+  ---@module 'oil'
+  ---@type oil.SetupOpts
   opts = {},
   -- Optional dependencies
   dependencies = { { "echasnovski/mini.icons", opts = {} } },
@@ -332,7 +334,7 @@ Note that at the moment the ssh adapter does not support Windows machines, and i
 ## Recipes
 
 - [Toggle file detail view](doc/recipes.md#toggle-file-detail-view)
-- [Hide gitignored files](doc/recipes.md#hide-gitignored-files)
+- [Hide gitignored files and show git tracked hidden files](doc/recipes.md#hide-gitignored-files-and-show-git-tracked-hidden-files)
 
 ## API
 

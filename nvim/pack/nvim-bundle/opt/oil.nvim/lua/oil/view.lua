@@ -22,7 +22,7 @@ local last_cursor_entry = {}
 ---@return boolean
 M.should_display = function(name, bufnr)
   return not config.view_options.is_always_hidden(name, bufnr)
-    and (not config.view_options.is_hidden_file(name, bufnr) or config.view_options.show_hidden)
+    and (config.view_options.show_hidden or not config.view_options.is_hidden_file(name, bufnr))
 end
 
 ---@param bufname string
@@ -79,7 +79,7 @@ M.toggle_hidden = function()
   end
 end
 
----@param is_hidden_file fun(filename: string, bufnr: nil|integer): boolean
+---@param is_hidden_file fun(filename: string, bufnr: integer): boolean
 M.set_is_hidden_file = function(is_hidden_file)
   local any_modified = are_any_modified()
   if any_modified then
@@ -333,7 +333,8 @@ M.initialize = function(bufnr)
   for k, v in pairs(config.buf_options) do
     vim.bo[bufnr][k] = v
   end
-  M.set_win_options()
+  vim.api.nvim_buf_call(bufnr, M.set_win_options)
+
   vim.api.nvim_create_autocmd("BufHidden", {
     desc = "Delete oil buffers when no longer in use",
     group = "Oil",
@@ -457,6 +458,14 @@ M.initialize = function(bufnr)
       assert(dir),
       {},
       vim.schedule_wrap(function(err, filename, events)
+        if not vim.api.nvim_buf_is_valid(bufnr) then
+          local sess = session[bufnr]
+          if sess then
+            sess.fs_event = nil
+          end
+          fs_event:stop()
+          return
+        end
         local mutator = require("oil.mutator")
         if err or vim.bo[bufnr].modified or vim.b[bufnr].oil_dirty or mutator.is_mutating() then
           return
@@ -618,19 +627,17 @@ local function render_buffer(bufnr, opts)
   end
 
   for _, entry in ipairs(entry_list) do
-    if not M.should_display(entry[FIELD_NAME], bufnr) then
-      goto continue
-    end
-    local cols = M.format_entry_cols(entry, column_defs, col_width, adapter)
-    table.insert(line_table, cols)
+    if M.should_display(entry[FIELD_NAME], bufnr) then
+      local cols = M.format_entry_cols(entry, column_defs, col_width, adapter)
+      table.insert(line_table, cols)
 
-    local name = entry[FIELD_NAME]
-    if seek_after_render == name then
-      seek_after_render_found = true
-      jump_idx = #line_table
-      M.set_last_cursor(bufname, nil)
+      local name = entry[FIELD_NAME]
+      if seek_after_render == name then
+        seek_after_render_found = true
+        jump_idx = #line_table
+        M.set_last_cursor(bufname, nil)
+      end
     end
-    ::continue::
   end
 
   local lines, highlights = util.render_table(line_table, col_width)
