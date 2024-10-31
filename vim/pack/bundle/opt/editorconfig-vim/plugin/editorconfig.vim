@@ -1,4 +1,4 @@
-" plugin/editorconfig.vim: EditorConfig native Vimscript plugin file
+" plugin/editorconfig.vim: EditorConfig native Vim script plugin file
 " Copyright (c) 2011-2019 EditorConfig Team
 " All rights reserved.
 "
@@ -454,7 +454,8 @@ function! s:ApplyConfig(bufnr, config) abort
         endif
     endif
 
-    if s:IsRuleActive('tab_width', a:config)
+    " Set tabstop.  Skip this for terminal buffers, e.g., :FZF (#224).
+    if s:IsRuleActive('tab_width', a:config) && bufname(a:bufnr) !~# '^!\w*sh$'
         let l:tabstop = str2nr(a:config["tab_width"])
         call setbufvar(a:bufnr, '&tabstop', l:tabstop)
     else
