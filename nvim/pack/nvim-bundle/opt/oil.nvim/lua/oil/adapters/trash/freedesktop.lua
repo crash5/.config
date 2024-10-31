@@ -1,5 +1,5 @@
 -- Based on the FreeDesktop.org trash specification
--- https://specifications.freedesktop.org/trash-spec/trashspec-1.0.html
+-- https://specifications.freedesktop.org/trash-spec/1.0/
 local cache = require("oil.cache")
 local config = require("oil.config")
 local constants = require("oil.constants")
@@ -210,6 +210,7 @@ local function read_trash_info(info_file, cb)
               cb(".trashinfo file points to non-existant file")
             else
               trash_info.stat = trash_stat
+              ---@cast trash_info oil.TrashInfo
               cb(nil, trash_info)
             end
           end)

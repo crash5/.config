@@ -170,6 +170,8 @@ require("oil").setup({
   -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
   cleanup_delay_ms = 2000,
   lsp_file_methods = {
+    -- Enable or disable LSP file operations
+    enabled = true,
     -- Time to wait for LSP file operations to complete before skipping
     timeout_ms = 1000,
     -- Set to true to autosave buffers that are updated with LSP willRenameFiles
@@ -199,7 +201,7 @@ require("oil").setup({
     ["-"] = "actions.parent",
     ["_"] = "actions.open_cwd",
     ["`"] = "actions.cd",
-    ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" },
+    ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory", mode = "n" },
     ["gs"] = "actions.change_sort",
     ["gx"] = "actions.open_external",
     ["g."] = "actions.toggle_hidden",
@@ -255,6 +257,8 @@ require("oil").setup({
     win_options = {
       winblend = 0,
     },
+    -- optionally override the oil buffers window title with custom function: fun(winid: integer): string
+    get_win_title = nil,
     -- preview_split: Split direction: "auto", "left", "right", "above", "below".
     preview_split = "auto",
     -- This is the config that will be passed to nvim_open_win.
@@ -334,6 +338,7 @@ Note that at the moment the ssh adapter does not support Windows machines, and i
 ## Recipes
 
 - [Toggle file detail view](doc/recipes.md#toggle-file-detail-view)
+- [Show CWD in the winbar](doc/recipes.md#show-cwd-in-the-winbar)
 - [Hide gitignored files and show git tracked hidden files](doc/recipes.md#hide-gitignored-files-and-show-git-tracked-hidden-files)
 
 ## API

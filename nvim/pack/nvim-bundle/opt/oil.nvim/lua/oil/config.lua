@@ -40,6 +40,8 @@ local default_config = {
   -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
   cleanup_delay_ms = 2000,
   lsp_file_methods = {
+    -- Enable or disable LSP file operations
+    enabled = true,
     -- Time to wait for LSP file operations to complete before skipping
     timeout_ms = 1000,
     -- Set to true to autosave buffers that are updated with LSP willRenameFiles
@@ -69,7 +71,7 @@ local default_config = {
     ["-"] = "actions.parent",
     ["_"] = "actions.open_cwd",
     ["`"] = "actions.cd",
-    ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" },
+    ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory", mode = "n" },
     ["gs"] = "actions.change_sort",
     ["gx"] = "actions.open_external",
     ["g."] = "actions.toggle_hidden",
@@ -125,6 +127,8 @@ local default_config = {
     win_options = {
       winblend = 0,
     },
+    -- optionally override the oil buffers window title with custom function: fun(winid: integer): string
+    get_win_title = nil,
     -- preview_split: Split direction: "auto", "left", "right", "above", "below".
     preview_split = "auto",
     -- This is the config that will be passed to nvim_open_win.
@@ -247,10 +251,12 @@ local M = {}
 ---@field keymaps_help? oil.SetupSimpleWindowConfig Configuration for the floating keymaps help window
 
 ---@class (exact) oil.LspFileMethods
+---@field enabled boolean
 ---@field timeout_ms integer
 ---@field autosave_changes boolean|"unmodified" Set to true to autosave buffers that are updated with LSP willRenameFiles. Set to "unmodified" to only save unmodified buffers.
 
 ---@class (exact) oil.SetupLspFileMethods
+---@field enabled? boolean Enable or disable LSP file operations
 ---@field timeout_ms? integer Time to wait for LSP file operations to complete before skipping.
 ---@field autosave_changes? boolean|"unmodified" Set to true to autosave buffers that are updated with LSP willRenameFiles. Set to "unmodified" to only save unmodified buffers.
 
@@ -328,6 +334,7 @@ local M = {}
 ---@field max_height integer
 ---@field border string|string[]
 ---@field win_options table<string, any>
+---@field get_win_title fun(winid: integer): string
 ---@field preview_split "auto"|"left"|"right"|"above"|"below"
 ---@field override fun(conf: table): table
 
@@ -337,6 +344,7 @@ local M = {}
 ---@field max_height? integer
 ---@field border? string|string[] Window border
 ---@field win_options? table<string, any>
+---@field get_win_title? fun(winid: integer): string
 ---@field preview_split? "auto"|"left"|"right"|"above"|"below" Direction that the preview command will split the window
 ---@field override? fun(conf: table): table
 
