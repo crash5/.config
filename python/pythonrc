@@ -1,6 +1,7 @@
-import atexit
-import os
 try:
+    import atexit
+    import os
+    import rlcompleter
     import readline
 
 
