@@ -44,6 +44,7 @@ nnoremap <leader>@ :let @q = input("Edit macro in q:", @q)<CR>
 " Switch between windows
 nmap <CR> <C-w>w
 nmap <BS> <C-w>W
+nnoremap <leader><CR> <CR>
 
 " System clipboard
 nnoremap <F9> :set invpaste paste?<CR>
