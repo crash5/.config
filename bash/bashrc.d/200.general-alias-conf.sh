@@ -30,21 +30,21 @@ rgv() {
 
 # ls, file listing {{{
 if program_exists eza; then
-    alias ll='eza --group-directories-first --long --all --all --git --classify'
-    alias lld='ll -D'
-    alias llsd='ll -s date'
+    alias ll='eza --group-directories-first --long --all --all --git --classify --time-style long-iso'
+    alias lld='ll --only-dirs'
+    alias llsd='ll --sort date'
 
-    alias llt='eza --group-directories-first --long --all --git --tree -I.git --classify'
+    alias llt='eza --group-directories-first --long --all --git --tree -I.git'
     alias llt2='llt -L 2'
     alias llt3='llt -L 3'
     alias llt4='llt -L 4'
-    alias lltd='llt -D'
+    alias lltd='llt --only-dirs'
 
-    alias llts='eza --group-directories-first --all --tree -I.git --classify'
+    alias llts='eza --group-directories-first --all --tree -I.git'
     alias llts2='llts -L 2'
     alias llts3='llts -L 3'
     alias llts4='llts -L 4'
-    alias lltsd='llts -D'
+    alias lltsd='llts --only-dirs'
 fi
 # }}}
 
