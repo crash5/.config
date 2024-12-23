@@ -1,27 +1,27 @@
 {
 	"TODO": {
 		"prefix": ["todo"],
-		"body": "$LINE_COMMENT TODO(USERNAME): $0",
+		"body": "$LINE_COMMENT TODO(crash@veluna): $0",
 		"description": "Needs more work, requirement"
 	},
 	"FIXME": {
 		"prefix": ["fixme"],
-		"body": "$LINE_COMMENT FIXME(USERNAME): $0",
+		"body": "$LINE_COMMENT FIXME(crash@veluna): $0",
 		"description": "(Maybe) not works as intended, bug"
 	},
 	"HACK": {
 		"prefix": ["hack"],
-		"body": "$LINE_COMMENT HACK(USERNAME): $0",
+		"body": "$LINE_COMMENT HACK(crash@veluna): $0",
 		"description": "Workaround for 3rd party libs etc."
 	},
 	"debug log": {
 		"scope": "python",
 		"prefix": ["dl"],
-		"body": "print('${TM_FILENAME}:${TM_LINE_NUMBER}/${RANDOM_HEX/(.{4}).*/$1/}-USERNAME', $0)"
+		"body": "print('${TM_FILENAME}:${TM_LINE_NUMBER}/${RANDOM_HEX/(.{4}).*/$1/}-crash@veluna', $0)"
 	},
 	"debug log with time": {
 		"scope": "python",
 		"prefix": ["dlt"],
-		"body": "print(datetime.datetime.now().isoformat(), '${TM_FILENAME}:${TM_LINE_NUMBER}/${RANDOM_HEX/(.{4}).*/$1/}-USERNAME', $0)"
+		"body": "print(datetime.datetime.now().isoformat(), '${TM_FILENAME}:${TM_LINE_NUMBER}/${RANDOM_HEX/(.{4}).*/$1/}-crash@veluna', $0)"
 	}
 }
