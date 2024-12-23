@@ -1,11 +1,11 @@
 # Total Commander generated bar files
-totalcommander/*.br2
+/totalcommander/*.br2
 
 # BeyondCompare sensitive and backup files
-bcompare/BC4Key.txt
-bcompare/BC5Key.txt
-bcompare/BCState.xml
-bcompare/*.bak
+/bcompare/BC4Key.txt
+/bcompare/BC5Key.txt
+/bcompare/BCState.xml
+/bcompare/*.bak
 
 # Notepad++
-notepadpp/backup/
+/notepadpp/backup/
