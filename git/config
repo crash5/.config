@@ -164,7 +164,7 @@
 
 [core]
     #editor = notepad++.exe -multiInst -nosession -noPlugin -ldiff
-    editor = vim
+    editor = nvim
     autocrlf = input
     pager = less -x4 -+X # enable mouse wheel scroll in mintty
     ignorecase = false
