@@ -180,4 +180,5 @@ user_pref("browser.privatebrowsing.enable-new-indicator", false); // disable dif
 user_pref("browser.tabs.tabmanager.enabled", true); // always show the tab selection dropdown on the top right corner
 user_pref("browser.search.separatePrivateDefault.ui.enabled", true);
 user_pref("browser.search.separatePrivateDefault.urlbarResult.enabled", true);
+user_pref("browser.translations.enable", false);
 
