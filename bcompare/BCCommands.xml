@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Produced by Beyond Compare 4 from Scooter Software -->
-<BCCommands Version="1" MinVersion="1">
-	<TDataCompareCommands>
-		<DisplayFilterMode Value="modeToggles"/>
-	</TDataCompareCommands>
+<!-- Produced by Beyond Compare 5 from Scooter Software -->
+<BCCommands Version="2" MinVersion="2">
 	<TDirCompareCommands>
 		<DisplayFilterMode Value="modeToggles"/>
 	</TDirCompareCommands>
+	<TMediaCompareCommands>
+		<DisplayFilterMode Value="modeToggles"/>
+	</TMediaCompareCommands>
+	<TTableCompareCommands>
+		<DisplayFilterMode Value="modeToggles"/>
+	</TTableCompareCommands>
 	<TTextCompareCommands>
 		<DisplayFilterMode Value="modeToggles"/>
 	</TTextCompareCommands>

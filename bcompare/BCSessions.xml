@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Produced by Beyond Compare 4 from Scooter Software -->
-<BCSessions Version="1" MinVersion="1">
+<!-- Produced by Beyond Compare 5 from Scooter Software -->
+<BCSessions Version="2" MinVersion="2">
 	<TSessionFolder>
 		<Items>
 			<TDirCompareSession>
@@ -17,8 +17,6 @@
 				</Rules>
 				<State>
 					<ColPathWidth Value="350"/>
-					<DirHandling Value="dirShowAll"/>
-					<SortCol Value="colPath"/>
 				</State>
 			</TDirCompareSession>
 			<TTextMergeSession>
