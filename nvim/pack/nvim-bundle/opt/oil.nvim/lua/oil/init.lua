@@ -7,7 +7,7 @@ local M = {}
 ---@field parsed_name nil|string
 ---@field meta nil|table
 
----@alias oil.EntryType "file"|"directory"|"socket"|"link"|"fifo"
+---@alias oil.EntryType uv.aliases.fs_types
 ---@alias oil.HlRange { [1]: string, [2]: integer, [3]: integer } A tuple of highlight group name, col_start, col_end
 ---@alias oil.HlTuple { [1]: string, [2]: string } A tuple of text, highlight group
 ---@alias oil.HlRangeTuple { [1]: string, [2]: oil.HlRange[] } A tuple of text, internal highlights
@@ -29,6 +29,8 @@ local M = {}
 ---@field supported_cross_adapter_actions? table<string, oil.CrossAdapterAction> Mapping of adapter name to enum for all other adapters that can be used as a src or dest for move/copy actions.
 ---@field filter_action? fun(action: oil.Action): boolean When present, filter out actions as they are created
 ---@field filter_error? fun(action: oil.ParseError): boolean When present, filter out errors from parsing a buffer
+
+local load_oil_buffer
 
 ---Get the entry on a specific line (1-indexed)
 ---@param bufnr integer
@@ -239,18 +241,21 @@ M.get_buffer_parent_url = function(bufname, use_oil_parent)
   end
 end
 
+---@class (exact) oil.OpenOpts
+---@field preview? oil.OpenPreviewOpts When present, open the preview window after opening oil
+
 ---Open oil browser in a floating window
----@param dir nil|string When nil, open the parent of the current buffer, or the cwd if current buffer is not a file
-M.open_float = function(dir)
+---@param dir? string When nil, open the parent of the current buffer, or the cwd if current buffer is not a file
+---@param opts? oil.OpenOpts
+---@param cb? fun() Called after the oil buffer is ready
+M.open_float = function(dir, opts, cb)
+  opts = opts or {}
   local config = require("oil.config")
   local layout = require("oil.layout")
   local util = require("oil.util")
   local view = require("oil.view")
 
   local parent_url, basename = M.get_url_for_path(dir)
-  if not parent_url then
-    return
-  end
   if basename then
     view.set_last_cursor(parent_url, basename)
   end
@@ -324,6 +329,14 @@ M.open_float = function(dir)
     vim.api.nvim_set_option_value("buflisted", config.buf_options.buflisted, { buf = 0 })
   end
 
+  util.run_after_load(0, function()
+    if opts.preview then
+      M.open_preview(opts.preview, cb)
+    elseif cb then
+      cb()
+    end
+  end)
+
   if vim.fn.has("nvim-0.9") == 0 then
     util.add_title_to_win(winid)
   end
@@ -357,15 +370,15 @@ local function update_preview_window(oil_bufnr)
 end
 
 ---Open oil browser for a directory
----@param dir nil|string When nil, open the parent of the current buffer, or the cwd if current buffer is not a file
-M.open = function(dir)
+---@param dir? string When nil, open the parent of the current buffer, or the cwd if current buffer is not a file
+---@param opts? oil.OpenOpts
+---@param cb? fun() Called after the oil buffer is ready
+M.open = function(dir, opts, cb)
+  opts = opts or {}
   local config = require("oil.config")
   local util = require("oil.util")
   local view = require("oil.view")
   local parent_url, basename = M.get_url_for_path(dir)
-  if not parent_url then
-    return
-  end
   if basename then
     view.set_last_cursor(parent_url, basename)
   end
@@ -374,6 +387,14 @@ M.open = function(dir)
   if config.buf_options.buflisted ~= nil then
     vim.api.nvim_set_option_value("buflisted", config.buf_options.buflisted, { buf = 0 })
   end
+
+  util.run_after_load(0, function()
+    if opts.preview then
+      M.open_preview(opts.preview, cb)
+    elseif cb then
+      cb()
+    end
+  end)
 
   -- If preview window exists, update its content
   update_preview_window()
@@ -454,7 +475,7 @@ M.open_preview = function(opts, callback)
     end
   end
 
-  local preview_win = util.get_preview_win()
+  local preview_win = util.get_preview_win({ include_not_owned = true })
   local prev_win = vim.api.nvim_get_current_win()
   local bufnr = vim.api.nvim_get_current_buf()
 
@@ -501,6 +522,7 @@ M.open_preview = function(opts, callback)
 
       preview_win = vim.api.nvim_open_win(bufnr, true, win_opts)
       vim.api.nvim_set_option_value("previewwindow", true, { scope = "local", win = preview_win })
+      vim.api.nvim_win_set_var(preview_win, "oil_preview", true)
       vim.api.nvim_set_current_win(prev_win)
     elseif vim.fn.has("nvim-0.9") == 1 then
       vim.api.nvim_win_set_config(preview_win, { title = entry_title })
@@ -567,7 +589,14 @@ M.open_preview = function(opts, callback)
       vim.api.nvim_echo({ { err, "Error" } }, true, {})
     end
 
+    -- If we called open_preview during an autocmd, then the edit command may not trigger the
+    -- BufReadCmd to load the buffer. So we need to do it manually.
+    if util.is_oil_bufnr(filebufnr) then
+      load_oil_buffer(filebufnr)
+    end
+
     vim.api.nvim_set_option_value("previewwindow", true, { scope = "local", win = 0 })
+    vim.api.nvim_win_set_var(0, "oil_preview", true)
     for k, v in pairs(config.preview_win.win_options) do
       vim.api.nvim_set_option_value(k, v, { scope = "local", win = preview_win })
     end
@@ -601,14 +630,6 @@ M.select = function(opts, callback)
   local util = require("oil.util")
   local FIELD_META = constants.FIELD_META
   opts = vim.tbl_extend("keep", opts or {}, {})
-
-  if opts.preview then
-    vim.notify_once(
-      "Deprecated: do not call oil.select with preview=true. Use oil.open_preview instead.\nThis shim will be removed on 2025-01-01"
-    )
-    M.open_preview(opts, callback)
-    return
-  end
 
   local function finish(err)
     if err then
@@ -707,7 +728,7 @@ M.select = function(opts, callback)
     else
       -- Close floating window before opening a file
       if vim.w.is_oil_win then
-        vim.api.nvim_win_close(0, false)
+        M.close()
       end
     end
 
@@ -718,7 +739,7 @@ M.select = function(opts, callback)
         vertical = opts.vertical,
         horizontal = opts.horizontal,
         split = opts.split,
-        keepalt = true,
+        keepalt = false,
       }
       local filebufnr = vim.fn.bufadd(normalized_url)
       local entry_is_file = not vim.endswith(normalized_url, "/")
@@ -992,7 +1013,7 @@ local function restore_alt_buf()
 end
 
 ---@param bufnr integer
-local function load_oil_buffer(bufnr)
+load_oil_buffer = function(bufnr)
   local config = require("oil.config")
   local keymap_util = require("oil.keymap_util")
   local loading = require("oil.loading")
@@ -1004,6 +1025,11 @@ local function load_oil_buffer(bufnr)
     scheme = config.adapter_aliases[scheme]
     bufname = scheme .. path
     util.rename_buffer(bufnr, bufname)
+  end
+
+  -- Early return if we're already loading or have already loaded this buffer
+  if loading.is_loading(bufnr) or vim.b[bufnr].filetype ~= nil then
+    return
   end
 
   local adapter = assert(config.get_adapter_by_scheme(scheme))
@@ -1097,6 +1123,7 @@ M.setup = function(opts)
     end
     local float = false
     local trash = false
+    local preview = false
     local i = 1
     while i <= #args.fargs do
       local v = args.fargs[i]
@@ -1105,6 +1132,11 @@ M.setup = function(opts)
         table.remove(args.fargs, i)
       elseif v == "--trash" then
         trash = true
+        table.remove(args.fargs, i)
+      elseif v == "--preview" then
+        -- In the future we may want to support specifying options for the preview window (e.g.
+        -- vertical/horizontal), but if you want that level of control maybe just use the API
+        preview = true
         table.remove(args.fargs, i)
       elseif v == "--progress" then
         local mutator = require("oil.mutator")
@@ -1129,12 +1161,16 @@ M.setup = function(opts)
 
     local method = float and "open_float" or "open"
     local path = args.fargs[1]
+    local open_opts = {}
     if trash then
       local url = M.get_url_for_path(path, false)
       local _, new_path = util.parse_url(url)
       path = "oil-trash://" .. new_path
     end
-    M[method](path)
+    if preview then
+      open_opts.preview = {}
+    end
+    M[method](path, open_opts)
   end, { desc = "Open oil file browser on a directory", nargs = "*", complete = "dir" })
   local aug = vim.api.nvim_create_augroup("Oil", {})
 

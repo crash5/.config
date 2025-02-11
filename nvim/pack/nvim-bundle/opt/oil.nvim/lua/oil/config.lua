@@ -1,5 +1,3 @@
---stylua: ignore
-
 local default_config = {
   -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
   -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
@@ -60,22 +58,22 @@ local default_config = {
   -- Set to `false` to remove a keymap
   -- See :help oil-actions for a list of all available actions
   keymaps = {
-    ["g?"] = "actions.show_help",
+    ["g?"] = { "actions.show_help", mode = "n" },
     ["<CR>"] = "actions.select",
-    ["<C-s>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
-    ["<C-h>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
-    ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
+    ["<C-s>"] = { "actions.select", opts = { vertical = true } },
+    ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
+    ["<C-t>"] = { "actions.select", opts = { tab = true } },
     ["<C-p>"] = "actions.preview",
-    ["<C-c>"] = "actions.close",
+    ["<C-c>"] = { "actions.close", mode = "n" },
     ["<C-l>"] = "actions.refresh",
-    ["-"] = "actions.parent",
-    ["_"] = "actions.open_cwd",
-    ["`"] = "actions.cd",
-    ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory", mode = "n" },
-    ["gs"] = "actions.change_sort",
+    ["-"] = { "actions.parent", mode = "n" },
+    ["_"] = { "actions.open_cwd", mode = "n" },
+    ["`"] = { "actions.cd", mode = "n" },
+    ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+    ["gs"] = { "actions.change_sort", mode = "n" },
     ["gx"] = "actions.open_external",
-    ["g."] = "actions.toggle_hidden",
-    ["g\\"] = "actions.toggle_trash",
+    ["g."] = { "actions.toggle_hidden", mode = "n" },
+    ["g\\"] = { "actions.toggle_trash", mode = "n" },
   },
   -- Set to false to disable all of the above keymaps
   use_default_keymaps = true,
@@ -126,6 +124,7 @@ local default_config = {
   float = {
     -- Padding around the floating window
     padding = 2,
+    -- max_width and max_height can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
     max_width = 0,
     max_height = 0,
     border = "rounded",
@@ -288,7 +287,7 @@ local M = {}
 ---@field natural_order boolean|"fast"
 ---@field case_insensitive boolean
 ---@field sort oil.SortSpec[]
----@field highlight_filename? fun(entry: oil.Entry, is_hidden: boolean, is_link_target: boolean, is_link_orphan: boolean): string|nil
+---@field highlight_filename? fun(entry: oil.Entry, is_hidden: boolean, is_link_target: boolean, is_link_orphan: boolean, bufnr: integer): string|nil
 
 ---@class (exact) oil.SetupViewOptions
 ---@field show_hidden? boolean Show files and directories that start with "."
@@ -394,6 +393,13 @@ local M = {}
 
 M.setup = function(opts)
   opts = opts or {}
+
+  if opts.trash_command then
+    vim.notify(
+      "[oil.nvim] trash_command is deprecated. Use built-in trash functionality instead (:help oil-trash).\nCompatibility will be removed on 2025-06-01.",
+      vim.log.levels.WARN
+    )
+  end
 
   local new_conf = vim.tbl_deep_extend("keep", opts, default_config)
   if not new_conf.use_default_keymaps then

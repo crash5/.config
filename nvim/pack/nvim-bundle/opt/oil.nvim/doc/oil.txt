@@ -75,22 +75,22 @@ CONFIG                                                                *oil-confi
       -- Set to `false` to remove a keymap
       -- See :help oil-actions for a list of all available actions
       keymaps = {
-        ["g?"] = "actions.show_help",
+        ["g?"] = { "actions.show_help", mode = "n" },
         ["<CR>"] = "actions.select",
-        ["<C-s>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
-        ["<C-h>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
-        ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
+        ["<C-s>"] = { "actions.select", opts = { vertical = true } },
+        ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
+        ["<C-t>"] = { "actions.select", opts = { tab = true } },
         ["<C-p>"] = "actions.preview",
-        ["<C-c>"] = "actions.close",
+        ["<C-c>"] = { "actions.close", mode = "n" },
         ["<C-l>"] = "actions.refresh",
-        ["-"] = "actions.parent",
-        ["_"] = "actions.open_cwd",
-        ["`"] = "actions.cd",
-        ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory", mode = "n" },
-        ["gs"] = "actions.change_sort",
+        ["-"] = { "actions.parent", mode = "n" },
+        ["_"] = { "actions.open_cwd", mode = "n" },
+        ["`"] = { "actions.cd", mode = "n" },
+        ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+        ["gs"] = { "actions.change_sort", mode = "n" },
         ["gx"] = "actions.open_external",
-        ["g."] = "actions.toggle_hidden",
-        ["g\\"] = "actions.toggle_trash",
+        ["g."] = { "actions.toggle_hidden", mode = "n" },
+        ["g\\"] = { "actions.toggle_trash", mode = "n" },
       },
       -- Set to false to disable all of the above keymaps
       use_default_keymaps = true,
@@ -141,6 +141,7 @@ CONFIG                                                                *oil-confi
       float = {
         -- Padding around the floating window
         padding = 2,
+        -- max_width and max_height can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
         max_width = 0,
         max_height = 0,
         border = "rounded",
@@ -303,12 +304,20 @@ get_current_dir({bufnr}): nil|string                         *oil.get_current_di
     Parameters:
       {bufnr} `nil|integer`
 
-open_float({dir})                                                 *oil.open_float*
+open_float({dir}, {opts}, {cb})                                   *oil.open_float*
     Open oil browser in a floating window
 
     Parameters:
-      {dir} `nil|string` When nil, open the parent of the current buffer, or the
-            cwd if current buffer is not a file
+      {dir}  `nil|string` When nil, open the parent of the current buffer, or
+             the cwd if current buffer is not a file
+      {opts} `nil|oil.OpenOpts`
+          {preview} `nil|oil.OpenPreviewOpts` When present, open the preview
+                    window after opening oil
+              {vertical}   `nil|boolean` Open the buffer in a vertical split
+              {horizontal} `nil|boolean` Open the buffer in a horizontal split
+              {split}      `nil|"aboveleft"|"belowright"|"topleft"|"botright"` S
+                           plit modifier
+      {cb}   `nil|fun()` Called after the oil buffer is ready
 
 toggle_float({dir})                                             *oil.toggle_float*
     Open oil browser in a floating window, or close it if open
@@ -317,12 +326,20 @@ toggle_float({dir})                                             *oil.toggle_floa
       {dir} `nil|string` When nil, open the parent of the current buffer, or the
             cwd if current buffer is not a file
 
-open({dir})                                                             *oil.open*
+open({dir}, {opts}, {cb})                                               *oil.open*
     Open oil browser for a directory
 
     Parameters:
-      {dir} `nil|string` When nil, open the parent of the current buffer, or the
-            cwd if current buffer is not a file
+      {dir}  `nil|string` When nil, open the parent of the current buffer, or
+             the cwd if current buffer is not a file
+      {opts} `nil|oil.OpenOpts`
+          {preview} `nil|oil.OpenPreviewOpts` When present, open the preview
+                    window after opening oil
+              {vertical}   `nil|boolean` Open the buffer in a vertical split
+              {horizontal} `nil|boolean` Open the buffer in a horizontal split
+              {split}      `nil|"aboveleft"|"belowright"|"topleft"|"botright"` S
+                           plit modifier
+      {cb}   `nil|fun()` Called after the oil buffer is ready
 
 close({opts})                                                          *oil.close*
     Restore the buffer that was present when oil was opened
@@ -590,6 +607,9 @@ send_to_qflist                                            *actions.send_to_qflis
     Parameters:
       {action} `"r"|"a"` Replace or add to current quickfix list (see
                |setqflist-action|)
+      {only_matching_search} `boolean` Whether to only add the files that
+               matches the last search. This option only applies when search
+               highlighting is active
       {target} `"qflist"|"loclist"` The target list to send files to
 
 show_help                                                      *actions.show_help*
@@ -697,9 +717,9 @@ of being permanently deleted. You can browse the trash for a directory using
 the `toggle_trash` action (bound to `g\` by default). You can view all files
 in the trash with `:Oil --trash /`.
 
-To restore files, simply delete them from the trash and put them in the desired
-destination, the same as any other file operation. If you delete files from the
-trash they will be permanently deleted (purged).
+To restore files, simply move them from the trash to the desired destination,
+the same as any other file operation. If you delete files from the trash they
+will be permanently deleted (purged).
 
 Linux:
     Oil supports the FreeDesktop trash specification.

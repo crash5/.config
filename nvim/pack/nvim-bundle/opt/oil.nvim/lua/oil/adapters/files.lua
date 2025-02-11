@@ -4,6 +4,7 @@ local config = require("oil.config")
 local constants = require("oil.constants")
 local fs = require("oil.fs")
 local git = require("oil.git")
+local log = require("oil.log")
 local permissions = require("oil.adapters.files.permissions")
 local trash = require("oil.adapters.files.trash")
 local util = require("oil.util")
@@ -12,6 +13,7 @@ local uv = vim.uv or vim.loop
 local M = {}
 
 local FIELD_NAME = constants.FIELD_NAME
+local FIELD_TYPE = constants.FIELD_TYPE
 local FIELD_META = constants.FIELD_META
 
 local function read_link_data(path, cb)
@@ -50,21 +52,12 @@ end
 
 local file_columns = {}
 
-local fs_stat_meta_fields = {
-  stat = function(parent_url, entry, cb)
-    local _, path = util.parse_url(parent_url)
-    assert(path)
-    local dir = fs.posix_to_os_path(path .. entry[FIELD_NAME])
-    uv.fs_stat(dir, cb)
-  end,
-}
-
 file_columns.size = {
-  meta_fields = fs_stat_meta_fields,
+  require_stat = true,
 
   render = function(entry, conf)
     local meta = entry[FIELD_META]
-    local stat = meta.stat
+    local stat = meta and meta.stat
     if not stat then
       return columns.EMPTY
     end
@@ -81,7 +74,7 @@ file_columns.size = {
 
   get_sort_value = function(entry)
     local meta = entry[FIELD_META]
-    local stat = meta.stat
+    local stat = meta and meta.stat
     if stat then
       return stat.size
     else
@@ -97,11 +90,11 @@ file_columns.size = {
 -- TODO support file permissions on windows
 if not fs.is_windows then
   file_columns.permissions = {
-    meta_fields = fs_stat_meta_fields,
+    require_stat = true,
 
     render = function(entry, conf)
       local meta = entry[FIELD_META]
-      local stat = meta.stat
+      local stat = meta and meta.stat
       if not stat then
         return columns.EMPTY
       end
@@ -114,7 +107,7 @@ if not fs.is_windows then
 
     compare = function(entry, parsed_value)
       local meta = entry[FIELD_META]
-      if parsed_value and meta.stat and meta.stat.mode then
+      if parsed_value and meta and meta.stat and meta.stat.mode then
         local mask = bit.lshift(1, 12) - 1
         local old_mode = bit.band(meta.stat.mode, mask)
         if parsed_value ~= old_mode then
@@ -160,11 +153,11 @@ end)
 
 for _, time_key in ipairs({ "ctime", "mtime", "atime", "birthtime" }) do
   file_columns[time_key] = {
-    meta_fields = fs_stat_meta_fields,
+    require_stat = true,
 
     render = function(entry, conf)
       local meta = entry[FIELD_META]
-      local stat = meta.stat
+      local stat = meta and meta.stat
       if not stat then
         return columns.EMPTY
       end
@@ -196,7 +189,7 @@ for _, time_key in ipairs({ "ctime", "mtime", "atime", "birthtime" }) do
 
     get_sort_value = function(entry)
       local meta = entry[FIELD_META]
-      local stat = meta.stat
+      local stat = meta and meta.stat
       if stat then
         return stat[time_key].sec
       else
@@ -204,6 +197,20 @@ for _, time_key in ipairs({ "ctime", "mtime", "atime", "birthtime" }) do
       end
     end,
   }
+end
+
+---@param column_defs table[]
+---@return boolean
+local function columns_require_stat(column_defs)
+  for _, def in ipairs(column_defs) do
+    local name = util.split_config(def)
+    local column = M.get_column(name)
+    ---@diagnostic disable-next-line: undefined-field We only put this on the files adapter columns
+    if column and column.require_stat then
+      return true
+    end
+  end
+  return false
 end
 
 ---@param name string
@@ -283,12 +290,102 @@ M.get_entry_path = function(url, entry, cb)
   end
 end
 
+---@param parent_dir string
+---@param entry oil.InternalEntry
+---@param require_stat boolean
+---@param cb fun(err?: string)
+local function fetch_entry_metadata(parent_dir, entry, require_stat, cb)
+  local entry_path = fs.posix_to_os_path(parent_dir .. entry[FIELD_NAME])
+  local meta = entry[FIELD_META]
+  if not meta then
+    meta = {}
+    entry[FIELD_META] = meta
+  end
+
+  -- Sometimes fs_readdir entries don't have a type, so we need to stat them.
+  -- See https://github.com/stevearc/oil.nvim/issues/543
+  if not require_stat and not entry[FIELD_TYPE] then
+    require_stat = true
+  end
+
+  -- Make sure we always get fs_stat info for links
+  if entry[FIELD_TYPE] == "link" then
+    read_link_data(entry_path, function(link_err, link, link_stat)
+      if link_err then
+        log.warn("Error reading link data %s: %s", entry_path, link_err)
+        return cb()
+      end
+      meta.link = link
+      if link_stat then
+        -- Use the fstat of the linked file as the stat for the link
+        meta.link_stat = link_stat
+        meta.stat = link_stat
+      elseif require_stat then
+        -- The link is broken, so let's use the stat of the link itself
+        uv.fs_lstat(entry_path, function(stat_err, stat)
+          if stat_err then
+            log.warn("Error lstat link file %s: %s", entry_path, stat_err)
+            return cb()
+          end
+          meta.stat = stat
+          cb()
+        end)
+        return
+      end
+
+      cb()
+    end)
+  elseif require_stat then
+    uv.fs_stat(entry_path, function(stat_err, stat)
+      if stat_err then
+        log.warn("Error stat file %s: %s", entry_path, stat_err)
+        return cb()
+      end
+      assert(stat)
+      entry[FIELD_TYPE] = stat.type
+      meta.stat = stat
+      cb()
+    end)
+  else
+    cb()
+  end
+end
+
+-- On windows, sometimes the entry type from fs_readdir is "link" but the actual type is not.
+-- See https://github.com/stevearc/oil.nvim/issues/535
+if fs.is_windows then
+  local old_fetch_metadata = fetch_entry_metadata
+  fetch_entry_metadata = function(parent_dir, entry, require_stat, cb)
+    if entry[FIELD_TYPE] == "link" then
+      local entry_path = fs.posix_to_os_path(parent_dir .. entry[FIELD_NAME])
+      uv.fs_lstat(entry_path, function(stat_err, stat)
+        if stat_err then
+          log.warn("Error lstat link file %s: %s", entry_path, stat_err)
+          return old_fetch_metadata(parent_dir, entry, require_stat, cb)
+        end
+        assert(stat)
+        entry[FIELD_TYPE] = stat.type
+        local meta = entry[FIELD_META]
+        if not meta then
+          meta = {}
+          entry[FIELD_META] = meta
+        end
+        meta.stat = stat
+        old_fetch_metadata(parent_dir, entry, require_stat, cb)
+      end)
+    else
+      return old_fetch_metadata(parent_dir, entry, require_stat, cb)
+    end
+  end
+end
+
 ---@param url string
 ---@param column_defs string[]
 ---@param cb fun(err?: string, entries?: oil.InternalEntry[], fetch_more?: fun())
 local function list_windows_drives(url, column_defs, cb)
-  ---@cast M oil.FilesAdapter
-  local fetch_meta = columns.get_metadata_fetcher(M, column_defs)
+  local _, path = util.parse_url(url)
+  assert(path)
+  local require_stat = columns_require_stat(column_defs)
   local stdout = ""
   local jid = vim.fn.jobstart({ "wmic", "logicaldisk", "get", "name" }, {
     stdout_buffered = true,
@@ -318,14 +415,8 @@ local function list_windows_drives(url, column_defs, cb)
         else
           disk = disk:gsub(":%s*$", "")
           local cache_entry = cache.create_entry(url, disk, "directory")
-          fetch_meta(url, cache_entry, function(err)
-            if err then
-              complete_disk_cb(err)
-            else
-              table.insert(internal_entries, cache_entry)
-              complete_disk_cb()
-            end
-          end)
+          table.insert(internal_entries, cache_entry)
+          fetch_entry_metadata(path, cache_entry, require_stat, complete_disk_cb)
         end
       end
     end,
@@ -345,8 +436,7 @@ M.list = function(url, column_defs, cb)
     return list_windows_drives(url, column_defs, cb)
   end
   local dir = fs.posix_to_os_path(path)
-  ---@cast M oil.Adapter
-  local fetch_meta = columns.get_metadata_fetcher(M, column_defs)
+  local require_stat = columns_require_stat(column_defs)
 
   ---@diagnostic disable-next-line: param-type-mismatch, discard-returns
   uv.fs_opendir(dir, function(open_err, fd)
@@ -378,28 +468,8 @@ M.list = function(url, column_defs, cb)
           end)
           for _, entry in ipairs(entries) do
             local cache_entry = cache.create_entry(url, entry.name, entry.type)
-            fetch_meta(url, cache_entry, function(meta_err)
-              table.insert(internal_entries, cache_entry)
-              local meta = cache_entry[FIELD_META]
-              -- Make sure we always get fs_stat info for links
-              if entry.type == "link" then
-                read_link_data(fs.join(dir, entry.name), function(link_err, link, link_stat)
-                  if link_err then
-                    poll(link_err)
-                  else
-                    if not meta then
-                      meta = {}
-                      cache_entry[FIELD_META] = meta
-                    end
-                    meta.link = link
-                    meta.link_stat = link_stat
-                    poll()
-                  end
-                end)
-              else
-                poll()
-              end
-            end)
+            table.insert(internal_entries, cache_entry)
+            fetch_entry_metadata(path, cache_entry, require_stat, poll)
           end
         else
           uv.fs_closedir(fd, function(close_err)
@@ -417,26 +487,6 @@ M.list = function(url, column_defs, cb)
   end, 10000)
 end
 
----@type nil|integer[]
-local _group_ids
----@return integer[]
-local function get_group_ids()
-  if not _group_ids then
-    local output = vim.fn.system({ "id", "-G" })
-    if vim.v.shell_error == 0 then
-      _group_ids = vim.tbl_map(tonumber, vim.split(output, "%s+", { trimempty = true }))
-    else
-      -- If the id command fails, fall back to just using the process group
-      _group_ids = { uv.getgid() }
-      vim.notify(
-        "[oil] missing the `id` command. Some directories may not be modifiable even if you have group access.",
-        vim.log.levels.WARN
-      )
-    end
-  end
-  return _group_ids
-end
-
 ---@param bufnr integer
 ---@return boolean
 M.is_modifiable = function(bufnr)
@@ -452,20 +502,8 @@ M.is_modifiable = function(bufnr)
     return true
   end
 
-  -- Can't do permissions checks on windows
-  if fs.is_windows then
-    return true
-  end
-
-  local uid = uv.getuid()
-  local rwx = stat.mode
-  if uid == stat.uid then
-    rwx = bit.bor(rwx, bit.rshift(stat.mode, 6))
-  end
-  if vim.tbl_contains(get_group_ids(), stat.gid) then
-    rwx = bit.bor(rwx, bit.rshift(stat.mode, 3))
-  end
-  return bit.band(rwx, 2) ~= 0
+  -- fs_access can return nil, force boolean return
+  return uv.fs_access(dir, "W") == true
 end
 
 ---@param action oil.Action
