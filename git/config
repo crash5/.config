@@ -181,6 +181,8 @@
     cleanup = scissors
 [pull]
     rebase = true
+[fetch]
+    all = true
 [rebase]
     autoSquash = true
     stat = true
@@ -205,6 +207,7 @@
     algorithm = histogram
     wsErrorHighlight = all
     mnemonicPrefix = true
+    renames = true
     interHunkContext = 3
     submodule = log
 [merge]
@@ -215,6 +218,7 @@
     keepBackup = false
 [rerere]
     enabled = true
+    autoupdate = true
 [init]
     defaultBranch = main
 [help]
@@ -229,6 +233,10 @@
     pushInsteadOf = https://gitlab.com/
 [safe]
     bareRepository = explicit
+[tag]
+    sort = version:refname
+[push]
+    autoSetupRemote = true
 
 # Put things before this so it can be overridden locally
 [include]
