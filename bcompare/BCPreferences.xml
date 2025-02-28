@@ -4,29 +4,31 @@
 	<TBcPrefs>
 		<CheckForUpdatesDayAmt Value="0"/>
 		<ChildViewNewTab Value="False"/>
-		<MRUCapacity Value="1"/>
+		<FileComparePriority Value="tjpHigh"/>
+		<LogIncludeOpDetails Value="True"/>
+		<MRUCapacity Value="5"/>
 		<NextDiffLoadFirst Value="True"/>
 		<OpenWiths>
 			<_0>
-				<CmdLine Value="&quot;C:\Program Files\Sublime Text 3\sublime_text.exe&quot; &quot;%f:%l&quot;"/>
-				<Description Value="SublimeText"/>
+				<CmdLine Value="%LOCALAPPDATA%\Programs\Microsoft VS Code\Code.exe -g %f:%l %f:%l"/>
+				<Description Value="VSCode"/>
 				<HandleFolders Value="True"/>
+				<MultiInstance Value="True"/>
 				<RefreshWhenDone Value="True"/>
+				<WorkingDir Value="&lt;base folder>"/>
 			</_0>
 			<_1>
-				<CmdLine Value="%LOCALAPPDATA%/Programs/Microsoft VS Code/Code.exe -g %f:%l"/>
-				<Description Value="VSCode"/>
+				<CmdLine Value="%LOCALAPPDATA%\Programs\Neovim\neovide.exe -- -O %f %f"/>
+				<Description Value="Neovim"/>
+				<HandleFolders Value="True"/>
+				<MultiInstance Value="True"/>
 				<RefreshWhenDone Value="True"/>
 				<WorkingDir Value="&lt;base folder>"/>
 			</_1>
-			<_2>
-				<CmdLine Value="%LOCALAPPDATA%\Programs\Neovim\bin\nvim-qt.exe %f"/>
-				<Description Value="Neovim"/>
-				<HandleFolders Value="True"/>
-				<RefreshWhenDone Value="True"/>
-			</_2>
 		</OpenWiths>
-		<SessionAutoSavedCapacity Value="0"/>
+		<SessionAutoSavedCapacity Value="5"/>
+		<TextAutoIndent Value="False"/>
+		<TextUseOrphanColor Value="True"/>
 		<UseIPv6 Value="False"/>
 	</TBcPrefs>
 </BCPreferences>

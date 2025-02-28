@@ -3,17 +3,33 @@
 <BCCommands Version="2" MinVersion="2">
 	<TDirCompareCommands>
 		<DisplayFilterMode Value="modeToggles"/>
+		<Items>
+			<FullRefreshAction Value=";;True"/>
+		</Items>
 	</TDirCompareCommands>
-	<TMediaCompareCommands>
-		<DisplayFilterMode Value="modeToggles"/>
-	</TMediaCompareCommands>
 	<TTableCompareCommands>
 		<DisplayFilterMode Value="modeToggles"/>
+		<Items>
+			<RecompareAction Value=";;True"/>
+			<ShowItemNumAction Value=";;True"/>
+			<ShowWSAction Value=";;True"/>
+		</Items>
 	</TTableCompareCommands>
 	<TTextCompareCommands>
 		<DisplayFilterMode Value="modeToggles"/>
+		<Items>
+			<RecompareAction Value=";;True"/>
+			<ShowItemNumAction Value=";;True"/>
+			<ShowSyntaxHighlightingAction Value=";;True"/>
+			<ShowWSAction Value=";;True"/>
+		</Items>
 	</TTextCompareCommands>
 	<TTextMergeCommands>
 		<DisplayFilterMode Value="modeToggles"/>
+		<Items>
+			<ShowItemNumAction Value=";;True"/>
+			<ShowSyntaxHighlightingAction Value=";;True"/>
+			<ShowWSAction Value=";;True"/>
+		</Items>
 	</TTextMergeCommands>
 </BCCommands>
