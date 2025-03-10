@@ -2,6 +2,9 @@
 <!-- Produced by Beyond Compare 5 from Scooter Software -->
 <BCPreferences Version="2" MinVersion="2">
 	<TBcPrefs>
+		<ArchiveMasks>
+			<Zip Value="*.zip;*.zipx;*.jar;*.ear;*.war;*.bcpkg;*.whl"/>
+		</ArchiveMasks>
 		<CheckForUpdatesDayAmt Value="0"/>
 		<ChildViewNewTab Value="False"/>
 		<FileComparePriority Value="tjpHigh"/>
