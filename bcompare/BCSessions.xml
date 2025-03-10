@@ -5,12 +5,13 @@
 		<Items>
 			<TDirCompareSession>
 				<Filters>
-					<NameFilter Value="-.git/\"/>
+					<NameFilter Value="-.git\;-.venv*\;-.pytest_cache\;-__pycache__\"/>
 				</Filters>
 				<Rules>
 					<ExpandAllOnLoad Value="True"/>
 					<ExpandDiffsOnLoad Value="True"/>
 					<FollowSymLinks Value="True"/>
+					<NormalizedAlignment Value="False"/>
 					<UseCaseSensitiveComparison Value="True"/>
 					<UseContentComparison Value="True"/>
 					<UseTimestampComparison Value="False"/>
