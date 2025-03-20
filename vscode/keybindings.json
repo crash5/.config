@@ -45,5 +45,10 @@
     {
         "key": "ctrl+m",
         "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+        "key": "escape",
+        "command": "workbench.action.closePanel",
+        "when": "panelFocus"
     }
 ]
