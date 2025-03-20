@@ -1,38 +1,4 @@
-// Place your key bindings in this file to overwrite the defaults
 [
-    // > wordPart
-    {
-        "key": "ctrl+left",
-        "command": "cursorWordPartLeft",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+shift+left",
-        "command": "cursorWordPartLeftSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+right",
-        "command": "cursorWordPartRight",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+shift+right",
-        "command": "cursorWordPartRightSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+backspace",
-        "command": "deleteWordPartLeft",
-        "when": "textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+delete",
-        "command": "deleteWordPartRight",
-        "when": "textInputFocus && !editorReadonly"
-    },
-    // < wordPart
-    // > C/C++
     {
         "key": "f4",
         "command": "C_Cpp.SwitchHeaderSource",
@@ -43,140 +9,11 @@
         "command": "C_Cpp.SwitchHeaderSource",
         "when": "editorTextFocus && editorLangId == 'cpp'"
     },
-    // < C/C++
-    // > Other...
-    {
-        "key": "ctrl+numpad_divide",
-        "command": "editor.action.commentLine",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+shift+s",
-        "command": "workbench.action.files.saveAll"
-    },
-    {
-        "key": "ctrl+alt+s",
-        "command": "workbench.action.files.saveAs"
-    },
-    {
-        "key": "ctrl+shift+d",
-        "command": "editor.action.copyLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+shift+u",
-        "command": "editor.action.transformToUppercase"
-    },
-    {
-        "key": "ctrl+shift+l",
-        "command": "editor.action.transformToLowercase"
-    },
-    {
-        "key": "ctrl+j",
-        "command": "editor.action.moveLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly && vim.mode == 'Normal'"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "editor.action.moveLinesUpAction",
-        "when": "editorTextFocus && !editorReadonly && vim.mode == 'Normal'"
-    },
-    {
-        "key": "ctrl+shift+down",
-        "command": "editor.action.moveLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+shift+up",
-        "command": "editor.action.moveLinesUpAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+shift+alt+s",
-        "command": "workbench.action.files.saveWithoutFormatting"
-    },
     {
         "key": "shift+enter",
         "command": "workbench.action.terminal.runSelectedText",
         "when": "editorTextFocus && editorLangId ~= 'python'"
     },
-    {
-        "key": "ctrl+alt+d",
-        "command": "editor.action.moveSelectionToNextFindMatch",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+shift+i",
-        "command": "type",
-        "args": {
-            "text": "\t"
-        },
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+alt+left",
-        "command": "editor.action.jumpToBracket",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+shift+alt+left",
-        "command": "editor.action.selectToBracket"
-    },
-    {
-        "key": "ctrl+shift+alt+left",
-        "command": "-cursorColumnSelectLeft",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+alt+left",
-        "command": "-workbench.action.moveEditorToPreviousGroup"
-    },
-    {
-        "key": "ctrl+shift+w",
-        "command": "workbench.action.closeAllEditors"
-    },
-    {
-        "key": "alt+left",
-        "command": "workbench.action.navigateBack"
-    },
-    {
-        "key": "alt+right",
-        "command": "workbench.action.navigateForward"
-    },
-    // > zoom
-    {
-        "key": "ctrl+shift+[Equal]",
-        "command": "editor.action.fontZoomIn"
-    },
-    {
-        "key": "ctrl+[Minus]",
-        "command": "editor.action.fontZoomOut"
-    },
-    {
-        "key": "ctrl+0",
-        "command": "editor.action.fontZoomReset"
-    },
-    {
-        "key": "ctrl+numpad_add",
-        "command": "editor.action.fontZoomIn"
-    },
-    {
-        "key": "ctrl+numpad_subtract",
-        "command": "editor.action.fontZoomOut"
-    },
-    {
-        "key": "ctrl+numpad0",
-        "command": "editor.action.fontZoomReset"
-    },
-    // < zoom
-    // > refactor
-    {
-        "key": "ctrl+shift+r",
-        "command": "editor.action.changeAll",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    // < refactor
-    // > goto defintion
     {
         "key": "f2",
         "command": "editor.action.revealDeclaration"
@@ -191,31 +28,6 @@
         "command": "editor.action.revealDefinitionAside",
         "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
     },
-    // < goto defintion
-    {
-        "key": "ctrl+[KeyZ]",
-        "command": "undo",
-        "when": "textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "alt+v alt+v",
-        "command": "toggleVim"
-    },
-    {
-        "key": "ctrl+capslock ctrl+[BracketLeft]",
-        "command": "extension.vim_escape"
-    },
-    {
-        "key": "ctrl+alt+p",
-        "command": "workbench.action.showEditorsInGroup"
-    },
-    // > Other
-    {
-        "key": "ctrl+e v",
-        "command": "open-in-vim.open"
-    },
-    // < Other
-    // > neovim
     {
         "key": "[q",
         "command": "search.action.focusPreviousSearchResult",
