@@ -400,5 +400,7 @@
     "go.inlayHints.rangeVariableTypes": true,
     "debug.console.acceptSuggestionOnEnter": "on",
     "azureFunctions.showPythonVenvWarning": false,
-    "debug.showVariableTypes": true
+    "debug.showVariableTypes": true,
+    "python.analysis.languageServerMode": "full",
+    "testing.automaticallyOpenTestResults": "neverOpen"
 }
