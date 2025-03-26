@@ -264,7 +264,7 @@
     "editor.cursorWidth": 3,
     "editor.find.addExtraSpaceOnTop": false,
     "editor.find.autoFindInSelection": "multiline",
-    "editor.fontFamily": "Intel One Mono",
+    "editor.fontFamily": "'Intel One Mono', 'DejaVu Sans Mono'",
     "terminal.integrated.fontFamily": "Dejavu Sans Mono",
     "editor.fontLigatures": false,
     "editor.minimap.enabled": false,
