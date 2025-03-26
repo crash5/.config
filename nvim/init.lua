@@ -25,8 +25,8 @@ vim.cmd [[
     packadd! vim-sandwich
     packadd! matchit
     packadd! vim-indent-object
-    packadd! vim-unimpaired
     packadd! oil.nvim
+    "packadd! nvim-treesitter
 ]]
 
 
