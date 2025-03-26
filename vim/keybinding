@@ -48,10 +48,12 @@ nnoremap <leader><CR> <CR>
 
 " System clipboard
 nnoremap <F9> :set invpaste paste?<CR>
-set pastetoggle=<F9>
 noremap <leader>s "+
 vnoremap <leader>s "+
 noremap <leader>ss :let @+=@"<CR>
+if !has("nvim-0.9")
+    set pastetoggle=<F9>
+endif
 
 " TODO(crash): maybe remove?
 " Highlight the current line
