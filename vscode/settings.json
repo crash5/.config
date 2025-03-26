@@ -247,9 +247,6 @@
             "command": "vscode-neovim.escape"
         }
     },
-    "open-in-vim.linux.gnome-terminal.args": "",
-    "open-in-vim.openMethod": "linux.gnome-terminal",
-    "tabnine.experimentalAutoImports": true,
     "files.associations": {
         "*.md.html": "markdown",
         "*.yaml.in": "yaml",
