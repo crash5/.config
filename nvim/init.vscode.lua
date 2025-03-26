@@ -50,8 +50,8 @@ vim.cmd [[
     " vscode calls
     nnoremap ]d <Cmd>lua require('vscode').action('editor.action.marker.next')<CR>
     nnoremap [d <Cmd>lua require('vscode').action('editor.action.marker.prev')<CR>
-    nnoremap ]q <Cmd>lua require('vscode').action('search.action.focusPreviousSearchResult')<CR>
-    nnoremap [q <Cmd>lua require('vscode').action('search.action.focusNextSearchResult')<CR>
+    nnoremap ]q <Cmd>lua require('vscode').action('search.action.focusNextSearchResult')<CR>
+    nnoremap [q <Cmd>lua require('vscode').action('search.action.focusPreviousSearchResult')<CR>
 
     nnoremap g/ <Cmd>lua require('vscode').action('workbench.action.findInFiles', { args = { query = vim.fn.expand('<cword>') } })<CR>
     xnoremap g/ <Cmd>lua require('vscode').action('workbench.action.findInFiles')<CR>
@@ -69,7 +69,6 @@ vim.cmd [[
     nnoremap <silent> zj <Cmd>lua require('vscode').action('editor.gotoNextFold')<CR>
     nnoremap <silent> zk <Cmd>lua require('vscode').action('editor.gotoPreviousFold')<CR>
 
-    nnoremap cd <Cmd>lua require('vscode').call('editor.action.rename')<CR>
     nnoremap g. <Cmd>lua require('vscode').call('editor.action.refactor')<CR>
     xnoremap g. <Cmd>lua require('vscode').call('editor.action.refactor')<CR>
 
