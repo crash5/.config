@@ -17,6 +17,10 @@ vim.cmd [[
         autocmd TextYankPost * silent! lua vim.highlight.on_yank{timeout=250}
     augroup END
 
+
+    " disable lsp default shortcut, conflicts with ReplaceWithRegister
+    nunmap gri
+
     silent! colorscheme PaperColor
 
     packadd! CamelCaseMotion
