@@ -79,6 +79,9 @@ vim.cmd [[
     nnoremap gc  <Plug>VSCodeCommentary
     nnoremap gcc <Plug>VSCodeCommentaryLine
 
+    " disable lsp default shortcut, conflicts with ReplaceWithRegister
+    nunmap gri
+
     " Plugins
     packadd! CamelCaseMotion
     packadd! ReplaceWithRegister
