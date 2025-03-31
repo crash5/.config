@@ -73,7 +73,7 @@
     diffu = diff @{u}
     diffn = diff --name-only
     diffns = diff --name-status
-    diffw = diff --color-words
+    diffw = diff --color-words=.
     diffskipws = diff --ignore-all-space
 
     diffurange = range-diff @{u}...@
@@ -237,6 +237,8 @@
     sort = version:refname
 [push]
     autoSetupRemote = true
+[grep]
+    lineNumber = true
 
 # Put things before this so it can be overridden locally
 [include]
