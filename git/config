@@ -52,8 +52,8 @@
     stn = status --untracked-files=no
     sta = status --untracked-files=all
 
-    s = show --pretty=fuller --name-status
-    ss = show --pretty=fuller --patch
+    s = show --pretty=fuller --name-status --show-signature
+    ss = show --pretty=fuller --patch --show-signature
 
     dt = difftool -y
     dtt = difftool
@@ -90,8 +90,8 @@
     lp = log --pretty=log
     ll = lp --graph --date=short
     l = ll -25
-    ls = log --pretty=fuller --name-status
-    lss = log --pretty=fuller --patch
+    ls = log --pretty=fuller --name-status --show-signature
+    lss = log --pretty=fuller --patch --show-signature
     ld = !git l $(git merge-base develop HEAD)..HEAD
     lm = !git ll $(git merge-base main HEAD)~..HEAD
 
@@ -107,7 +107,7 @@
     ; list old stash entries
     slo = "!git lp --merges --no-walk $(git fsck --unreachable | grep commit | cut -d' ' -f3)"
 
-    tl = tag --format='%(refname:strip=2) [%(objecttype) / %(creatordate:short) | commit: %(*objectname:short) / %(*creatordate:short)]\n%(contents:subject)\n%(contents:body)' --list --sort=-v:refname
+    tl = tag --format='%(refname:strip=2) [%(objecttype) / %(creatordate:short) %(if)%(contents:signature)%(then)/ signed %(end)| commit: %(*objectname:short) / %(*creatordate:short)%(if)%(*signature)%(then) / signed%(end)]\n%(contents:subject)\n%(contents:body)' --list --sort=-v:refname
     tlr = ls-remote --tags
 
     ; find commits by file content
