@@ -50,7 +50,8 @@
     cl = clone
     st = status
     stn = status --untracked-files=no
-    sta = status --untracked-files=all
+    sta = status --untracked-files=all --ignored
+    sti = status --ignored
 
     s = show --pretty=fuller --name-status --show-signature
     ss = show --pretty=fuller --patch --show-signature
