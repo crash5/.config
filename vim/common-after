@@ -2,6 +2,6 @@
 filetype plugin indent on
 
 " Load local changes
-if filereadable(expand("~/.local/config/vimrc"))
-    source ~/.local/config/vimrc
+if filereadable(expand("~/.local/share/vim/vimrc"))
+    source ~/.local/share/vim/vimrc
 endif
