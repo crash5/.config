@@ -43,7 +43,7 @@
         "command": "workbench.action.files.revert"
     },
     {
-        "key": "ctrl+m",
+        "key": "alt+`",
         "command": "workbench.action.toggleMaximizedPanel"
     },
     {
