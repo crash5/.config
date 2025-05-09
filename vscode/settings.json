@@ -401,6 +401,9 @@
     "debug.console.acceptSuggestionOnEnter": "on",
     "azureFunctions.showPythonVenvWarning": false,
     "debug.showVariableTypes": true,
-    "python.analysis.languageServerMode": "full",
-    "testing.automaticallyOpenTestResults": "neverOpen"
+    "testing.automaticallyOpenTestResults": "neverOpen",
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "terminal.integrated.hideOnStartup": "whenEmpty",
+    "chat.commandCenter.enabled": false,
+    "telemetry.feedback.enabled": false
 }
