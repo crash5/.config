@@ -20,6 +20,8 @@ vim.cmd [[
 
     " disable lsp default shortcut, conflicts with ReplaceWithRegister
     nunmap gri
+    nunmap gra
+    nunmap grt
 
     silent! colorscheme PaperColor
 
