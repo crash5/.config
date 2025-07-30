@@ -106,6 +106,13 @@ If you want to use different mappings, map your keys to the
     nmap <Leader>rr <Plug>ReplaceWithRegisterLine
     xmap <Leader>r  <Plug>ReplaceWithRegisterVisual
 
+In Neovim, there's an overlap with LSP-related commands, and if you want to
+use the plugin's gr{motion} with inner/outer text objects, you need to remove
+(and optionally remap) the gra and gri commands:
+
+    vim.keymap.del("n", "gra")
+    vim.keymap.del("n", "gri")
+
 LIMITATIONS
 ------------------------------------------------------------------------------
 
@@ -130,7 +137,7 @@ below).
 HISTORY
 ------------------------------------------------------------------------------
 
-##### 1.44    RELEASEME
+##### 1.44    12-Nov-2024
 - The gr custom operator doesn't clobber the previous visual selection any
   longer (if the optional ingo-library.vim ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)) is installed).
 - BUG: gr{motion} deletes one additional character when the moved-over text
@@ -218,7 +225,7 @@ insert mode.
 - Started development.
 
 ------------------------------------------------------------------------------
-Copyright: (C) 2008-2021 Ingo Karkat -
+Copyright: (C) 2008-2025 Ingo Karkat -
 The [VIM LICENSE](http://vimdoc.sourceforge.net/htmldoc/uganda.html#license) applies to this plugin.
 
 Maintainer:     Ingo Karkat &lt;ingo@karkat.de&gt;
