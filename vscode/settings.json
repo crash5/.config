@@ -405,5 +405,8 @@
     "terminal.integrated.persistentSessionReviveProcess": "never",
     "terminal.integrated.hideOnStartup": "whenEmpty",
     "chat.commandCenter.enabled": false,
-    "telemetry.feedback.enabled": false
+    "telemetry.feedback.enabled": false,
+    "dev.containers.executeInWSL": true,
+    "chat.agent.enabled": false,
+    "workbench.editor.showTabIndex": true
 }
