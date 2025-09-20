@@ -181,4 +181,9 @@ user_pref("browser.tabs.tabmanager.enabled", true); // always show the tab selec
 user_pref("browser.search.separatePrivateDefault.ui.enabled", true);
 user_pref("browser.search.separatePrivateDefault.urlbarResult.enabled", true);
 user_pref("browser.translations.enable", false);
-
+user_pref("browser.ml.enable", false);
+user_pref("browser.ml.chat.enabled", false);
+user_pref("extensions.ml.enabled", false);
+user_pref("browser.ml.linkPreview.enabled", false);
+user_pref("browser.tabs.groups.smart.enabled", false);
+user_pref("browser.tabs.groups.smart.userEnabled", false);
