@@ -408,5 +408,6 @@
     "telemetry.feedback.enabled": false,
     "dev.containers.executeInWSL": true,
     "chat.agent.enabled": false,
-    "workbench.editor.showTabIndex": true
+    "workbench.editor.showTabIndex": true,
+    "chat.disableAIFeatures": true
 }
