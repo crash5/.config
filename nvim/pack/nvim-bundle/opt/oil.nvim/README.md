@@ -12,6 +12,7 @@ https://user-images.githubusercontent.com/506791/209727111-6b4a11f4-634a-4efa-94
 - [Options](#options)
 - [Adapters](#adapters)
 - [Recipes](#recipes)
+- [Third-party extensions](#third-party-extensions)
 - [API](#api)
 - [FAQ](#faq)
 
@@ -21,7 +22,7 @@ https://user-images.githubusercontent.com/506791/209727111-6b4a11f4-634a-4efa-94
 
 - Neovim 0.8+
 - Icon provider plugin (optional)
-  - [mini.icons](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-icons.md) for file and folder icons
+  - [mini.icons](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-icons.md) for file and folder icons
   - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) for file icons
 
 ## Installation
@@ -38,7 +39,7 @@ oil.nvim supports all the usual plugin managers
   ---@type oil.SetupOpts
   opts = {},
   -- Optional dependencies
-  dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  dependencies = { { "nvim-mini/mini.icons", opts = {} } },
   -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   lazy = false,
@@ -261,7 +262,7 @@ require("oil").setup({
     -- max_width and max_height can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
     max_width = 0,
     max_height = 0,
-    border = "rounded",
+    border = nil,
     win_options = {
       winblend = 0,
     },
@@ -306,7 +307,7 @@ require("oil").setup({
     min_height = { 5, 0.1 },
     -- optionally define an integer/float for the exact height of the preview window
     height = nil,
-    border = "rounded",
+    border = nil,
     win_options = {
       winblend = 0,
     },
@@ -319,7 +320,7 @@ require("oil").setup({
     max_height = { 10, 0.9 },
     min_height = { 5, 0.1 },
     height = nil,
-    border = "rounded",
+    border = nil,
     minimized_border = "none",
     win_options = {
       winblend = 0,
@@ -327,11 +328,11 @@ require("oil").setup({
   },
   -- Configuration for the floating SSH window
   ssh = {
-    border = "rounded",
+    border = nil,
   },
   -- Configuration for the floating keymaps help window
   keymaps_help = {
-    border = "rounded",
+    border = nil,
   },
 })
 ```
@@ -359,6 +360,14 @@ Note that at the moment the ssh adapter does not support Windows machines, and i
 - [Toggle file detail view](doc/recipes.md#toggle-file-detail-view)
 - [Show CWD in the winbar](doc/recipes.md#show-cwd-in-the-winbar)
 - [Hide gitignored files and show git tracked hidden files](doc/recipes.md#hide-gitignored-files-and-show-git-tracked-hidden-files)
+
+## Third-party extensions
+
+These are plugins maintained by other authors that extend the functionality of oil.nvim.
+
+- [oil-git-status.nvim](https://github.com/refractalize/oil-git-status.nvim) - Shows git status of files in statuscolumn
+- [oil-git.nvim](https://github.com/benomahony/oil-git.nvim) - Shows git status of files with colour and symbols
+- [oil-lsp-diagnostics.nvim](https://github.com/JezerM/oil-lsp-diagnostics.nvim) - Shows LSP diagnostics indicator as virtual text
 
 ## API
 
@@ -400,7 +409,7 @@ Plus, I think it's pretty slick ;)
 
 - You like to use a netrw-like view to browse directories (as opposed to a file tree)
 - AND you want to be able to edit your filesystem like a buffer
-- AND you want to perform cross-directory actions. AFAIK there is no other plugin that does this. (update: [mini.files](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-files.md) also offers this functionality)
+- AND you want to perform cross-directory actions. AFAIK there is no other plugin that does this. (update: [mini.files](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-files.md) also offers this functionality)
 
 If you don't need those features specifically, check out the alternatives listed below
 
@@ -416,7 +425,7 @@ If you don't need those features specifically, check out the alternatives listed
 
 **A:**
 
-- [mini.files](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-files.md): A newer plugin that also supports cross-directory filesystem-as-buffer edits. It utilizes a unique column view.
+- [mini.files](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-files.md): A newer plugin that also supports cross-directory filesystem-as-buffer edits. It utilizes a unique column view.
 - [vim-vinegar](https://github.com/tpope/vim-vinegar): The granddaddy. This made me fall in love with single-directory file browsing. I stopped using it when I encountered netrw bugs and performance issues.
 - [defx.nvim](https://github.com/Shougo/defx.nvim): What I switched to after vim-vinegar. Much more flexible and performant, but requires python and the API is a little hard to work with.
 - [dirbuf.nvim](https://github.com/elihunter173/dirbuf.nvim): The first plugin I encountered that let you edit the filesystem like a buffer. Never used it because it [can't do cross-directory edits](https://github.com/elihunter173/dirbuf.nvim/issues/7).

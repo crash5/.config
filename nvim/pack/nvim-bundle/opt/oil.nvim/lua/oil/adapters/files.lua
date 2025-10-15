@@ -180,7 +180,20 @@ for _, time_key in ipairs({ "ctime", "mtime", "atime", "birthtime" }) do
       local fmt = conf and conf.format
       local pattern
       if fmt then
-        pattern = fmt:gsub("%%.", "%%S+")
+        -- Replace placeholders with a pattern that matches non-space characters (e.g. %H -> %S+)
+        -- and whitespace with a pattern that matches any amount of whitespace
+        -- e.g. "%b %d %Y" -> "%S+%s+%S+%s+%S+"
+        pattern = fmt
+          :gsub("%%.", "%%S+")
+          :gsub("%s+", "%%s+")
+          -- escape `()[]` because those are special characters in Lua patterns
+          :gsub(
+            "%(",
+            "%%("
+          )
+          :gsub("%)", "%%)")
+          :gsub("%[", "%%[")
+          :gsub("%]", "%%]")
       else
         pattern = "%S+%s+%d+%s+%d%d:?%d%d"
       end
@@ -527,7 +540,7 @@ M.render_action = function(action)
       return string.format("DELETE %s", short_path)
     end
   elseif action.type == "move" or action.type == "copy" then
-    local dest_adapter = config.get_adapter_by_scheme(action.dest_url)
+    local dest_adapter = assert(config.get_adapter_by_scheme(action.dest_url))
     if dest_adapter == M then
       local _, src_path = util.parse_url(action.src_url)
       assert(src_path)
@@ -620,7 +633,7 @@ M.perform_action = function(action, cb)
       fs.recursive_delete(action.entry_type, path, cb)
     end
   elseif action.type == "move" then
-    local dest_adapter = config.get_adapter_by_scheme(action.dest_url)
+    local dest_adapter = assert(config.get_adapter_by_scheme(action.dest_url))
     if dest_adapter == M then
       local _, src_path = util.parse_url(action.src_url)
       assert(src_path)
@@ -638,7 +651,7 @@ M.perform_action = function(action, cb)
       cb("files adapter doesn't support cross-adapter move")
     end
   elseif action.type == "copy" then
-    local dest_adapter = config.get_adapter_by_scheme(action.dest_url)
+    local dest_adapter = assert(config.get_adapter_by_scheme(action.dest_url))
     if dest_adapter == M then
       local _, src_path = util.parse_url(action.src_url)
       assert(src_path)

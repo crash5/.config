@@ -30,8 +30,6 @@ local M = {}
 ---@field filter_action? fun(action: oil.Action): boolean When present, filter out actions as they are created
 ---@field filter_error? fun(action: oil.ParseError): boolean When present, filter out errors from parsing a buffer
 
-local load_oil_buffer
-
 ---Get the entry on a specific line (1-indexed)
 ---@param bufnr integer
 ---@param lnum integer
@@ -224,7 +222,7 @@ M.get_buffer_parent_url = function(bufname, use_oil_parent)
     if not use_oil_parent then
       return bufname
     end
-    local adapter = config.get_adapter_by_scheme(scheme)
+    local adapter = assert(config.get_adapter_by_scheme(scheme))
     local parent_url
     if adapter and adapter.get_parent then
       local adapter_scheme = config.adapter_to_scheme[adapter.name]
@@ -556,18 +554,19 @@ M.open_preview = function(opts, callback)
 
     local entry_is_file = not vim.endswith(normalized_url, "/")
     local filebufnr
-    if
-      entry_is_file
-      and config.preview_win.preview_method ~= "load"
-      and not util.file_matches_bufreadcmd(normalized_url)
-    then
-      filebufnr =
-        util.read_file_to_scratch_buffer(normalized_url, config.preview_win.preview_method)
-    elseif entry_is_file and config.preview_win.disable_preview(normalized_url) then
-      filebufnr = vim.api.nvim_create_buf(false, true)
-      vim.bo[filebufnr].bufhidden = "wipe"
-      vim.bo[filebufnr].buftype = "nofile"
-      util.render_text(filebufnr, "Preview disabled", { winid = preview_win })
+    if entry_is_file then
+      if config.preview_win.disable_preview(normalized_url) then
+        filebufnr = vim.api.nvim_create_buf(false, true)
+        vim.bo[filebufnr].bufhidden = "wipe"
+        vim.bo[filebufnr].buftype = "nofile"
+        util.render_text(filebufnr, "Preview disabled", { winid = preview_win })
+      elseif
+        config.preview_win.preview_method ~= "load"
+        and not util.file_matches_bufreadcmd(normalized_url)
+      then
+        filebufnr =
+          util.read_file_to_scratch_buffer(normalized_url, config.preview_win.preview_method)
+      end
     end
 
     if not filebufnr then
@@ -592,7 +591,7 @@ M.open_preview = function(opts, callback)
     -- If we called open_preview during an autocmd, then the edit command may not trigger the
     -- BufReadCmd to load the buffer. So we need to do it manually.
     if util.is_oil_bufnr(filebufnr) then
-      load_oil_buffer(filebufnr)
+      M.load_oil_buffer(filebufnr)
     end
 
     vim.api.nvim_set_option_value("previewwindow", true, { scope = "local", win = 0 })
@@ -753,6 +752,8 @@ M.select = function(opts, callback)
       local cmd = "buffer"
       if opts.tab then
         vim.cmd.tabnew({ mods = mods })
+        -- Make sure the new buffer from tabnew gets cleaned up
+        vim.bo.bufhidden = "wipe"
       elseif opts.split then
         cmd = "sbuffer"
       end
@@ -1012,8 +1013,9 @@ local function restore_alt_buf()
   end
 end
 
+---@private
 ---@param bufnr integer
-load_oil_buffer = function(bufnr)
+M.load_oil_buffer = function(bufnr)
   local config = require("oil.config")
   local keymap_util = require("oil.keymap_util")
   local loading = require("oil.loading")
@@ -1217,7 +1219,7 @@ M.setup = function(opts)
     pattern = scheme_pattern,
     nested = true,
     callback = function(params)
-      load_oil_buffer(params.buf)
+      M.load_oil_buffer(params.buf)
     end,
   })
   vim.api.nvim_create_autocmd("BufWriteCmd", {
@@ -1252,8 +1254,7 @@ M.setup = function(opts)
         end)
         vim.cmd.doautocmd({ args = { "BufWritePost", params.file }, mods = { silent = true } })
       else
-        local adapter = config.get_adapter_by_scheme(bufname)
-        assert(adapter)
+        local adapter = assert(config.get_adapter_by_scheme(bufname))
         adapter.write_file(params.buf)
       end
     end,
@@ -1388,7 +1389,7 @@ M.setup = function(opts)
       local util = require("oil.util")
       local scheme = util.parse_url(params.file)
       if config.adapters[scheme] and vim.api.nvim_buf_line_count(params.buf) == 1 then
-        load_oil_buffer(params.buf)
+        M.load_oil_buffer(params.buf)
       end
     end,
   })
@@ -1397,7 +1398,7 @@ M.setup = function(opts)
   if maybe_hijack_directory_buffer(bufnr) and vim.v.vim_did_enter == 1 then
     -- manually call load on a hijacked directory buffer if vim has already entered
     -- (the BufReadCmd will not trigger)
-    load_oil_buffer(bufnr)
+    M.load_oil_buffer(bufnr)
   end
 end
 

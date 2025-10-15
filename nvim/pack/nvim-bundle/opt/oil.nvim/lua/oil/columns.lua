@@ -12,7 +12,7 @@ local all_columns = {}
 ---@alias oil.ColumnSpec string|{[1]: string, [string]: any}
 
 ---@class (exact) oil.ColumnDefinition
----@field render fun(entry: oil.InternalEntry, conf: nil|table): nil|oil.TextChunk
+---@field render fun(entry: oil.InternalEntry, conf: nil|table, bufnr: integer): nil|oil.TextChunk
 ---@field parse fun(line: string, conf: nil|table): nil|string, nil|string
 ---@field compare? fun(entry: oil.InternalEntry, parsed_value: any): boolean
 ---@field render_action? fun(action: oil.ChangeAction): string
@@ -60,8 +60,9 @@ M.EMPTY = EMPTY
 ---@param adapter oil.Adapter
 ---@param col_def oil.ColumnSpec
 ---@param entry oil.InternalEntry
+---@param bufnr integer
 ---@return oil.TextChunk
-M.render_col = function(adapter, col_def, entry)
+M.render_col = function(adapter, col_def, entry, bufnr)
   local name, conf = util.split_config(col_def)
   local column = M.get_column(adapter, name)
   if not column then
@@ -69,7 +70,7 @@ M.render_col = function(adapter, col_def, entry)
     return EMPTY
   end
 
-  local chunk = column.render(entry, conf)
+  local chunk = column.render(entry, conf, bufnr)
   if type(chunk) == "table" then
     if chunk[1]:match("^%s*$") then
       return EMPTY
@@ -227,8 +228,8 @@ M.register("type", {
   end,
 })
 
-local function pad_number(int)
-  return string.format("%012d", int)
+local function adjust_number(int)
+  return string.format("%03d%s", #int, int)
 end
 
 M.register("name", {
@@ -255,14 +256,16 @@ M.register("name", {
         end
       end
     else
-      if config.view_options.case_insensitive then
-        return function(entry)
-          return entry[FIELD_NAME]:gsub("%d+", pad_number):lower()
+      local memo = {}
+      return function(entry)
+        if memo[entry] == nil then
+          local name = entry[FIELD_NAME]:gsub("0*(%d+)", adjust_number)
+          if config.view_options.case_insensitive then
+            name = name:lower()
+          end
+          memo[entry] = name
         end
-      else
-        return function(entry)
-          return entry[FIELD_NAME]:gsub("%d+", pad_number)
-        end
+        return memo[entry]
       end
     end
   end,

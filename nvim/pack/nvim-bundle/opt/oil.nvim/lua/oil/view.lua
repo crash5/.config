@@ -146,7 +146,7 @@ M.unlock_buffers = function()
   buffers_locked = false
   for bufnr in pairs(session) do
     if vim.api.nvim_buf_is_loaded(bufnr) then
-      local adapter = util.get_adapter(bufnr)
+      local adapter = util.get_adapter(bufnr, true)
       if adapter then
         vim.bo[bufnr].modifiable = adapter.is_modifiable(bufnr)
       end
@@ -258,20 +258,24 @@ local function get_first_mutable_column_col(adapter, ranges)
 end
 
 ---Force cursor to be after hidden/immutable columns
+---@param bufnr integer
 ---@param mode false|"name"|"editable"
-local function constrain_cursor(mode)
+local function constrain_cursor(bufnr, mode)
   if not mode then
+    return
+  end
+  if bufnr ~= vim.api.nvim_get_current_buf() then
     return
   end
   local parser = require("oil.mutator.parser")
 
-  local adapter = util.get_adapter(0)
+  local adapter = util.get_adapter(bufnr, true)
   if not adapter then
     return
   end
 
   local cur = vim.api.nvim_win_get_cursor(0)
-  local line = vim.api.nvim_buf_get_lines(0, cur[1] - 1, cur[1], true)[1]
+  local line = vim.api.nvim_buf_get_lines(bufnr, cur[1] - 1, cur[1], true)[1]
   local column_defs = columns.get_supported_columns(adapter)
   local result = parser.parse_line(adapter, line, column_defs)
   if result and result.ranges then
@@ -296,7 +300,7 @@ local function redraw_trash_virtual_text(bufnr)
     return
   end
   local parser = require("oil.mutator.parser")
-  local adapter = util.get_adapter(bufnr)
+  local adapter = util.get_adapter(bufnr, true)
   if not adapter or adapter.name ~= "trash" then
     return
   end
@@ -406,7 +410,7 @@ M.initialize = function(bufnr)
     callback = function()
       -- For some reason the cursor bounces back to its original position,
       -- so we have to defer the call
-      vim.schedule_wrap(constrain_cursor)(config.constrain_cursor)
+      vim.schedule_wrap(constrain_cursor)(bufnr, config.constrain_cursor)
     end,
   })
   vim.api.nvim_create_autocmd({ "CursorMoved", "ModeChanged" }, {
@@ -419,7 +423,7 @@ M.initialize = function(bufnr)
         return
       end
 
-      constrain_cursor(config.constrain_cursor)
+      constrain_cursor(bufnr, config.constrain_cursor)
 
       if config.preview_win.update_on_cursor_moved then
         -- Debounce and update the preview window
@@ -456,7 +460,7 @@ M.initialize = function(bufnr)
     end,
   })
 
-  local adapter = util.get_adapter(bufnr)
+  local adapter = util.get_adapter(bufnr, true)
 
   -- Set up a watcher that will refresh the directory
   if
@@ -583,7 +587,7 @@ local function get_sort_function(adapter, num_entries)
   end
   return function(a, b)
     for _, sort_fn in ipairs(idx_funs) do
-      local get_sort_value, order = unpack(sort_fn)
+      local get_sort_value, order = sort_fn[1], sort_fn[2]
       local a_val = get_sort_value(a)
       local b_val = get_sort_value(b)
       if a_val ~= b_val then
@@ -616,7 +620,7 @@ local function render_buffer(bufnr, opts)
     jump_first = false,
   })
   local scheme = util.parse_url(bufname)
-  local adapter = util.get_adapter(bufnr)
+  local adapter = util.get_adapter(bufnr, true)
   if not scheme or not adapter then
     return false
   end
@@ -690,7 +694,7 @@ local function render_buffer(bufnr, opts)
             end
           end
 
-          constrain_cursor("name")
+          constrain_cursor(bufnr, "name")
         end
       end
     end)
@@ -747,7 +751,7 @@ M.format_entry_cols = function(entry, column_defs, col_width, adapter, is_hidden
   table.insert(cols, id_key)
   -- Then add all the configured columns
   for i, column in ipairs(column_defs) do
-    local chunk = columns.render_col(adapter, column, entry)
+    local chunk = columns.render_col(adapter, column, entry, bufnr)
     local text = type(chunk) == "table" and chunk[1] or chunk
     ---@cast text string
     col_width[i + 1] = math.max(col_width[i + 1], vim.api.nvim_strwidth(text))
@@ -877,7 +881,7 @@ M.render_buffer_async = function(bufnr, opts, callback)
     handle_error(string.format("Could not parse oil url '%s'", bufname))
     return
   end
-  local adapter = util.get_adapter(bufnr)
+  local adapter = util.get_adapter(bufnr, true)
   if not adapter then
     handle_error(string.format("[oil] no adapter for buffer '%s'", bufname))
     return
