@@ -83,8 +83,8 @@ fi
 # }}}
 
 # vim, neovim {{{
-alias vi=vim
-alias vis='vi -S'
+alias vi=nvim
+alias vis='nvim -S'
 
 vii() {
     if [ "$#" -gt 0 ]; then
@@ -144,7 +144,7 @@ if program_exists docker; then
     alias d='docker'
     if function_exists _completion_loader; then
         _completion_loader docker
-        complete -F _docker d
+        complete -F __start_docker d
     fi
 fi
 
