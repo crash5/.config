@@ -409,5 +409,7 @@
     "dev.containers.executeInWSL": true,
     "chat.agent.enabled": false,
     "workbench.editor.showTabIndex": true,
-    "chat.disableAIFeatures": true
+    "chat.disableAIFeatures": true,
+    "telemetry.editStats.enabled": false,
+    "workbench.settings.alwaysShowAdvancedSettings": true
 }
