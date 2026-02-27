@@ -112,6 +112,9 @@
     tlr = ls-remote --tags
 
     ; find commits by file content
+    ; :100644 100644 bcd1234 0123456 M file0
+    ; src    dst     src     dst hash
+    ; chmode chmode  hash    dst hash
     findbyfilecontent = "!f() { git log --raw --all --find-object=$(git hash-object \"$@\"); }; f"
 
     mostchangedayear = "!git log --format=format: --name-only --since=12.month | egrep -v '^$' | sort | uniq -c | sort -nr | head -50"
