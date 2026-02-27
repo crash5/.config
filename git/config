@@ -43,6 +43,7 @@
     cis = commit --squash
     ff = "!f() { git commit --fixup=$(git log --all --full-history -1 --format=format:%h -- \"$1\") \"${@}\"; }; f"
     ff-develop = "!f() { git commit --fixup=$(git log $(git merge-base develop HEAD)..HEAD --full-history -1 --format=format:%h -- \"$1\") \"${@}\"; }; f"
+    w = commit -am wip
 
     addp = !git_add_gui
     adds = "!f() { selection=$(git diffn | fzf --preview 'git diff --color {+1}' --preview-window right:wrap:nohidden) && selection=$(echo \"$selection\") || return ; git add \"${selection}\" \"${@}\"; }; f"
