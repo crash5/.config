@@ -44,6 +44,25 @@ require("oil").setup({
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
 
 
+vim.keymap.set("n", "<C-\\><C-\\>", function()
+  local file = vim.api.nvim_buf_get_name(0)
+  local dir = (file ~= "" and vim.fs.dirname(file)) or vim.uv.cwd()
+
+  vim.cmd.tabnew()
+
+  if (vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1) and vim.env.LOCALAPPDATA then
+    local bash = vim.env.LOCALAPPDATA .. [[\Programs\Git\bin\bash.exe]]
+    if vim.fn.executable(bash) == 1 then
+      vim.fn.termopen({ bash, "-l" }, { cwd = dir })
+      vim.cmd.startinsert()
+      return
+    end
+  end
+
+  vim.fn.termopen(vim.o.shell, { cwd = dir })
+  vim.cmd.startinsert()
+end, { desc = "Open terminal in new tab (file dir)" })
+
 -- Treesitter {{{
 -- vim.opt.foldmethod = "expr"
 -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
