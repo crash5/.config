@@ -137,7 +137,8 @@
     rec =   rebase --continue
     rea =   rebase --abort
     reis = "!f() { git rebase --interactive $(git ll | fzf --preview 'git s {+2}' --preview-window right:wrap:nohidden | cut -d ' ' -f 2)^ \"${@}\"; }; f"
-    rei-develop = !git rebase -i $(git merge-base develop HEAD)
+    rei-untilbranch = "!f() { : git checkout ; branch=${1:?Usage: git rei-untilbranch <branch>}; base=$(git merge-base \"$branch\" HEAD) || exit; git rebase -i \"$base\"; }; f"
+
     showrebase = show REBASE_HEAD
 
     pruneorigin = remote prune origin
