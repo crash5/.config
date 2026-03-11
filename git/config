@@ -54,8 +54,9 @@
     sta = status --untracked-files=all --ignored
     sti = status --ignored
 
-    s = show --pretty=fuller --name-status --show-signature
-    ss = show --pretty=fuller --patch --show-signature
+    s =  show --pretty=fuller --show-signature --name-status
+    ss = show --pretty=fuller --show-signature --patch
+    sslfs = -c diff.lfs.textconv=cat ss
 
     dt = difftool -y
     dtt = difftool
@@ -68,9 +69,9 @@
     dtds = !git dtd stash
     dtdu = !git dtd @{u}
     dtdse = "!f() { git fetch -q && git dtd $(git brr | fzf --tac -q ${1:-''} | awk '{ print $1 }'); }; f"
-
     diffc = diff --cached
     diffcw = diff --cached --color-words
+    difflfs = -c diff.lfs.textconv=cat diff
 
     diffu = diff @{u}
     diffn = diff --name-only
