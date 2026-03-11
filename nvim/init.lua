@@ -23,6 +23,8 @@ vim.cmd [[
     nunmap gra
     nunmap grt
 
+    set foldcolumn=auto
+
     silent! colorscheme PaperColor
 
     packadd! CamelCaseMotion
