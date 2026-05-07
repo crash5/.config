@@ -411,5 +411,9 @@
     "workbench.editor.showTabIndex": true,
     "chat.disableAIFeatures": true,
     "telemetry.editStats.enabled": false,
-    "workbench.settings.alwaysShowAdvancedSettings": true
+    "workbench.settings.alwaysShowAdvancedSettings": true,
+    "workbench.editor.useModal": "off",
+    "workbench.colorTheme": "Dark Modern",
+    "git.addAICoAuthor": "off",
+    "docker.lsp.telemetry": "off"
 }
