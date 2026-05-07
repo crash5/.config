@@ -415,5 +415,6 @@
     "workbench.editor.useModal": "off",
     "workbench.colorTheme": "Dark Modern",
     "git.addAICoAuthor": "off",
-    "docker.lsp.telemetry": "off"
+    "docker.lsp.telemetry": "off",
+    "remote.autoForwardPorts": false
 }
