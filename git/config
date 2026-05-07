@@ -169,6 +169,8 @@
 
     ta = "!f() { : git tag ; git tag ${1:?Missing tag} $1^{} -f -a ; }; f"
 
+    wt = "!f() { : git worktree ; if [[ $# == 0 ]]; then git worktree list; else git worktree "$@"; fi }; f"
+
 [core]
     #editor = notepad++.exe -multiInst -nosession -noPlugin -ldiff
     editor = nvim
