@@ -50,5 +50,15 @@
         "key": "escape",
         "command": "workbench.action.closePanel",
         "when": "panelFocus"
+    },
+    {
+        "command": "-togglePeekWidgetFocus",
+        "key": "tab",
+        "when": "referenceSearchVisible || inReferenceSearchEditor && neovim.mode == 'normal'"
+    },
+    {
+        "command": "-vscode-neovim.send",
+        "key": "tab",
+        "when": "neovim.init && neovim.recording || editorTextFocus && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
     }
 ]
