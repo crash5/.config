@@ -31,6 +31,10 @@
         {
             "name": "XE.com PLN to HUF",
             "file": "xe-pln-to-huf.xml"
+        },
+        {
+            "name": "XE.com CZK to HUF",
+            "file": "xe-czk-to-huf.xml"
         }
     ]
 }

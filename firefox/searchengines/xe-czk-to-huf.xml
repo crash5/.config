@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+    <ShortName>XE.com CZK to HUF</ShortName>
+    <Description>XE Currency Converter</Description>
+    <Image width="16" height="16" type="image/svg+xml">https://www.xe.com/themes/xe/images/flags/svg/czk.svg</Image>
+    <Url type="text/html" method="GET" template="https://www.xe.com/currencyconverter/convert/">
+        <Param name="Amount" value="{searchTerms}"/>
+        <Param name="From" value="czk"/>
+        <Param name="To" value="HUF"/>
+    </Url>
+    <Url type="application/opensearchdescription+xml" rel="self" template="https://crash5.github.io/.config/firefox/searchengines/xe-czk-to-huf.xml" />
+    <moz:SearchForm>https://www.xe.com/currencyconverter/convert/</moz:SearchForm>
+</OpenSearchDescription>
